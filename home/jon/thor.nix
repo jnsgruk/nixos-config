@@ -1,0 +1,6 @@
+{ outputs, ... }: {
+  imports = [
+    ../common
+  ];
+
+}
