@@ -1,14 +1,10 @@
 { pkgs, lib, ... }: {
   imports = [
+    ./boot.nix
     ./hardware.nix
     ../common/global
     ../common/users/jon
   ];
-
-  boot.kernel.sysctl = {
-    "net.ipv4.ip_forward" = 1;
-    "net.ipv6.conf.all.forwarding" = 1;
-  };
 
   networking = {
     hostName = "thor";
@@ -24,7 +20,8 @@
       storageDriver = "btrfs";
     };
   };
-  environment.systemPackages = [ pkgs.ctop ];
+
+  environment.systemPackages = [ ];
 
   system.stateVersion = "22.11";
 }

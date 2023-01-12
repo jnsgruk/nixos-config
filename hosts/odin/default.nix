@@ -1,21 +1,11 @@
 { pkgs, lib, ... }: {
   imports = [
+    ./boot.nix
     ./hardware.nix
-    ./optional/desktop.nix
     ../common/global
     ../common/users/jon
+    ./optional/desktop.nix
   ];
-
-  boot = {
-    kernel.sysctl = {
-      "net.ipv4.ip_forward" = 1;
-      "net.ipv6.conf.all.forwarding" = 1;
-    };
-    # Force S3 sleep mode. See README.wiki for details.
-    kernelParams = [ "mem_sleep_default=deep" ];
-    # XPS 9370 touchpad goes over i2c
-    blacklistedKernelModules = [ "psmouse" ];
-  };
 
   networking = {
     hostName = "odin";
@@ -26,8 +16,12 @@
 
   # Power, throttling, etc.
   services.upower.enable = true;
+  services.tlp.enable = true;
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
+
+  # TODO: Move this to hardware configuration?
+  services.fstrim.enable = lib.mkDefault true;
 
   virtualisation = {
     containerd.enable = true;
@@ -36,7 +30,8 @@
       storageDriver = "btrfs";
     };
   };
-  environment.systemPackages = [ pkgs.ctop ];
+
+  environment.systemPackages = [ ];
 
   system.stateVersion = "22.11";
 }

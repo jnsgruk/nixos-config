@@ -1,5 +1,6 @@
 { inputs, pkgs, ... }: {
   imports = [
+    ./nix-tools.nix
     ./starship.nix
     ./tmux.nix
     ./zsh.nix
@@ -28,7 +29,6 @@
   home.packages = with pkgs; [
     duf
     git-crypt
-    rnix-lsp
     yq-go
   ];
 

@@ -14,6 +14,7 @@
     libnotify
     obsidian
     rambox
+    signal-desktop
     xdg-utils
   ];
 }

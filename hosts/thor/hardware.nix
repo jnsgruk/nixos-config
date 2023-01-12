@@ -1,28 +1,6 @@
 { config, lib, pkgs, modulesPath, ... }: {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot = {
-    initrd = {
-      kernelModules = [ ];
-      availableKernelModules = [
-        "xhci_pci"
-        "nvme"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
-        "sdhci_pci"
-      ];
-    };
-
-    kernelModules = [ "kvm-intel" "vhost_vsock" ];
-    extraModulePackages = [ ];
-
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-  };
-
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
@@ -85,6 +63,8 @@
       '';
     };
   };
+
+  services.fstrim.enable = lib.mkDefault true;
 
   # TODO: Search for this; I don't know if this should be enabled or not.
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
