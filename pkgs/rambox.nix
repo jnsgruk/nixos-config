@@ -1,5 +1,7 @@
-{ lib, fetchurl, appimageTools }:
-
+{ lib
+, fetchurl
+, appimageTools
+}:
 let
   pname = "rambox";
   version = "2.0.9";

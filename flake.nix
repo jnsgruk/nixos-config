@@ -16,13 +16,13 @@
       forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
     in
     {
+      defaultPackage.x86_64-linux = home-manager.defaultPackage."x86_64-linux";
+
       overlays = import ./overlays;
 
       packages = forAllSystems (system:
         import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }
       );
-
-      defaultPackage.x86_64-linux = home-manager.defaultPackage."x86_64-linux";
 
       homeConfigurations = {
         "jon@thor" = home-manager.lib.homeManagerConfiguration {
