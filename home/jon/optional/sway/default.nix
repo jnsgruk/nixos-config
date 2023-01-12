@@ -1,9 +1,8 @@
-{
-  pkgs,
-  lib,
-  config,
-  default,
-  ...
+{ pkgs
+, lib
+, config
+, default
+, ...
 }: {
   imports = [
     ./mako.nix
@@ -39,7 +38,7 @@
       menu = "wofi";
       terminal = "alacritty";
       modifier = "Mod4";
-      bars = [];
+      bars = [ ];
 
       gaps = {
         smartBorders = "on";
@@ -47,7 +46,7 @@
         inner = 4;
       };
 
-      startup = [{command = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY";}];
+      startup = [{ command = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY"; }];
 
       input = {
         "type:pointer" = {

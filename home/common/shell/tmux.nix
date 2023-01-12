@@ -1,10 +1,10 @@
 { pkgs, ... }: {
   programs = {
-    tmate.enable = true; 
-    
+    tmate.enable = true;
+
     tmux = {
       enable = true;
-      
+
       aggressiveResize = true;
       baseIndex = 1;
       clock24 = true;
@@ -24,7 +24,7 @@
         {
           plugin = tmuxPlugins.catppuccin;
           extraConfig = "set -g @catppuccin_flavour 'macchiato'";
-        }    
+        }
       ];
     };
   };

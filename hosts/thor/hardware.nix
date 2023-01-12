@@ -2,67 +2,73 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   boot = {
-    initrd = { 
-      kernelModules = [];
-      availableKernelModules = [ 
-        "xhci_pci" 
-        "nvme" 
-        "usbhid" 
-        "usb_storage" 
-        "sd_mod" 
-        "sdhci_pci" 
+    initrd = {
+      kernelModules = [ ];
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "usbhid"
+        "usb_storage"
+        "sd_mod"
+        "sdhci_pci"
       ];
     };
-    
-    kernelModules = [ "kvm-intel" "vhost_vsock" ];
-    extraModulePackages = [];
 
-    loader = { 
+    kernelModules = [ "kvm-intel" "vhost_vsock" ];
+    extraModulePackages = [ ];
+
+    loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
   };
-    
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
+    {
+      device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
       fsType = "btrfs";
       options = [ "subvol=@" "compress=lzo" "noatime" "nodiratime" "ssd" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
+    {
+      device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
       fsType = "btrfs";
       options = [ "subvol=@home" "compress=lzo" "noatime" "nodiratime" "ssd" ];
     };
 
   fileSystems."/var" =
-    { device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
+    {
+      device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
       fsType = "btrfs";
       options = [ "subvol=@var" "compress=lzo" "noatime" "nodiratime" "ssd" ];
     };
 
   fileSystems."/.snapshots" =
-    { device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
+    {
+      device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
       fsType = "btrfs";
       options = [ "subvol=@snapshots" "compress=lzo" "noatime" "nodiratime" "ssd" ];
     };
 
   fileSystems."/swap" =
-    { device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
+    {
+      device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
       fsType = "btrfs";
       options = [ "subvol=@swap" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/FD29-48A2";
+    {
+      device = "/dev/disk/by-uuid/FD29-48A2";
       fsType = "vfat";
     };
 
-  swapDevices = [{ 
+  swapDevices = [{
     device = "/swap/swapfile";
     size = 2048;
   }];
-  
+
   systemd.services = {
     create-swapfile = {
       serviceConfig.type = "oneshot";
@@ -78,11 +84,11 @@
         fi
       '';
     };
-  }; 
+  };
 
   # TODO: Search for this; I don't know if this should be enabled or not.
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  
+
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     video.hidpi.enable = lib.mkDefault true;

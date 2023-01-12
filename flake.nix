@@ -15,13 +15,13 @@
       system = "x86_64-linux";
       forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" ];
     in
-    { 
+    {
       overlays = import ./overlays;
 
       packages = forAllSystems (system:
         import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }
       );
-      
+
       defaultPackage.x86_64-linux = home-manager.defaultPackage."x86_64-linux";
 
       homeConfigurations = {

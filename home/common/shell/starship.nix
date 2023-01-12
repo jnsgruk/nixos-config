@@ -25,7 +25,7 @@
         rust.symbol = " ";
         status.disabled = false;
         username.format = "[$user]($style)@";
-        
+
         character = {
           success_symbol = "[❯](purple)";
           error_symbol = "[❯](red)";
@@ -34,11 +34,11 @@
 
         directory = {
           read_only = " ";
-					home_symbol = " ~";
-					style = "blue";
-					truncate_to_repo = false;
-					truncation_length = 5;
-					truncation_symbol = ".../";
+          home_symbol = " ~";
+          style = "blue";
+          truncate_to_repo = false;
+          truncation_length = 5;
+          truncation_symbol = ".../";
         };
 
         docker_context.symbol = " ";
@@ -48,7 +48,7 @@
           format = "[ $branch]($style)";
           style = "green";
         };
-     
+
         git_status = {
           format = "[[( $conflicted$untracked$modified$staged$renamed$deleted)](218) ($ahead_behind$stashed)]($style)";
           style = "cyan";

@@ -40,41 +40,41 @@
       '';
 
       shellAliases = {
-        ls="exa -gl --git --color=automatic";
-        cat="bat --theme='Catppuccin-macchiato'";
-        
+        ls = "exa -gl --git --color=automatic";
+        cat = "bat --theme='Catppuccin-macchiato'";
+
         ip = "ip --color";
         ipb = "ip --color --brief";
-        
-        
+
+
         gac = "git add -A  && git commit -a";
         gp = "git push";
         gst = "git status -sb";
-        
+
         tf = "terraform";
         tfi = "terraform init";
         tfp = "terraform plan";
         tfa = "terraform apply -auto-approve";
         tfd = "terraform destroy -auto-approve";
         tfo = "terraform output -json";
-        
+
         wgu = "sudo wg-quick up";
         wgd = "sudo wg-quick down";
-        
+
         ts = "tailscale";
         tssh = "tailscale ssh";
         tst = "tailscale status";
         tsu = "tailscale up --ssh --operator = $USER";
         tsd = "tailscale down";
-        
+
         js = "juju status";
         jsw = "juju status --watch 1s --color";
         jsrw = "juju status --watch 1s --color --relations";
         jdl = "juju debug-log";
-        
+
         open = "xdg-open";
         k = "kubectl";
-        
+
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup-nix = "sudo nix-collect-garbage -d";

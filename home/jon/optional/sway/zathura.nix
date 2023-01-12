@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-    programs.zathura = {
-        enable = true;
-    };
+  programs.zathura = {
+    enable = true;
+  };
 }

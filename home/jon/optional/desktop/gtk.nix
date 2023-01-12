@@ -1,7 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
@@ -28,7 +27,7 @@
 
     theme = {
       name = "Catppuccin-Orange-Dark-Compact";
-      package = pkgs.catppuccin-gtk.override {size = "compact";};
+      package = pkgs.catppuccin-gtk.override { size = "compact"; };
     };
   };
 }

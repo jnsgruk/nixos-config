@@ -1,5 +1,5 @@
 { pkgs, lib, ... }: {
-  imports = [ 
+  imports = [
     ./hardware.nix
     ../common/global
     ../common/users/jon
@@ -20,8 +20,8 @@
   virtualisation = {
     containerd.enable = true;
     docker = {
-        enable = true;
-        storageDriver = "btrfs";
+      enable = true;
+      storageDriver = "btrfs";
     };
   };
   environment.systemPackages = [ pkgs.ctop ];

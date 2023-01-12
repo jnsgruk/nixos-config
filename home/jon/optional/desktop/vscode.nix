@@ -1,5 +1,5 @@
-{ pkgs } : {
-    programs.vscode = {
-        enable = true;
-    };
+{ pkgs }: {
+  programs.vscode = {
+    enable = true;
+  };
 }

@@ -1,5 +1,5 @@
-{ pkgs } : {
-    programs.alacritty = {
-        enable = true;
-    };
+{ pkgs }: {
+  programs.alacritty = {
+    enable = true;
+  };
 }

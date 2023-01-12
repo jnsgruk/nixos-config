@@ -23,6 +23,6 @@
     enableSshSupport = true;
     pinentryFlavor = "qt";
   };
-  
+
   fonts.fontconfig.enable = true;
 }

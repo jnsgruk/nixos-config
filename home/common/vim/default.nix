@@ -5,7 +5,7 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
-    
+
     extraConfig = ''
       set autochdir
       set autoindent
@@ -39,11 +39,11 @@
         plugin = catppuccin-nvim;
         type = "lua";
         config = ''
-            require('catppuccin').setup {
-                flavour = 'macchiato',
-                term_colors = true,
-            }
-            vim.api.nvim_command 'colorscheme catppuccin'
+          require('catppuccin').setup {
+              flavour = 'macchiato',
+              term_colors = true,
+          }
+          vim.api.nvim_command 'colorscheme catppuccin'
         '';
       }
     ];

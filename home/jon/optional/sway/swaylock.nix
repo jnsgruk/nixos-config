@@ -1,6 +1,5 @@
-{
-  pkgs,
-  ...
+{ pkgs
+, ...
 }: {
   programs.swaylock.settings = {
     clock = true;
