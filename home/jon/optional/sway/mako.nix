@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs = {
     mako = {
       enable = true;

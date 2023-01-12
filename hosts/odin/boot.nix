@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   boot = {
     kernelModules = [
       # Help TLP work better with XPS hardware

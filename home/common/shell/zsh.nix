@@ -46,7 +46,6 @@
         ip = "ip --color";
         ipb = "ip --color --brief";
 
-
         gac = "git add -A  && git commit -a";
         gp = "git push";
         gst = "git status -sb";

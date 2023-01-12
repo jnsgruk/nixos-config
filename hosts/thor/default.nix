@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{lib, ...}: {
   imports = [
     ./boot.nix
     ./hardware.nix
@@ -21,7 +21,7 @@
     };
   };
 
-  environment.systemPackages = [ ];
+  environment.systemPackages = [];
 
   system.stateVersion = "22.11";
 }

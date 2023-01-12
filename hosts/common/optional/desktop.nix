@@ -1,25 +1,21 @@
-{ config
-, pkgs
-, inputs
-, ...
-}: {
+{pkgs, ...}: {
   fonts = {
     fonts = with pkgs; [
       noto-fonts-cjk
       noto-fonts-emoji
       roboto
 
-      (nerdfonts.override { fonts = [ "FiraCode" "Meslo" ]; })
+      (nerdfonts.override {fonts = ["FiraCode" "Meslo"];})
     ];
 
     # use fonts specified by user rather than default ones
     enableDefaultFonts = false;
 
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif" "Noto Color Emoji" ];
-      sansSerif = [ "Noto Sans" "Noto Color Emoji" ];
-      monospace = [ "Meslo" "Noto Color Emoji" ];
-      emoji = [ "Noto Color Emoji" ];
+      serif = ["Noto Serif" "Noto Color Emoji"];
+      sansSerif = ["Noto Sans" "Noto Color Emoji"];
+      monospace = ["Meslo" "Noto Color Emoji"];
+      emoji = ["Noto Color Emoji"];
     };
   };
 

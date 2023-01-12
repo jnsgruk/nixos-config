@@ -1,3 +1,3 @@
-{ pkgs }: {
-  rambox = pkgs.callPackage ./rambox { };
+{pkgs}: {
+  rambox = pkgs.callPackage ./rambox {};
 }

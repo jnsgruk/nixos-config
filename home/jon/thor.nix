@@ -1,6 +1,5 @@
-{ outputs, ... }: {
+{...}: {
   imports = [
     ../common
   ];
-
 }

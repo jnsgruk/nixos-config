@@ -1,7 +1,7 @@
-{ ... }: {
+{...}: {
   boot = {
     initrd = {
-      kernelModules = [ ];
+      kernelModules = [];
       availableKernelModules = [
         "xhci_pci"
         "nvme"
@@ -27,6 +27,6 @@
       efi.canTouchEfiVariables = true;
     };
 
-    extraModulePackages = [ ];
+    extraModulePackages = [];
   };
 }
