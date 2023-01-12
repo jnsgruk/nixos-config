@@ -28,6 +28,7 @@
   home.packages = with pkgs; [
     duf
     git-crypt
+    rnix-lsp
     yq-go
   ];
 
