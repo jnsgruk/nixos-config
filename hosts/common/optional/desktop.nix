@@ -1,48 +1,72 @@
 {pkgs, ...}: {
   fonts = {
     fonts = with pkgs; [
-      noto-fonts-cjk
-      noto-fonts-emoji
-      roboto
-
       (nerdfonts.override {fonts = ["FiraCode" "Meslo"];})
+      joypixels
+      liberation_ttf
+      sf-mono-liga-font
+      sfpro-font
+      ubuntu_font_family
     ];
 
     # use fonts specified by user rather than default ones
     enableDefaultFonts = false;
 
     fontconfig.defaultFonts = {
-      serif = ["Noto Serif" "Noto Color Emoji"];
-      sansSerif = ["Noto Sans" "Noto Color Emoji"];
-      monospace = ["Meslo" "Noto Color Emoji"];
-      emoji = ["Noto Color Emoji"];
+      serif = ["SF Pro Display" "Joypixels"];
+      sansSerif = ["SF Pro Display" "Joypixels"];
+      monospace = ["MesloLGSDZ Nerd Font Mono" "FiraCode Nerd Font Mono"];
+      emoji = ["Joypixels"];
     };
   };
 
-  # use Wayland where possible (electron)
-  environment.variables.NIXOS_OZONE_WL = "1";
+  # Accept the joypixels license
+  nixpkgs.config.joypixels.acceptLicense = true;
+
+  environment = {
+    variables.NIXOS_OZONE_WL = "1";
+
+    systemPackages = with pkgs; [
+      polkit_gnome
+    ];
+  };
 
   # enable location service
   location.provider = "geoclue2";
 
-  # make HM-managed GTK stuff work
-  programs.dconf.enable = true;
+  programs = {
+    # make HM-managed GTK stuff work
+    dconf.enable = true;
+  };
 
   services = {
-    # provide location
-    geoclue2 = {
-      enable = true;
-      appConfig.gammastep = {
-        isAllowed = true;
-        isSystem = false;
-      };
-    };
+    dbus.enable = true;
 
     pipewire = {
       enable = true;
       alsa.enable = true;
       jack.enable = true;
       pulse.enable = true;
+    };
+
+    xserver.layout = "gb";
+  };
+
+  systemd = {
+    user.services.polkit-gnome-authentication-agent-1 = {
+      unitConfig = {
+        Description = "polkit-gnome-authentication-agent-1";
+        Wants = ["graphical-session.target"];
+        WantedBy = ["graphical-session.target"];
+        After = ["graphical-session.target"];
+      };
+      serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
     };
   };
 
@@ -51,6 +75,8 @@
     pam.services.swaylock.text = "auth include login";
     # userland niceness
     rtkit.enable = true;
+    # polkit
+    polkit.enable = true;
   };
 
   xdg = {

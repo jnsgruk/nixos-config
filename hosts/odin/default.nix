@@ -4,7 +4,10 @@
     ./hardware.nix
     ../common/global
     ../common/users/jon
-    ./optional/desktop.nix
+    ../common/optional/desktop.nix
+    ../common/optional/greetd.nix
+    ../common/optional/thunar.nix
+    ../common/optional/yubikey.nix
   ];
 
   networking = {
@@ -12,6 +15,10 @@
     # head -c4 /dev/urandom | od -A none -t x4
     hostId = "17d07435";
     useDHCP = lib.mkDefault true;
+    firewall = {
+      allowedTCPPorts = [];
+      allowedUDPPorts = [];
+    };
   };
 
   # Power, throttling, etc.
@@ -19,9 +26,6 @@
   services.tlp.enable = true;
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
-
-  # TODO: Move this to hardware configuration?
-  services.fstrim.enable = lib.mkDefault true;
 
   virtualisation = {
     containerd.enable = true;

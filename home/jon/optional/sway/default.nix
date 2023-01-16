@@ -1,25 +1,73 @@
-{
-  pkgs,
-  config,
-  ...
-}: {
+{hostname, ...}: {
   imports = [
     ./mako.nix
-    ./swaybg.nix
+    ./packages.nix
     ./swaylock.nix
-    ./zathura.nix
     ./waybar.nix
   ];
 
-  home.packages = with pkgs; [
-    grim
-    playerctl
-    slurp
-    swaybg
-    wf-recorder
-    wl-clipboard
-    wofi
-  ];
+  wayland.windowManager.sway = let
+    modifier = "Mod4";
+    terminal = "alacritty";
+    menu = "ulauncher-toggle";
+  in {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    systemdIntegration = true;
+
+    config = {
+      menu = menu;
+      terminal = terminal;
+      modifier = modifier;
+      bars = [{command = "waybar";}];
+      gaps = {inner = 8;};
+
+      input = {
+        "*" = {xkb_layout = "gb";};
+        "type:touchpad" = {tap = "enabled";};
+      };
+
+      output."*".bg = "~/pictures/wallpaper.jpg fill";
+
+      fonts = {
+        names = ["Liga SFMono Nerd Font"];
+        size = 8.0;
+      };
+
+      window = {
+        border = 0;
+        hideEdgeBorders = "none";
+        titlebar = false;
+        commands = (import ./config/window-rules.nix {}).commands;
+      };
+
+      floating = {
+        border = 1;
+        titlebar = false;
+      };
+
+      focus = {
+        newWindow = "focus";
+        followMouse = "no";
+      };
+
+      startup = [
+        {command = "avizo-service";}
+        {command = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK";}
+        {command = "mako";}
+        {command = "ulauncher --hide-window --no-window-shadow";}
+        {command = "wl-paste -n -t text --watch clipman store --no-persist";}
+        {command = "wl-paste -p -n -t text --watch clipman store -P";}
+        {command = "wlsunset -l 51.51 -L -2.53";}
+        {command = "lockscreen";}
+      ];
+
+      keybindings = (import ./config/keybindings.nix {inherit terminal menu modifier;}).main;
+      modes.resize = (import ./config/keybindings.nix {inherit terminal menu modifier;}).resize;
+      workspaceOutputAssign = (import ./config/workspace-assignments.nix {}).${hostname};
+      assigns = (import ./config/window-rules.nix {}).assigns;
+    };
+  };
 
   home.sessionVariables = {
     _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -28,48 +76,6 @@
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
+    GDK_BACKEND = "wayland";
   };
-
-  wayland.windowManager.sway = {
-    enable = true;
-    # package = inputs.self.packages.${pkgs.system}.sway-hidpi;
-    config = {
-      menu = "wofi";
-      terminal = "alacritty";
-      modifier = "Mod4";
-      bars = [];
-
-      gaps = {
-        smartBorders = "on";
-        outer = 4;
-        inner = 4;
-      };
-
-      startup = [{command = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY";}];
-
-      input = {
-        "type:pointer" = {
-          accel_profile = "flat";
-          pointer_accel = "0";
-        };
-        "type:touchpad" = {
-          middle_emulation = "enabled";
-          natural_scroll = "enabled";
-          tap = "enabled";
-        };
-      };
-      output."*".bg = "~/.config/wallpaper.png fill";
-    };
-
-    wrapperFeatures.gtk = true;
-  };
-
-  # fake a tray to let apps start
-  # https://github.com/nix-community/home-manager/issues/2064
-  #   systemd.user.targets.tray = {
-  #     Unit = {
-  #       Description = "Home Manager System Tray";
-  #       Requires = ["graphical-session-pre.target"];
-  #     };
-  #   };
 }

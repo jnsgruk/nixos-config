@@ -54,10 +54,12 @@
       serviceConfig.type = "oneshot";
       wantedBy = ["swap-swapfile.swap"];
       script = ''
-        swapfile="/swap/swapfile"
+        swapdir="/swap"
+        swapfile="$swapdir/swapfile"
         if [[ -f "$swapfile" ]]; then
           echo "Swapfile $swapfile already exists"
         else
+          ${pkgs.coreutils}/bin/mkdir "$swapdir"
           ${pkgs.coreutils}/bin/truncate -s 0 "$swapfile"
           ${pkgs.e2fsprogs}/bin/chattr +C "$swapfile"
           ${pkgs.btrfs-progs}/bin/btrfs property set "$swapfile" compression none
@@ -66,10 +68,9 @@
     };
   };
 
+  # powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   services.fstrim.enable = lib.mkDefault true;
-
-  # TODO: Search for this; I don't know if this should be enabled or not.
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

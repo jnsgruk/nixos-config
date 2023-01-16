@@ -11,6 +11,10 @@
     # head -c4 /dev/urandom | od -A none -t x4
     hostId = "96f2b9b5";
     useDHCP = lib.mkDefault true;
+    firewall = {
+      allowedTCPPorts = [];
+      allowedUDPPorts = [];
+    };
   };
 
   virtualisation = {

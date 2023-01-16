@@ -1,5 +1,10 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  outputs,
+  ...
+}: {
   imports = [
+    ./gnupg.nix
     ./locale.nix
     ./tailscale.nix
     ./openssh.nix
@@ -8,13 +13,18 @@
 
   console = {
     earlySetup = true;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
-    packages = [pkgs.terminus_font];
+    font = "ter-powerline-v32n";
+    packages = [pkgs.terminus_font pkgs.powerline-fonts];
     keyMap = "uk";
   };
 
   networking = {
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi = {
+        backend = "iwd";
+      };
+    };
     firewall.enable = true;
   };
 
@@ -26,6 +36,7 @@
   ];
 
   nixpkgs = {
+    overlays = [outputs.overlays.modifications outputs.overlays.additions];
     config = {
       allowUnfree = true;
     };

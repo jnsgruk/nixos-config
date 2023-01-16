@@ -6,6 +6,7 @@
     exa
     git
     htop
+    killall
     tree
     unzip
     wget

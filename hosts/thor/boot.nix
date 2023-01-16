@@ -1,7 +1,6 @@
 {...}: {
   boot = {
     initrd = {
-      kernelModules = [];
       availableKernelModules = [
         "xhci_pci"
         "nvme"
@@ -10,6 +9,8 @@
         "sd_mod"
         "sdhci_pci"
       ];
+      kernelModules = [];
+      systemd.enable = true;
     };
 
     kernelModules = [

@@ -1,9 +1,19 @@
 {
-  # Adds my custom packages
+  # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
-  # Modifies existing packages
-  modifications = _final: prev: {
+  modifications = final: prev: {
+    # Get latest commit from swaylock-effects to fix Sway 1.8 issue
+    swaylock-effects = prev.swaylock-effects.overrideAttrs (old: {
+      version = "1.6.10+cd07dd10";
+      src = prev.fetchFromGitHub {
+        owner = "jirutka";
+        repo = "swaylock-effects";
+        rev = "cd07dd1082a2fc1093f1e6f2541811e446f4d114";
+        hash = "sha256-aK/PvFjZoF8R0llXO+P650vHYLSoGS6dYSk5Pw8DBNY=";
+      };
+    });
+
     # Augment the tmuxPlugins package with an additional 'catppuccin' theme plugin
     tmuxPlugins =
       prev.tmuxPlugins

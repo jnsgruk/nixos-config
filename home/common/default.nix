@@ -7,6 +7,9 @@
 
   nixpkgs = {
     overlays = builtins.attrValues outputs.overlays;
+    config = {
+      allowUnfreePredicate = _: true;
+    };
   };
 
   home = {

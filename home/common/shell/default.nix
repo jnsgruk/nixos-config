@@ -4,6 +4,7 @@
   ...
 }: {
   imports = [
+    ./htop.nix
     ./nix-tools.nix
     ./starship.nix
     ./tmux.nix
@@ -28,7 +29,6 @@
     exa.enable = true;
     git.enable = true;
     jq.enable = true;
-    ssh.enable = true;
   };
 
   home.packages = with pkgs; [

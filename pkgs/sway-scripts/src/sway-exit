@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+swaynag -t warning \
+    -m "Do you really want to exit sway? This will end your Wayland session." \
+    -b "Yes, exit sway" \
+    "swaymsg exit"

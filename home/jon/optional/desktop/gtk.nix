@@ -4,8 +4,8 @@
   ...
 }: {
   home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
+    package = pkgs.gnome.adwaita-icon-theme;
+    name = "Adwaita";
     size = 24;
     gtk.enable = true;
     x11.enable = true;
@@ -15,11 +15,26 @@
     enable = true;
 
     font = {
-      name = "Roboto";
-      package = pkgs.roboto;
+      name = "SF Pro, 11";
+      package = pkgs.sfpro-font;
     };
 
-    gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+    gtk2 = {
+      configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
+      extraConfig = ''
+        gtk-application-prefer-dark-theme=1
+      '';
+    };
+
+    gtk3.extraConfig = {
+      gtk-button-images = 1;
+      gtk-application-prefer-dark-theme = true;
+    };
+
+    gtk4.extraConfig = {
+      gtk-button-images = 1;
+      gtk-application-prefer-dark-theme = true;
+    };
 
     iconTheme = {
       name = "Papirus-Dark";
@@ -27,8 +42,9 @@
     };
 
     theme = {
-      name = "Catppuccin-Orange-Dark-Compact";
-      package = pkgs.catppuccin-gtk.override {size = "compact";};
+      name = "Catppuccin-Purple-Dark";
+      package = pkgs.catppuccin-gtk;
+      # package = pkgs.catppuccin-gtk.override {size = "compact";};
     };
   };
 }
