@@ -42,8 +42,8 @@
     };
 
     theme = {
-      name = "Catppuccin-Purple-Dark";
-      package = pkgs.catppuccin-gtk;
+      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+      package = pkgs.catppuccin-macchiato-gtk;
       # package = pkgs.catppuccin-gtk.override {size = "compact";};
     };
   };
