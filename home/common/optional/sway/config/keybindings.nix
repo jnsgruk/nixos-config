@@ -14,7 +14,7 @@
     # Lock the screen
     "${modifier}+l" = "exec swaylock -f";
     # Exit sway
-    "${modifier}+Shift+e" = "exec sway-exit";
+    "${modifier}+Shift+e" = "exec waybar-power-menu";
     # Kill application
     "Mod1+q" = "kill";
 
