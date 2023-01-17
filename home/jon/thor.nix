@@ -1,5 +1,5 @@
 {...}: {
   imports = [
-    ../common
+    ../common/global
   ];
 }

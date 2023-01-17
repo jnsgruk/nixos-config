@@ -1,7 +1,7 @@
 {...}: {
   imports = [
-    ../common
-    ./optional/desktop
-    ./optional/sway
+    ../common/global
+    ../common/optional/desktop
+    ../common/optional/sway
   ];
 }

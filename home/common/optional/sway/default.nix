@@ -2,6 +2,7 @@
   imports = [
     ./mako.nix
     ./packages.nix
+    ./swappy.nix
     ./swaylock.nix
     ./waybar.nix
   ];

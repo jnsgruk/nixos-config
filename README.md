@@ -33,19 +33,19 @@ The following is a list of the key elements of my setup, with links to their con
 |  WM   | [sway], [waybar], [swaylock], [mako], [greetd], [gtk] |
 | Apps  | [vscode], [zathura], [alacritty]                      |
 
-[alacritty]: ./home/jon/optional/desktop/alacritty.nix
-[greetd]: ./home/jon/optional/sway/greetd.nix
-[gtk]: ./home/jon/optional/desktop/gtk.nix
-[mako]: ./home/jon/optional/sway/mako.nix
-[neofetch]: ./home/jon/optional/desktop/neofetch/default.nix
+[alacritty]: ./home/common/optional/desktop/alacritty.nix
+[greetd]: ./home/common/optional/sway/greetd.nix
+[gtk]: ./home/common/optional/desktop/gtk.nix
+[mako]: ./home/common/optional/sway/mako.nix
+[neofetch]: ./home/common/optional/desktop/neofetch/default.nix
 [nvim]: ./home/common/vim/default.nix
 [starship]: ./home/common/shell/starship.nix
-[sway]: ./home/jon/optional/sway/default.nix
-[swaylock]: ./home/jon/optional/sway/swaylock.nix
+[sway]: ./home/common/optional/sway/default.nix
+[swaylock]: ./home/common/optional/sway/swaylock.nix
 [tmux]: ./home/common/shell/tmux.nix
-[vscode]: ./home/jon/optional/desktop/vscode.nix
-[zathura]: ./home/jon/optional/desktop/zathura.nix
-[waybar]: ./home/jon/optional/sway/waybar.nix
+[vscode]: ./home/common/optional/desktop/vscode.nix
+[zathura]: ./home/common/optional/desktop/zathura.nix
+[waybar]: ./home/common/optional/sway/waybar.nix
 [zsh]: ./home/common/shell/zsh.nix
 
 ## Screenshots
