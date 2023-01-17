@@ -29,6 +29,12 @@
     "${modifier}+Up" = "focus up";
     "${modifier}+Down" = "focus down";
 
+    # Move windows
+    "${modifier}+Shift+Left" = "move left";
+    "${modifier}+Shift+Down" = "move down";
+    "${modifier}+Shift+Up" = "move up";
+    "${modifier}+Shift+Right" = "move right";
+
     # Workspaces
     "${modifier}+1" = "workspace number 1";
     "${modifier}+2" = "workspace number 2";

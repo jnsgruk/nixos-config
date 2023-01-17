@@ -2,6 +2,7 @@
   imports = [
     ./alacritty.nix
     ./gtk.nix
+    ./neofetch
     ./vscode.nix
     ./xdg.nix
     ./zathura.nix
@@ -22,7 +23,6 @@
     google-chrome
     imlib2Full
     libnotify
-    neofetch
     obsidian
     rambox
     signal-desktop
