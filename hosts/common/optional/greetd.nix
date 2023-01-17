@@ -16,7 +16,7 @@
       systemd-cat \
       --identifier=sway \
       ${pkgs.sway}/bin/sway \
-      $@
+      $@; swaymsg -t exit
   '';
 in {
   services.greetd = {
@@ -24,7 +24,7 @@ in {
     restart = false;
     settings = {
       default_session = {
-        command = "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet --time --cmd ${swayRun}";
+        command = "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet -r --asterisks --time --cmd ${swayRun}";
       };
     };
   };

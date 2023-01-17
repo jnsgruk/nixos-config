@@ -40,7 +40,13 @@
   };
 
   services = {
-    dbus.enable = true;
+    dbus = {
+      enable = true;
+      # Make the gnome keyring work properly
+      packages = [pkgs.gnome3.gnome-keyring pkgs.gcr];
+    };
+
+    gnome.gnome-keyring.enable = true;
 
     pipewire = {
       enable = true;
@@ -71,12 +77,16 @@
   };
 
   security = {
-    # allow wayland lockers to unlock the screen
-    pam.services.swaylock.text = "auth include login";
-    # userland niceness
-    rtkit.enable = true;
-    # polkit
+    pam = {
+      services = {
+        # allow wayland lockers to unlock the screen
+        swaylock.text = "auth include login";
+        # unlock gnome keyring automatically with greetd
+        greetd.enableGnomeKeyring = true;
+      };
+    };
     polkit.enable = true;
+    rtkit.enable = true;
   };
 
   xdg = {

@@ -14,8 +14,6 @@
     feh.enable = true;
   };
 
-  services.gnome-keyring.enable = true;
-
   home.packages = with pkgs; [
     _1password-gui
     catppuccin-gtk
