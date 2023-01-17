@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./gnupg.nix
     ./locale.nix
     ./tailscale.nix
     ./openssh.nix

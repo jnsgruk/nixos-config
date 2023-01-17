@@ -2,9 +2,9 @@
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs {pkgs = final;};
 
-  modifications = final: prev: {
+  modifications = _final: prev: {
     # Get latest commit from swaylock-effects to fix Sway 1.8 issue
-    swaylock-effects = prev.swaylock-effects.overrideAttrs (old: {
+    swaylock-effects = prev.swaylock-effects.overrideAttrs (_old: {
       version = "1.6.10+cd07dd10";
       src = prev.fetchFromGitHub {
         owner = "jirutka";

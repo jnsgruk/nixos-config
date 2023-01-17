@@ -1,9 +1,4 @@
-{
-  pkgs,
-  hostname,
-  type,
-  ...
-}: let
+{type, ...}: let
   modules =
     # If this is a laptop, then include network/battery controls
     if type == "laptop"
@@ -32,15 +27,7 @@ in {
         position = "top";
         modules-left = ["sway/workspaces"];
         modules-center = ["clock" "idle_inhibitor"];
-        modules-right = [
-          "tray"
-          "custom/scratchpad-indicator"
-          "network"
-          "battery"
-          "pulseaudio"
-          "pulseaudio#source"
-          "custom/power"
-        ];
+        modules-right = modules;
 
         "sway/workspaces" = {
           format = "{icon}";
