@@ -1,0 +1,13 @@
+diff --git a/craft_providers/lxd/installer.py b/craft_providers/lxd/installer.py
+index 53750ae..a391741 100644
+--- a/craft_providers/lxd/installer.py
++++ b/craft_providers/lxd/installer.py
+@@ -101,7 +101,7 @@ def is_user_permitted() -> bool:
+ 
+     :returns: True if user has correct permissions.
+     """
+-    return os.access("/var/snap/lxd/common/lxd/unix.socket", os.O_RDWR)
++    return os.access("/var/lib/lxd/unix.socket", os.O_RDWR)
+ 
+ 
+ def ensure_lxd_is_ready(
