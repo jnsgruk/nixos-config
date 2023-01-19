@@ -37,6 +37,8 @@
 
         autoload -U promptinit
         promptinit
+
+        export EDITOR=vim
       '';
 
       shellAliases = {
