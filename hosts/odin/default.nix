@@ -16,6 +16,9 @@
     hostId = "17d07435";
     useDHCP = lib.mkDefault true;
     firewall = {
+      enable = true;
+      # Allow traffic from any embr managed interface
+      trustedInterfaces = ["embr+"];
       allowedTCPPorts = [];
       allowedUDPPorts = [];
     };

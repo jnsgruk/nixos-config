@@ -12,6 +12,7 @@
     hostId = "96f2b9b5";
     useDHCP = lib.mkDefault true;
     firewall = {
+      enable = true;
       allowedTCPPorts = [];
       allowedUDPPorts = [];
     };

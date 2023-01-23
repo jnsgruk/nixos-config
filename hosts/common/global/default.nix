@@ -24,7 +24,6 @@
         backend = "iwd";
       };
     };
-    firewall.enable = true;
   };
 
   # Workaround for https://github.com/NixOS/nixpkgs/issues/180175
