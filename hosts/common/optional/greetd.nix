@@ -16,7 +16,7 @@
       systemd-cat \
       --identifier=sway \
       ${pkgs.sway}/bin/sway \
-      $@; swaymsg -t exit
+      $@; swaymsg exit
   '';
 in {
   services.greetd = {

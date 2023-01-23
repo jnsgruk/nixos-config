@@ -11,7 +11,7 @@ in
 
     src = pkgs.fetchzip {
       url = "https://github.com/sahibjotsaggu/San-Francisco-Pro-Fonts/archive/${rev}.zip";
-      sha256 = "sha256-ZsDMSpMvl9m8dtUlQzDREe3IozC0j/iRLWoUWXfXfNo=";
+      sha256 = "sha256-YrAmsiC4/Ik1zIcY3F1yYTydspLli+Tms3I4IQhFLuM=";
       stripRoot = false;
     };
 
