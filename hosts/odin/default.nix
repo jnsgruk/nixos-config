@@ -8,6 +8,7 @@
     ../common/optional/greetd.nix
     ../common/optional/thunar.nix
     ../common/optional/yubikey.nix
+    ../common/optional/embr.nix
   ];
 
   networking = {
@@ -17,8 +18,6 @@
     useDHCP = lib.mkDefault true;
     firewall = {
       enable = true;
-      # Allow traffic from any embr managed interface
-      trustedInterfaces = ["embr+"];
       allowedTCPPorts = [];
       allowedUDPPorts = [];
     };

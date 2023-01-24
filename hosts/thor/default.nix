@@ -4,6 +4,7 @@
     ./hardware.nix
     ../common/global
     ../common/users/jon
+    ../common/optional/embr.nix
   ];
 
   networking = {

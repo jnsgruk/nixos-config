@@ -11,6 +11,11 @@
       url = "github:jnsgruk/crafts-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    embr = {
+      # url = "path:/home/jon/firecracker-ubuntu";
+      url = "github:jnsgruk/firecracker-ubuntu/flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
