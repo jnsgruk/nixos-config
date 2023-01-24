@@ -35,6 +35,7 @@
       enable = true;
       storageDriver = "btrfs";
     };
+    lxd.enable = true;
   };
 
   environment.systemPackages = [];
