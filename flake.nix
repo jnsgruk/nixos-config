@@ -13,7 +13,7 @@
     };
     embr = {
       # url = "path:/home/jon/firecracker-ubuntu";
-      url = "github:jnsgruk/firecracker-ubuntu/flake";
+      url = "github:jnsgruk/firecracker-ubuntu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
