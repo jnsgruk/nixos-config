@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     crafts = {
+      # url = "path:/home/jon/crafts-flake";
       url = "github:jnsgruk/crafts-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };

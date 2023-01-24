@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1674136134,
-        "narHash": "sha256-QacvMGxaIgSYfTmKSEJDRCjkpQ0zSoizLePw1tHRKOo=",
+        "lastModified": 1674594477,
+        "narHash": "sha256-YbqhHG1wiCHLTwAQDiFq65cMfUoeXopbhscYh8uDUV0=",
         "owner": "jnsgruk",
         "repo": "crafts-flake",
-        "rev": "3ebe445ad03ec217f763c10d8d23c3158adf4880",
+        "rev": "f31e301b456e7d9053706400eacc04808b336182",
         "type": "github"
       },
       "original": {
