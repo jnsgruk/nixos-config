@@ -8,11 +8,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1674594477,
-        "narHash": "sha256-YbqhHG1wiCHLTwAQDiFq65cMfUoeXopbhscYh8uDUV0=",
+        "lastModified": 1674651214,
+        "narHash": "sha256-CF7k7823OjpA3diUzp9cYk61aoEJ/D5nvk3rgi9D8BY=",
         "owner": "jnsgruk",
         "repo": "crafts-flake",
-        "rev": "f31e301b456e7d9053706400eacc04808b336182",
+        "rev": "f658d022779bd4f43b8bf5d49e45498fd8a7d2e0",
         "type": "github"
       },
       "original": {
@@ -95,11 +95,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1674457414,
-        "narHash": "sha256-HGoDKtOXIKvU72/4gL3VUYla/YExhS0oPoiIuDjlTrg=",
+        "lastModified": 1674487464,
+        "narHash": "sha256-Jgq50e4S4JVCYpWLqrabBzDp/1mfaxHCh8/OOorHTy0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f32319e7ba8f03ea2f1c66a5ffe43b4e771108f5",
+        "rev": "3954218cf613eba8e0dcefa9abe337d26bc48fd0",
         "type": "github"
       },
       "original": {
