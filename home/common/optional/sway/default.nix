@@ -1,5 +1,6 @@
 {hostname, ...}: {
   imports = [
+    ./kanshi.nix
     ./mako.nix
     ./packages.nix
     ./swappy.nix
@@ -65,7 +66,7 @@
 
       keybindings = (import ./config/keybindings.nix {inherit terminal menu modifier;}).main;
       modes.resize = (import ./config/keybindings.nix {inherit terminal menu modifier;}).resize;
-      workspaceOutputAssign = (import ./config/workspace-assignments.nix {}).${hostname};
+      workspaceOutputAssign = (import ./config/displays.nix {}).${hostname}.workspace-assignments;
       assigns = (import ./config/window-rules.nix {}).assigns;
     };
   };
