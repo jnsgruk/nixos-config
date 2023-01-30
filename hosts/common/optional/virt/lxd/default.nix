@@ -37,7 +37,7 @@
         if ! ${pkgs.lxd}/bin/lxc profile show dev; then
           ${pkgs.lxd}/bin/lxc profile create dev
         fi
-        cat ${./lxc-profiles/dev.yaml} | ${pkgs.lxd}/bin/lxc profile edit dev
+        cat ${./profile-dev.yaml} | ${pkgs.lxd}/bin/lxc profile edit dev
       '';
     };
   };
