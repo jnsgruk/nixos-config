@@ -3,6 +3,7 @@
     ./kanshi.nix
     ./mako.nix
     ./packages.nix
+    ./rofi
     ./swappy.nix
     ./swaylock.nix
     ./waybar.nix
@@ -11,7 +12,7 @@
   wayland.windowManager.sway = let
     modifier = "Mod4";
     terminal = "alacritty";
-    menu = "ulauncher-toggle";
+    menu = "rofi -show drun";
   in {
     enable = true;
     wrapperFeatures.gtk = true;
@@ -57,7 +58,6 @@
         {command = "avizo-service";}
         {command = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK";}
         {command = "mako";}
-        {command = "ulauncher --hide-window --no-window-shadow";}
         {command = "wl-paste -n -t text --watch clipman store --no-persist";}
         {command = "wl-paste -p -n -t text --watch clipman store -P";}
         {command = "wlsunset -l 51.51 -L -2.53";}

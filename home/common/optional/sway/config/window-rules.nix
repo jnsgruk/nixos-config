@@ -36,7 +36,7 @@
     {
       command = "floating enable";
       criteria = {
-        app_id = "ulauncher|nm-connection-editor|guvcview|pavucontrol|psensor|pcmanfm|pinentry-qt|^code$";
+        app_id = "nm-connection-editor|guvcview|pavucontrol|psensor|pcmanfm|pinentry-qt|^code$";
       };
     }
     {
@@ -68,11 +68,6 @@
     {
       command = "sticky enable";
       criteria = {class = "info|Mate-color-select|gcolor2|timesup|QtPass|GtkFileChooserDialog";};
-    }
-    # Ulauncher move window
-    {
-      command = "border none, move up 300px";
-      criteria = {title = "Ulauncher";};
     }
     # Inhibit idle when there is a fullscreen app
     {

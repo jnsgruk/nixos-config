@@ -13,7 +13,6 @@
     swaylock-effects
     pamixer
     pavucontrol
-    ulauncher
     wf-recorder
     wl-clipboard
     wlsunset
