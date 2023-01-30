@@ -25,7 +25,10 @@
       enable = true;
       storageDriver = "btrfs";
     };
-    lxd.enable = true;
+    lxd = {
+      enable = true;
+      zfsSupport = true;
+    };
   };
 
   environment.systemPackages = [];
