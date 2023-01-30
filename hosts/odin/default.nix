@@ -1,14 +1,21 @@
-{lib, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./boot.nix
     ./hardware.nix
+
     ../common/global
     ../common/users/jon
+
+    ../common/optional/virt
+
     ../common/optional/desktop.nix
     ../common/optional/greetd.nix
     ../common/optional/thunar.nix
     ../common/optional/yubikey.nix
-    ../common/optional/embr.nix
   ];
 
   networking = {
@@ -28,18 +35,6 @@
   services.tlp.enable = true;
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
-
-  virtualisation = {
-    containerd.enable = true;
-    docker = {
-      enable = true;
-      storageDriver = "btrfs";
-    };
-    lxd = {
-      enable = true;
-      zfsSupport = true;
-    };
-  };
 
   environment.systemPackages = [];
 

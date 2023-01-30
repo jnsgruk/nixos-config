@@ -2,9 +2,11 @@
   imports = [
     ./boot.nix
     ./hardware.nix
+
     ../common/global
     ../common/users/jon
-    ../common/optional/embr.nix
+
+    ../common/optional/virt
   ];
 
   networking = {
@@ -16,18 +18,6 @@
       enable = true;
       allowedTCPPorts = [];
       allowedUDPPorts = [];
-    };
-  };
-
-  virtualisation = {
-    containerd.enable = true;
-    docker = {
-      enable = true;
-      storageDriver = "btrfs";
-    };
-    lxd = {
-      enable = true;
-      zfsSupport = true;
     };
   };
 

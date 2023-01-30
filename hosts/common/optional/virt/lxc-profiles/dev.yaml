@@ -1,0 +1,97 @@
+config:
+  boot.autostart: "true"
+  linux.kernel_modules: ip_vs,ip_vs_rr,ip_vs_wrr,ip_vs_sh,ip_tables,ip6_tables,netlink_diag,nf_nat,overlay,br_netfilter
+  raw.lxc: |
+    lxc.apparmor.profile=unconfined
+    lxc.mount.auto=proc:rw sys:rw cgroup:rw
+    lxc.cgroup.devices.allow=a
+    lxc.cap.drop=
+  security.nesting: "true"
+  security.privileged: "true"
+  cloud-init.user-data: |
+    #cloud-config
+    users:
+      - name: jon
+        shell: /bin/bash
+        groups:
+          - lxd
+        sudo: ALL=(ALL) NOPASSWD:ALL
+        ssh_import_id:
+          - gh:jnsgruk
+    
+    apt:
+      sources:
+        tailscale:
+          source: "deb [trusted=yes] https://pkgs.tailscale.com/stable/ubuntu jammy main"
+    
+    snap:
+      commands:
+        - ["install", "jq"]
+        - ["install", "yq"]
+
+        - ["install", "kubectl", "--classic"]
+        - ["install", "terraform", "--classic"]
+        - ["install", "juju", "--channel", "3.1/candidate"]
+        
+        - ["install", "lxd", "--channel", "latest/stable"]
+        - ["install", "microk8s", "--channel", "1.26-strict/stable"]
+        
+        - ["install", "charmcraft", "--classic", "--channel", "latest/candidate"]
+        - ["install", "rockcraft", "--classic", "--channel", "latest/edge"]
+        - ["install", "snapcraft", "--classic", "--channel", "latest/candidate"]
+
+    packages:
+      - python3-pip
+      - tailscale
+
+    runcmd:
+      # Make sure that tox is installed from PyPi
+      - su jon -c "pip install tox"
+      
+      # Setup microk8s to be able to run a juju controller
+      - microk8s enable hostpath-storage dns
+      - usermod -aG snap_microk8s jon
+      
+      # Export a kubeconfig from MicroK8s for other tools
+      - su jon -c "mkdir -p /home/jon/.kube"
+      - su jon -c "microk8s config > /home/jon/.kube/config"
+      
+      # Setup LXD
+      - lxd init --auto
+      
+      # Pre-populate juju directory
+      - su jon -c "mkdir -p /home/jon/.local/share/juju"
+      - su jon -c "mkdir -p /home/jon/.ssh"
+      
+      # Setup shell configs etc.
+      - su jon -c "wget https://jnsgr.uk/provision -O /tmp/provision"
+      - su jon -c "bash /tmp/provision"
+description: "Charm development container profile"
+devices:
+  eth0:
+    name: eth0
+    network: lxdbr0
+    type: nic
+  root:
+    path: /
+    pool: default
+    type: disk
+devices:
+  aadisable:
+    path: /sys/module/nf_conntrack/parameters/hashsize
+    source: /sys/module/nf_conntrack/parameters/hashsize
+    type: disk
+  aadisable2:
+    path: /dev/kmsg
+    source: /dev/kmsg
+    type: unix-char
+  aadisable3:
+    path: /sys/fs/bpf
+    source: /sys/fs/bpf
+    type: disk
+  aadisable4:
+    path: /proc/sys/net/netfilter/nf_conntrack_max
+    source: /proc/sys/net/netfilter/nf_conntrack_max
+    type: disk
+name: dev
+used_by: []
