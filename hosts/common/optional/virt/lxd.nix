@@ -27,4 +27,18 @@
   environment.systemPackages = with pkgs; [
     apparmor-kernel-patches
   ];
+
+  systemd.services = {
+    populate-lxd-profiles = {
+      serviceConfig.type = "oneshot";
+      after = ["lxd.service"];
+      reloadTriggers = [./lxc-profiles/dev.yaml];
+      script = ''
+        if ! ${pkgs.lxd}/bin/lxc profile show dev; then
+          ${pkgs.lxd}/bin/lxc profile create dev
+        fi
+        cat ${./lxc-profiles/dev.yaml} | ${pkgs.lxd}/bin/lxc profile edit dev
+      '';
+    };
+  };
 }
