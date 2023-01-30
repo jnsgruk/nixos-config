@@ -30,7 +30,7 @@
         "type:touchpad" = {tap = "enabled";};
       };
 
-      output."*".bg = "~/pictures/wallpaper.jpg fill";
+      output."*".bg = "${../desktop/wallpapers/elk-colors.jpg} fill";
 
       fonts = {
         names = ["Liga SFMono Nerd Font"];
