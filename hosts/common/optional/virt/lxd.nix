@@ -6,8 +6,7 @@
     };
   };
 
-  security.apparmor.enable = true;
-
+  # These kernel modules are referenced as part of the profile used to run MicroK8s on LXD
   boot.kernelModules = [
     "ip_vs"
     "ip_vs_rr"
@@ -21,5 +20,11 @@
     "br_netfilter"
   ];
 
-  environment.systemPackages = with pkgs; [apparmor-kernel-patches];
+  # Enable AppArmor, as part of enabling MicroK8s on LXD
+  security.apparmor.enable = true;
+
+  # Install the AppArmor kernel patches
+  environment.systemPackages = with pkgs; [
+    apparmor-kernel-patches
+  ];
 }
