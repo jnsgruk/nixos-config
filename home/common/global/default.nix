@@ -9,6 +9,9 @@
     overlays = builtins.attrValues outputs.overlays;
     config = {
       allowUnfreePredicate = _: true;
+      permittedInsecurePackages = [
+        "electron-18.1.0"
+      ];
     };
   };
 
