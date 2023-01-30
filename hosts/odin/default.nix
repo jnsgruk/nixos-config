@@ -6,13 +6,16 @@
   imports = [
     ./boot.nix
     ./hardware.nix
+
     ../common/global
     ../common/users/jon
+
+    ../common/optional/virt
+
     ../common/optional/desktop.nix
     ../common/optional/greetd.nix
     ../common/optional/thunar.nix
     ../common/optional/yubikey.nix
-    ../common/optional/embr.nix
   ];
 
   networking = {
@@ -33,38 +36,7 @@
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
 
-  virtualisation = {
-    containerd.enable = true;
-    docker = {
-      enable = true;
-      storageDriver = "btrfs";
-    };
-    lxd = {
-      enable = true;
-      zfsSupport = true;
-    };
-  };
-
-  security = {
-    apparmor.enable = true;
-  };
-
-  boot.kernelModules = [
-    "ip_vs"
-    "ip_vs_rr"
-    "ip_vs_wrr"
-    "ip_vs_sh"
-    "ip_tables"
-    "ip6_tables"
-    "netlink_diag"
-    "nf_nat"
-    "overlay"
-    "br_netfilter"
-  ];
-
-  environment.systemPackages = with pkgs; [apparmor-kernel-patches];
-
-  # environment.systemPackages = [];
+  environment.systemPackages = [];
 
   system.stateVersion = "22.11";
 }
