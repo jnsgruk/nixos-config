@@ -4,11 +4,11 @@
   appimageTools,
 }: let
   pname = "rambox";
-  version = "2.0.9";
+  version = "2.0.10";
   name = "${pname}-${version}";
   src = fetchurl {
     url = "https://rambox.app/api/download?os=linux&package=AppImage";
-    hash = "sha256-o2ydZodmMAYeU0IiczKNlzY2hgTJbzyJWO/cZSTfAuM=";
+    hash = "sha256-NvsrWkdINrQV7V9SLfjtlN+obgQb0u8d/QgjGpZ+fpc=";
   };
   appImageContents = appimageTools.extractType2 {
     inherit name src;
