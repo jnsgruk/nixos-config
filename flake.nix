@@ -17,12 +17,18 @@
       url = "github:jnsgruk/firecracker-ubuntu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    multipass = {
+      # url = "path:/home/jon/multipass-flake";
+      url = "github:jnsgruk/multipass-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    multipass,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -34,7 +40,7 @@
 
     homeConfigurations = {
       "jon@thor" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {
           inherit inputs outputs;
           hostname = "thor";
@@ -43,7 +49,7 @@
         modules = [./home/jon/thor.nix];
       };
       "jon@odin" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        pkgs = nixpkgs.legacyPackages.${system};
         extraSpecialArgs = {
           inherit inputs outputs;
           hostname = "odin";
@@ -57,12 +63,18 @@
       thor = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/thor];
+        modules = [
+          multipass.nixosModule.${system}
+          ./hosts/thor
+        ];
       };
       odin = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {inherit inputs outputs;};
-        modules = [./hosts/odin];
+        modules = [
+          multipass.nixosModule.${system}
+          ./hosts/odin
+        ];
       };
     };
   };

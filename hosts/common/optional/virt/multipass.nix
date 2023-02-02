@@ -1,0 +1,3 @@
+{...}: {
+  virtualisation.multipass.enable = true;
+}
