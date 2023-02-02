@@ -116,11 +116,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1675342273,
-        "narHash": "sha256-WjwmreULlTmnD8h4wzheWiD61JI/u3fyFsFMtYPcj8s=",
+        "lastModified": 1675344329,
+        "narHash": "sha256-y56FepC0M4YZs8Qj6rftaSd/rAXXs0X/fexIOLFYuZ4=",
         "owner": "jnsgruk",
         "repo": "multipass-flake",
-        "rev": "b2b895dd3e85feff02fa179541acb635cd30a1a7",
+        "rev": "678d6610d0c5809cc9556588397f9cd736345df3",
         "type": "github"
       },
       "original": {
