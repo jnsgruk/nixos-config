@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   services.openssh = {
     enable = true;
     settings = {
@@ -9,5 +9,5 @@
 
   programs.ssh.startAgent = true;
 
-  networking.firewall.allowedTCPPorts = [22];
+  networking.firewall.allowedTCPPorts = [ 22 ];
 }

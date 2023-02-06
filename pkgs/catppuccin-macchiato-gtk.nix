@@ -1,9 +1,8 @@
-{
-  lib,
-  stdenv,
-  fetchzip,
-  pkgs,
-  ...
+{ lib
+, stdenv
+, fetchzip
+, pkgs
+, ...
 }:
 stdenv.mkDerivation {
   pname = "cattpuccin-macchiato-gtk";
@@ -32,6 +31,6 @@ stdenv.mkDerivation {
     homepage = "https://github.com/catppuccin/gtk";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.unix;
-    maintainers = [lib.maintainers.jnsgruk];
+    maintainers = [ lib.maintainers.jnsgruk ];
   };
 }

@@ -1,7 +1,6 @@
-{
-  pkgs,
-  outputs,
-  ...
+{ pkgs
+, outputs
+, ...
 }: {
   imports = [
     ./locale.nix
@@ -13,7 +12,7 @@
   console = {
     earlySetup = true;
     font = "ter-powerline-v32n";
-    packages = [pkgs.terminus_font pkgs.powerline-fonts];
+    packages = [ pkgs.terminus_font pkgs.powerline-fonts ];
     keyMap = "uk";
   };
 
@@ -46,7 +45,7 @@
   };
 
   nixpkgs = {
-    overlays = [outputs.overlays.modifications outputs.overlays.additions];
+    overlays = [ outputs.overlays.modifications outputs.overlays.additions ];
     config = {
       allowUnfree = true;
     };

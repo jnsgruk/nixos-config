@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -9,7 +9,7 @@
         "sd_mod"
         "sdhci_pci"
       ];
-      kernelModules = [];
+      kernelModules = [ ];
       systemd.enable = true;
     };
 
@@ -28,6 +28,6 @@
       efi.canTouchEfiVariables = true;
     };
 
-    extraModulePackages = [];
+    extraModulePackages = [ ];
   };
 }

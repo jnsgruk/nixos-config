@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ../common/global
     ../common/optional/desktop

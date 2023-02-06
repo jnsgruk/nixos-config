@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override {fonts = ["FiraCode" "Meslo"];})
+      (nerdfonts.override { fonts = [ "FiraCode" "Meslo" ]; })
       joypixels
       liberation_ttf
       sf-mono-liga-font
@@ -13,10 +13,10 @@
     enableDefaultFonts = false;
 
     fontconfig.defaultFonts = {
-      serif = ["SF Pro Display" "Joypixels"];
-      sansSerif = ["SF Pro Display" "Joypixels"];
-      monospace = ["MesloLGSDZ Nerd Font Mono" "FiraCode Nerd Font Mono"];
-      emoji = ["Joypixels"];
+      serif = [ "SF Pro Display" "Joypixels" ];
+      sansSerif = [ "SF Pro Display" "Joypixels" ];
+      monospace = [ "MesloLGSDZ Nerd Font Mono" "FiraCode Nerd Font Mono" ];
+      emoji = [ "Joypixels" ];
     };
   };
 
@@ -43,7 +43,7 @@
     dbus = {
       enable = true;
       # Make the gnome keyring work properly
-      packages = [pkgs.gnome3.gnome-keyring pkgs.gcr];
+      packages = [ pkgs.gnome3.gnome-keyring pkgs.gcr ];
     };
 
     gnome.gnome-keyring.enable = true;
@@ -62,9 +62,9 @@
     user.services.polkit-gnome-authentication-agent-1 = {
       unitConfig = {
         Description = "polkit-gnome-authentication-agent-1";
-        Wants = ["graphical-session.target"];
-        WantedBy = ["graphical-session.target"];
-        After = ["graphical-session.target"];
+        Wants = [ "graphical-session.target" ];
+        WantedBy = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
       };
       serviceConfig = {
         Type = "simple";

@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   boot = {
     initrd = {
       availableKernelModules = [
@@ -9,7 +9,7 @@
         "rtsx_pci_sdmmc"
       ];
 
-      kernelModules = ["dm-snapshot"];
+      kernelModules = [ "dm-snapshot" ];
 
       luks.devices.crypt = {
         device = "/dev/nvme0n1p2";

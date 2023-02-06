@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   loki = {
     workspace-assignments = [
       {
@@ -48,7 +48,7 @@
   };
 
   odin = {
-    workspace-assignments = [];
+    workspace-assignments = [ ];
     kanshi-profiles = rec {
       default = {
         outputs = [

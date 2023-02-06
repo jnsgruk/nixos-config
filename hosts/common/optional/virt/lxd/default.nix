@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   virtualisation = {
     lxd = {
       enable = true;
@@ -31,8 +31,8 @@
   systemd.services = {
     populate-lxd-profiles = {
       serviceConfig.type = "oneshot";
-      after = ["lxd.service"];
-      reloadTriggers = [./lxc-profiles/dev.yaml];
+      after = [ "lxd.service" ];
+      reloadTriggers = [ ./lxc-profiles/dev.yaml ];
       script = ''
         if ! ${pkgs.lxd}/bin/lxc profile show dev; then
           ${pkgs.lxd}/bin/lxc profile create dev

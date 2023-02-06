@@ -1,7 +1,6 @@
-{
-  lib,
-  pkgs,
-  ...
+{ lib
+, pkgs
+, ...
 }:
 pkgs.stdenvNoCC.mkDerivation {
   name = "sway-scripts";
@@ -20,6 +19,6 @@ pkgs.stdenvNoCC.mkDerivation {
 
   meta = with lib; {
     description = "A collection of scripts for use with my sway setup";
-    maintainers = [jnsgruk];
+    maintainers = [ jnsgruk ];
   };
 }

@@ -1,4 +1,4 @@
-{lib, ...}: {
+{ lib, ... }: {
   imports = [
     ./boot.nix
     ./hardware.nix
@@ -16,12 +16,12 @@
     useDHCP = lib.mkDefault true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [];
-      allowedUDPPorts = [];
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [ ];
     };
   };
 
-  environment.systemPackages = [];
+  environment.systemPackages = [ ];
 
   system.stateVersion = "22.11";
 }

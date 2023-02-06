@@ -1,40 +1,39 @@
-{
-  config,
-  lib,
-  pkgs,
-  modulesPath,
-  ...
+{ config
+, lib
+, pkgs
+, modulesPath
+, ...
 }: {
-  imports = [(modulesPath + "/installer/scan/not-detected.nix")];
+  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
     fsType = "btrfs";
-    options = ["subvol=@" "compress=lzo" "noatime" "nodiratime" "ssd"];
+    options = [ "subvol=@" "compress=lzo" "noatime" "nodiratime" "ssd" ];
   };
 
   fileSystems."/home" = {
     device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
     fsType = "btrfs";
-    options = ["subvol=@home" "compress=lzo" "noatime" "nodiratime" "ssd"];
+    options = [ "subvol=@home" "compress=lzo" "noatime" "nodiratime" "ssd" ];
   };
 
   fileSystems."/var" = {
     device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
     fsType = "btrfs";
-    options = ["subvol=@var" "compress=lzo" "noatime" "nodiratime" "ssd"];
+    options = [ "subvol=@var" "compress=lzo" "noatime" "nodiratime" "ssd" ];
   };
 
   fileSystems."/.snapshots" = {
     device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
     fsType = "btrfs";
-    options = ["subvol=@snapshots" "compress=lzo" "noatime" "nodiratime" "ssd"];
+    options = [ "subvol=@snapshots" "compress=lzo" "noatime" "nodiratime" "ssd" ];
   };
 
   fileSystems."/swap" = {
     device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
     fsType = "btrfs";
-    options = ["subvol=@swap"];
+    options = [ "subvol=@swap" ];
   };
 
   fileSystems."/boot" = {
@@ -52,7 +51,7 @@
   systemd.services = {
     create-swapfile = {
       serviceConfig.type = "oneshot";
-      wantedBy = ["swap-swapfile.swap"];
+      wantedBy = [ "swap-swapfile.swap" ];
       script = ''
         swapdir="/swap"
         swapfile="$swapdir/swapfile"

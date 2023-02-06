@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   virtualisation = {
     containerd.enable = true;
     docker = {

@@ -1,8 +1,8 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
+{ pkgs
+, lib
+, ...
+}:
+let
   swayRun = pkgs.writeShellScript "sway-run" ''
     export XDG_SESSION_TYPE=wayland
     export XDG_SESSION_DESKTOP=sway
@@ -18,7 +18,8 @@
       ${pkgs.sway}/bin/sway \
       $@; swaymsg exit
   '';
-in {
+in
+{
   services.greetd = {
     enable = true;
     restart = false;

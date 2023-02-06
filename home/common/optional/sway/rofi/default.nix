@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   nixpkgs.overlays = [
-    (_self: _super: {rofi = pkgs.rofi-wayland;})
+    (_self: _super: { rofi = pkgs.rofi-wayland; })
   ];
 
   programs.rofi = {

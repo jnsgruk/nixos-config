@@ -1,5 +1,6 @@
-{config, ...}: let
-  browser = ["google-chrome.desktop"];
+{ config, ... }:
+let
+  browser = [ "google-chrome.desktop" ];
 
   # XDG MIME types
   associations = {
@@ -17,13 +18,14 @@
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
 
-    "audio/*" = ["mpv.desktop"];
-    "video/*" = ["mpv.dekstop"];
-    "image/*" = ["feh.desktop"];
+    "audio/*" = [ "mpv.desktop" ];
+    "video/*" = [ "mpv.dekstop" ];
+    "image/*" = [ "feh.desktop" ];
     "application/json" = browser;
-    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
+    "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
   };
-in {
+in
+{
   xdg = {
     enable = true;
     cacheHome = config.home.homeDirectory + "/.local/cache";

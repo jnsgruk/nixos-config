@@ -1,10 +1,11 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{ pkgs
+, inputs
+, ...
+}:
+let
   crafts = inputs.crafts.packages."${pkgs.system}";
-in {
+in
+{
   home.packages = with crafts; [
     charmcraft
   ];

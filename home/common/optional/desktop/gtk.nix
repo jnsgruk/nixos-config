@@ -1,7 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
+{ pkgs
+, config
+, ...
 }: {
   home.pointerCursor = {
     package = pkgs.gnome.adwaita-icon-theme;

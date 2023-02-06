@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   imports = [
     ./boot.nix
@@ -25,8 +24,8 @@
     useDHCP = lib.mkDefault true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [];
-      allowedUDPPorts = [];
+      allowedTCPPorts = [ ];
+      allowedUDPPorts = [ ];
     };
   };
 
@@ -36,7 +35,7 @@
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
 
-  environment.systemPackages = [];
+  environment.systemPackages = [ ];
 
   system.stateVersion = "22.11";
 }

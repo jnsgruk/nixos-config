@@ -19,55 +19,57 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
-    inherit (self) outputs;
-    system = "x86_64-linux";
-  in {
-    defaultPackage.x86_64-linux = home-manager.defaultPackage."x86_64-linux";
+  outputs =
+    { self
+    , nixpkgs
+    , home-manager
+    , ...
+    } @ inputs:
+    let
+      inherit (self) outputs;
+      system = "x86_64-linux";
+    in
+    {
+      defaultPackage.x86_64-linux = home-manager.defaultPackage."x86_64-linux";
 
-    overlays = import ./overlays;
+      overlays = import ./overlays;
 
-    homeConfigurations = {
-      "jon@thor" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit inputs outputs;
-          hostname = "thor";
-          type = "headless";
+      homeConfigurations = {
+        "jon@thor" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            hostname = "thor";
+            type = "headless";
+          };
+          modules = [ ./home/jon/thor.nix ];
         };
-        modules = [./home/jon/thor.nix];
+        "jon@odin" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            hostname = "odin";
+            type = "laptop";
+          };
+          modules = [ ./home/jon/odin.nix ];
+        };
       };
-      "jon@odin" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit inputs outputs;
-          hostname = "odin";
-          type = "laptop";
+
+      nixosConfigurations = {
+        thor = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/thor
+          ];
         };
-        modules = [./home/jon/odin.nix];
+        odin = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/odin
+          ];
+        };
       };
     };
-
-    nixosConfigurations = {
-      thor = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/thor
-        ];
-      };
-      odin = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {inherit inputs outputs;};
-        modules = [
-          ./hosts/odin
-        ];
-      };
-    };
-  };
 }

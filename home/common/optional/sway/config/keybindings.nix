@@ -1,8 +1,7 @@
-{
-  modifier,
-  terminal,
-  menu,
-  ...
+{ modifier
+, terminal
+, menu
+, ...
 }: {
   main = {
     # Open a terminal

@@ -1,4 +1,5 @@
-{type, ...}: let
+{ type, ... }:
+let
   modules =
     # If this is a laptop, then include network/battery controls
     if type == "laptop"
@@ -18,15 +19,16 @@
       "pulseaudio#source"
       "custom/power"
     ];
-in {
+in
+{
   programs.waybar = {
     enable = true;
     settings = [
       {
         exclusive = true;
         position = "top";
-        modules-left = ["sway/workspaces"];
-        modules-center = ["clock" "idle_inhibitor"];
+        modules-left = [ "sway/workspaces" ];
+        modules-center = [ "clock" "idle_inhibitor" ];
         modules-right = modules;
 
         "sway/workspaces" = {
@@ -70,7 +72,7 @@ in {
           tooltip-format = "{time} ({capacity}%)";
           format-alt = "{time} {icon}";
           format-full = "";
-          format-icons = ["" "" "" "" ""];
+          format-icons = [ "" "" "" "" "" ];
         };
 
         "tray" = {
@@ -78,7 +80,7 @@ in {
           spacing = 10;
         };
 
-        "clock" = {format = "{:%d %b %H:%M}";};
+        "clock" = { format = "{:%d %b %H:%M}"; };
 
         "pulseaudio" = {
           format = "{volume}% {icon}";
@@ -92,7 +94,7 @@ in {
             phone = "";
             portable = "";
             car = "";
-            default = ["" "" ""];
+            default = [ "" "" "" ];
           };
           on-click = "volumectl toggle-mute";
           on-click-right = "pavucontrol";
