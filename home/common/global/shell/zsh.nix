@@ -43,7 +43,7 @@
 
       shellAliases = {
         ls = "exa -gl --git --color=automatic";
-        cat = "bat --theme='Catppuccin-macchiato'";
+        cat = "bat'";
 
         ip = "ip --color";
         ipb = "ip --color --brief";
