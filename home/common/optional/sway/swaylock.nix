@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   programs.swaylock.settings = {
     font = "SF Pro";
     clock = true;
@@ -42,5 +42,21 @@
     caps-lock-key-hl-color = "ffd204FF";
     caps-lock-bs-hl-color = "ee2e24FF";
     text-caps-lock-color = "009ddc";
+  };
+
+  services.swayidle = {
+    enable = true;
+    events = [
+      { event = "before-sleep"; command = "${lib.getExe pkgs.swaylock} -f"; }
+      { event = "lock"; command = "${lib.getExe pkgs.swaylock} -f"; }
+    ];
+    timeouts = [
+      { timeout = 300; command = "${lib.getExe pkgs.swaylock} -f"; }
+      {
+        timeout = 305;
+        command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"'';
+        resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
+      }
+    ];
   };
 }

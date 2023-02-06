@@ -61,7 +61,6 @@
         {command = "wl-paste -n -t text --watch clipman store --no-persist";}
         {command = "wl-paste -p -n -t text --watch clipman store -P";}
         {command = "wlsunset -l 51.51 -L -2.53";}
-        {command = "lockscreen";}
       ];
 
       keybindings = (import ./config/keybindings.nix {inherit terminal menu modifier;}).main;

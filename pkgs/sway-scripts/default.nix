@@ -13,7 +13,6 @@ pkgs.stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    install -Dm 744 ${./src/lockscreen} $out/bin/lockscreen
     install -Dm 744 ${./src/sharescreen} $out/bin/sharescreen
     install -Dm 744 ${./src/sway-screenshot} $out/bin/sway-screenshot
     install -Dm 744 ${./src/waybar-power-menu} $out/bin/waybar-power-menu
