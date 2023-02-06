@@ -17,18 +17,12 @@
       url = "github:jnsgruk/firecracker-ubuntu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    multipass = {
-      # url = "path:/home/jon/multipass-flake";
-      url = "github:jnsgruk/multipass-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
-    multipass,
     ...
   } @ inputs: let
     inherit (self) outputs;
@@ -64,7 +58,6 @@
         inherit system;
         specialArgs = {inherit inputs outputs;};
         modules = [
-          multipass.nixosModule.${system}
           ./hosts/thor
         ];
       };
@@ -72,7 +65,6 @@
         inherit system;
         specialArgs = {inherit inputs outputs;};
         modules = [
-          multipass.nixosModule.${system}
           ./hosts/odin
         ];
       };

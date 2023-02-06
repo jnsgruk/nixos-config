@@ -72,21 +72,6 @@
         "type": "github"
       }
     },
-    "flake-utils_3": {
-      "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -95,47 +80,26 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1675371293,
-        "narHash": "sha256-LrCjtrAXj/WJphhGEMnHgZs7oTsfOlvPfOjFTIvg39k=",
+        "lastModified": 1675637696,
+        "narHash": "sha256-tilJS8zCS3PaDfVOfsBZ4zspuam8tc7IMZxtGa/K/uo=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d1c7730bb707bf8124d997952f7babd2a281ae68",
+        "rev": "c43d4a3d6d9ef8ddbe2438362f5c775b4186000b",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
         "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "multipass": {
-      "inputs": {
-        "flake-utils": "flake-utils_3",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1675352700,
-        "narHash": "sha256-FvM62wFGb81giYPmqx8njYFL+NWzvSnvQIhsEqyAZEw=",
-        "owner": "jnsgruk",
-        "repo": "multipass-flake",
-        "rev": "4612c7c607616c67610841bb0ad66a4401a53251",
-        "type": "github"
-      },
-      "original": {
-        "owner": "jnsgruk",
-        "repo": "multipass-flake",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1675309347,
-        "narHash": "sha256-D3CQ6HRDT2m3XJlrzb5jKq4vNFR5xFTEFKC7iSjlFpM=",
+        "lastModified": 1675614288,
+        "narHash": "sha256-i3Rc/ENnz62BcrSloeVmAyPicEh4WsrEEYR+INs9TYw=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "006c3bd4dd2f5d1d2094047f307cbf9e2b73d9c5",
+        "rev": "d25de6654a34d99dceb02e71e6db516b3b545be6",
         "type": "github"
       },
       "original": {
@@ -164,7 +128,6 @@
         "crafts": "crafts",
         "embr": "embr",
         "home-manager": "home-manager",
-        "multipass": "multipass",
         "nixpkgs": "nixpkgs",
         "vscode-server": "vscode-server"
       }
