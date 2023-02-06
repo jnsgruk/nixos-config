@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   programs.git = {
     enable = true;
 
@@ -20,6 +20,9 @@
       };
       pull = {
         rebase = true;
+      };
+      init = {
+        defaultBranch = "main";
       };
     };
 
