@@ -1,4 +1,4 @@
-{ ... }: {
+{ lib, pkgs, ... }: {
   programs.swaylock.settings = {
     font = "SF Pro";
     clock = true;
