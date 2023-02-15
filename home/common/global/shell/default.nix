@@ -7,6 +7,7 @@
     ./nix-tools.nix
     ./starship.nix
     ./tmux.nix
+    ./xdg-user-dirs.nix
     ./zsh.nix
     inputs.vscode-server.nixosModules.home
   ];

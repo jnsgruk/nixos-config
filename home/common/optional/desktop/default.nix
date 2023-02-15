@@ -4,7 +4,7 @@
     ./gtk.nix
     ./neofetch
     ./vscode.nix
-    ./xdg.nix
+    ./xdg-mime-apps.nix
     ./zathura.nix
   ];
 

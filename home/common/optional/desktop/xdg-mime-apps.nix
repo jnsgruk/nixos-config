@@ -28,28 +28,10 @@ in
 {
   xdg = {
     enable = true;
-    cacheHome = config.home.homeDirectory + "/.local/cache";
-
     mimeApps = {
       enable = true;
       defaultApplications = associations;
     };
-
-    userDirs = {
-      enable = true;
-      createDirectories = true;
-      extraConfig = {
-        XDG_DESKTOP_DIR = "${config.home.homeDirectory}/";
-        XDG_DOCUMENTS_DIR = "${config.home.homeDirectory}/";
-        XDG_DOWNLOAD_DIR = "${config.home.homeDirectory}/downloads";
-        XDG_MUSIC_DIR = "${config.home.homeDirectory}/";
-        XDG_PICTURES_DIR = "${config.home.homeDirectory}/pictures";
-        XDG_PUBLICSHARE_DIR = "${config.home.homeDirectory}/";
-        XDG_TEMPLATES_DIR = "${config.home.homeDirectory}/";
-        XDG_VIDEOS_DIR = "${config.home.homeDirectory}/";
-        XDG_CONFIG_HOME = "${config.home.homeDirectory}/.config";
-        XDG_SCREENSHOTS_DIR = "${config.home.homeDirectory}/pictures/screenshots";
-      };
-    };
   };
 }
+
