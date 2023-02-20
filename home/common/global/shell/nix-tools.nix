@@ -3,6 +3,6 @@
     alejandra
     deadnix
     nixpkgs-fmt
-    # rnix-lsp
+    rnix-lsp
   ];
 }
