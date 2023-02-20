@@ -41,12 +41,10 @@
     fsType = "vfat";
   };
 
-  swapDevices = [
-    {
-      device = "/swap/swapfile";
-      size = 2048;
-    }
-  ];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 2048;
+  }];
 
   systemd.services = {
     create-swapfile = {
