@@ -44,7 +44,14 @@
       fsType = "vfat";
     };
 
+  fileSystems."/home/jon/data" = {
+    device = "/dev/mapper/data";
+    fsType = "ext4";
+  };
 
+  environment.etc."crypttab".text = ''
+    data  /dev/disk/by-uuid/a9fca2ea-2114-42df-a2a8-8638a28618ac  /etc/data.keyfile
+  '';
 
   swapDevices = [
     {
