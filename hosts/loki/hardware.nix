@@ -4,37 +4,43 @@
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
+    {
+      device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
+    {
+      device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
       fsType = "btrfs";
       options = [ "subvol=@home" ];
     };
 
   fileSystems."/var" =
-    { device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
+    {
+      device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
       fsType = "btrfs";
       options = [ "subvol=@var" ];
     };
 
   fileSystems."/.snapshots" =
-    { device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
+    {
+      device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
       fsType = "btrfs";
       options = [ "subvol=@snapshots" ];
     };
 
   fileSystems."/.swap" =
-    { device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
+    {
+      device = "/dev/disk/by-uuid/d4a77c74-240e-4b0a-9fd4-e09033cd087d";
       fsType = "btrfs";
       options = [ "subvol=@swap" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/2BD9-A904";
+    {
+      device = "/dev/disk/by-uuid/2BD9-A904";
       fsType = "vfat";
     };
 
@@ -75,7 +81,7 @@
       enable = true;
       driSupport = true;
       driSupport32Bit = true;
-      
+
       extraPackages = with pkgs; [
         vaapiVdpau
         libvdpau-va-gl
