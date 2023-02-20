@@ -10,7 +10,7 @@
 
     timestr = "%R";
     datestr = "%a, %e of %B";
-    image = "/home/jon/pictures/wallpaper.jpg";
+    image = "${../desktop/wallpapers/elk-colors.jpg}";
     # effect-blur = "30x3";
 
     key-hl-color = "880033";
