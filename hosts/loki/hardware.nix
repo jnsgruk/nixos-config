@@ -44,6 +44,8 @@
       fsType = "vfat";
     };
 
+
+
   swapDevices = [
     {
       device = "/swap/swapfile";
@@ -77,15 +79,5 @@
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     video.hidpi.enable = lib.mkDefault true;
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
-
-      extraPackages = with pkgs; [
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
-    };
   };
 }
