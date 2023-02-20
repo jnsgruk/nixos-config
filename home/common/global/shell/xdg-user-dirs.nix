@@ -12,7 +12,7 @@
       enable = true;
       createDirectories = lib.mkDefault true;
 
-      download = config.home.homeDirectory + "/download";
+      download = config.home.homeDirectory + "/downloads";
       pictures = config.home.homeDirectory + "/pictures";
 
       desktop = config.home.homeDirectory;
