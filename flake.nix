@@ -35,6 +35,15 @@
       overlays = import ./overlays;
 
       homeConfigurations = {
+        "jon@loki" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            hostname = "loki";
+            type = "desktop";
+          };
+          modules = [ ./home/jon/loki.nix ];
+        };
         "jon@thor" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.${system};
           extraSpecialArgs = {
@@ -56,6 +65,13 @@
       };
 
       nixosConfigurations = {
+        loki = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/loki
+          ];
+        };
         thor = nixpkgs.lib.nixosSystem {
           inherit system;
           specialArgs = { inherit inputs outputs; };
