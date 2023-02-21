@@ -29,16 +29,6 @@
     };
   };
 
-  services = {
-    syncthing = {
-      enable = true;
-      user = "jon";
-      dataDir = "/home/jon/data";
-      configDir = "/home/jon/data/.syncthing";
-      guiAddress = "100.124.10.79:8384";
-    };
-  };
-
   # Power, throttling, etc.
   services.upower.enable = true;
   services.tlp.enable = true;

@@ -29,16 +29,6 @@
     };
   };
 
-  services = {
-    syncthing = {
-      enable = true;
-      user = "jon";
-      dataDir = "/home/jon/data";
-      configDir = "/home/jon/data/.syncthing";
-      guiAddress = "100.73.28.58:8384";
-    };
-  };
-
   environment.systemPackages = [ ];
 
   system.stateVersion = "22.11";
