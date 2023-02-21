@@ -1,6 +1,7 @@
 { modifier
 , terminal
 , menu
+, pkgs
 , ...
 }: {
   main = {
@@ -11,16 +12,16 @@
     # Reload the config
     "${modifier}+Shift+c" = "reload";
     # Lock the screen
-    "${modifier}+l" = "exec swaylock -f";
+    "${modifier}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock -f";
     # Exit sway
-    "${modifier}+Shift+e" = "exec waybar-power-menu";
+    "${modifier}+Shift+e" = "exec ${pkgs.sway-scripts}/bin/waybar-power-menu";
     # Kill application
     "Mod1+q" = "kill";
 
     # Screenshots
-    "Print" = "exec sway-screenshot screen";
-    "Shift+Print" = "exec sway-screenshot window";
-    "Alt+Print" = "exec sway-screenshot region";
+    "Print" = "exec ${pkgs.sway-scripts}/bin/sway-screenshot screen";
+    "Shift+Print" = "exec ${pkgs.sway-scripts}/bin/sway-screenshot window";
+    "Alt+Print" = "exec ${pkgs.sway-scripts}/bin/sway-screenshot region";
 
     # Move focus
     "${modifier}+Left" = "focus left";
@@ -80,22 +81,22 @@
     "${modifier}+r" = "mode 'resize'";
 
     # Audio/Media Keys
-    "--locked XF86AudioPlay" = "exec playerctl play-pause";
-    "--locked XF86AudioNext" = "exec playerctl next";
-    "--locked XF86AudioPrev" = "exec playerctl prev";
+    "--locked XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+    "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+    "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl prev";
 
     # Volume Keys
-    "--locked XF86AudioRaiseVolume" = "exec volumectl -u up";
-    "--locked XF86AudioLowerVolume" = "exec volumectl -u down";
-    "--locked XF86AudioMute" = "exec volumectl toggle-mute";
-    "--locked Pause" = "exec volumectl -m toggle-mute";
+    "--locked XF86AudioRaiseVolume" = "exec ${pkgs.avizo}/bin/volumectl -u up";
+    "--locked XF86AudioLowerVolume" = "exec ${pkgs.avizo}/bin/volumectl -u down";
+    "--locked XF86AudioMute" = "exec ${pkgs.avizo}/bin/volumectl toggle-mute";
+    "--locked Pause" = "exec ${pkgs.avizo}/bin/volumectl -m toggle-mute";
 
     # Brightness Controls
-    "--locked XF86MonBrightnessUp" = "exec lightctl up";
-    "--locked XF86MonBrightnessDown" = "exec lightctl down";
+    "--locked XF86MonBrightnessUp" = "exec ${pkgs.avizo}/bin/lightctl up";
+    "--locked XF86MonBrightnessDown" = "exec ${pkgs.avizo}/bin/lightctl down";
 
     # Applications
-    "Mod1+grave" = "exec 1password --quick-access";
+    "Mod1+grave" = "exec ${pkgs._1password-gui}/bin/1password --quick-access";
   };
 
   resize = {

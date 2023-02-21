@@ -47,11 +47,11 @@
   services.swayidle = {
     enable = true;
     events = [
-      { event = "before-sleep"; command = "${lib.getExe pkgs.swaylock} -f"; }
-      { event = "lock"; command = "${lib.getExe pkgs.swaylock} -f"; }
+      { event = "before-sleep"; command = "${lib.getExe pkgs.swaylock-effects} -f"; }
+      { event = "lock"; command = "${lib.getExe pkgs.swaylock-effects} -f"; }
     ];
     timeouts = [
-      { timeout = 300; command = "${lib.getExe pkgs.swaylock} -f"; }
+      { timeout = 300; command = "${lib.getExe pkgs.swaylock-effects} -f"; }
       {
         timeout = 305;
         command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"'';

@@ -1,4 +1,4 @@
-{ hostname, ... }: {
+{ hostname, pkgs, ... }: {
   imports = [
     ./avizo.nix
     ./clipman.nix
@@ -65,8 +65,8 @@
 
         startup = [ ];
 
-        keybindings = (import ./config/keybindings.nix { inherit terminal menu modifier; }).main;
-        modes.resize = (import ./config/keybindings.nix { inherit terminal menu modifier; }).resize;
+        keybindings = (import ./config/keybindings.nix { inherit terminal menu modifier pkgs; }).main;
+        modes.resize = (import ./config/keybindings.nix { inherit terminal menu modifier pkgs; }).resize;
         workspaceOutputAssign = (import ./config/displays.nix { }).${hostname}.workspace-assignments;
         assigns = (import ./config/window-rules.nix { }).assigns;
       };

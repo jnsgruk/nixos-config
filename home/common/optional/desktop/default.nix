@@ -24,6 +24,8 @@
     imlib2Full
     libnotify
     obsidian
+    pamixer
+    pavucontrol
     rambox
     signal-desktop
     xdg-utils

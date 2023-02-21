@@ -28,8 +28,8 @@ in
       Type = "simple";
       Environment = "XDG_CURRENT_DESKTOP=Unity";
       ExecStart = "${pkgs.waybar}/bin/waybar";
-      ExecReload = "pkill -SIGUSR2 waybar";
-      ExecStop = "pkill -2 waybar";
+      ExecReload = "${pkgs.procps}/bin/pkill -SIGUSR2 waybar";
+      ExecStop = "${pkgs.procps}/bin/pkill -2 waybar";
       Restart = "on-failure";
       RestartSec = 1;
       TimeoutStopSec = 10;
@@ -64,7 +64,7 @@ in
           format-disconnected = "";
           tooltip-format = "{ifname} / {essid} ({signalStrength}%) / {ipaddr}";
           max-length = 15;
-          on-click = "alacritty -e nmtui";
+          on-click = "${pkgs.alacritty}/bin/alacritty -e ${pkgs.networkmanager}/bin/nmtui";
         };
 
         "idle_inhibitor" = {
@@ -111,8 +111,8 @@ in
             car = "";
             default = [ "" "" "" ];
           };
-          on-click = "volumectl toggle-mute";
-          on-click-right = "pavucontrol";
+          on-click = "${pkgs.avizo}/bin/volumectl toggle-mute";
+          on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
           tooltip-format = "{volume}% / {desc}";
         };
 
@@ -120,14 +120,14 @@ in
           format = "{format_source}";
           format-source = "";
           format-source-muted = "";
-          on-click = "volumectl -m toggle-mute";
-          on-click-right = "pavucontrol";
+          on-click = "${pkgs.avizo}/bin/volumectl -m toggle-mute";
+          on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
           tooltip-format = "{source_volume}% / {desc}";
         };
 
         "custom/power" = {
           format = "";
-          on-click = "waybar-power-menu";
+          on-click = "${pkgs.sway-scripts}/bin/waybar-power-menu";
         };
       }
     ];
