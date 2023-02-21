@@ -63,7 +63,6 @@
 
         startup = [
           { command = "avizo-service"; }
-          { command = "mako"; }
         ];
 
         keybindings = (import ./config/keybindings.nix { inherit terminal menu modifier; }).main;

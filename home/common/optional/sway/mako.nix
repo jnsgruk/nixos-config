@@ -27,4 +27,19 @@
       '';
     };
   };
+
+  systemd.user.services.mako = {
+    Unit.Description = "Lightweight Wayland notification daemon";
+    Install.WantedBy = [ "graphical-session.target" ];
+    Service = {
+      Type = "dbus";
+      BusName = "org.freedesktop.Notifications";
+      ExecStart = "${pkgs.mako}/bin/mako";
+      ExecReload = "${pkgs.mako}/bin/makoctl reload";
+      ExecStop = "pkill -2 mako";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
 }
