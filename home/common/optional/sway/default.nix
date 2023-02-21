@@ -1,5 +1,6 @@
 { hostname, ... }: {
   imports = [
+    ./clipman.nix
     ./kanshi.nix
     ./mako.nix
     ./packages.nix
@@ -60,8 +61,6 @@
           { command = "avizo-service"; }
           { command = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK"; }
           { command = "mako"; }
-          { command = "wl-paste -n -t text --watch clipman store --no-persist"; }
-          { command = "wl-paste -p -n -t text --watch clipman store -P"; }
           { command = "wlsunset -l 51.51 -L -2.53"; }
         ];
 
