@@ -57,10 +57,28 @@
       alsa_monitor.rules = {
         {
           matches = {
-            {{ "node.name", "matches", "alsa_input.*" }},
-            {{ "node.name", "matches", "alsa_output.*" }},
+            {
+              { "device.name", "matches", "alsa_card.*" },
+            },
           },
-          apply_properties = {["session.suspend-timeout-seconds"] = 0},
+          apply_properties = {
+            ["api.alsa.use-acp"] = true,
+            ["api.acp.auto-profile"] = false,
+            ["api.acp.auto-port"] = false,
+          },
+        },
+        {
+          matches = {
+            {
+              { "node.name", "matches", "alsa_input.*" },
+            },
+            {
+              { "node.name", "matches", "alsa_output.*" },
+            },
+          },
+          apply_properties = {
+            ["session.suspend-timeout-seconds"] = 0,
+          },
         },
       }
     '';
