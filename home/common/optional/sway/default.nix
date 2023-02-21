@@ -20,17 +20,17 @@
     in
     {
       enable = true;
+
+      systemdIntegration = true;
       wrapperFeatures = {
         gtk = true;
         base = true;
       };
-      systemdIntegration = true;
 
       config = {
         menu = menu;
         terminal = terminal;
         modifier = modifier;
-        # bars = [{ command = "waybar"; }];
         bars = [ ];
         gaps = { inner = 8; };
 
@@ -63,9 +63,7 @@
           followMouse = "no";
         };
 
-        startup = [
-          { command = "avizo-service"; }
-        ];
+        startup = [ ];
 
         keybindings = (import ./config/keybindings.nix { inherit terminal menu modifier; }).main;
         modes.resize = (import ./config/keybindings.nix { inherit terminal menu modifier; }).resize;
