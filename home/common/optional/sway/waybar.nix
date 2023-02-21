@@ -1,4 +1,4 @@
-{ type, ... }:
+{ pkgs, type, ... }:
 let
   modules =
     # If this is a laptop, then include network/battery controls
@@ -21,6 +21,21 @@ let
     ];
 in
 {
+  systemd.user.services.waybar = {
+    Unit.Description = "A lightweight Wayland statusbar";
+    Install.WantedBy = [ "sway-session.target" ];
+    Service = {
+      Type = "simple";
+      Environment = "XDG_CURRENT_DESKTOP=Unity";
+      ExecStart = "${pkgs.waybar}/bin/waybar";
+      ExecReload = "pkill -SIGUSR2 waybar";
+      ExecStop = "pkill -2 waybar";
+      Restart = "on-failure";
+      RestartSec = 1;
+      TimeoutStopSec = 10;
+    };
+  };
+
   programs.waybar = {
     enable = true;
     settings = [

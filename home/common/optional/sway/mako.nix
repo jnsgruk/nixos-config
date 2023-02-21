@@ -30,7 +30,7 @@
 
   systemd.user.services.mako = {
     Unit.Description = "Lightweight Wayland notification daemon";
-    Install.WantedBy = [ "graphical-session.target" ];
+    Install.WantedBy = [ "sway-session.target" ];
     Service = {
       Type = "dbus";
       BusName = "org.freedesktop.Notifications";

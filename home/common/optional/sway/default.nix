@@ -1,5 +1,6 @@
 { hostname, ... }: {
   imports = [
+    ./avizo.nix
     ./clipman.nix
     ./kanshi.nix
     ./mako.nix
@@ -29,7 +30,8 @@
         menu = menu;
         terminal = terminal;
         modifier = modifier;
-        bars = [{ command = "waybar"; }];
+        # bars = [{ command = "waybar"; }];
+        bars = [ ];
         gaps = { inner = 8; };
 
         input = {
