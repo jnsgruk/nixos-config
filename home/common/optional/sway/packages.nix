@@ -4,6 +4,7 @@
     slurp
     swappy
     wf-recorder
+    wl-clipboard
     wmctrl
   ];
 }
