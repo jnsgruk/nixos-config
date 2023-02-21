@@ -19,7 +19,10 @@
     in
     {
       enable = true;
-      wrapperFeatures.gtk = true;
+      wrapperFeatures = {
+        gtk = true;
+        base = true;
+      };
       systemdIntegration = true;
 
       config = {
@@ -60,7 +63,6 @@
 
         startup = [
           { command = "avizo-service"; }
-          { command = "dbus-update-activation-environment --systemd WAYLAND_DISPLAY DISPLAY SWAYSOCK"; }
           { command = "mako"; }
         ];
 
