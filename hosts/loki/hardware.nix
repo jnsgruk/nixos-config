@@ -43,14 +43,28 @@
     fsType = "ext4";
   };
 
-  environment.etc."crypttab".text = ''
-    data  /dev/disk/by-uuid/a9fca2ea-2114-42df-a2a8-8638a28618ac  /etc/data.keyfile
-  '';
-
   swapDevices = [{
     device = "/swap/swapfile";
     size = 2048;
   }];
+
+  environment.etc = {
+    "crypttab".text = ''
+      data  /dev/disk/by-uuid/a9fca2ea-2114-42df-a2a8-8638a28618ac  /etc/data.keyfile
+    '';
+
+    "wireplumber/main.lua.d/50-alsa-config.lua".text = ''
+      alsa_monitor.rules = {
+        {
+          matches = {
+            {{ "node.name", "matches", "alsa_input.*" }},
+            {{ "node.name", "matches", "alsa_output.*" }},
+          },
+          apply_properties = {["session.suspend-timeout-seconds"] = 0},
+        },
+      }
+    '';
+  };
 
   systemd.services = {
     create-swapfile = {
