@@ -36,14 +36,7 @@
         '';
       }
       {
-        # plugin = catppuccin-nvim;
-        plugin =
-          (catppuccin-nvim.overrideAttrs (_: {
-            patches = [
-              (pkgs.fetchpatch { url = "https://github.com/catppuccin/nvim/pull/414/commits/bfe533cb9c42c776a802f8f7802182b5fbf0876a.patch"; sha256 = "sha256-rxhpAJqXBp2rbAHqzyXGadr7zgYChafgaPDa4EpBaPA="; })
-              (pkgs.fetchpatch { url = "https://github.com/catppuccin/nvim/pull/414/commits/589571e86cc93b67023efe59ad74fc7fe9dc5d37.patch"; sha256 = "sha256-I+whdbdWj7OgNU16UNTl5CHPy6HqBVqiNpGgVgluBOg="; })
-            ];
-          }));
+        plugin = catppuccin-nvim;
         type = "lua";
         config = ''
           require('catppuccin').setup {
