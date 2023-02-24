@@ -3,7 +3,6 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
-      enableBashIntegration = true;
       settings = lib.mkDefault {
         format = lib.concatStrings [
           "$username"

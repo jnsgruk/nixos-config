@@ -29,11 +29,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1675084228,
-        "narHash": "sha256-O/tzsRTazlg9xrsKTBA2koWD9al+DJi5M+ALWP7sPCk=",
+        "lastModified": 1677254500,
+        "narHash": "sha256-f//tIVc1kHkVmtOw/kx3D8TMMZqBdkg8koeZhh3mbcU=",
         "owner": "jnsgruk",
         "repo": "firecracker-ubuntu",
-        "rev": "a41d2d560a0df96ec5030e8aec04d52e62c52a1d",
+        "rev": "0491ead02bfdb7fb924123b848f2d12f4d26ca82",
         "type": "github"
       },
       "original": {

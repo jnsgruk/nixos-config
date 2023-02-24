@@ -3,7 +3,6 @@
 , ...
 }: {
   imports = [
-    ./bash.nix
     ./htop.nix
     ./nix-tools.nix
     ./starship.nix

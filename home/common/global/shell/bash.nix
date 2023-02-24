@@ -1,8 +1,0 @@
-{
-  programs = {
-    bash = {
-      enable = true;
-
-    };
-  };
-}
