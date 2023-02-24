@@ -1,8 +1,10 @@
 { ... }: {
   imports = [
     ../common/global
+    ../common/optional/charm-tools.nix
     ../common/optional/desktop
     ../common/optional/sway
+
   ];
 
   services.syncthing = {
