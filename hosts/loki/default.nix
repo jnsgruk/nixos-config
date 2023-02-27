@@ -24,8 +24,13 @@
     useDHCP = lib.mkDefault true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ ];
-      allowedUDPPorts = [ ];
+      allowedTCPPorts = [
+        22000 # syncthing
+      ];
+      allowedUDPPorts = [
+        22000 # syncthing
+        21027 # syncthing
+      ];
     };
   };
 
