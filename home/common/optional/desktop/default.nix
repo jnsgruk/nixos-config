@@ -16,9 +16,7 @@
 
   home.packages = with pkgs; [
     _1password-gui
-    # Official catppuccin theme is a little out of date
-    # catppuccin-gtk
-    catppuccin-macchiato-gtk
+    catppuccin-gtk
     desktop-file-utils
     google-chrome
     imlib2Full
