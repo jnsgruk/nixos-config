@@ -31,14 +31,14 @@ config:
 
         - ["install", "kubectl", "--classic"]
         - ["install", "terraform", "--classic"]
-        - ["install", "juju", "--channel", "3.1/candidate"]
+        - ["install", "juju", "--channel", "3.1/stable"]
         
         - ["install", "lxd", "--channel", "latest/stable"]
         - ["install", "microk8s", "--channel", "1.26-strict/stable"]
         
-        - ["install", "charmcraft", "--classic", "--channel", "latest/candidate"]
+        - ["install", "charmcraft", "--classic", "--channel", "latest/stable"]
         - ["install", "rockcraft", "--classic", "--channel", "latest/edge"]
-        - ["install", "snapcraft", "--classic", "--channel", "latest/candidate"]
+        - ["install", "snapcraft", "--classic", "--channel", "latest/stable"]
 
     packages:
       - python3-pip
