@@ -32,7 +32,7 @@
     populate-lxd-profiles = {
       serviceConfig.type = "oneshot";
       after = [ "lxd.service" ];
-      reloadTriggers = [ ./lxc-profiles/dev.yaml ];
+      reloadTriggers = [ "${./profile-dev.yaml}" ];
       script = ''
         if ! ${pkgs.lxd}/bin/lxc profile show dev; then
           ${pkgs.lxd}/bin/lxc profile create dev
