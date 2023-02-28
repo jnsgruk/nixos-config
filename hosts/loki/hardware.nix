@@ -86,7 +86,7 @@
 
   systemd.services = {
     create-swapfile = {
-      serviceConfig.type = "oneshot";
+      serviceConfig.Type = "oneshot";
       wantedBy = [ "swap-swapfile.swap" ];
       script = ''
         swapdir="/swap"
