@@ -2,6 +2,7 @@
   imports = [
     ../common/global
     ../common/optional/desktop
+    ../common/optional/dev
     ../common/optional/sway
   ];
 

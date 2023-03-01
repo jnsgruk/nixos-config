@@ -3,6 +3,7 @@
     ../common/global
     ../common/optional/charm-tools.nix
     ../common/optional/desktop
+    ../common/optional/dev
     ../common/optional/sway
 
   ];
