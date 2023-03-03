@@ -26,6 +26,7 @@
     pavucontrol
     rambox
     signal-desktop
+    sublime-merge
     xdg-utils
     yubikey-manager
   ];
