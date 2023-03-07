@@ -3,6 +3,7 @@
     bat
     ctop
     curl
+    dive
     exa
     git
     htop
