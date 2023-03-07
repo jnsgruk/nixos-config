@@ -38,6 +38,16 @@
         autoload -U promptinit
         promptinit
 
+        # HACK! Simple shell function to patch ruff bins downloaded by tox from PyPI to use
+        # the ruff included in NixOS - needs to be run each time the tox enviroment is
+        # recreated
+        patch_tox_ruff() {
+          for x in $(find .tox -name ruff -type f -print); do
+            rm $x;
+            ln -sf $(which ruff) $x; 
+          done
+        }
+
         export EDITOR=vim
       '';
 
