@@ -13,7 +13,7 @@
 
     ../common/optional/desktop.nix
     ../common/optional/greetd.nix
-    ../common/optional/thunar.nix
+    ../common/optional/nautilus.nix
     ../common/optional/yubikey.nix
   ];
 
