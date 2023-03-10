@@ -36,7 +36,7 @@
     {
       command = "floating enable";
       criteria = {
-        app_id = "nm-connection-editor|guvcview|pavucontrol|psensor|pcmanfm|pinentry-qt|^code$";
+        app_id = "org.gnome.Nautilus|nm-connection-editor|pavucontrol|pinentry-qt|^code$";
       };
     }
     {

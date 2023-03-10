@@ -1,7 +1,13 @@
 { pkgs
 , config
 , ...
-}: {
+}:
+let
+  theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
+in
+{
+  inherit theme;
+
   home.pointerCursor = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
@@ -31,7 +37,6 @@
     };
 
     gtk4.extraConfig = {
-      gtk-button-images = 1;
       gtk-application-prefer-dark-theme = true;
     };
 
@@ -41,7 +46,7 @@
     };
 
     theme = {
-      name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+      name = "${theme}";
       package = pkgs.catppuccin-gtk.override {
         size = "standard";
         variant = "macchiato";
