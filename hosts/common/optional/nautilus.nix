@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  theme = (import ../../../home/common/optional/desktop/gtk.nix { inherit pkgs config; }).theme;
+  theme = (import ../../../home/common/optional/desktop/gtk.nix { inherit pkgs config; }).gtk.theme.name;
 in
 {
   environment.systemPackages = with pkgs; [

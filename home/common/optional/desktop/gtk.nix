@@ -6,8 +6,6 @@ let
   theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
 in
 {
-  inherit theme;
-
   home.pointerCursor = {
     package = pkgs.gnome.adwaita-icon-theme;
     name = "Adwaita";
