@@ -18,6 +18,7 @@ in
       ]
       ++ ifExists [
         "docker"
+        "render"
         "lxd"
       ];
 
