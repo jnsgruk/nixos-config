@@ -4,5 +4,6 @@
     ./docker.nix
     ./lxd
     ./multipass.nix
+    ./quickemu.nix
   ];
 }
