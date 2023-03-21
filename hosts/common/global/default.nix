@@ -11,8 +11,6 @@
 
   console = {
     earlySetup = true;
-    font = "ter-powerline-v32n";
-    packages = [ pkgs.terminus_font pkgs.powerline-fonts ];
     keyMap = "uk";
   };
 
