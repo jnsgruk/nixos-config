@@ -24,11 +24,29 @@
     # use fonts specified by user rather than default ones
     enableDefaultFonts = false;
 
-    fontconfig.defaultFonts = {
-      serif = [ "SF Pro Display" "Joypixels" ];
-      sansSerif = [ "SF Pro Display" "Joypixels" ];
-      monospace = [ "MesloLGSDZ Nerd Font Mono" "FiraCode Nerd Font Mono" ];
-      emoji = [ "Joypixels" ];
+    fontconfig = {
+      defaultFonts = {
+        serif = [ "SF Pro Display" "Joypixels" ];
+        sansSerif = [ "SF Pro Display" "Joypixels" ];
+        monospace = [ "MesloLGSDZ Nerd Font Mono" "FiraCode Nerd Font Mono" ];
+        emoji = [ "Joypixels" ];
+      };
+
+      # Fixes pixelation
+      antialias = true;
+
+      # Fixes antialiasing blur
+      hinting = {
+        enable = true;
+        style = "hintfull"; # no difference
+        autohint = true; # no difference
+      };
+
+      subpixel = {
+        # Makes it bolder
+        rgba = "rgb";
+        lcdfilter = "default"; # no difference
+      };
     };
   };
 

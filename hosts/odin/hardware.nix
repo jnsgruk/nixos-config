@@ -73,11 +73,12 @@
 
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    video.hidpi.enable = lib.mkDefault true;
     opengl.extraPackages = with pkgs; [
       intel-media-driver # LIBVA_DRIVER_NAME=iHD
       vaapiIntel # LIBVA_DRIVER_NAME=i965 (older but works better for Firefox/Chromium) 
     ];
     bluetooth.enable = true;
   };
+
+  fonts.optimizeForVeryHighDPI = true;
 }

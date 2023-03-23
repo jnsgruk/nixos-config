@@ -109,7 +109,8 @@
 
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    video.hidpi.enable = lib.mkDefault true;
     bluetooth.enable = true;
   };
+
+  fonts.optimizeForVeryHighDPI = true;
 }
