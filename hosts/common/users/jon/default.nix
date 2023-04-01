@@ -1,11 +1,10 @@
-{ pkgs
-, config
-, ...
-}:
-let
-  ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
-in
 {
+  pkgs,
+  config,
+  ...
+}: let
+  ifExists = groups: builtins.filter (group: builtins.hasAttr group config.users.groups) groups;
+in {
   users.users.jon = {
     isNormalUser = true;
     shell = pkgs.zsh;
@@ -13,11 +12,13 @@ in
       [
         "audio"
         "networkmanager"
+        "plugdev"
         "video"
         "wheel"
       ]
       ++ ifExists [
         "docker"
+        "plugdev"
         "render"
         "lxd"
       ];
@@ -28,7 +29,7 @@ in
       "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBC8cs1B64XqEswY5pART6yERbjUMB7RdQdT38dgkZT6AAAABHNzaDo= YK5"
     ];
 
-    packages = [ pkgs.home-manager ];
+    packages = [pkgs.home-manager];
   };
 
   # This is a workaround for not seemingly being able to set $EDITOR in home-manager

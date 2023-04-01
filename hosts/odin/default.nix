@@ -1,6 +1,7 @@
-{ pkgs
-, lib
-, ...
+{
+  pkgs,
+  lib,
+  ...
 }: {
   imports = [
     ./boot.nix
@@ -13,6 +14,7 @@
 
     ../common/optional/desktop.nix
     ../common/optional/greetd.nix
+    ../common/optional/ledger.nix
     ../common/optional/nautilus.nix
     ../common/optional/yubikey.nix
   ];
@@ -40,7 +42,7 @@
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
 
-  environment.systemPackages = [ ];
+  environment.systemPackages = [];
 
   system.stateVersion = "22.11";
 }
