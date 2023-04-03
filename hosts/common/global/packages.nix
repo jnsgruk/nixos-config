@@ -12,4 +12,6 @@
     unzip
     wget
   ];
+
+  programs.zsh.enable = true;
 }
