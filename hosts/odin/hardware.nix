@@ -79,6 +79,4 @@
     ];
     bluetooth.enable = true;
   };
-
-  fonts.optimizeForVeryHighDPI = true;
 }

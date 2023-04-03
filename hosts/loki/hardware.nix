@@ -111,6 +111,4 @@
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     bluetooth.enable = true;
   };
-
-  fonts.optimizeForVeryHighDPI = true;
 }
