@@ -1,7 +1,6 @@
-{
-  pkgs,
-  lib,
-  ...
+{ pkgs
+, lib
+, ...
 }: {
   imports = [
     ./boot.nix
@@ -42,7 +41,7 @@
   services.throttled.enable = lib.mkDefault true;
   services.thermald.enable = true;
 
-  environment.systemPackages = [];
+  environment.systemPackages = [ ];
 
   system.stateVersion = "22.11";
 }

@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     ledger-live-desktop
   ];
   # Needed for Ledger Live app
-  users.groups.plugdev = {};
+  users.groups.plugdev = { };
 
   # Required for Ledger Live to detect Ledger Nano S via USB
   services.udev.extraRules = ''
