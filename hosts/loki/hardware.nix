@@ -53,34 +53,17 @@
       data  /dev/disk/by-uuid/a9fca2ea-2114-42df-a2a8-8638a28618ac  /etc/data.keyfile
     '';
 
-    "wireplumber/main.lua.d/50-alsa-config.lua".text = ''
-      alsa_monitor.rules = {
-        {
-          matches = {
-            {
-              { "device.name", "matches", "alsa_card.*" },
-            },
-          },
-          apply_properties = {
-            ["api.alsa.use-acp"] = true,
-            ["api.acp.auto-profile"] = false,
-            ["api.acp.auto-port"] = false,
+    "wireplumber/main.lua.d/51-disable-suspension.lua".text = ''
+      table.insert (alsa_monitor.rules, {
+        matches = {
+          {
+            { "node.name", "matches", "alsa_output.*" },
           },
         },
-        {
-          matches = {
-            {
-              { "node.name", "matches", "alsa_input.*" },
-            },
-            {
-              { "node.name", "matches", "alsa_output.*" },
-            },
-          },
-          apply_properties = {
-            ["session.suspend-timeout-seconds"] = 0,
-          },
+        apply_properties = {
+          ["session.suspend-timeout-seconds"] = 0,
         },
-      }
+      })
     '';
   };
 
@@ -109,6 +92,9 @@
 
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      package = pkgs.bluezFull;
+    };
   };
 }
