@@ -4,11 +4,12 @@ This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for confi
 
 The machines configured thus far are:
 
-| Hostname |       Model        |  Role   |
-| :------: | :----------------: | :-----: |
-|  `loki`  | Ryzen 3900X Custom | Desktop |
-|  `odin`  |  Dell XPS 13 9370  | Laptop  |
-|  `thor`  |  Intel NUC6i7KYK   | Server  |
+| Hostname |        Model        |  Role   |
+| :------: | :-----------------: | :-----: |
+| `freyja` | Lenovo Thinkpad Z13 | Laptop  |
+|  `loki`  | Ryzen 3900X Custom  | Desktop |
+|  `odin`  |  Dell XPS 13 9370   | Laptop  |
+|  `thor`  |   Intel NUC6i7KYK   | Server  |
 
 ## Structure
 

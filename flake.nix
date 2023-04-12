@@ -66,6 +66,15 @@
           };
           modules = [ ./home/jon/odin.nix ];
         };
+        "jon@freyja" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit inputs outputs;
+            hostname = "freyja";
+            type = "laptop";
+          };
+          modules = [ ./home/jon/freyja.nix ];
+        };
       };
 
       nixosConfigurations = {
@@ -88,6 +97,13 @@
           specialArgs = { inherit inputs outputs; };
           modules = [
             ./hosts/odin
+          ];
+        };
+        freyja = nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = { inherit inputs outputs; };
+          modules = [
+            ./hosts/freyja
           ];
         };
       };

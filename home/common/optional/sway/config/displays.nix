@@ -47,6 +47,21 @@
     };
   };
 
+  freyja = {
+    workspace-assignments = [ ];
+    kanshi-profiles = rec {
+      default = {
+        outputs = [{
+          status = "enable";
+          criteria = "eDP-1";
+          position = "0,0";
+          scale = 1.5;
+          mode = "2880x1800@60.001Hz";
+        }];
+      };
+    };
+  };
+
   odin = {
     workspace-assignments = [ ];
     kanshi-profiles = rec {
