@@ -1,7 +1,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ../common/optional/bluetooth.nix
+  ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
@@ -92,9 +95,5 @@
 
   hardware = {
     cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    bluetooth = {
-      enable = true;
-      package = pkgs.bluezFull;
-    };
   };
 }
