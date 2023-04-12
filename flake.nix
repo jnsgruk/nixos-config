@@ -7,6 +7,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware/master";
+    };
     crafts = {
       # url = "path:/home/jon/crafts-flake";
       url = "github:jnsgruk/crafts-flake";
@@ -22,6 +25,7 @@
   outputs =
     { self
     , nixpkgs
+    , nixos-hardware
     , home-manager
     , ...
     } @ inputs:
