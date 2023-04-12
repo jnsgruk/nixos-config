@@ -11,7 +11,7 @@
   services.syncthing = {
     enable = true;
     extraOptions = [
-      "-gui-address=100.73.28.58:8384"
+      "-gui-address=100.64.118.39:8384"
       "-home=/home/jon/data/.syncthing"
     ];
   };
