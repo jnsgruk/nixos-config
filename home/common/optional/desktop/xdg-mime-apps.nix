@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 let
   browser = [ "google-chrome.desktop" ];
 

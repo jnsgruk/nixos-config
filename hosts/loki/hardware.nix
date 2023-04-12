@@ -7,37 +7,43 @@
   ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
+    {
+      device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
       fsType = "btrfs";
       options = [ "subvol=@" ];
     };
 
   fileSystems."/home" =
-    { device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
+    {
+      device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
       fsType = "btrfs";
       options = [ "subvol=@home" ];
     };
 
   fileSystems."/var" =
-    { device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
+    {
+      device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
       fsType = "btrfs";
       options = [ "subvol=@var" ];
     };
 
   fileSystems."/.snapshots" =
-    { device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
+    {
+      device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
       fsType = "btrfs";
       options = [ "subvol=@snapshots" ];
     };
 
   fileSystems."/.swap" =
-    { device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
+    {
+      device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
       fsType = "btrfs";
       options = [ "subvol=@swap" ];
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/F357-87EE";
+    {
+      device = "/dev/disk/by-uuid/F357-87EE";
       fsType = "vfat";
     };
 
