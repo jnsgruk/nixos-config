@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   imports = [
     ./alacritty.nix
     ./gtk.nix
@@ -15,6 +15,7 @@
   };
 
   home.packages = with pkgs; [
+    _1password
     _1password-gui
     catppuccin-gtk
     desktop-file-utils
@@ -28,6 +29,7 @@
     signal-desktop
     sublime-merge
     xdg-utils
+    xorg.xlsclients
     yubikey-manager
   ];
 }
