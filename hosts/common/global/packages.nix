@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     bat
+    binutils
     ctop
     curl
     dive
@@ -8,8 +9,10 @@
     git
     htop
     killall
+    pciutils
     tree
     unzip
+    usbutils
     wget
   ];
 
