@@ -3,6 +3,7 @@
 , ...
 }: {
   imports = [
+    ./fwupd.nix
     ./locale.nix
     ./tailscale.nix
     ./openssh.nix
