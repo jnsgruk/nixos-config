@@ -32,6 +32,17 @@ in
       enable = true;
       defaultApplications = associations;
     };
+
+    desktopEntries = {
+      rambox = {
+        name = "Rambox";
+        exec = "rambox --ozone-platform-hint=auto --enable-features=UseOzonePlatform";
+        terminal = false;
+        icon = "rambox";
+        type = "Application";
+        categories = [ "Network" "Application" ];
+      };
+    };
   };
 }
 
