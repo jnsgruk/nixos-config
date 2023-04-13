@@ -17,5 +17,9 @@
     wget
   ];
 
-  programs.zsh.enable = true;
+  programs = {
+    zsh.enable = true;
+    _1password.enable = true;
+  };
+
 }

@@ -10,6 +10,7 @@
 
     ../common/optional/virt
 
+    ../common/optional/1password.nix
     ../common/optional/desktop.nix
     ../common/optional/greetd.nix
     ../common/optional/ledger.nix

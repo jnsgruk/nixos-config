@@ -15,8 +15,6 @@
   };
 
   home.packages = with pkgs; [
-    _1password
-    _1password-gui
     catppuccin-gtk
     desktop-file-utils
     google-chrome

@@ -76,7 +76,10 @@
       packages = [ pkgs.gnome3.gnome-keyring pkgs.gcr ];
     };
 
-    gnome.gnome-keyring.enable = true;
+    gnome = {
+      gnome-keyring.enable = true;
+      at-spi2-core.enable = true;
+    };
 
     pipewire = {
       enable = true;
@@ -93,7 +96,6 @@
       unitConfig = {
         Description = "polkit-gnome-authentication-agent-1";
         Wants = [ "graphical-session.target" ];
-        WantedBy = [ "graphical-session.target" ];
         After = [ "graphical-session.target" ];
       };
       serviceConfig = {
