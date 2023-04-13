@@ -3,7 +3,10 @@
     yubikey-manager
   ];
 
-  services.udev.packages = [ pkgs.yubikey-personalization ];
+  services = {
+    pcscd.enable = true;
+    udev.packages = [ pkgs.yubikey-personalization ];
+  };
 
   programs.gnupg.agent.enable = true;
 }
