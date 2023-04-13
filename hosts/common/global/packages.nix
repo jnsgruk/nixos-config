@@ -10,6 +10,7 @@
     htop
     killall
     pciutils
+    ripgrep
     tree
     unzip
     usbutils

@@ -3,6 +3,7 @@
 , ...
 }: {
   imports = [
+    ./fzf.nix
     ./htop.nix
     ./nix-tools.nix
     ./starship.nix

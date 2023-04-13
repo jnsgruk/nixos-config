@@ -72,6 +72,8 @@
         open = "xdg-open";
         k = "kubectl";
 
+        opget = "op item get \"$(op item list --format=json | jq -r '.[].title' | fzf)\"";
+
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup-nix = "sudo nix-collect-garbage -d";
