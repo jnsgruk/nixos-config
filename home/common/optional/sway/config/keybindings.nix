@@ -97,7 +97,7 @@
 
     # Applications
     "Mod1+grave" = "exec ${pkgs._1password-gui}/bin/1password --quick-access";
-    "${modifier}+c" = "exec ${pkgs.clipman}/bin/clipman pick -t rofi -T '-p Clipboard'";
+    "${modifier}+c" = "exec ${pkgs.clipman}/bin/clipman pick -t rofi -T='-p Clipboard'";
   };
 
   resize = {
