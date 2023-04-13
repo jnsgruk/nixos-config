@@ -12,6 +12,7 @@
 
     ../common/optional/desktop.nix
     ../common/optional/greetd.nix
+    ../common/optional/ledger.nix
     ../common/optional/nautilus.nix
     ../common/optional/yubikey.nix
   ];
