@@ -28,6 +28,5 @@
     sublime-merge
     xdg-utils
     xorg.xlsclients
-    yubikey-manager
   ];
 }
