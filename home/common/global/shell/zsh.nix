@@ -61,7 +61,7 @@
         ts = "tailscale";
         tssh = "tailscale ssh";
         tst = "tailscale status";
-        tsu = "tailscale up --ssh --operator = $USER";
+        tsu = "tailscale up --ssh --operator=$USER";
         tsd = "tailscale down";
 
         js = "juju status";
