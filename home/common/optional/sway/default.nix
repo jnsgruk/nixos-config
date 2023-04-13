@@ -1,15 +1,10 @@
 { hostname, pkgs, ... }: {
   imports = [
-    ./avizo.nix
-    ./clipman.nix
-    ./kanshi.nix
-    ./mako.nix
     ./packages.nix
     ./rofi
-    ./swappy.nix
+    ./services.nix
     ./swaylock.nix
-    ./waybar.nix
-    ./wlsunset.nix
+    ./waybar
   ];
 
   wayland.windowManager.sway =

@@ -1,8 +1,16 @@
-{ pkgs, ... }: {
+{ hostname, pkgs, ... }: {
   services = {
+    avizo.enable = true;
+
+    clipman.enable = true;
+
+    kanshi = {
+      enable = true;
+      profiles = (import ./config/displays.nix { }).${hostname}.kanshi-profiles;
+    };
+
     mako = {
       enable = true;
-
       actions = true;
       anchor = "top-right";
       borderRadius = 0;
@@ -25,6 +33,12 @@
         [urgency=high]
         border-color=#f5a97f
       '';
+    };
+
+    wlsunset = {
+      enable = true;
+      latitude = "51.51";
+      longitude = "-2.53";
     };
   };
 }

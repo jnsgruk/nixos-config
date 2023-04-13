@@ -1,10 +1,7 @@
 { pkgs, ... }: {
-  nixpkgs.overlays = [
-    (_self: _super: { rofi = pkgs.rofi-wayland; })
-  ];
-
   programs.rofi = {
     enable = true;
+    package = pkgs.rofi-wayland;
 
     theme = ./theme.rasi;
     terminal = "${pkgs.alacritty}/bin/alacritty";
