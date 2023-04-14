@@ -14,13 +14,13 @@ The machines configured thus far are:
 ## Structure
 
 - [home]: my home-manager configuration
-- [hosts]: host-specific configurations
+- [host]: host-specific configurations
 - [overlays]: package/configuration overlays
 - [pkgs]: my custom package definitions
 - [scripts]: helper scripts for machine setup
 
 [home]: ./home
-[hosts]: ./hosts
+[host]: ./host
 [overlays]: ./overlays
 [pkgs]: ./pkgs
 [scripts]: ./scripts
