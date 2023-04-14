@@ -1,22 +1,6 @@
 { pkgs, config, lib, ... }:
 let
   theme = (import ../../../home/common/desktop/gtk.nix { inherit pkgs config; }).gtk.theme.name;
-
-  swayRun = pkgs.writeShellScript "sway-run" ''
-    export XDG_SESSION_TYPE=wayland
-    export XDG_SESSION_DESKTOP=sway
-    export XDG_CURRENT_DESKTOP=sway
-    systemd-run \
-      --user \
-      --scope \
-      --collect \
-      --quiet \
-      --unit=sway \
-      systemd-cat \
-      --identifier=sway \
-      ${pkgs.sway}/bin/sway \
-      $@; ${pkgs.sway}/bin/swaymsg exit
-  '';
 in
 {
   environment = {
@@ -46,7 +30,10 @@ in
       restart = false;
       settings = {
         default_session = {
-          command = "${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet -r --asterisks --time --cmd ${swayRun}";
+          command = ''
+            ${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet -r --asterisks --time \
+              --cmd ${pkgs.sway-scripts}/bin/sway-run
+          '';
         };
       };
     };

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+export XDG_SESSION_TYPE="wayland"
+export XDG_SESSION_DESKTOP="sway"
+export XDG_CURRENT_DESKTOP="sway"
+
+systemd-run --user --scope --collect --quiet --unit="sway" \
+    systemd-cat --identifier="sway" sway $@
+
+swaymsg exit
