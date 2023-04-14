@@ -24,18 +24,7 @@ in
 
     systemPackages = with pkgs; [
       polkit_gnome
-
-      # Patch the .desktop file for Nautilus to force the GTK_THEME variable.
-      # Later versions of Nautilus rely on libadwaita, which doesn't seem to respect the
-      # gtk-theme-name in the gtk config.
-      # TODO: Do this is home-manager instead
-      (gnome.nautilus.overrideAttrs (_old: {
-        postInstall = ''
-          sed -i -e \
-            "s/Exec=/Exec=env GTK_THEME=${theme} /g" \
-            $out/share/applications/org.gnome.Nautilus.desktop
-        '';
-      }))
+      gnome.nautilus
     ];
   };
 
