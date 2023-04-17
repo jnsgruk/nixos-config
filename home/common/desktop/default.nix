@@ -2,7 +2,7 @@
   imports = [
     (./. + "/${desktop}")
 
-    ./dev
+    ../dev
 
     ./alacritty.nix
     ./gtk.nix
