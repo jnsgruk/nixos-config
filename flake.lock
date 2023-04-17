@@ -23,17 +23,16 @@
     },
     "embr": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1677254500,
-        "narHash": "sha256-f//tIVc1kHkVmtOw/kx3D8TMMZqBdkg8koeZhh3mbcU=",
+        "lastModified": 1681751426,
+        "narHash": "sha256-9WIqEUNWylZFbLmFy91pIl8vNbyfNlPlpD528pSnEC0=",
         "owner": "jnsgruk",
         "repo": "firecracker-ubuntu",
-        "rev": "0491ead02bfdb7fb924123b848f2d12f4d26ca82",
+        "rev": "5f3a5b16a87ddf93149dcbdaa8b697ffbc34a66e",
         "type": "github"
       },
       "original": {
@@ -43,21 +42,6 @@
       }
     },
     "flake-utils": {
-      "locked": {
-        "lastModified": 1667395993,
-        "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "5aed5285a952e0b949eb3ba02c12fa4fcfef535f",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
-      }
-    },
-    "flake-utils_2": {
       "locked": {
         "lastModified": 1667395993,
         "narHash": "sha256-nuEHfE/LcWyuSWnS8t12N1wc105Qtau+/OdUAjtQ0rA=",

@@ -1,12 +1,5 @@
-{ pkgs
-, inputs
-, ...
-}:
-let
-  embr = inputs.embr.packages."${pkgs.system}".embr;
-in
-{
-  environment.systemPackages = [ embr ];
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ embr ];
 
   networking = {
     firewall = {

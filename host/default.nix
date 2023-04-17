@@ -1,4 +1,4 @@
-{ config, desktop, hostname, inputs, lib, modulesPath, outputs, stateVersion, username, ... }: {
+{ config, desktop, hostname, inputs, lib, modulesPath, outputs, stateVersion, username, pkgs, ... }: {
 
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -20,6 +20,10 @@
 
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
+      inputs.embr.overlay
+
+      # Or just specify overlays directly here, for example:
+      # (_: _: { embr = inputs.embr.packages."${pkgs.system}".embr; })
     ];
 
     config = {
