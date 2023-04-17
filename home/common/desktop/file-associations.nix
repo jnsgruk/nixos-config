@@ -1,8 +1,8 @@
-{
-
+let
   browser = [ "google-chrome.desktop" ];
   archiveManager = [ "org.gnome.FileRoller.desktop" ];
-
+in
+{
   # XDG MIME types
   associations = {
     "application/x-extension-htm" = browser;
