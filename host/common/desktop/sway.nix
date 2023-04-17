@@ -1,7 +1,4 @@
 { pkgs, config, lib, ... }:
-let
-  theme = (import ../../../home/common/desktop/gtk.nix { inherit pkgs config; }).gtk.theme.name;
-in
 {
   environment = {
     variables.NIXOS_OZONE_WL = "1";
