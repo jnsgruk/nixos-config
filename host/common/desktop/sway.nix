@@ -9,6 +9,7 @@ in
     systemPackages = with pkgs; [
       polkit_gnome
       gnome.nautilus
+      gnome.zenity
     ];
   };
 
