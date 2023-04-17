@@ -1,4 +1,4 @@
-{ config, desktop, lib, outputs, stateVersion, username, ... }:
+{ config, desktop, lib, outputs, stateVersion, username, inputs, ... }:
 {
   # Only import desktop configuration if the host is desktop enabled
   # Only import user specific configuration if they have bespoke settings
@@ -27,7 +27,7 @@
       outputs.overlays.modifications
 
       # You can also add overlays exported from other flakes:
-      # neovim-nightly-overlay.overlays.default
+      inputs.crafts.overlay
     ];
     config = {
       # Disable if you don't want unfree packages
