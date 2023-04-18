@@ -44,6 +44,7 @@
     htop
     jq
     killall
+    kubectl
     pciutils
     ripgrep
     rsync
