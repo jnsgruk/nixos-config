@@ -6,24 +6,29 @@
     vimAlias = true;
     vimdiffAlias = true;
 
-    extraConfig = ''
-      set autochdir
-      set autoindent
-      set background=dark
-      set bs=indent,eol,start
-      set cindent
-      set expandtab
-      set hlsearch
-      set ignorecase
-      set nobackup
-      set number
-      set shiftwidth=2
-      set showmatch
-      set smartindent
-      set smarttab
-      set softtabstop=2
-      set tabstop=2
-      set termguicolors
+    extraLuaConfig = ''
+      vim.opt.autochdir = true
+      vim.opt.backup = false
+
+      vim.opt.autoindent = true
+      vim.opt.cindent = true
+      vim.opt.smartindent = true
+
+      vim.opt.expandtab = true
+      vim.opt.shiftwidth = 2
+      vim.opt.smarttab = true
+      vim.opt.softtabstop = 2
+      vim.opt.tabstop = 2
+
+      vim.opt.backspace = "indent,eol,start"
+
+      vim.opt.hlsearch = true
+      vim.opt.ignorecase = true
+      vim.opt.showmatch = true
+
+      vim.opt.number = true
+      vim.opt.background = dark
+      vim.opt.termguicolors = true
     '';
 
     plugins = with pkgs.vimPlugins; [
