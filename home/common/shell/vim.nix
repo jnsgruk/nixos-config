@@ -58,6 +58,13 @@
       vim-nix
       vim-visual-multi
       {
+        plugin = nvim-comment;
+        type = "lua";
+        config = ''
+          require('nvim_comment').setup()
+        '';
+      }
+      {
         plugin = nvim-tree-lua;
         type = "lua";
         config = ''
