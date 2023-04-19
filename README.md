@@ -4,12 +4,13 @@ This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for confi
 
 The machines configured thus far are:
 
-| Hostname |        Model        |  Role   |
-| :------: | :-----------------: | :-----: |
-| `freyja` | Lenovo Thinkpad Z13 | Laptop  |
-|  `loki`  | Ryzen 3900X Custom  | Desktop |
-|  `odin`  |  Dell XPS 13 9370   | Laptop  |
-|  `thor`  |   Intel NUC6i7KYK   | Server  |
+| Hostname |        Model        |  OS   |  Role   |
+| :------: | :-----------------: | :---: | :-----: |
+|  `dev`   |    Multipass VM     | NixOS | Server  |
+| `freyja` | Lenovo Thinkpad Z13 | NixOS | Laptop  |
+|  `loki`  | Ryzen 3900X Custom  | NixOS | Desktop |
+|  `odin`  |  Dell XPS 13 9370   | NixOS | Laptop  |
+|  `thor`  |   Intel NUC6i7KYK   | NixOS | Server  |
 
 ## Structure
 
@@ -29,26 +30,25 @@ The machines configured thus far are:
 
 The following is a list of the key elements of my setup, with links to their config:
 
-| Type  | Details                                               |
-| :---: | :---------------------------------------------------- |
-| Shell | [zsh], [starship], [nvim], [tmux], [neofetch]         |
-|  WM   | [sway], [waybar], [swaylock], [mako], [greetd], [gtk] |
-| Apps  | [vscode], [zathura], [alacritty]                      |
+| Type  | Details                                       |
+| :---: | :-------------------------------------------- |
+| Shell | [zsh], [starship], [nvim], [tmux], [neofetch] |
+|  WM   | [sway], [waybar], [swaylock], [mako], [gtk]   |
+| Apps  | [vscode], [zathura], [alacritty]              |
 
-[alacritty]: ./home/common/optional/desktop/alacritty.nix
-[greetd]: ./hosts/common/optional/greetd.nix
-[gtk]: ./home/common/optional/desktop/gtk.nix
-[mako]: ./home/common/optional/sway/mako.nix
-[neofetch]: ./home/common/optional/desktop/neofetch/default.nix
-[nvim]: ./home/common/global/vim/default.nix
-[starship]: ./home/common/global/shell/starship.nix
-[sway]: ./home/common/optional/sway/default.nix
-[swaylock]: ./home/common/optional/sway/swaylock.nix
-[tmux]: ./home/common/global/shell/tmux.nix
-[vscode]: ./home/common/optional/desktop/vscode.nix
-[zathura]: ./home/common/optional/desktop/zathura.nix
-[waybar]: ./home/common/optional/sway/waybar.nix
-[zsh]: ./home/common/global/shell/zsh.nix
+[alacritty]: ./home/common/desktop/alacritty.nix
+[gtk]: ./home/common/desktop/gtk.nix
+[mako]: ./home/common/desktop/sway/services.nix
+[neofetch]: ./home/common/shell/neofetch.nix
+[nvim]: ./home/common/shell/vim.nix
+[starship]: ./home/common/shell/starship.nix
+[sway]: ./home/common/desktop/sway/default.nix
+[swaylock]: ./home/common/desktop/sway/swaylock.nix
+[tmux]: ./home/common/shell/tmux.nix
+[vscode]: ./home/common/desktop/vscode.nix
+[zathura]: ./home/common/desktop/zathura.nix
+[waybar]: ./home/common/desktop/sway/waybar/default.nix
+[zsh]: ./home/common/shell/zsh.nix
 
 ## Screenshots
 
