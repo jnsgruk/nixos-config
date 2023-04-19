@@ -48,6 +48,7 @@
     pciutils
     ripgrep
     rsync
+    terraform
     tree
     unzip
     usbutils

@@ -15,6 +15,7 @@
     kubectl
     ripgrep
     rsync
+    terraform
     tree
     unzip
     wget
