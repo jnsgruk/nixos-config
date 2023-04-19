@@ -9,6 +9,7 @@
 
     ../hardware/yubikey.nix
 
+    ../services/firewall.nix
     ../services/fwupd.nix
     ../services/networkmanager.nix
     ../services/openssh.nix
@@ -20,16 +21,6 @@
     hostName = hostname;
     hostId = hostid;
     useDHCP = lib.mkDefault true;
-    firewall = {
-      enable = true;
-      allowedTCPPorts = [
-        22000 # syncthing
-      ];
-      allowedUDPPorts = [
-        22000 # syncthing
-        21027 # syncthing
-      ];
-    };
   };
 
   environment.systemPackages = with pkgs; [
