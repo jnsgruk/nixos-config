@@ -102,6 +102,18 @@
           };
           modules = [ ./home ];
         };
+
+        # Used for running home-manager on Ubuntu under multipass
+        "ubuntu@dev" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion;
+            hostname = "dev";
+            desktop = null;
+            username = "ubuntu";
+          };
+          modules = [ ./home ];
+        };
       };
 
       # hostids are generated using `head -c4 /dev/urandom | od -A none -t x4`
