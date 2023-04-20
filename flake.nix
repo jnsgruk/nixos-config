@@ -56,6 +56,11 @@
         in import ./shell.nix { inherit pkgs; }
       );
 
+      formatter = forAllSystems (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in pkgs.nixpkgs-fmt
+      );
+
       overlays = import ./overlays;
 
       homeConfigurations = {
