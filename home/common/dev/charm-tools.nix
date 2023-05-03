@@ -2,7 +2,8 @@
 , ...
 }: {
   home.packages = with pkgs; [
-    juju
     charmcraft
+    juju
+    rockcraft
   ];
 }
