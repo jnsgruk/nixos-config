@@ -2,7 +2,7 @@
 let
   modules =
     # If this is a laptop, then include network/battery controls
-    if hostname == "freyja" || hostname == "odin"
+    if hostname == "freyja"
     then [
       "tray"
       "custom/scratchpad-indicator"

@@ -86,17 +86,6 @@
           modules = [ ./home ];
         };
 
-        "jon@odin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
-            hostname = "odin";
-            desktop = "sway";
-            username = "jon";
-          };
-          modules = [ ./home ];
-        };
-
         "jon@thor" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
@@ -139,17 +128,6 @@
             inherit inputs outputs stateVersion;
             hostname = "loki";
             hostid = "4c53e052";
-            desktop = "sway";
-            username = "jon";
-          };
-          modules = [ ./host ];
-        };
-
-        odin = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs stateVersion;
-            hostname = "odin";
-            hostid = "17d07435";
             desktop = "sway";
             username = "jon";
           };

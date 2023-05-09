@@ -9,7 +9,6 @@ The machines configured thus far are:
 |  `dev`   |    Multipass VM     | NixOS | Server  |
 | `freyja` | Lenovo Thinkpad Z13 | NixOS | Laptop  |
 |  `loki`  | Ryzen 3900X Custom  | NixOS | Desktop |
-|  `odin`  |  Dell XPS 13 9370   | NixOS | Laptop  |
 |  `thor`  |   Intel NUC6i7KYK   | NixOS | Server  |
 
 ## Structure
