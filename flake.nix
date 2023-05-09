@@ -1,30 +1,34 @@
 {
   description = "jnsgruk's nixos configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    vscode-server.url = "github:msteen/nixos-vscode-server";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    vscode-server = {
+      url = "github:msteen/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    nixos-hardware = {
-      url = "github:NixOS/nixos-hardware/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     crafts = {
       # url = "path:/home/jon/crafts-flake";
       url = "github:jnsgruk/crafts-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     embr = {
       # url = "path:/home/jon/firecracker-ubuntu";
       url = "github:jnsgruk/firecracker-ubuntu";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
   outputs =
     { self
     , nixpkgs
+    , nixpkgs-unstable
     , home-manager
     , ...
     } @ inputs:
@@ -45,27 +49,27 @@
     {
       # Custom packages; acessible via 'nix build', 'nix shell', etc
       packages = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
+        let pkgs = nixpkgs-unstable.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; }
       );
 
       # Devshell for bootstrapping
       # Accessible via 'nix develop' or 'nix-shell' (legacy)
       devShells = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
+        let pkgs = nixpkgs-unstable.legacyPackages.${system};
         in import ./shell.nix { inherit pkgs; }
       );
 
       formatter = forAllSystems (system:
-        let pkgs = nixpkgs.legacyPackages.${system};
+        let pkgs = nixpkgs-unstable.legacyPackages.${system};
         in pkgs.nixpkgs-fmt
       );
 
-      overlays = import ./overlays;
+      overlays = import ./overlays { inherit inputs; };
 
       homeConfigurations = {
         "jon@freyja" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "freyja";
@@ -76,7 +80,7 @@
         };
 
         "jon@loki" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "loki";
@@ -87,7 +91,7 @@
         };
 
         "jon@thor" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "thor";
@@ -99,7 +103,7 @@
 
         # Used for running home-manager on Ubuntu under multipass
         "ubuntu@dev" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "dev";
@@ -112,7 +116,7 @@
 
       # hostids are generated using `head -c4 /dev/urandom | od -A none -t x4`
       nixosConfigurations = {
-        freyja = nixpkgs.lib.nixosSystem {
+        freyja = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "freyja";
@@ -123,7 +127,7 @@
           modules = [ ./host ];
         };
 
-        loki = nixpkgs.lib.nixosSystem {
+        loki = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "loki";
