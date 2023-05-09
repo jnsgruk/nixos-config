@@ -20,6 +20,7 @@
   home.packages = with pkgs; [
     catppuccin-gtk
     desktop-file-utils
+    ght
     google-chrome
     imlib2Full
     libnotify
