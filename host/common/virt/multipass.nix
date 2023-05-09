@@ -1,4 +1,4 @@
-{ pkgs, inputs, options, ... }: {
+{ pkgs, inputs, ... }: {
   # Always use the multipass module from the nixos-unstable nixpkgs branch
   imports = [ "${inputs.nixpkgs-unstable}/nixos/modules/virtualisation/multipass.nix" ];
 
