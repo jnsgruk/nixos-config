@@ -26,20 +26,16 @@
   environment.systemPackages = with pkgs; [
     bat
     binutils
-    ctop
     curl
-    dive
     duf
     exa
     git
     htop
     jq
     killall
-    kubectl
     pciutils
     ripgrep
     rsync
-    terraform
     tree
     unzip
     usbutils
