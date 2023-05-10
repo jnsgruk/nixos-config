@@ -11,8 +11,11 @@
         else
           ${pkgs.coreutils}/bin/mkdir "$swapdir"
           ${pkgs.coreutils}/bin/truncate -s 0 "$swapfile"
-          ${pkgs.e2fsprogs}/bin/chattr +C "$swapfile"
-          ${pkgs.btrfs-progs}/bin/btrfs property set "$swapfile" compression none
+          
+          if [[ "$(${pkgs.util-linux}/bin/findmnt -no FSTYPE /)" == "btrfs" ]]; then
+            ${pkgs.e2fsprogs}/bin/chattr +C "$swapfile"
+            ${pkgs.btrfs-progs}/bin/btrfs property set "$swapfile" compression none
+          fi
         fi
       '';
     };
