@@ -3,6 +3,7 @@
     (./. + "/${desktop}.nix")
     ../hardware/ledger.nix
     ../services/pipewire.nix
+    ../virt
   ];
 
   # Enable Plymouth and surpress some logs by default.

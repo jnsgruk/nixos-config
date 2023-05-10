@@ -5,7 +5,6 @@
     (./. + "/${hostname}/hardware.nix")
 
     ./common/base
-    ./common/virt
     ./common/users/${username}
   ]
   ++ lib.optional (builtins.pathExists (./. + "/${hostname}/extra.nix")) ./${hostname}/extra.nix
