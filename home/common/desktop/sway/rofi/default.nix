@@ -17,12 +17,14 @@
       disable-history = false;
       hide-scrollbar = true;
       display-drun = "   Apps ";
-      display-run = "  Run ";
-      display-window = " 﩯 Window ";
-      display-Network = " 󰤨 Network ";
-      display-emoji = "  Emoji ";
-      display-calc = "  Calc ";
+      display-run = "   Run ";
+      display-emoji = "   Emoji ";
+      display-calc = "   Calc ";
       sidebar-mode = true;
     };
+  };
+
+  home.file = {
+    ".config/rofi/powermenu.rasi".source = ./powermenu.rasi;
   };
 }

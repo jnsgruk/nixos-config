@@ -10,7 +10,6 @@
     grey: #6e738d;
 
     width: 600;
-    //font: "Liga SFMono Nerd Font 14";
     font: "SF Pro Display 14";
 }
 

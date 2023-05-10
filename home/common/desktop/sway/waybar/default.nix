@@ -128,7 +128,7 @@ in
 
         "custom/power" = {
           format = "";
-          on-click = "${pkgs.sway-scripts}/bin/waybar-power-menu";
+          on-click = "${pkgs.sway-scripts}/bin/rofi-power-menu";
         };
       }
     ];

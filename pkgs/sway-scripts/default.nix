@@ -19,6 +19,12 @@ let
     wf-recorder
   ];
 
+  powermenuDeps = with pkgs; [
+    rofi-wayland
+    sway
+    swaylock-effects
+  ];
+
 in
 pkgs.stdenvNoCC.mkDerivation {
   name = "sway-scripts";
@@ -36,8 +42,8 @@ pkgs.stdenvNoCC.mkDerivation {
     install -Dm 744 sway-screenshot $out/bin/sway-screenshot
     wrapProgram $out/bin/sway-screenshot --prefix PATH : '${lib.makeBinPath screenshotDeps}'
 
-    install -Dm 744 waybar-power-menu $out/bin/waybar-power-menu
-    wrapProgram $out/bin/waybar-power-menu --prefix PATH : '${lib.makeBinPath [pkgs.sway]}'
+    install -Dm 744 rofi-power-menu $out/bin/rofi-power-menu
+    wrapProgram $out/bin/rofi-power-menu --prefix PATH : '${lib.makeBinPath powermenuDeps}'
 
     install -Dm 744 sway-run $out/bin/sway-run
     wrapProgram $out/bin/sway-run --prefix PATH : '${lib.makeBinPath [pkgs.sway]}'

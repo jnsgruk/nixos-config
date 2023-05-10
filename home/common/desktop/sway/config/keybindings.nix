@@ -14,7 +14,7 @@
     # Lock the screen
     "${modifier}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock -f";
     # Exit sway
-    "${modifier}+Shift+e" = "exec ${pkgs.sway-scripts}/bin/waybar-power-menu";
+    "${modifier}+Shift+e" = "exec ${pkgs.sway-scripts}/bin/rofi-power-menu";
     # Kill application
     "Mod1+q" = "kill";
 
