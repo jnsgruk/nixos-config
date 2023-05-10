@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     yubikey-manager
+    pinentry-curses
   ];
 
   services = {
@@ -8,5 +9,8 @@
     udev.packages = [ pkgs.yubikey-personalization ];
   };
 
-  programs.gnupg.agent.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "qt";
+  };
 }
