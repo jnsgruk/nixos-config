@@ -20,6 +20,26 @@
         "type": "github"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1683508929,
+        "narHash": "sha256-AqkIrwewCL8+zlkqhNxheF+kOfyakzZDk43SqRTIqRE=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "2a59f5cf641607dbecb0cfec3ae32247e4aeb311",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "embr": {
       "inputs": {
         "nixpkgs": [
@@ -129,6 +149,7 @@
     "root": {
       "inputs": {
         "crafts": "crafts",
+        "disko": "disko",
         "embr": "embr",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",

@@ -5,6 +5,10 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
     vscode-server = {
       url = "github:msteen/nixos-vscode-server";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -27,6 +31,7 @@
 
   outputs =
     { self
+    , disko
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
@@ -79,6 +84,17 @@
           modules = [ ./home ];
         };
 
+        "jon@hugin" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion;
+            hostname = "hugin";
+            desktop = null;
+            username = "jon";
+          };
+          modules = [ ./home ];
+        };
+
         "jon@loki" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
@@ -122,6 +138,17 @@
             hostname = "freyja";
             hostid = "c120a672";
             desktop = "sway";
+            username = "jon";
+          };
+          modules = [ ./host ];
+        };
+
+        hugin = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs stateVersion;
+            hostname = "hugin";
+            hostid = "49509fa9";
+            desktop = null;
             username = "jon";
           };
           modules = [ ./host ];
