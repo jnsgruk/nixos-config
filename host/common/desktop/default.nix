@@ -2,6 +2,7 @@
   imports = [
     (./. + "/${desktop}.nix")
     ../hardware/ledger.nix
+    ../hardware/yubikey.nix
     ../services/pipewire.nix
     ../virt
   ];

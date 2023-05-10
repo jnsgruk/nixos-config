@@ -7,10 +7,7 @@
   imports = [
     ./locale.nix
 
-    ../hardware/yubikey.nix
-
     ../services/firewall.nix
-    ../services/fwupd.nix
     ../services/networkmanager.nix
     ../services/openssh.nix
     ../services/swapfile.nix
