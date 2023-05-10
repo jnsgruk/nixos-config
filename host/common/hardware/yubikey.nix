@@ -1,7 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
-    yubikey-manager
     pinentry-curses
+    pinentry-qt
+    yubikey-manager
   ];
 
   services = {
