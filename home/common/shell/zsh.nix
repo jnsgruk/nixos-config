@@ -39,6 +39,7 @@
 
       shellAliases = {
         ls = "exa -gl --git --color=automatic";
+        tree = "exa --tree";
         cat = "bat";
 
         ip = "ip --color";
