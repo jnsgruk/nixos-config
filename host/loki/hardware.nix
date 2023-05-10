@@ -19,6 +19,7 @@
     amdgpu.loadInInitrd = true;
   };
 
+  # TODO: Replace with Disko config
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/072df22f-b9b0-4b4c-b718-26557a7c67d5";
     fsType = "btrfs";

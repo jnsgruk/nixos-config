@@ -15,6 +15,7 @@
     enableAllFirmware = true;
   };
 
+  # TODO: Replace with Disko config
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/67e2aec0-abb8-4d0d-b8d4-556a8b2f3532";
     fsType = "btrfs";

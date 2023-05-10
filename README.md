@@ -4,12 +4,13 @@ This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for confi
 
 The machines configured thus far are:
 
-| Hostname |        Model        |  OS   |  Role   |
-| :------: | :-----------------: | :---: | :-----: |
-|  `dev`   |    Multipass VM     | NixOS | Server  |
-| `freyja` | Lenovo Thinkpad Z13 | NixOS | Laptop  |
-|  `loki`  | Ryzen 3900X Custom  | NixOS | Desktop |
-|  `thor`  |   Intel NUC6i7KYK   | NixOS | Server  |
+| Hostname |          Model          |  OS   |  Role   |
+| :------: | :---------------------: | :---: | :-----: |
+|  `dev`   |      Multipass VM       | NixOS | Server  |
+| `freyja` |   Lenovo Thinkpad Z13   | NixOS | Laptop  |
+| `hugin`  | Lenovo Thinkcentre M93p | NixOS | Server  |
+|  `loki`  |   Ryzen 3900X Custom    | NixOS | Desktop |
+|  `thor`  |     Intel NUC6i7KYK     | NixOS | Server  |
 
 ## Structure
 
