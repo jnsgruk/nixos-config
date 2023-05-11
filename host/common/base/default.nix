@@ -24,6 +24,7 @@
     bat
     binutils
     curl
+    dig
     duf
     exa
     file
@@ -34,6 +35,7 @@
     pciutils
     ripgrep
     rsync
+    traceroute
     tree
     unzip
     usbutils
