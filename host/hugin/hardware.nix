@@ -9,7 +9,7 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
-    (import ./disks.nix { disks = [ "/dev/sda" ]; })
+    (import ./disks.nix { })
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
