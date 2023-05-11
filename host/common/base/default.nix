@@ -26,6 +26,7 @@
     curl
     duf
     exa
+    file
     git
     htop
     jq
