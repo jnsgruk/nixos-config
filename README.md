@@ -4,13 +4,13 @@ This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for confi
 
 The machines configured thus far are:
 
-| Hostname |          Model          |  OS   |  Role   |
-| :------: | :---------------------: | :---: | :-----: |
-|  `dev`   |      Multipass VM       | NixOS | Server  |
-| `freyja` |   Lenovo Thinkpad Z13   | NixOS | Laptop  |
-| `hugin`  | Lenovo Thinkcentre M93p | NixOS | Server  |
-|  `loki`  |   Ryzen 3900X Custom    | NixOS | Desktop |
-|  `thor`  |     Intel NUC6i7KYK     | NixOS | Server  |
+| Hostname |          Model          |   OS   |  Role   |
+| :------: | :---------------------: | :----: | :-----: |
+|  `dev`   |     [Multipass] VM      | Ubuntu | Server  |
+| `freyja` |   Lenovo Thinkpad Z13   | NixOS  | Laptop  |
+| `hugin`  | Lenovo Thinkcentre M93p | NixOS  | Server  |
+|  `loki`  |   Ryzen 3900X Custom    | NixOS  | Desktop |
+|  `thor`  |     Intel NUC6i7KYK     | NixOS  | Server  |
 
 ## Structure
 
@@ -19,12 +19,6 @@ The machines configured thus far are:
 - [overlays]: package/configuration overlays
 - [pkgs]: my custom package definitions
 - [scripts]: helper scripts for machine setup
-
-[home]: ./home
-[host]: ./host
-[overlays]: ./overlays
-[pkgs]: ./pkgs
-[scripts]: ./scripts
 
 ## Applications / Packages
 
@@ -35,6 +29,26 @@ The following is a list of the key elements of my setup, with links to their con
 | Shell | [zsh], [starship], [nvim], [tmux], [neofetch] |
 |  WM   | [sway], [waybar], [swaylock], [mako], [gtk]   |
 | Apps  | [vscode], [zathura], [alacritty]              |
+
+## Screenshots
+
+![clean](.github/screenshots/screen_clean.png)
+![neofetch](.github/screenshots/screen_neofetch.png)
+![dirty](.github/screenshots/screen_dirty.png)
+
+<!-- Links -->
+
+[Multipass]: https://multipass.run
+
+<!-- Structure -->
+
+[home]: ./home
+[host]: ./host
+[overlays]: ./overlays
+[pkgs]: ./pkgs
+[scripts]: ./scripts
+
+<!-- Applications / Packages -->
 
 [alacritty]: ./home/common/desktop/alacritty.nix
 [gtk]: ./home/common/desktop/gtk.nix
@@ -49,9 +63,3 @@ The following is a list of the key elements of my setup, with links to their con
 [zathura]: ./home/common/desktop/zathura.nix
 [waybar]: ./home/common/desktop/sway/waybar/default.nix
 [zsh]: ./home/common/shell/zsh.nix
-
-## Screenshots
-
-![clean](.github/screenshots/screen_clean.png)
-![neofetch](.github/screenshots/screen_neofetch.png)
-![dirty](.github/screenshots/screen_dirty.png)
