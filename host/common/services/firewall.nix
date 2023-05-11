@@ -5,6 +5,7 @@ let
     hosts = [
       "freyja"
       "loki"
+      "thor"
     ];
     tcpPorts = [ 22000 ];
     udpPorts = [ 22000 21027 ];
