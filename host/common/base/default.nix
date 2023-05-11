@@ -48,7 +48,10 @@
     _1password.enable = true;
   };
 
-  services.chrony.enable = true;
+  services = {
+    chrony.enable = true;
+    journald.extraConfig = "SystemMaxUse=250M";
+  };
 
   security = {
     polkit.enable = true;
