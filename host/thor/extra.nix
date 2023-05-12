@@ -4,7 +4,10 @@
   ];
 
   # Firewall port for NFS
-  networking.firewall.allowedTCPPorts = [ 2049 ];
+  networking.firewall = {
+    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+  };
 
   # Setup NFS exports
   services = {
