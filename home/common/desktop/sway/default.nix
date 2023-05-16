@@ -1,6 +1,7 @@
 { hostname, pkgs, ... }: {
   imports = [
     ../rofi
+    ../mako.nix
     ../swappy.nix
     ../wl-common.nix
     ./packages.nix
