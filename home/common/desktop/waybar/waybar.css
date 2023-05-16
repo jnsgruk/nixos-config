@@ -40,7 +40,7 @@ window>box {
     background-color: transparent;
 }
 
-#workspaces button.focused {
+#workspaces button.focused, #workspaces button.active {
     color: #eed49f;
     font-weight: normal;
     background: rgba(0, 0, 0, 0);

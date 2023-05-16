@@ -1,6 +1,8 @@
 { hostname, pkgs, ... }: {
   imports = [
     ../rofi
+    ../waybar
+
     ../mako.nix
     ../swappy.nix
     ../swaylock.nix
@@ -8,7 +10,6 @@
 
     ./kanshi.nix
     ./packages.nix
-    ./waybar
   ];
 
   wayland.windowManager.sway =
