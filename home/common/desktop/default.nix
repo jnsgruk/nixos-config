@@ -6,7 +6,6 @@
 
     ./alacritty.nix
     ./gtk.nix
-    ./vscode.nix
     ./xdg.nix
     ./zathura.nix
   ];
@@ -29,7 +28,6 @@
     pavucontrol
     rambox
     signal-desktop
-    sublime-merge
     xdg-utils
     xorg.xlsclients
   ];
