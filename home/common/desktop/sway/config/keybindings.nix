@@ -19,9 +19,9 @@
     "Mod1+q" = "kill";
 
     # Screenshots
-    "Print" = "exec ${pkgs.sway-scripts}/bin/sway-screenshot screen";
-    "Shift+Print" = "exec ${pkgs.sway-scripts}/bin/sway-screenshot window";
-    "Alt+Print" = "exec ${pkgs.sway-scripts}/bin/sway-screenshot region";
+    "Print" = "exec sway-screenshot screen";
+    "Shift+Print" = "exec sway-screenshot window";
+    "Alt+Print" = "exec sway-screenshot region";
 
     # Move focus
     "${modifier}+Left" = "focus left";
