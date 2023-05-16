@@ -8,6 +8,7 @@
       swaylock-effects
     ]
     ++ lib.optional (desktop == "sway") sway
+    ++ lib.optional (desktop == "hyprland") hyprland)}
     
     ${(builtins.readFile ./powermenu.sh)}
   '';

@@ -24,6 +24,10 @@
 
       # Or just specify overlays directly here, for example:
       # (_: _: { embr = inputs.embr.packages."${pkgs.system}".embr; })
+    ]
+    ++ lib.optionals (desktop == "hyprland") [
+      inputs.hyprland.overlays.default
+      inputs.hyprland-contrib.overlays.default
     ];
 
     config = {

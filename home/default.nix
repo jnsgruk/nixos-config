@@ -28,7 +28,12 @@
 
       # You can also add overlays exported from other flakes:
       inputs.crafts.overlay
+    ]
+    ++ lib.optionals (desktop == "hyprland") [
+      inputs.hyprland.overlays.default
+      inputs.hyprland-contrib.overlays.default
     ];
+
     config = {
       # Disable if you don't want unfree packages
       allowUnfree = true;

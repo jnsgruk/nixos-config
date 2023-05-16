@@ -16,10 +16,25 @@ let
       "pulseaudio#source"
       "custom/power"
     ];
+
+  workspaceConfig = {
+    format = "{icon}";
+    format-icons = {
+      "1" = "";
+      "2" = "";
+      "3" = "";
+      "4" = "";
+      "5" = "";
+      "6" = "";
+      "7" = "";
+    };
+    on-click = "activate";
+  };
 in
 {
   programs.waybar = {
     enable = true;
+    package = if desktop == "hyprland" then pkgs.waybar-hyprland else pkgs.waybar;
 
     systemd = {
       enable = if desktop == "sway" then true else false;
@@ -32,22 +47,12 @@ in
       passthrough = false;
       gtk-layer-shell = true;
 
-      modules-left = [ "sway/workspaces" ];
+      modules-left = [ (if desktop == "sway" then "sway/workspaces" else "wlr/workspaces") ];
       modules-center = [ "clock" "idle_inhibitor" ];
       modules-right = modules;
 
-      "sway/workspaces" = {
-        format = "{icon}";
-        format-icons = {
-          "1" = "";
-          "2" = "";
-          "3" = "";
-          "4" = "";
-          "5" = "";
-          "6" = "";
-          "7" = "";
-        };
-      };
+      "sway/workspaces" = workspaceConfig;
+      "wlr/workspaces" = workspaceConfig;
 
       "network" = {
         format-wifi = "{essid} ";

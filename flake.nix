@@ -5,6 +5,15 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    hyprland = {
+      url = "github:hyprwm/Hyprland";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+    hyprland-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
@@ -78,7 +87,7 @@
           extraSpecialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "freyja";
-            desktop = "sway";
+            desktop = "hyprland";
             username = "jon";
           };
           modules = [ ./home ];
@@ -137,7 +146,7 @@
             inherit inputs outputs stateVersion;
             hostname = "freyja";
             hostid = "c120a672";
-            desktop = "sway";
+            desktop = "hyprland";
             username = "jon";
           };
           modules = [ ./host ];
