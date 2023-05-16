@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   environment.systemPackages = with pkgs; [
     pinentry-curses
-    pinentry-qt
+    pinentry-gnome
     yubikey-manager
   ];
 
@@ -12,6 +12,6 @@
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "qt";
+    pinentryFlavor = "gnome3";
   };
 }
