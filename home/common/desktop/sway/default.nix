@@ -1,6 +1,7 @@
 { hostname, pkgs, ... }: {
   imports = [
     ../rofi
+    ../swappy.nix
     ../wl-common.nix
     ./packages.nix
     ./swaylock.nix
