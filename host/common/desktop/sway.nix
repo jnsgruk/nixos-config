@@ -1,54 +1,18 @@
 { pkgs, lib, ... }:
+let
+  sway-run = pkgs.writeShellScriptBin "sway-run" ''
+    export XDG_SESSION_TYPE="wayland"
+    export XDG_SESSION_DESKTOP="sway"
+    export XDG_CURRENT_DESKTOP="sway"
+
+    systemd-run --user --scope --collect --quiet --unit="sway" \
+        systemd-cat --identifier="sway" ${pkgs.sway}/bin/sway $@
+
+    ${pkgs.sway}/bin/swaymsg exit
+  '';
+in
 {
-  environment = {
-    variables.NIXOS_OZONE_WL = "1";
-
-    systemPackages = with pkgs; [
-      polkit_gnome
-      gnome.nautilus
-      gnome.zenity
-    ];
-  };
-
-  services = {
-    dbus = {
-      enable = true;
-      # Make the gnome keyring work properly
-      packages = [ pkgs.gnome3.gnome-keyring pkgs.gcr ];
-    };
-
-    gnome = {
-      at-spi2-core.enable = true;
-      gnome-keyring.enable = true;
-      sushi.enable = true;
-    };
-
-    greetd = {
-      enable = true;
-      restart = false;
-      settings = {
-        default_session = {
-          command = ''
-            ${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet -r --asterisks --time \
-              --cmd ${pkgs.sway-scripts}/bin/sway-run
-          '';
-        };
-      };
-    };
-
-    gvfs.enable = true;
-  };
-
-  security = {
-    pam = {
-      services = {
-        # allow wayland lockers to unlock the screen
-        swaylock.text = "auth include login";
-        # unlock gnome keyring automatically with greetd
-        greetd.enableGnomeKeyring = true;
-      };
-    };
-  };
+  imports = [ (import ./tiling-common.nix { inherit lib pkgs; runner = (lib.getExe sway-run); }) ];
 
   xdg = {
     portal = {
