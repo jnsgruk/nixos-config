@@ -1,8 +1,8 @@
 { hostname, pkgs, ... }: {
   imports = [
+    ../wl-common.nix
     ./packages.nix
     ./rofi
-    ./services.nix
     ./swaylock.nix
     ./waybar
   ];
