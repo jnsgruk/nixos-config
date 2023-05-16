@@ -1,5 +1,3 @@
-#!/usr/bin/env bash
-
 # Options
 shutdown=''
 reboot='󰜉'
@@ -8,6 +6,9 @@ suspend='⏾'
 logout='󰩈'
 yes=''
 no='󰔑'
+
+# Take the name of the desktop as the first argument to the script.
+desktop="$1"
 
 # Rofi CMD
 rofi_cmd() {
@@ -50,7 +51,11 @@ run_cmd() {
 		elif [[ $1 == '--suspend' ]]; then
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			swaymsg exit
+			if [[ "$desktop" == "hyprland" ]]; then
+				hyprctl dispatch exit
+			elif [[ "$desktop" == "sway" ]]; then
+				swaymsg exit
+			fi
 		fi
 	else
 		exit 0

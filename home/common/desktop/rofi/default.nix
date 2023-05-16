@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ desktop, pkgs, lib, ... }: {
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
@@ -24,7 +24,13 @@
     };
   };
 
-  home.file = {
-    ".config/rofi/powermenu.rasi".source = ./powermenu.rasi;
+  home = {
+    packages = [
+      (import ./powermenu { inherit pkgs lib desktop; }).rofi-power
+    ];
+
+    file = {
+      ".config/rofi/powermenu.rasi".source = ./powermenu/powermenu.rasi;
+    };
   };
 }
