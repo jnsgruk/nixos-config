@@ -3,9 +3,9 @@
     ../rofi
     ../mako.nix
     ../swappy.nix
+    ../swaylock.nix
     ../wl-common.nix
     ./packages.nix
-    ./swaylock.nix
     ./waybar
   ];
 

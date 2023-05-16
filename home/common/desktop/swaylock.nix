@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ lib, pkgs, desktop, ... }: {
   programs.swaylock.settings = {
     font = "SF Pro";
     clock = true;
@@ -10,7 +10,7 @@
 
     timestr = "%R";
     datestr = "%a, %e of %B";
-    image = "${../wallpapers/elk-colors.jpg}";
+    image = "${./wallpapers/elk-colors.jpg}";
     # effect-blur = "30x3";
 
     key-hl-color = "880033";
@@ -52,11 +52,11 @@
     ];
     timeouts = [
       { timeout = 300; command = "${lib.getExe pkgs.swaylock-effects} -f"; }
-      {
-        timeout = 305;
-        command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"'';
-        resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
-      }
-    ];
+    ]
+    ++ (lib.optional (desktop == "sway") {
+      timeout = 305;
+      command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"'';
+      resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
+    });
   };
 }
