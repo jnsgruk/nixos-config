@@ -5,6 +5,8 @@
     ../swappy.nix
     ../swaylock.nix
     ../wl-common.nix
+
+    ./kanshi.nix
     ./packages.nix
     ./waybar
   ];

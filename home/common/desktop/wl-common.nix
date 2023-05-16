@@ -1,13 +1,8 @@
-{ pkgs, hostname, ... }: {
+{ pkgs, ... }: {
   services = {
     avizo.enable = true;
 
     clipman.enable = true;
-
-    kanshi = {
-      enable = true;
-      profiles = (import ./sway/config/displays.nix { }).${hostname}.kanshi-profiles;
-    };
 
     wlsunset = {
       enable = true;
