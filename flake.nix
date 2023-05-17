@@ -109,7 +109,7 @@
           extraSpecialArgs = {
             inherit inputs outputs stateVersion;
             hostname = "loki";
-            desktop = "sway";
+            desktop = "hyprland";
             username = "jon";
           };
           modules = [ ./home ];
@@ -168,7 +168,7 @@
             inherit inputs outputs stateVersion;
             hostname = "loki";
             hostid = "4c53e052";
-            desktop = "sway";
+            desktop = "hyprland";
             username = "jon";
           };
           modules = [ ./host ];
