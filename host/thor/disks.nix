@@ -26,9 +26,7 @@ in
                 keyFile = "/tmp/data.keyfile";
 
                 # Don't try to unlock this drive early in the boot.
-                # This feature is part of my fork of disko in response to the following issue:
-                # https://github.com/nix-community/disko/issues/192.
-                enableInitrdUnlock = false;
+                initrdUnlock = false;
 
                 content = {
                   type = "filesystem";
