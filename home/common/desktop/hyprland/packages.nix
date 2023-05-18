@@ -2,11 +2,12 @@
   home.packages = with pkgs; [
     grim
     grimblast
-    slurp
     libva-utils
+    playerctl
+    slurp
+    wdisplays
     wf-recorder
     wl-clipboard
-    wdisplays
     wmctrl
   ];
 }

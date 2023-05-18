@@ -1,4 +1,4 @@
-{ pkgs, lib, hostname, desktop, ... }:
+{ config, pkgs, lib, hostname, desktop, ... }:
 let
   # If this is a laptop, then include network/battery controls
   modules =
@@ -37,7 +37,7 @@ in
     package = if desktop == "hyprland" then pkgs.waybar-hyprland else pkgs.waybar;
 
     systemd = {
-      enable = if desktop == "sway" then true else false;
+      enable = true; #if desktop == "sway" then true else false;
     };
 
     settings = [{
@@ -129,4 +129,7 @@ in
 
     style = builtins.readFile ./waybar.css;
   };
+
+  # This is a hack to ensure that hyprctl ends up in the PATH for the waybar service on hyprland
+  systemd.user.services.waybar.Service.Environment = lib.mkForce "PATH=${lib.makeBinPath [pkgs."${desktop}"]}";
 }
