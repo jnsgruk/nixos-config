@@ -12,6 +12,7 @@ window#waybar {
 window>box {
     margin: 8px 8px 0px 8px;
     background: rgba(54, 58, 79, 0.4);
+    border-radius: 8px;
 }
 
 .modules-right {
