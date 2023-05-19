@@ -1,10 +1,11 @@
 { hostname, inputs, lib, pkgs, ... }:
 let
-  workspaceAssignments = (import ./config/displays.nix { }).${hostname}.workspace-assignments;
-  machineOutputs = (import ./config/displays.nix { }).${hostname}.outputs;
-  machineInputs = builtins.readFile ./config/inputs.conf;
   appearance = builtins.readFile ./config/appearance.conf;
   keybinds = builtins.readFile ./config/keybinds.conf;
+  machineInputs = builtins.readFile ./config/inputs.conf;
+  machineOutputs = (import ./config/displays.nix { }).${hostname}.outputs;
+  windowRules = builtins.readFile ./config/window-rules.conf;
+  workspaceAssignments = (import ./config/displays.nix { }).${hostname}.workspace-assignments;
 in
 {
   imports = [
@@ -32,11 +33,12 @@ in
     };
 
     extraConfig = ''
-      ${machineOutputs}
-      ${machineInputs}
-      ${workspaceAssignments}
       ${appearance}
       ${keybinds}
+      ${machineInputs}
+      ${machineOutputs}
+      ${windowRules}
+      ${workspaceAssignments}
     '';
   };
 
