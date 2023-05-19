@@ -4,13 +4,13 @@ This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for confi
 
 The machines configured thus far are:
 
-| Hostname |          Model          |   OS   |  Role   |
-| :------: | :---------------------: | :----: | :-----: |
-|  `dev`   |     [Multipass] VM      | Ubuntu | Server  |
-| `freyja` |   Lenovo Thinkpad Z13   | NixOS  | Laptop  |
-| `hugin`  | Lenovo Thinkcentre M93p | NixOS  | Server  |
-|  `loki`  |   Ryzen 3900X Custom    | NixOS  | Desktop |
-|  `thor`  |     Intel NUC6i7KYK     | NixOS  | Server  |
+| Hostname |          Model          |   OS   |  Role   | Desktop  |
+| :------: | :---------------------: | :----: | :-----: | :------: |
+|  `dev`   |     [Multipass] VM      | Ubuntu | Server  |    -     |
+| `freyja` |   Lenovo Thinkpad Z13   | NixOS  | Laptop  | Hyprland |
+| `hugin`  | Lenovo Thinkcentre M93p | NixOS  | Server  |    -     |
+|  `loki`  |   Ryzen 3900X Custom    | NixOS  | Desktop | Hyprland |
+|  `thor`  |     Intel NUC6i7KYK     | NixOS  | Server  |    -     |
 
 ## Structure
 
@@ -24,11 +24,11 @@ The machines configured thus far are:
 
 The following is a list of the key elements of my setup, with links to their config:
 
-| Type  | Details                                       |
-| :---: | :-------------------------------------------- |
-| Shell | [zsh], [starship], [nvim], [tmux], [neofetch] |
-|  WM   | [sway], [waybar], [swaylock], [mako], [gtk]   |
-| Apps  | [vscode], [zathura], [alacritty]              |
+| Type  | Details                                                |
+| :---: | :----------------------------------------------------- |
+| Shell | [zsh], [starship], [nvim], [tmux], [neofetch]          |
+|  WM   | [hyprland] [sway], [waybar], [swaylock], [mako], [gtk] |
+| Apps  | [vscode], [zathura], [alacritty]                       |
 
 ## Screenshots
 
@@ -52,6 +52,7 @@ The following is a list of the key elements of my setup, with links to their con
 
 [alacritty]: ./home/common/desktop/alacritty.nix
 [gtk]: ./home/common/desktop/gtk.nix
+[sway]: ./home/common/desktop/hyprland/default.nix
 [mako]: ./home/common/desktop/sway/services.nix
 [neofetch]: ./home/common/shell/neofetch.nix
 [nvim]: ./home/common/shell/vim.nix
