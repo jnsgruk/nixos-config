@@ -11,7 +11,7 @@ window#waybar {
 
 window>box {
     margin: 8px 8px 0px 8px;
-    background: rgba(54, 58, 79, 0.4);
+    background: rgba(54, 58, 79, 0.8);
     border-radius: 8px;
 }
 
@@ -34,15 +34,16 @@ window>box {
     padding: 0px 10px;
     background-color: transparent;
     font-weight: lighter;
+    color: #cad3f5;
 }
 
 #workspaces button:hover {
-    color: #eed49f;
+    color: #8aadf4;
     background-color: transparent;
 }
 
 #workspaces button.focused, #workspaces button.active {
-    color: #eed49f;
+    color: #8aadf4;
     font-weight: normal;
     background: rgba(0, 0, 0, 0);
 }
@@ -61,22 +62,21 @@ window>box {
 #custom-menu,
 #idle_inhibitor {
     padding: 0 10px;
-    color: #b7bdf8;
+    color: #cad3f5;
 }
 
 #mode {
-    /*color: #cc3436;*/
     font-weight: bold;
 }
 
 #custom-power {
-    color: #c6a0f6;
+    color: #8aadf4;
     background: rgba(0, 0, 0, 0);
 }
 
 /*-----Indicators----*/
 #idle_inhibitor.activated {
-    color: #eed49f;
+    color: #8aadf4;
 }
 
 #battery.charging {

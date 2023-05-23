@@ -58,7 +58,7 @@ in
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       Type = "simple";
-      ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${../wallpapers/elk-colors.jpg}";
+      ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${../wallpapers/mountain-landscape.jpg}";
       Restart = "on-failure";
     };
   };

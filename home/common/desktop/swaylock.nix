@@ -15,7 +15,7 @@
 
       timestr = "%R";
       datestr = "%a, %e of %B";
-      image = "${./wallpapers/elk-colors.jpg}";
+      image = "${./wallpapers/mountain-landscape.jpg}";
       # effect-blur = "30x3";
 
       key-hl-color = "880033";

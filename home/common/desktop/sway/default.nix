@@ -39,7 +39,7 @@
           "type:touchpad" = { tap = "enabled"; };
         };
 
-        output."*".bg = "${../wallpapers/elk-colors.jpg} fill";
+        output."*".bg = "${../wallpapers/mountain-landscape.jpg} fill";
 
         fonts = {
           names = [ "Liga SFMono Nerd Font" ];
