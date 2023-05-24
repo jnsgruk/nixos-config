@@ -6,9 +6,11 @@
         TERM = "alacritty";
       };
 
-      padding = {
-        x = 20;
-        y = 20;
+      window = {
+        padding = {
+          x = 20;
+          y = 20;
+        };
       };
 
       decorations = "none";
