@@ -1,4 +1,8 @@
-{ pkgs, ... }: {
+{ pkgs, theme, ... }:
+let
+  defaults = theme { inherit pkgs; };
+in
+{
   qt = {
     enable = true;
     platformTheme = "gtk";
@@ -6,7 +10,7 @@
 
   home = {
     packages = with pkgs; [
-      (catppuccin-kvantum.override { variant = "Macchiato"; accent = "Blue"; })
+      defaults.qtTheme.package
       libsForQt5.qtstyleplugin-kvantum
     ];
     sessionVariables = {
@@ -17,7 +21,7 @@
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=Catppuccin-Macchiato-Blue
+      theme=${defaults.qtTheme.name}
     '';
   };
 }

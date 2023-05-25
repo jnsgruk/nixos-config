@@ -1,4 +1,4 @@
-{ config, pkgs, lib, hostname, desktop, ... }:
+{ config, pkgs, lib, hostname, desktop, theme, ... }:
 let
   # If this is a laptop, then include network/battery controls
   modules =
@@ -30,6 +30,10 @@ let
     };
     on-click = "activate";
   };
+
+  toRasi = (import ../rofi/lib.nix { inherit lib; }).toRasi;
+
+  rofi-power = (import ../rofi/powermenu { inherit config lib desktop pkgs theme; }).rofi-power;
 in
 {
   programs.waybar = {
@@ -123,11 +127,14 @@ in
 
       "custom/power" = {
         format = "";
-        on-click = "${lib.getExe (import ../rofi/powermenu { inherit lib desktop pkgs; }).rofi-power} ${desktop}";
+        on-click = "${lib.getExe rofi-power} ${desktop}";
       };
     }];
 
-    style = builtins.readFile ./waybar.css;
+    # This is a bit of a hack. Rasi turns out to be basically CSS, and there is
+    # a handy helper to convert nix -> rasi in the home-manager module for rofi,
+    # so I'm using that here to render the stylesheet for waybar
+    style = toRasi (import ./theme.nix { inherit config pkgs lib theme; }).theme;
   };
 
   # This is a hack to ensure that hyprctl ends up in the PATH for the waybar service on hyprland

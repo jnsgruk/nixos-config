@@ -1,4 +1,8 @@
-{ desktop, pkgs, ... }: {
+{ desktop, pkgs, theme, ... }:
+let
+  defaults = theme { inherit pkgs; };
+in
+{
   imports = [
     (./. + "/${desktop}.nix")
     ../hardware/ledger.nix
@@ -36,12 +40,13 @@
 
   fonts = {
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "FiraCode" "Meslo" ]; })
-      joypixels
       liberation_ttf
-      sf-mono-liga-font
-      sfpro-font
       ubuntu_font_family
+
+      defaults.fonts.default.package
+      defaults.fonts.emoji.package
+      defaults.fonts.iconFont.package
+      defaults.fonts.monospace.package
     ];
 
     # Use fonts specified by user rather than default ones
@@ -52,10 +57,10 @@
       antialias = true;
 
       defaultFonts = {
-        serif = [ "SF Pro Display" "Joypixels" ];
-        sansSerif = [ "SF Pro Display" "Joypixels" ];
-        monospace = [ "MesloLGSDZ Nerd Font Mono" "FiraCode Nerd Font Mono" ];
-        emoji = [ "Joypixels" ];
+        serif = [ "${defaults.fonts.default.name}" "${defaults.fonts.emoji.name}" ];
+        sansSerif = [ "${defaults.fonts.default.name}" "${defaults.fonts.emoji.name}" ];
+        monospace = [ "${defaults.fonts.monospace.name}" ];
+        emoji = [ "${defaults.fonts.emoji.name}" ];
       };
 
       hinting = {

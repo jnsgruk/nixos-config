@@ -1,4 +1,9 @@
-{ ... }: {
+{ theme, pkgs, ... }:
+let
+  defaults = theme { inherit pkgs; };
+  colours = defaults.colours;
+in
+{
   programs.alacritty = {
     enable = true;
     settings = {
@@ -21,108 +26,108 @@
       scrolling.history = 100000;
 
       font = {
-        normal.family = "MesloLGMDZ Nerd Font Mono";
+        normal.family = "${defaults.fonts.monospace.name}";
         size = 14;
       };
 
       colors = {
         # Default colors
         primary = {
-          background = "#24273A";
-          foreground = "#CAD3F5";
-          dim_foreground = "#CAD3F5";
-          bright_foreground = "#CAD3F5";
+          background = "${colours.bg}";
+          foreground = "${colours.text}";
+          dim_foreground = "${colours.text}";
+          bright_foreground = "${colours.text}";
         };
 
         # Cursor colors
         cursor = {
-          text = "#24273A"; # base
-          cursor = "#F4DBD6"; # rosewater
+          text = "${colours.bg}";
+          cursor = "${colours.white}";
         };
 
         vi_mode_cursor = {
-          text = "#24273A"; # base
-          cursor = "#B7BDF8"; # lavender
+          text = "${colours.bg}";
+          cursor = "${colours.lightPurple}";
         };
 
         # Search colors
         search = {
           matches = {
-            foreground = "#24273A"; # base
-            background = "#A5ADCB"; # subtext0
+            foreground = "${colours.bg}";
+            background = "${colours.subtext0}";
           };
           focused_match = {
-            foreground = "#24273A"; # base
-            background = "#A6DA95"; # green
+            foreground = "${colours.bg}";
+            background = "${colours.green}";
           };
           footer_bar = {
-            foreground = "#24273A"; # base
-            background = "#A5ADCB"; # subtext0
+            foreground = "${colours.bg}";
+            background = "${colours.subtext0}";
           };
         };
 
         # Keyboard regex hints
         hints = {
           start = {
-            foreground = "#24273A"; # base
-            background = "#EED49F"; # yellow
+            foreground = "${colours.bg}";
+            background = "${colours.yellow}";
           };
           end = {
-            foreground = "#24273A"; # base
-            background = "#A5ADCB"; # subtext0
+            foreground = "${colours.bg}";
+            background = "${colours.subtext0}";
           };
         };
 
         # Selection colors
         selection = {
-          text = "#24273A"; # base
-          background = "#F4DBD6"; # rosewater
+          text = "${colours.bg}";
+          background = "${colours.white}";
         };
 
         # Normal colors
         normal = {
-          black = "#494D64"; # surface1
-          red = "#ED8796"; # red
-          green = "#A6DA95"; # green
-          yellow = "#EED49F"; # yellow
-          blue = "#8AADF4"; # blue
-          magenta = "#F5BDE6"; # pink
-          cyan = "#8BD5CA"; # teal
-          white = "#B8C0E0"; # subtext1
+          black = "${colours.surface1}";
+          red = "${colours.red}";
+          green = "${colours.green}";
+          yellow = "${colours.yellow}";
+          blue = "${colours.darkBlue}";
+          magenta = "${colours.pink}";
+          cyan = "${colours.cyan}";
+          white = "${colours.subtext1}";
         };
 
         # Bright colors
         bright = {
-          black = "#5B6078"; # surface2
-          red = "#ED8796"; # red
-          green = "#A6DA95"; # green
-          yellow = "#EED49F"; # yellow
-          blue = "#8AADF4"; # blue
-          magenta = "#F5BDE6"; # pink
-          cyan = "#8BD5CA"; # teal
-          white = "#A5ADCB"; # subtext0
+          black = "${colours.surface2}";
+          red = "${colours.red}";
+          green = "${colours.green}";
+          yellow = "${colours.yellow}";
+          blue = "${colours.darkBlue}";
+          magenta = "${colours.pink}";
+          cyan = "${colours.cyan}";
+          white = "${colours.subtext0}";
         };
 
         # Dim colors
         dim = {
-          black = "#494D64"; # surface1
-          red = "#ED8796"; # red
-          green = "#A6DA95"; # green
-          yellow = "#EED49F"; # yellow
-          blue = "#8AADF4"; # blue
-          magenta = "#F5BDE6"; # pink
-          cyan = "#8BD5CA"; # teal
-          white = "#B8C0E0"; # subtext1
+          black = "${colours.surface1}";
+          red = "${colours.red}";
+          green = "${colours.green}";
+          yellow = "${colours.yellow}";
+          blue = "${colours.darkBlue}";
+          magenta = "${colours.pink}";
+          cyan = "${colours.cyan}";
+          white = "${colours.subtext1}";
         };
 
         indexed_colors = [
           {
             index = 16;
-            color = "#F5A97F";
+            color = "${colours.orange}";
           }
           {
             index = 17;
-            color = "#F4DBD6";
+            color = "${colours.white}";
           }
         ];
       };

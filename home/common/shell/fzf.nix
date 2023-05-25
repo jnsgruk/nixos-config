@@ -1,4 +1,8 @@
-{ ... }: {
+{ theme, pkgs, ... }:
+let
+  colours = (theme { inherit pkgs; }).colours;
+in
+{
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
@@ -22,18 +26,18 @@
     tmux.enableShellIntegration = true;
 
     colors = {
-      "bg+" = "#363a4f";
-      "fg+" = "#cad3f5";
-      "hl+" = "#ed8796";
-      bg = "#24273a";
-      fg = "#cad3f5";
-      header = "#ed8796";
-      hl = "#ed8796";
-      info = "#c6a0f6";
-      marker = "#f4dbd6";
-      pointer = "#f4dbd6";
-      prompt = "#c6a0f6";
-      spinner = "#f4dbd6";
+      "bg+" = "${colours.surface0}";
+      "fg+" = "${colours.text}";
+      "hl+" = "${colours.red}";
+      bg = "${colours.bg}";
+      fg = "${colours.text}";
+      header = "${colours.red}";
+      hl = "${colours.red}";
+      info = "${colours.purple}";
+      marker = "${colours.white}";
+      pointer = "${colours.white}";
+      prompt = "${colours.purple}";
+      spinner = "${colours.white}";
     };
   };
 }

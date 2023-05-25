@@ -59,6 +59,8 @@
 
       # https://nixos.wiki/wiki/FAQ/When_do_I_update_stateVersion
       stateVersion = "22.11";
+
+      theme = import ./lib/theme;
     in
     {
       # Custom packages; acessible via 'nix build', 'nix shell', etc
@@ -85,7 +87,7 @@
         "jon@freyja" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "freyja";
             desktop = "hyprland";
             username = "jon";
@@ -96,7 +98,7 @@
         "jon@hugin" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "hugin";
             desktop = null;
             username = "jon";
@@ -107,7 +109,7 @@
         "jon@loki" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "loki";
             desktop = "hyprland";
             username = "jon";
@@ -118,7 +120,7 @@
         "jon@thor" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "thor";
             desktop = null;
             username = "jon";
@@ -130,7 +132,7 @@
         "ubuntu@dev" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "dev";
             desktop = null;
             username = "ubuntu";
@@ -143,7 +145,7 @@
       nixosConfigurations = {
         freyja = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "freyja";
             hostid = "c120a672";
             desktop = "hyprland";
@@ -154,7 +156,7 @@
 
         hugin = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "hugin";
             hostid = "49509fa9";
             desktop = null;
@@ -165,7 +167,7 @@
 
         loki = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "loki";
             hostid = "4c53e052";
             desktop = "hyprland";
@@ -176,7 +178,7 @@
 
         thor = nixpkgs.lib.nixosSystem {
           specialArgs = {
-            inherit inputs outputs stateVersion;
+            inherit inputs outputs stateVersion theme;
             hostname = "thor";
             hostid = "96f2b9b5";
             desktop = null;

@@ -1,15 +1,16 @@
-{ pkgs
+{ theme
+, pkgs
 , config
 , ...
 }:
 let
-  theme = "Catppuccin-Macchiato-Standard-Blue-Dark";
+  defaults = theme { inherit pkgs; };
 in
 {
   home.pointerCursor = {
-    package = pkgs.gnome.adwaita-icon-theme;
-    name = "Adwaita";
-    size = 24;
+    package = defaults.cursorTheme.package;
+    name = "${defaults.cursorTheme.name}";
+    size = defaults.cursorTheme.size;
     gtk.enable = true;
     x11.enable = true;
   };
@@ -18,8 +19,8 @@ in
     enable = true;
 
     font = {
-      name = "SF Pro, 11";
-      package = pkgs.sfpro-font;
+      name = "${defaults.fonts.default.name}, ${defaults.fonts.default.size}";
+      package = defaults.fonts.default.package;
     };
 
     gtk2 = {
@@ -39,17 +40,10 @@ in
     };
 
     iconTheme = {
-      name = "Papirus-Dark";
-      package = pkgs.papirus-icon-theme;
+      name = defaults.iconTheme.name;
+      package = defaults.iconTheme.package;
     };
 
-    theme = {
-      name = "${theme}";
-      package = pkgs.catppuccin-gtk.override {
-        size = "standard";
-        variant = "macchiato";
-        accents = [ "blue" ];
-      };
-    };
+    theme = defaults.gtkTheme;
   };
 }

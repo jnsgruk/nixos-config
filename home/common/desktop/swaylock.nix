@@ -1,11 +1,16 @@
-{ lib, pkgs, desktop, ... }: {
+{ lib, pkgs, desktop, theme, ... }:
+let
+  defaults = theme { inherit pkgs; };
+  colours = defaults.colours;
+in
+{
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
 
     settings = {
 
-      font = "SF Pro";
+      font = "${defaults.fonts.default.name}";
       clock = true;
 
       indicator = true;
@@ -15,38 +20,38 @@
 
       timestr = "%R";
       datestr = "%a, %e of %B";
-      image = "${./wallpapers/mountain-landscape.jpg}";
+      image = "${defaults.wallpaper}";
       # effect-blur = "30x3";
 
-      key-hl-color = "880033";
-      separator-color = "00000000";
+      key-hl-color = "${colours.green}";
+      separator-color = "${colours.black}00";
 
-      inside-color = "00000099";
-      inside-clear-color = "ffd20400";
-      inside-caps-lock-color = "009ddc00";
-      inside-ver-color = "d9d8d800";
-      inside-wrong-color = "ee2e2400";
+      inside-color = "${colours.bg}99";
+      inside-clear-color = "${colours.yellow}00";
+      inside-caps-lock-color = "${colours.lightBlue}00";
+      inside-ver-color = "${colours.overlay0}00";
+      inside-wrong-color = "${colours.red}00";
 
-      ring-color = "231f20D9";
-      ring-clear-color = "231f20D9";
-      ring-caps-lock-color = "231f20D9";
-      ring-ver-color = "231f20D9";
-      ring-wrong-color = "231f20D9";
+      ring-color = "${colours.bgDark}D9";
+      ring-clear-color = "${colours.bgDark}D9";
+      ring-caps-lock-color = "${colours.bgDark}D9";
+      ring-ver-color = "${colours.bgDark}D9";
+      ring-wrong-color = "${colours.bgDark}D9";
 
-      line-color = "00000000";
-      line-clear-color = "ffd204FF";
-      line-caps-lock-color = "009ddcFF";
-      line-ver-color = "d9d8d8FF";
-      line-wrong-color = "ee2e24FF";
+      line-color = "${colours.black}00";
+      line-clear-color = "${colours.yellow}FF";
+      line-caps-lock-color = "${colours.lightBlue}FF";
+      line-ver-color = "${colours.overlay0}FF";
+      line-wrong-color = "${colours.red}FF";
 
-      text-clear-color = "ffd20400";
-      text-ver-color = "d9d8d800";
-      text-wrong-color = "ee2e2400";
+      text-clear-color = "${colours.yellow}00";
+      text-ver-color = "${colours.overlay0}00";
+      text-wrong-color = "${colours.red}00";
 
-      bs-hl-color = "ee2e24FF";
-      caps-lock-key-hl-color = "ffd204FF";
-      caps-lock-bs-hl-color = "ee2e24FF";
-      text-caps-lock-color = "009ddc";
+      bs-hl-color = "${colours.red}FF";
+      caps-lock-key-hl-color = "${colours.yellow}FF";
+      caps-lock-bs-hl-color = "${colours.red}FF";
+      text-caps-lock-color = "${colours.lightBlue}";
     };
   };
 

@@ -1,9 +1,16 @@
-{ desktop, pkgs, lib, ... }: {
+{ config, desktop, pkgs, lib, theme, ... }:
+let
+  powermenu = (import ./powermenu { inherit config pkgs lib desktop theme; });
+  rofiTheme = (import ./theme.nix { inherit theme pkgs config; }).theme;
+
+  toRasi = (import ./lib.nix { inherit lib; }).toRasi;
+in
+{
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
 
-    theme = ./theme.rasi;
+    theme = rofiTheme;
     terminal = "${pkgs.alacritty}/bin/alacritty";
     plugins = with pkgs; [
       rofi-calc
@@ -25,12 +32,9 @@
   };
 
   home = {
-    packages = [
-      (import ./powermenu { inherit pkgs lib desktop; }).rofi-power
-    ];
-
+    packages = [ powermenu.rofi-power ];
     file = {
-      ".config/rofi/powermenu.rasi".source = ./powermenu/powermenu.rasi;
+      ".config/rofi/powermenu.rasi".text = toRasi powermenu.theme;
     };
   };
 }

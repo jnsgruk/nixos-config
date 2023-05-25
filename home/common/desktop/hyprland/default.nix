@@ -1,4 +1,4 @@
-{ hostname, inputs, lib, pkgs, ... }:
+{ hostname, inputs, lib, pkgs, theme, ... }:
 let
   appearance = builtins.readFile ./config/appearance.conf;
   keybinds = builtins.readFile ./config/keybinds.conf;
@@ -6,6 +6,8 @@ let
   machineOutputs = (import ./config/displays.nix { }).${hostname}.outputs;
   windowRules = builtins.readFile ./config/window-rules.conf;
   workspaceAssignments = (import ./config/displays.nix { }).${hostname}.workspace-assignments;
+
+  wallpaper = (theme { inherit pkgs; }).wallpaper;
 in
 {
   imports = [
@@ -58,7 +60,7 @@ in
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       Type = "simple";
-      ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${../wallpapers/mountain-landscape.jpg}";
+      ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${wallpaper}";
       Restart = "on-failure";
     };
   };

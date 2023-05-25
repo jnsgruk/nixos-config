@@ -1,4 +1,8 @@
-{ ... }: {
+{ theme, pkgs, ... }:
+let
+  colours = (theme { inherit pkgs; }).colours;
+in
+{
   programs.zathura = {
     enable = true;
     options = {
@@ -6,35 +10,35 @@
       selection-clipboard = "clipboard";
 
       # Catppuccin Macchiato
-      default-fg = "#CAD3F5";
-      default-bg = "#24273A";
-      completion-bg = "#363A4F";
-      completion-fg = "#CAD3F5";
-      completion-highlight-bg = "#575268";
-      completion-highlight-fg = "#CAD3F5";
-      completion-group-bg = "#363A4F";
-      completion-group-fg = "#8AADF4";
-      statusbar-fg = "#CAD3F5";
-      statusbar-bg = "#363A4F";
-      notification-bg = "#363A4F";
-      notification-fg = "#CAD3F5";
-      notification-error-bg = "#363A4F";
-      notification-error-fg = "#ED8796";
-      notification-warning-bg = "#363A4F";
-      notification-warning-fg = "#FAE3B0";
-      inputbar-fg = "#CAD3F5";
-      inputbar-bg = "#363A4F";
-      recolor-lightcolor = "#24273A";
-      recolor-darkcolor = "#CAD3F5";
-      index-fg = "#CAD3F5";
-      index-bg = "#24273A";
-      index-active-fg = "#CAD3F5";
-      index-active-bg = "#363A4F";
-      render-loading-bg = "#24273A";
-      render-loading-fg = "#CAD3F5";
-      highlight-color = "#575268";
-      highlight-fg = "#F5BDE6";
-      highlight-active-color = "#F5BDE6";
+      default-fg = "${colours.text}";
+      default-bg = "${colours.bg}";
+      completion-bg = "${colours.surface0}";
+      completion-fg = "${colours.text}";
+      completion-highlight-bg = "${colours.surface2}";
+      completion-highlight-fg = "${colours.text}";
+      completion-group-bg = "${colours.surface0}";
+      completion-group-fg = "${colours.darkBlue}";
+      statusbar-fg = "${colours.text}";
+      statusbar-bg = "${colours.surface0}";
+      notification-bg = "${colours.surface0}";
+      notification-fg = "${colours.text}";
+      notification-error-bg = "${colours.surface0}";
+      notification-error-fg = "${colours.red}";
+      notification-warning-bg = "${colours.surface0}";
+      notification-warning-fg = "${colours.orange}";
+      inputbar-fg = "${colours.text}";
+      inputbar-bg = "${colours.surface0}";
+      recolor-lightcolor = "${colours.bg}";
+      recolor-darkcolor = "${colours.text}";
+      index-fg = "${colours.text}";
+      index-bg = "${colours.bg}";
+      index-active-fg = "${colours.text}";
+      index-active-bg = "${colours.surface0}";
+      render-loading-bg = "${colours.bg}";
+      render-loading-fg = "${colours.text}";
+      highlight-color = "${colours.surface2}";
+      highlight-fg = "${colours.pink}";
+      highlight-active-color = "${colours.pink}";
     };
   };
 }

@@ -1,4 +1,8 @@
-{ hostname, pkgs, ... }: {
+{ hostname, pkgs, theme, ... }:
+let
+  defaults = (theme { inherit pkgs; });
+in
+{
   imports = [
     ../rofi
     ../waybar
@@ -39,10 +43,10 @@
           "type:touchpad" = { tap = "enabled"; };
         };
 
-        output."*".bg = "${../wallpapers/mountain-landscape.jpg} fill";
+        output."*".bg = "${defaults.wallpaper} fill";
 
         fonts = {
-          names = [ "Liga SFMono Nerd Font" ];
+          names = [ "${defaults.fonts.iconFont.name}" ];
           size = 8.0;
         };
 
