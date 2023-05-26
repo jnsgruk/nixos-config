@@ -20,14 +20,14 @@ in
       padding = "10";
       width = 300;
 
-      backgroundColor = "#${colours.bg}";
+      backgroundColor = "${colours.bg}";
       borderColor = "${colours.accent}";
-      progressColor = "over #${colours.surface0}";
-      textColor = "#${colours.text}";
+      progressColor = "over ${colours.surface0}";
+      textColor = "${colours.text}";
 
       extraConfig = ''
         [urgency=high]
-        border-color=#${colours.orange}
+        border-color=${colours.orange}
       '';
     };
   };
