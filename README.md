@@ -32,9 +32,9 @@ The following is a list of the key elements of my setup, with links to their con
 
 ## Screenshots
 
-![clean](.github/screenshots/screen_clean.png)
-![neofetch](.github/screenshots/screen_neofetch.png)
-![dirty](.github/screenshots/screen_dirty.png)
+![clean](.github/screenshots/hypr_clean.png)
+![power](.github/screenshots/hypr_power.png)
+![dirty](.github/screenshots/hypr_dirty.png)
 
 <!-- Links -->
 
@@ -52,7 +52,7 @@ The following is a list of the key elements of my setup, with links to their con
 
 [alacritty]: ./home/common/desktop/alacritty.nix
 [gtk]: ./home/common/desktop/gtk.nix
-[sway]: ./home/common/desktop/hyprland/default.nix
+[hyprland]: ./home/common/desktop/hyprland/default.nix
 [mako]: ./home/common/desktop/sway/services.nix
 [neofetch]: ./home/common/shell/neofetch.nix
 [nvim]: ./home/common/shell/vim.nix
