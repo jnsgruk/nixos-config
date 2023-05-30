@@ -1,4 +1,4 @@
-{ desktop, lib, pkgs, ... }: {
+{ desktop, lib, ... }: {
   imports = [
     ./charm-tools.nix
     ./cloud.nix

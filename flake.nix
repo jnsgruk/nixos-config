@@ -40,7 +40,6 @@
 
   outputs =
     { self
-    , disko
     , nixpkgs
     , nixpkgs-unstable
     , home-manager
