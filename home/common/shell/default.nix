@@ -5,7 +5,6 @@
   imports = [
     ./bat.nix
     ./fzf.nix
-    ./gpg.nix
     ./git.nix
     ./htop.nix
     ./neofetch.nix
