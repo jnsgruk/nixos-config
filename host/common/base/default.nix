@@ -25,8 +25,10 @@
     binutils
     curl
     dig
+    dua
     duf
     exa
+    fd
     file
     git
     htop
