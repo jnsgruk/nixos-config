@@ -1,5 +1,9 @@
 { ... }: {
 
+  home.file.".config/git/allowed_signers".text = ''
+    jon@sgrs.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB9bIEMgZVBCDxBWQ4m4hQP6ZZp0P3TfzjzcgUOdbYDLAAAABHNzaDo= YK5C
+    jon@sgrs.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBC8cs1B64XqEswY5pART6yERbjUMB7RdQdT38dgkZT6AAAABHNzaDo= YK5
+  '';
 
   programs = {
     gh = {
@@ -15,11 +19,6 @@
       userEmail = "jon@sgrs.uk";
       userName = "Jon Seager";
 
-      signing = {
-        key = "83B266DCF3E3F2B41264A9F5F4A9184451BD9A74";
-        signByDefault = true;
-      };
-
       aliases = {
         lg = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit";
       };
@@ -33,6 +32,19 @@
         };
         init = {
           defaultBranch = "main";
+        };
+        gpg = {
+          format = "ssh";
+          ssh = {
+            defaultKeyCommand = "sh -c 'echo key::$(ssh-add -L | head -n1)'";
+            allowedSignersFile = "~/.config/git/allowed_signers";
+          };
+        };
+        commit = {
+          gpgSign = true;
+        };
+        tag = {
+          gpgSign = true;
         };
       };
 
