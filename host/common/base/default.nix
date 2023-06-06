@@ -2,7 +2,14 @@
 , pkgs
 , lib
 , ...
-}: {
+}:
+let
+  # Break these packages out so they can be imported elsewhere as a common set
+  # of baseline packages. Useful for installations that are home-manager-only
+  # on other OSs, rather than NixOS.
+  basePackages = (import ./packages.nix { inherit pkgs; }).basePackages;
+in
+{
   imports = [
     ./locale.nix
 
@@ -18,30 +25,7 @@
     useDHCP = lib.mkDefault true;
   };
 
-  environment.systemPackages = with pkgs; [
-    bat
-    binutils
-    curl
-    dig
-    dua
-    duf
-    exa
-    fd
-    file
-    git
-    htop
-    jq
-    killall
-    pciutils
-    ripgrep
-    rsync
-    traceroute
-    tree
-    unzip
-    usbutils
-    wget
-    yq-go
-  ];
+  environment.systemPackages = basePackages;
 
   programs = {
     zsh.enable = true;

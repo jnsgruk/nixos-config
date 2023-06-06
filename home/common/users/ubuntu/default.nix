@@ -1,18 +1,15 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  basePackages = (import ../../../../host/common/base/packages.nix { inherit pkgs; }).basePackages;
+in
+{
   imports = [
-    ../../dev/python.nix
-    ../../dev/go.nix
     ../../dev/cloud.nix
     ../../dev/containers.nix
+    ../../dev/go.nix
+    ../../dev/python.nix
+    ../../dev/shell.nix
   ];
 
-  home.packages = with pkgs; [
-    duf
-    ripgrep
-    rsync
-    tree
-    unzip
-    wget
-    yq-go
-  ];
+  home.packages = basePackages;
 }
