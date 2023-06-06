@@ -1,5 +1,4 @@
-{ inputs
-, pkgs
+{ pkgs
 , ...
 }: {
   imports = [
@@ -13,7 +12,6 @@
     ./vim.nix
     ./xdg.nix
     ./zsh.nix
-    inputs.vscode-server.nixosModules.home
   ];
 
   programs = {
@@ -21,13 +19,6 @@
     git.enable = true;
     home-manager.enable = true;
     jq.enable = true;
-  };
-
-  services = {
-    # Following install, you may need to run:
-    # systemctl --user enable auto-fix-vscode-server.service
-    # systemctl --user start auto-fix-vscode-server.service
-    vscode-server.enable = true;
   };
 
   home.packages = with pkgs; [ ];
