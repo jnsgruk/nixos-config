@@ -1,5 +1,4 @@
 { hostname
-, hostid
 , pkgs
 , lib
 , ...
@@ -16,7 +15,6 @@
 
   networking = {
     hostName = hostname;
-    hostId = hostid;
     useDHCP = lib.mkDefault true;
   };
 

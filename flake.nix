@@ -140,13 +140,11 @@
         };
       };
 
-      # hostids are generated using `head -c4 /dev/urandom | od -A none -t x4`
       nixosConfigurations = {
         freyja = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion theme;
             hostname = "freyja";
-            hostid = "c120a672";
             desktop = "hyprland";
             username = "jon";
           };
@@ -157,7 +155,6 @@
           specialArgs = {
             inherit inputs outputs stateVersion theme;
             hostname = "hugin";
-            hostid = "49509fa9";
             desktop = null;
             username = "jon";
           };
@@ -168,7 +165,6 @@
           specialArgs = {
             inherit inputs outputs stateVersion theme;
             hostname = "loki";
-            hostid = "4c53e052";
             desktop = "hyprland";
             username = "jon";
           };
@@ -179,7 +175,6 @@
           specialArgs = {
             inherit inputs outputs stateVersion theme;
             hostname = "thor";
-            hostid = "96f2b9b5";
             desktop = null;
             username = "jon";
           };
