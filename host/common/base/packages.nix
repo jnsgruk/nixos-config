@@ -11,6 +11,7 @@
     fd
     file
     git
+    gotop
     htop
     jq
     killall
