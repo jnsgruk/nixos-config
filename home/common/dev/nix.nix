@@ -4,5 +4,6 @@
     nixpkgs-fmt
     nurl
     rnix-lsp
+    nil
   ];
 }

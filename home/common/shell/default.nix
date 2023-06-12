@@ -5,6 +5,7 @@
     ./bat.nix
     ./fzf.nix
     ./git.nix
+    ./helix.nix
     ./htop.nix
     ./neofetch.nix
     ./starship.nix

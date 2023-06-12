@@ -5,6 +5,8 @@ let
     black
     virtualenv
     requests
+    python-lsp-ruff
+    python-lsp-server
   ];
   python = pkgs.python3.withPackages python-packages;
 in
