@@ -1,0 +1,38 @@
+diff --git a/src/automations/SSO.ts b/src/automations/SSO.ts
+index dcea2a7..b0c2718 100644
+--- a/src/automations/SSO.ts
++++ b/src/automations/SSO.ts
+@@ -8,7 +8,8 @@ import { CookieJar } from "tough-cookie";
+ import Enquirer = require("enquirer");
+ import Puppeteer from "puppeteer";
+ import { Ora } from "ora";
+-import { existsSync, readFileSync, unlinkSync, writeFileSync } from "fs";
++import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "fs";
++import { dirname } from "path";
+ 
+ export type SSOCookies = {
+     sessionId: string;
+@@ -66,6 +67,10 @@ export default class SSO {
+         }
+     }
+     private saveUserSettings() {
++        const confDir = dirname(CONFIG_PATH);
++        if (!existsSync(confDir)) {
++            mkdirSync(confDir, { recursive: true });
++        }
+         writeFileSync(CONFIG_PATH, JSON.stringify(this.jar));
+     }
+ 
+diff --git a/src/common/constants.ts b/src/common/constants.ts
+index 9ad0b30..12162fd 100644
+--- a/src/common/constants.ts
++++ b/src/common/constants.ts
+@@ -1,7 +1,7 @@
+ import { homedir } from "os";
+ import { join } from "path";
+ 
+-export const CONFIG_PATH = join(homedir(), ".canonical-greenhouse.json");
++export const CONFIG_PATH = join(homedir(), ".config/ght/.canonical-greenhouse.json");
+ export const MAIN_URL = "https://canonical.greenhouse.io/";
+ export const SSO_DOMAIN = "login.ubuntu.com";
+ export const SSO_URL = "https://login.ubuntu.com";

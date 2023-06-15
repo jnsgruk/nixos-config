@@ -36,7 +36,9 @@ pkgs.mkYarnPackage {
 
   nativeBuildInputs = with pkgs; [ makeWrapper ];
 
-  patchPhase = ''
+  patches = [ ./config-location.patch ];
+
+  postPatch = ''
     substituteInPlace ght \
         --replace "./index.js" "$out/opt/ght/index.js" \
         --replace "./package.json" "$out/opt/ght/package.json"
