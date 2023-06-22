@@ -102,12 +102,22 @@
           modules = [ ./home ];
         };
 
+        "${username}@kara" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+          extraSpecialArgs = {
+            inherit inputs outputs stateVersion theme username;
+            hostname = "kara";
+            desktop = "hyprland";
+          };
+          modules = [ ./home ];
+        };
+
         "${username}@loki" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
           extraSpecialArgs = {
             inherit inputs outputs stateVersion theme username;
             hostname = "loki";
-            desktop = "hyprland";
+            desktop = null;
           };
           modules = [ ./home ];
         };
@@ -154,11 +164,20 @@
           modules = [ ./host ];
         };
 
+        kara = nixpkgs-unstable.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs stateVersion theme username;
+            hostname = "kara";
+            desktop = "hyprland";
+          };
+          modules = [ ./host ];
+        };
+
         loki = nixpkgs-unstable.lib.nixosSystem {
           specialArgs = {
             inherit inputs outputs stateVersion theme username;
             hostname = "loki";
-            desktop = "hyprland";
+            desktop = null;
           };
           modules = [ ./host ];
         };

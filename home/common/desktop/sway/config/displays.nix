@@ -1,5 +1,5 @@
 { ... }: {
-  loki = {
+  kara = {
     workspace-assignments = [
       {
         workspace = "1";

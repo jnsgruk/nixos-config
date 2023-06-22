@@ -4,6 +4,7 @@ let
   syncthing = {
     hosts = [
       "freyja"
+      "kara"
       "loki"
       "thor"
     ];
