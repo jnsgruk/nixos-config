@@ -54,24 +54,11 @@ in
 
     fontconfig = {
       enable = true;
-      antialias = true;
-
       defaultFonts = {
         serif = [ "${defaults.fonts.default.name}" "${defaults.fonts.emoji.name}" ];
         sansSerif = [ "${defaults.fonts.default.name}" "${defaults.fonts.emoji.name}" ];
         monospace = [ "${defaults.fonts.monospace.name}" ];
         emoji = [ "${defaults.fonts.emoji.name}" ];
-      };
-
-      hinting = {
-        enable = true;
-        style = "full";
-        autohint = true;
-      };
-
-      subpixel = {
-        rgba = "rgb";
-        lcdfilter = "default";
       };
     };
   };
