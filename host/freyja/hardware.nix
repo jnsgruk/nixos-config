@@ -4,6 +4,7 @@
   imports = [
     inputs.nixos-hardware.nixosModules.lenovo-thinkpad-z13
     ../common/hardware/bluetooth.nix
+    ../common/services/fwupd.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";

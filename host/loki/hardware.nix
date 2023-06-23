@@ -11,6 +11,8 @@
     inputs.nixos-hardware.nixosModules.common-hidpi
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
+
+    ../common/services/fwupd.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
