@@ -12,11 +12,6 @@
 
       kernelModules = [ "dm-snapshot" ];
 
-      luks.devices.cryptroot = {
-        allowDiscards = true;
-        preLVM = true;
-      };
-
       systemd.enable = true;
     };
 

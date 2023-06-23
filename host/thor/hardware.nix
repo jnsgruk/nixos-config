@@ -21,16 +21,4 @@
     device = "/.swap/swapfile";
     size = 2048;
   }];
-
-  # Setup additional 1TB data drive with LUKS encryption
-  # fileSystems."/data" = {
-  #   device = "/dev/mapper/data";
-  #   fsType = "ext4";
-  # };
-
-  environment.etc = {
-    "crypttab".text = ''
-      data  /dev/disk/by-partlabel/data  /etc/data.keyfile
-    '';
-  };
 }

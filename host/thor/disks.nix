@@ -3,6 +3,12 @@ let
   defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
 in
 {
+  environment.etc = {
+    "crypttab".text = ''
+      data  /dev/disk/by-partlabel/data  /etc/data.keyfile
+    '';
+  };
+
   disko.devices = {
     disk = {
       # 1TB data drive. LUKS encrypted

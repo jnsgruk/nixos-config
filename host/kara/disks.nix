@@ -1,8 +1,20 @@
 { disks ? [ "/dev/nvme0n1" "/dev/nvme1n1" ], ... }:
 let
+  cryptroot = "cryptroot";
   defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
 in
 {
+  boot.initrd.luks.devices.${cryptroot} = {
+    allowDiscards = true;
+    preLVM = true;
+  };
+
+  environment.etc = {
+    "crypttab".text = ''
+      data  /dev/disk/by-partlabel/data  /etc/data.keyfile
+    '';
+  };
+
   disko.devices = {
     disk = {
       # 1TB root/boot drive. Configured with:
@@ -33,7 +45,7 @@ in
               end = "100%";
               content = {
                 type = "luks";
-                name = "cryptroot";
+                name = "${cryptroot}";
                 extraOpenArgs = [ "--allow-discards" ];
 
                 content = {

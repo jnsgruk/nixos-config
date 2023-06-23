@@ -26,10 +26,4 @@
     device = "/.swap/swapfile";
     size = 2048;
   }];
-
-  environment.etc = {
-    "crypttab".text = ''
-      data  /dev/disk/by-partlabel/data  /etc/data.keyfile
-    '';
-  };
 }
