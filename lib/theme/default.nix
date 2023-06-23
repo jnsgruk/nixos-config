@@ -12,7 +12,7 @@ in
   wallpaper = ./wallpapers/space-clouds.png;
 
   gtkTheme = {
-    name = "Catppuccin-Macchiato-Standard-Blue-Dark";
+    name = "Catppuccin-Macchiato-Standard-Blue-dark";
     package = pkgs.catppuccin-gtk.override {
       size = "standard";
       variant = "macchiato";

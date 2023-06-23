@@ -65,7 +65,7 @@ in
 
       hinting = {
         enable = true;
-        style = "hintfull";
+        style = "full";
         autohint = true;
       };
 
