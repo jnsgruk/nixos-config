@@ -1,14 +1,8 @@
 { disks ? [ "/dev/nvme0n1" "/dev/sda" ], ... }:
 let
-  cryptroot = "cryptroot";
   defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
 in
 {
-  boot.initrd.luks.devices.${cryptroot} = {
-    allowDiscards = true;
-    preLVM = true;
-  };
-
   environment.etc = {
     "crypttab".text = ''
       data  /dev/disk/by-partlabel/data  /etc/data.keyfile
@@ -19,7 +13,7 @@ in
     disk = {
       # 1TB root/boot drive. Configured with:
       # - A FAT32 ESP partition for systemd-boot
-      # - A LUKS container which containers multiple btrfs subvolumes for nixos install
+      # - Multiple btrfs subvolumes for nixos install
       nvme0 = {
         device = builtins.elemAt disks 0;
         type = "disk";
@@ -40,43 +34,37 @@ in
               };
             }
             {
-              name = "luks";
+              name = "root";
               start = "512MiB";
               end = "100%";
               content = {
-                type = "luks";
-                name = "${cryptroot}";
-                extraOpenArgs = [ "--allow-discards" ];
-
-                content = {
-                  type = "btrfs";
-                  # Override existing partition
-                  extraArgs = [ "-f" ];
-                  subvolumes = {
-                    "@" = {
-                      mountpoint = "/";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@nix" = {
-                      mountpoint = "/nix";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@home" = {
-                      mountpoint = "/home";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@var" = {
-                      mountpoint = "/var";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@snapshots" = {
-                      mountpoint = "/.snapshots";
-                      mountOptions = defaultBtrfsOpts;
-                    };
-                    "@swap" = {
-                      mountpoint = "/.swap";
-                      mountOptions = [ "defaults" "x-mount.mkdir" "ssd" "noatime" "nodiratime" ];
-                    };
+                type = "btrfs";
+                # Override existing partition
+                extraArgs = [ "-f" ];
+                subvolumes = {
+                  "@" = {
+                    mountpoint = "/";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@nix" = {
+                    mountpoint = "/nix";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@home" = {
+                    mountpoint = "/home";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@var" = {
+                    mountpoint = "/var";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@snapshots" = {
+                    mountpoint = "/.snapshots";
+                    mountOptions = defaultBtrfsOpts;
+                  };
+                  "@swap" = {
+                    mountpoint = "/.swap";
+                    mountOptions = [ "defaults" "x-mount.mkdir" "ssd" "noatime" "nodiratime" ];
                   };
                 };
               };

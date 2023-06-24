@@ -59,6 +59,15 @@
       stateVersion = "23.05";
       theme = import ./lib/theme;
       username = "jon";
+
+      mkHome = { hostname, username, desktop }: home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
+        extraSpecialArgs = {
+          inherit inputs outputs stateVersion theme username hostname desktop;
+        };
+        modules = [ ./home ];
+      };
+
     in
     {
       # Custom packages; acessible via 'nix build', 'nix shell', etc
@@ -82,67 +91,17 @@
       overlays = import ./overlays { inherit inputs; };
 
       homeConfigurations = {
-        "${username}@freyja" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion theme username;
-            hostname = "freyja";
-            desktop = "hyprland";
-          };
-          modules = [ ./home ];
-        };
+        "${username}@freya" = mkHome { inherit username; hostname = "freya"; desktop = "hyprland"; };
 
-        "${username}@hugin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion theme username;
-            hostname = "hugin";
-            desktop = null;
-          };
-          modules = [ ./home ];
-        };
+        "${username}@hugin" = mkHome { inherit username; hostname = "hugin"; desktop = null; };
 
-        "${username}@kara" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion theme username;
-            hostname = "kara";
-            desktop = "hyprland";
-          };
-          modules = [ ./home ];
-        };
+        "${username}@kara" = mkHome { inherit username; hostname = "kara"; desktop = "hyprland"; };
 
-        "${username}@loki" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion theme username;
-            hostname = "loki";
-            desktop = null;
-          };
-          modules = [ ./home ];
-        };
+        "${username}@loki" = mkHome { inherit username; hostname = "loki"; desktop = null; };
 
-        "${username}@thor" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion theme username;
-            hostname = "thor";
-            desktop = null;
-          };
-          modules = [ ./home ];
-        };
+        "${username}@thor" = mkHome { inherit username; hostname = "thor"; desktop = null; };
 
-        # Used for running home-manager on Ubuntu under multipass
-        "ubuntu@dev" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs-unstable.legacyPackages.x86_64-linux;
-          extraSpecialArgs = {
-            inherit inputs outputs stateVersion theme;
-            hostname = "dev";
-            desktop = null;
-            username = "ubuntu";
-          };
-          modules = [ ./home ];
-        };
+        "ubuntu@dev" = mkHome { username = "ubuntu"; hostname = "dev"; desktop = null; };
       };
 
       nixosConfigurations = {
@@ -186,7 +145,7 @@
           specialArgs = {
             inherit inputs outputs stateVersion theme username;
             hostname = "thor";
-            desktop = null;
+            # desktop = null;
           };
           modules = [ ./host ];
         };
