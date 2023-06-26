@@ -5,5 +5,6 @@
     charmcraft
     juju
     rockcraft
+    snapcraft
   ];
 }
