@@ -11,7 +11,6 @@ The machines configured thus far are:
 | `hugin`  | Lenovo Thinkcentre M93p | NixOS  | Server  |    -     |
 |  `kara`  |   Ryzen 7950X Custom    | NixOS  | Desktop | Hyprland |
 |  `loki`  |   Ryzen 3900X Custom    | NixOS  | Server  |    -     |
-|  `thor`  |     Intel NUC6i7KYK     | NixOS  | Server  |    -     |
 
 ## Structure
 

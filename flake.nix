@@ -99,8 +99,6 @@
 
         "${username}@loki" = mkHome { inherit username; hostname = "loki"; desktop = null; };
 
-        "${username}@thor" = mkHome { inherit username; hostname = "thor"; desktop = null; };
-
         "ubuntu@dev" = mkHome { username = "ubuntu"; hostname = "dev"; desktop = null; };
       };
 
@@ -137,15 +135,6 @@
             inherit inputs outputs stateVersion theme username;
             hostname = "loki";
             desktop = null;
-          };
-          modules = [ ./host ];
-        };
-
-        thor = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs stateVersion theme username;
-            hostname = "thor";
-            # desktop = null;
           };
           modules = [ ./host ];
         };
