@@ -91,7 +91,7 @@
       overlays = import ./overlays { inherit inputs; };
 
       homeConfigurations = {
-        "${username}@freya" = mkHome { inherit username; hostname = "freya"; desktop = "hyprland"; };
+        "${username}@freyja" = mkHome { inherit username; hostname = "freyja"; desktop = "hyprland"; };
 
         "${username}@hugin" = mkHome { inherit username; hostname = "hugin"; desktop = null; };
 
