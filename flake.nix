@@ -10,6 +10,9 @@
     hyprland-contrib.url = "github:hyprwm/contrib";
     hyprland-contrib.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    sf-pro-fonts-src.url = "github:jnsgruk/sf-pro-fonts";
+    sf-pro-fonts-src.flake = false;
+
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs-unstable";
 

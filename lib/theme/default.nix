@@ -4,7 +4,7 @@ let
 
   pkgs = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
-    overlays = [ outputs.overlays.additions outputs.overlays.modifications ];
+    overlays = [ outputs.overlays.fonts ];
     config = { allowUnfree = true; joypixels.acceptLicense = true; };
   };
 in
@@ -46,12 +46,12 @@ in
   fonts = {
     default = {
       name = "SF Pro Display";
-      package = pkgs.sfpro-font;
+      package = pkgs.sf-pro-fonts;
       size = "11";
     };
     iconFont = {
       name = "Liga SFMono Nerd Font";
-      package = pkgs.sf-mono-liga-font;
+      package = pkgs.sf-pro-fonts;
     };
     monospace = {
       name = "MesloLGSDZ Nerd Font Mono";

@@ -221,7 +221,24 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "sf-pro-fonts-src": "sf-pro-fonts-src",
         "vscode-server": "vscode-server"
+      }
+    },
+    "sf-pro-fonts-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1688026743,
+        "narHash": "sha256-CLCShu3sVcC5ZgI7NJzemr45pHNG+QiaWcV5moMg5+A=",
+        "owner": "jnsgruk",
+        "repo": "sf-pro-fonts",
+        "rev": "02132ad835b502c215820a7b3ee888613cab57f5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jnsgruk",
+        "repo": "sf-pro-fonts",
+        "type": "github"
       }
     },
     "systems": {
