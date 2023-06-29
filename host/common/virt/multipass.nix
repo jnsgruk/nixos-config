@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, options, ... }: {
+{ pkgs, ... }: {
   # Enable multipass, tracking the unstable pkg
   virtualisation.multipass = {
     package = pkgs.unstable.multipass;

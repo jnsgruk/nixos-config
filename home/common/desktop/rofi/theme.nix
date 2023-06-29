@@ -1,22 +1,20 @@
-{ config, theme, pkgs, ... }: {
+{ config, theme, ... }: {
   theme =
     let
       inherit (config.lib.formats.rasi) mkLiteral;
-      defaults = theme { inherit pkgs; };
-      colours = defaults.colours;
     in
     {
       "*" = {
-        bg-col = mkLiteral "${colours.bgDark}";
-        bg-col-light = mkLiteral "${colours.bgDark}";
-        border-col = mkLiteral "${colours.accent}";
-        selected-col = mkLiteral "${colours.bgDark}";
-        accent = mkLiteral "${colours.accent}";
-        fg-col = mkLiteral "${colours.text}";
-        grey = mkLiteral "${colours.overlay0}";
+        bg-col = mkLiteral "${theme.colours.bgDark}";
+        bg-col-light = mkLiteral "${theme.colours.bgDark}";
+        border-col = mkLiteral "${theme.colours.accent}";
+        selected-col = mkLiteral "${theme.colours.bgDark}";
+        accent = mkLiteral "${theme.colours.accent}";
+        fg-col = mkLiteral "${theme.colours.text}";
+        grey = mkLiteral "${theme.colours.overlay0}";
 
         width = 600;
-        font = "${defaults.fonts.default.name} 14";
+        font = "${theme.fonts.default.name} 14";
       };
 
       "element-text,element-icon,mode-switcher" = {

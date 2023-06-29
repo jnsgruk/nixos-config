@@ -1,8 +1,4 @@
-{ hostname, pkgs, theme, ... }:
-let
-  defaults = (theme { inherit pkgs; });
-in
-{
+{ hostname, pkgs, theme, ... }: {
   imports = [
     ../rofi
     ../waybar
@@ -43,10 +39,10 @@ in
           "type:touchpad" = { tap = "enabled"; };
         };
 
-        output."*".bg = "${defaults.wallpaper} fill";
+        output."*".bg = "${theme.wallpaper} fill";
 
         fonts = {
-          names = [ "${defaults.fonts.iconFont.name}" ];
+          names = [ "${theme.fonts.iconFont.name}" ];
           size = 8.0;
         };
 

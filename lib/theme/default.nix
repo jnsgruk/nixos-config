@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ inputs, outputs, ... }:
 let
   colours = (import ./colours.nix).colours;
+
+  pkgs = import inputs.nixpkgs-unstable {
+    system = "x86_64-linux";
+    overlays = [ outputs.overlays.additions outputs.overlays.modifications ];
+    config = { allowUnfree = true; joypixels.acceptLicense = true; };
+  };
 in
 {
   # Note that there are still places not covered by colour choices here such as:

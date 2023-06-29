@@ -1,15 +1,13 @@
-{ config, pkgs, lib, theme, ... }: {
+{ config, lib, theme, ... }: {
   theme =
     let
       inherit (config.lib.formats.rasi) mkLiteral;
-      defaults = theme { inherit pkgs; };
-      colours = defaults.colours;
     in
     {
       "*" = {
         border = mkLiteral "none";
         padding = 0;
-        font-family = "${defaults.fonts.iconFont.name}";
+        font-family = "${theme.fonts.iconFont.name}";
         font-size = 15;
       };
 
@@ -19,7 +17,7 @@
 
       "window>box" = {
         margin = mkLiteral "8 8 0 8";
-        background = mkLiteral "${colours.bg}";
+        background = mkLiteral "${theme.colours.bg}";
         opacity = mkLiteral "0.8";
         border-radius = 8;
       };
@@ -43,16 +41,16 @@
         padding = mkLiteral "0 10";
         background-color = mkLiteral "transparent";
         font-weight = mkLiteral "lighter";
-        color = mkLiteral "${colours.text}";
+        color = mkLiteral "${theme.colours.text}";
       };
 
       "#workspaces button:hover" = {
-        color = mkLiteral "${colours.accent}";
+        color = mkLiteral "${theme.colours.accent}";
         background-color = mkLiteral "transparent";
       };
 
       "#workspaces button.focused, #workspaces button.active" = {
-        color = mkLiteral "${colours.accent}";
+        color = mkLiteral "${theme.colours.accent}";
         font-weight = mkLiteral "normal";
         background-color = mkLiteral "transparent";
       };
@@ -71,7 +69,7 @@
       #custom-menu,
       #idle_inhibitor" = {
         padding = mkLiteral "0 10";
-        color = mkLiteral "${colours.text}";
+        color = mkLiteral "${theme.colours.text}";
       };
 
       "#mode" = {
@@ -79,29 +77,29 @@
       };
 
       "#custom-power" = {
-        color = mkLiteral "${colours.accent}";
+        color = mkLiteral "${theme.colours.accent}";
         background-color = mkLiteral "transparent";
       };
 
       /*-----Indicators----*/
       "#idle_inhibitor.activated" = {
-        color = mkLiteral "${colours.accent}";
+        color = mkLiteral "${theme.colours.accent}";
       };
 
       "#battery.charging" = {
-        color = mkLiteral "${colours.green}";
+        color = mkLiteral "${theme.colours.green}";
       };
 
       "#battery.warning:not(.charging)" = {
-        color = mkLiteral "${colours.orange}";
+        color = mkLiteral "${theme.colours.orange}";
       };
 
       "#battery.critical:not(.charging)" = {
-        color = mkLiteral "${colours.red}";
+        color = mkLiteral "${theme.colours.red}";
       };
 
       "#temperature.critical" = {
-        color = mkLiteral "${colours.red}";
+        color = mkLiteral "${theme.colours.red}";
       };
     };
 }

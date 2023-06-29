@@ -6,8 +6,6 @@ let
   machineOutputs = (import ./config/displays.nix { }).${hostname}.outputs;
   windowRules = builtins.readFile ./config/window-rules.conf;
   workspaceAssignments = (import ./config/displays.nix { }).${hostname}.workspace-assignments;
-
-  wallpaper = (theme { inherit pkgs; }).wallpaper;
 in
 {
   imports = [
@@ -60,7 +58,7 @@ in
     Install.WantedBy = [ "graphical-session.target" ];
     Service = {
       Type = "simple";
-      ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${wallpaper}";
+      ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${theme.wallpaper}";
       Restart = "on-failure";
     };
   };

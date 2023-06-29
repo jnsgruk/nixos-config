@@ -1,7 +1,6 @@
-{ theme, pkgs, ... }:
+{ theme, ... }:
 let
-  defaults = theme { inherit pkgs; };
-  colours = defaults.colours;
+  colours = theme.colours;
 in
 {
   programs.alacritty = {
@@ -26,7 +25,7 @@ in
       scrolling.history = 100000;
 
       font = {
-        normal.family = "${defaults.fonts.monospace.name}";
+        normal.family = "${theme.fonts.monospace.name}";
         size = 14;
       };
 

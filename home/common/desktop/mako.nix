@@ -1,9 +1,4 @@
-{ pkgs, theme, ... }:
-let
-  defaults = theme { inherit pkgs; };
-  colours = defaults.colours;
-in
-{
+{ theme, ... }: {
   services = {
     mako = {
       enable = true;
@@ -12,22 +7,22 @@ in
       borderRadius = 8;
       borderSize = 1;
       defaultTimeout = 10000;
-      font = "${defaults.fonts.default.name}";
-      iconPath = "${defaults.iconTheme.iconPath}";
+      font = "${theme.fonts.default.name}";
+      iconPath = "${theme.iconTheme.iconPath}";
       icons = true;
       layer = "overlay";
       maxVisible = 3;
       padding = "10";
       width = 300;
 
-      backgroundColor = "${colours.bg}";
-      borderColor = "${colours.accent}";
-      progressColor = "over ${colours.surface0}";
-      textColor = "${colours.text}";
+      backgroundColor = "${theme.colours.bg}";
+      borderColor = "${theme.colours.accent}";
+      progressColor = "over ${theme.colours.surface0}";
+      textColor = "${theme.colours.text}";
 
       extraConfig = ''
         [urgency=high]
-        border-color=${colours.orange}
+        border-color=${theme.colours.orange}
       '';
     };
   };

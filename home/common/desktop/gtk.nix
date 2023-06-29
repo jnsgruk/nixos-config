@@ -1,16 +1,11 @@
 { theme
-, pkgs
 , config
 , ...
-}:
-let
-  defaults = theme { inherit pkgs; };
-in
-{
+}: {
   home.pointerCursor = {
-    package = defaults.cursorTheme.package;
-    name = "${defaults.cursorTheme.name}";
-    size = defaults.cursorTheme.size;
+    package = theme.cursorTheme.package;
+    name = "${theme.cursorTheme.name}";
+    size = theme.cursorTheme.size;
     gtk.enable = true;
     x11.enable = true;
   };
@@ -19,8 +14,8 @@ in
     enable = true;
 
     font = {
-      name = "${defaults.fonts.default.name}, ${defaults.fonts.default.size}";
-      package = defaults.fonts.default.package;
+      name = "${theme.fonts.default.name}, ${theme.fonts.default.size}";
+      package = theme.fonts.default.package;
     };
 
     gtk2 = {
@@ -40,10 +35,10 @@ in
     };
 
     iconTheme = {
-      name = defaults.iconTheme.name;
-      package = defaults.iconTheme.package;
+      name = theme.iconTheme.name;
+      package = theme.iconTheme.package;
     };
 
-    theme = defaults.gtkTheme;
+    theme = theme.gtkTheme;
   };
 }

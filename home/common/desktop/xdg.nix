@@ -1,7 +1,6 @@
-{ theme, pkgs, ... }:
+{ theme, ... }:
 let
   associations = (import ./file-associations.nix).associations;
-  gtkTheme = (theme { inherit pkgs; }).gtkTheme;
 in
 {
   xdg = {
@@ -34,7 +33,7 @@ in
       # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
       "org.gnome.Nautilus" = {
         name = "Files";
-        exec = "env GTK_THEME=${gtkTheme.name} nautilus --new-window";
+        exec = "env GTK_THEME=${theme.gtkTheme.name} nautilus --new-window";
         terminal = false;
         icon = "org.gnome.Nautilus";
         type = "Application";

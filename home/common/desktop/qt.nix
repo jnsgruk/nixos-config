@@ -1,8 +1,4 @@
-{ pkgs, theme, ... }:
-let
-  defaults = theme { inherit pkgs; };
-in
-{
+{ pkgs, theme, ... }: {
   qt = {
     enable = true;
     platformTheme = "gtk";
@@ -10,7 +6,7 @@ in
 
   home = {
     packages = with pkgs; [
-      defaults.qtTheme.package
+      theme.qtTheme.package
       libsForQt5.qtstyleplugin-kvantum
     ];
     sessionVariables = {
@@ -21,7 +17,7 @@ in
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".text = ''
       [General]
-      theme=${defaults.qtTheme.name}
+      theme=${theme.qtTheme.name}
     '';
   };
 }

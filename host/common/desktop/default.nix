@@ -1,8 +1,4 @@
-{ desktop, pkgs, theme, ... }:
-let
-  defaults = theme { inherit pkgs; };
-in
-{
+{ desktop, pkgs, theme, ... }: {
   imports = [
     (./. + "/${desktop}.nix")
     ../hardware/ledger.nix
@@ -43,10 +39,10 @@ in
       liberation_ttf
       ubuntu_font_family
 
-      defaults.fonts.default.package
-      defaults.fonts.emoji.package
-      defaults.fonts.iconFont.package
-      defaults.fonts.monospace.package
+      theme.fonts.default.package
+      theme.fonts.emoji.package
+      theme.fonts.iconFont.package
+      theme.fonts.monospace.package
     ];
 
     # Use fonts specified by user rather than default ones
@@ -55,14 +51,11 @@ in
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = [ "${defaults.fonts.default.name}" "${defaults.fonts.emoji.name}" ];
-        sansSerif = [ "${defaults.fonts.default.name}" "${defaults.fonts.emoji.name}" ];
-        monospace = [ "${defaults.fonts.monospace.name}" ];
-        emoji = [ "${defaults.fonts.emoji.name}" ];
+        serif = [ "${theme.fonts.default.name}" "${theme.fonts.emoji.name}" ];
+        sansSerif = [ "${theme.fonts.default.name}" "${theme.fonts.emoji.name}" ];
+        monospace = [ "${theme.fonts.monospace.name}" ];
+        emoji = [ "${theme.fonts.emoji.name}" ];
       };
     };
   };
-
-  # Accept the joypixels license
-  nixpkgs.config.joypixels.acceptLicense = true;
 }

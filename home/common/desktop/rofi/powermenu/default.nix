@@ -16,8 +16,6 @@
   theme =
     let
       inherit (config.lib.formats.rasi) mkLiteral;
-      defaults = theme { inherit pkgs; };
-      colours = defaults.colours;
     in
     {
       "configuration" = {
@@ -25,14 +23,14 @@
       };
 
       "*" = {
-        background = mkLiteral "${colours.bgDark}";
-        background-alt = mkLiteral "${colours.bg}";
-        foreground = mkLiteral "${colours.text}";
-        accent = mkLiteral "${colours.accent}";
-        active = mkLiteral "${colours.green}";
-        urgent = mkLiteral "${colours.red}";
+        background = mkLiteral "${theme.colours.bgDark}";
+        background-alt = mkLiteral "${theme.colours.bg}";
+        foreground = mkLiteral "${theme.colours.text}";
+        accent = mkLiteral "${theme.colours.accent}";
+        active = mkLiteral "${theme.colours.green}";
+        urgent = mkLiteral "${theme.colours.red}";
 
-        font = "${defaults.fonts.default.name} 24";
+        font = "${theme.fonts.default.name} 24";
       };
 
       "window" = {
