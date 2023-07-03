@@ -20,8 +20,5 @@ jobs:
           # If you chose API tokens for write access OR if you have a private cache
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Build/push packages
-        run: |
-          nix build --json .#ght .#lxd-ui \
-              | jq -r '.[].outputs | to_entries[].value' \
-              | cachix push jnsgruk
+      - name: Build packages
+        run: nix build .#ght .#lxd-ui
