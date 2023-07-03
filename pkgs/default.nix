@@ -3,4 +3,5 @@
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   ght = pkgs.callPackage ./ght { };
+  lxd-ui = pkgs.callPackage ./lxd-ui { };
 }
