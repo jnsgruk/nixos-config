@@ -101,9 +101,7 @@
     "hyprland": {
       "inputs": {
         "hyprland-protocols": "hyprland-protocols",
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ],
+        "nixpkgs": "nixpkgs",
         "wlroots": "wlroots",
         "xdph": "xdph"
       },
@@ -123,9 +121,7 @@
     },
     "hyprland-contrib": {
       "inputs": {
-        "nixpkgs": [
-          "nixpkgs-unstable"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1687033460,
@@ -180,16 +176,16 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1687829761,
-        "narHash": "sha256-QRe1Y8SS3M4GeC58F/6ajz6V0ZLUVWX3ZAMgov2N3/g=",
-        "owner": "nixos",
+        "lastModified": 1688231357,
+        "narHash": "sha256-ZOn16X5jZ6X5ror58gOJAxPfFLAQhZJ6nOUeS4tfFwo=",
+        "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9790f3242da2152d5aa1976e3e4b8b414f4dd206",
+        "rev": "645ff62e09d294a30de823cb568e9c6d68e92606",
         "type": "github"
       },
       "original": {
-        "owner": "nixos",
-        "ref": "nixos-23.05",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -210,6 +206,38 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1688231357,
+        "narHash": "sha256-ZOn16X5jZ6X5ror58gOJAxPfFLAQhZJ6nOUeS4tfFwo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "645ff62e09d294a30de823cb568e9c6d68e92606",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1687829761,
+        "narHash": "sha256-QRe1Y8SS3M4GeC58F/6ajz6V0ZLUVWX3ZAMgov2N3/g=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "9790f3242da2152d5aa1976e3e4b8b414f4dd206",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-23.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "crafts": "crafts",
@@ -219,7 +247,7 @@
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
         "nixos-hardware": "nixos-hardware",
-        "nixpkgs": "nixpkgs",
+        "nixpkgs": "nixpkgs_3",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "sf-pro-fonts-src": "sf-pro-fonts-src",
         "vscode-server": "vscode-server"
