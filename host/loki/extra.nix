@@ -1,5 +1,13 @@
-{ ... }: {
+{ config, pkgs, lib, ... }:
+let
+  dataDir = "/data/apps";
+in
+{
   imports = [
+    ../common/services/files.nix
+    ../common/services/homepage.nix
+    ../common/services/servarr
+    ../common/services/traefik
     ../common/virt
   ];
 
@@ -9,8 +17,12 @@
     allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
   };
 
-  # Setup NFS exports
   services = {
+    duplicati = {
+      enable = true;
+      dataDir = "${dataDir}/duplicati";
+    };
+
     nfs = {
       server = {
         enable = true;
@@ -19,5 +31,17 @@
         '';
       };
     };
+
+    syncthing = {
+      enable = true;
+      guiAddress = "100.98.152.46:8384";
+      configDir = "${dataDir}/syncthing";
+      user = "jon";
+      group = "users";
+    };
+
   };
+
+  systemd.services.duplicati.serviceConfig.Group = lib.mkForce "users";
 }
+
