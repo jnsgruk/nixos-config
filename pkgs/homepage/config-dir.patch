@@ -1,0 +1,210 @@
+diff --git a/src/pages/api/hash.js b/src/pages/api/hash.js
+index 96369134..0e8d0261 100644
+--- a/src/pages/api/hash.js
++++ b/src/pages/api/hash.js
+@@ -2,7 +2,7 @@ import { join } from "path";
+ import { createHash } from "crypto";
+ import { readFileSync } from "fs";
+ 
+-import checkAndCopyConfig from "utils/config/config";
++import checkAndCopyConfig, { CONF_DIR } from "utils/config/config";
+ 
+ const configs = ["docker.yaml", "settings.yaml", "services.yaml", "bookmarks.yaml", "widgets.yaml"];
+ 
+@@ -15,7 +15,7 @@ function hash(buffer) {
+ export default async function handler(req, res) {
+   const hashes = configs.map((config) => {
+     checkAndCopyConfig(config);
+-    const configYaml = join(process.cwd(), "config", config);
++    const configYaml = join(CONF_DIR, config);
+     return hash(readFileSync(configYaml, "utf8"));
+   });
+ 
+diff --git a/src/utils/config/api-response.js b/src/utils/config/api-response.js
+index fad3022d..e00846db 100644
+--- a/src/utils/config/api-response.js
++++ b/src/utils/config/api-response.js
+@@ -4,7 +4,7 @@ import path from "path";
+ 
+ import yaml from "js-yaml";
+ 
+-import checkAndCopyConfig, { getSettings, substituteEnvironmentVars } from "utils/config/config";
++import checkAndCopyConfig, { getSettings, substituteEnvironmentVars, CONF_DIR } from "utils/config/config";
+ import {
+   servicesFromConfig,
+   servicesFromDocker,
+@@ -27,7 +27,7 @@ function compareServices(service1, service2) {
+ export async function bookmarksResponse() {
+   checkAndCopyConfig("bookmarks.yaml");
+ 
+-  const bookmarksYaml = path.join(process.cwd(), "config", "bookmarks.yaml");
++  const bookmarksYaml = path.join(CONF_DIR, "bookmarks.yaml");
+   const rawFileContents = await fs.readFile(bookmarksYaml, "utf8");
+   const fileContents = substituteEnvironmentVars(rawFileContents);
+   const bookmarks = yaml.load(fileContents);
+diff --git a/src/utils/config/config.js b/src/utils/config/config.js
+index 6c5f4ee7..00b964cc 100644
+--- a/src/utils/config/config.js
++++ b/src/utils/config/config.js
+@@ -1,16 +1,22 @@
+ /* eslint-disable no-console */
++import { copyFileSync, existsSync, mkdirSync, readFileSync } from "fs";
+ import { join } from "path";
+-import { existsSync, readFileSync, copyFileSync } from "fs";
+ 
+-import cache from "memory-cache";
+ import yaml from "js-yaml";
++import cache from "memory-cache";
+ 
+ const cacheKey = "homepageEnvironmentVariables";
+ const homepageVarPrefix = "HOMEPAGE_VAR_";
+ const homepageFilePrefix = "HOMEPAGE_FILE_";
+ 
++export const CONF_DIR = process.env.HOMEPAGE_CONFIG_DIR ? process.env.HOMEPAGE_CONFIG_DIR : join(process.cwd(), "config");
++
+ export default function checkAndCopyConfig(config) {
+-  const configYaml = join(process.cwd(), "config", config);
++  if (!existsSync(CONF_DIR)) {
++      mkdirSync(CONF_DIR, { recursive: true });
++  }
++
++  const configYaml = join(CONF_DIR, config);
+   if (!existsSync(configYaml)) {
+     const configSkeleton = join(process.cwd(), "src", "skeleton", config);
+     try {
+@@ -62,7 +68,7 @@ export function substituteEnvironmentVars(str) {
+ export function getSettings() {
+   checkAndCopyConfig("settings.yaml");
+ 
+-  const settingsYaml = join(process.cwd(), "config", "settings.yaml");
++  const settingsYaml = join(CONF_DIR, "settings.yaml");
+   const rawFileContents = readFileSync(settingsYaml, "utf8");
+   const fileContents = substituteEnvironmentVars(rawFileContents);
+   const initialSettings = yaml.load(fileContents) ?? {};
+diff --git a/src/utils/config/docker.js b/src/utils/config/docker.js
+index 8f658db2..b0bb7e55 100644
+--- a/src/utils/config/docker.js
++++ b/src/utils/config/docker.js
+@@ -3,12 +3,12 @@ import { readFileSync } from "fs";
+ 
+ import yaml from "js-yaml";
+ 
+-import checkAndCopyConfig, { substituteEnvironmentVars } from "utils/config/config";
++import checkAndCopyConfig, { CONF_DIR, substituteEnvironmentVars } from "utils/config/config";
+ 
+ export default function getDockerArguments(server) {
+   checkAndCopyConfig("docker.yaml");
+ 
+-  const configFile = path.join(process.cwd(), "config", "docker.yaml");
++  const configFile = path.join(CONF_DIR, "docker.yaml");
+   const rawConfigData = readFileSync(configFile, "utf8");
+   const configData = substituteEnvironmentVars(rawConfigData);
+   const servers = yaml.load(configData);
+@@ -37,9 +37,9 @@ export default function getDockerArguments(server) {
+       }
+ 
+       if (servers[server].tls){
+-        res.conn.ca = readFileSync(path.join(process.cwd(), "config", servers[server].tls.caFile));
+-        res.conn.cert = readFileSync(path.join(process.cwd(), "config", servers[server].tls.certFile));
+-        res.conn.key = readFileSync(path.join(process.cwd(), "config", servers[server].tls.keyFile));
++        res.conn.ca = readFileSync(path.join(CONF_DIR, servers[server].tls.caFile));
++        res.conn.cert = readFileSync(path.join(CONF_DIR, servers[server].tls.certFile));
++        res.conn.key = readFileSync(path.join(CONF_DIR, servers[server].tls.keyFile));
+       }
+ 
+       return res;
+diff --git a/src/utils/config/kubernetes.js b/src/utils/config/kubernetes.js
+index ba2a37a0..ea9254e3 100644
+--- a/src/utils/config/kubernetes.js
++++ b/src/utils/config/kubernetes.js
+@@ -4,12 +4,12 @@ import { readFileSync } from "fs";
+ import yaml from "js-yaml";
+ import { KubeConfig } from "@kubernetes/client-node";
+ 
+-import checkAndCopyConfig, { substituteEnvironmentVars } from "utils/config/config";
++import checkAndCopyConfig, { CONF_DIR, substituteEnvironmentVars } from "utils/config/config";
+ 
+ export default function getKubeConfig() {
+   checkAndCopyConfig("kubernetes.yaml");
+ 
+-  const configFile = path.join(process.cwd(), "config", "kubernetes.yaml");
++  const configFile = path.join(CONF_DIR, "kubernetes.yaml");
+   const rawConfigData = readFileSync(configFile, "utf8");
+   const configData = substituteEnvironmentVars(rawConfigData);
+   const config = yaml.load(configData);
+diff --git a/src/utils/config/service-helpers.js b/src/utils/config/service-helpers.js
+index d4f7bc4e..c410993d 100644
+--- a/src/utils/config/service-helpers.js
++++ b/src/utils/config/service-helpers.js
+@@ -7,7 +7,7 @@ import * as shvl from "shvl";
+ import { CustomObjectsApi, NetworkingV1Api } from "@kubernetes/client-node";
+ 
+ import createLogger from "utils/logger";
+-import checkAndCopyConfig, { substituteEnvironmentVars } from "utils/config/config";
++import checkAndCopyConfig, { CONF_DIR, substituteEnvironmentVars } from "utils/config/config";
+ import getDockerArguments from "utils/config/docker";
+ import getKubeConfig from "utils/config/kubernetes";
+ 
+@@ -17,7 +17,7 @@ const logger = createLogger("service-helpers");
+ export async function servicesFromConfig() {
+   checkAndCopyConfig("services.yaml");
+ 
+-  const servicesYaml = path.join(process.cwd(), "config", "services.yaml");
++  const servicesYaml = path.join(CONF_DIR, "services.yaml");
+   const rawFileContents = await fs.readFile(servicesYaml, "utf8");
+   const fileContents = substituteEnvironmentVars(rawFileContents);
+   const services = yaml.load(fileContents);
+@@ -51,7 +51,7 @@ export async function servicesFromConfig() {
+ export async function servicesFromDocker() {
+   checkAndCopyConfig("docker.yaml");
+ 
+-  const dockerYaml = path.join(process.cwd(), "config", "docker.yaml");
++  const dockerYaml = path.join(CONF_DIR, "docker.yaml");
+   const rawDockerFileContents = await fs.readFile(dockerYaml, "utf8");
+   const dockerFileContents = substituteEnvironmentVars(rawDockerFileContents);
+   const servers = yaml.load(dockerFileContents);
+diff --git a/src/utils/config/widget-helpers.js b/src/utils/config/widget-helpers.js
+index 6f61b7e2..0e1eac6a 100644
+--- a/src/utils/config/widget-helpers.js
++++ b/src/utils/config/widget-helpers.js
+@@ -3,12 +3,12 @@ import path from "path";
+ 
+ import yaml from "js-yaml";
+ 
+-import checkAndCopyConfig, { substituteEnvironmentVars } from "utils/config/config";
++import checkAndCopyConfig, { CONF_DIR, substituteEnvironmentVars } from "utils/config/config";
+ 
+ export async function widgetsFromConfig() {
+     checkAndCopyConfig("widgets.yaml");
+ 
+-    const widgetsYaml = path.join(process.cwd(), "config", "widgets.yaml");
++    const widgetsYaml = path.join(CONF_DIR, "widgets.yaml");
+     const rawFileContents = await fs.readFile(widgetsYaml, "utf8");
+     const fileContents = substituteEnvironmentVars(rawFileContents);
+     const widgets = yaml.load(fileContents);
+diff --git a/src/utils/logger.js b/src/utils/logger.js
+index 048c5356..98adbdf0 100644
+--- a/src/utils/logger.js
++++ b/src/utils/logger.js
+@@ -1,18 +1,17 @@
+ /* eslint-disable no-console */
+-import { join } from "path";
+ import { format as utilFormat } from "node:util";
+ 
+ import winston from "winston";
+ 
+-import checkAndCopyConfig, { getSettings } from "utils/config/config";
++import checkAndCopyConfig, { getSettings, CONF_DIR } from "utils/config/config";
++
+ 
+ let winstonLogger;
+ 
+ function init() {
+-  const configPath = join(process.cwd(), "config");
+   checkAndCopyConfig("settings.yaml");
+   const settings = getSettings();
+-  const logpath = settings.logpath || configPath;
++  const logpath = settings.logpath || CONF_DIR;
+ 
+   function combineMessageAndSplat() {
+     return {
