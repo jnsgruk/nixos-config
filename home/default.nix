@@ -1,4 +1,4 @@
-{ config, desktop, lib, outputs, stateVersion, username, inputs, ... }:
+{ config, desktop, lib, outputs, stateVersion, username, inputs, pkgs, ... }:
 {
   # Only import desktop configuration if the host is desktop enabled
   # Only import user specific configuration if they have bespoke settings
@@ -18,6 +18,9 @@
     username = username;
     homeDirectory = "/home/${username}";
     stateVersion = stateVersion;
+    activation.report-changes = config.lib.dag.entryAnywhere ''
+      ${pkgs.nvd}/bin/nvd diff $oldGenPath $newGenPath
+    '';
   };
 
   nixpkgs = {
