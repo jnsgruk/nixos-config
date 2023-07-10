@@ -12,6 +12,7 @@
     file
     git
     gotop
+    helix
     htop
     jq
     killall
@@ -22,6 +23,7 @@
     tree
     unzip
     usbutils
+    vim
     wget
     yq-go
   ];
