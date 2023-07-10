@@ -14,6 +14,7 @@ in
     ./console.nix
     ./locale.nix
 
+    ../services/avahi.nix
     ../services/firewall.nix
     ../services/networkmanager.nix
     ../services/openssh.nix
