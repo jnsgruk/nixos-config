@@ -3,10 +3,7 @@
     lxd = {
       enable = true;
       zfsSupport = true;
+      ui.enable = true;
     };
-  };
-
-  systemd.services.lxd.environment = {
-    "LXD_UI" = "${pkgs.lxd-ui}/ui";
   };
 }

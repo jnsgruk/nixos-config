@@ -4,7 +4,6 @@
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   ght = pkgs.callPackage ./ght { };
   homepage = pkgs.callPackage ./homepage { };
-  lxd-ui = pkgs.callPackage ./lxd-ui.nix { };
   # Remove this once Traefik 3 is properly released and in nixpkgs
   traefik-3 = pkgs.callPackage ./traefik-3.nix { };
 }
