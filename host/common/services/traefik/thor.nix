@@ -1,6 +1,6 @@
 { ... }:
 let
-  internalDomain = "loki.tailnet-d5da.ts.net";
+  internalDomain = "thor.tailnet-d5da.ts.net";
   externalDomain = "jnsgr.uk";
 
   dataDir = "/data/apps";
@@ -67,7 +67,7 @@ in
 
             freyja-syncthing = mkExtRouter { subdomain = "freyja.sync"; };
             kara-syncthing = mkExtRouter { subdomain = "kara.sync"; };
-            loki-syncthing = mkExtRouter { subdomain = "loki.sync"; };
+            thor-syncthing = mkExtRouter { subdomain = "thor.sync"; };
 
             prowlarr = mkTsRouter { name = "prowlarr"; };
             radarr = mkTsRouter { name = "radarr"; };
@@ -86,7 +86,7 @@ in
 
             "freyja.sync" = mkLB "http://100.78.135.96:8384";
             "kara.sync" = mkLB "http://100.93.165.28:8384";
-            "loki.sync" = mkLB "http://100.98.152.46:8384";
+            "thor.sync" = mkLB "http://100.67.109.40:8384";
 
             prowlarr = mkLB "http://localhost:9696";
             radarr = mkLB "http://localhost:7878";
