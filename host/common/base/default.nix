@@ -12,6 +12,7 @@ let
 in
 {
   imports = [
+    ./boot.nix
     ./console.nix
     ./locale.nix
 

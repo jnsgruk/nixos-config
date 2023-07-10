@@ -10,7 +10,7 @@
         "xhci_pci"
       ];
 
-      kernelModules = [ "dm-snapshot" ];
+      kernelModules = [ ];
 
       systemd.enable = true;
     };
