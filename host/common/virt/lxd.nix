@@ -1,4 +1,4 @@
-{ inputs, pkgs, options, lib, ... }:
+{ inputs, pkgs, ... }:
 let
   lxdModule = "nixos/modules/virtualisation/lxd.nix";
 in

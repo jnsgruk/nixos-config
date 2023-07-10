@@ -1,4 +1,4 @@
-{ disks ? [ "/dev/nvme0n1" "/dev/sda" ], ... }:
+{ ... }:
 let
   defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
 in
