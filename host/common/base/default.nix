@@ -11,6 +11,7 @@ let
 in
 {
   imports = [
+    ./console.nix
     ./locale.nix
 
     ../services/firewall.nix
