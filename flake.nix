@@ -47,7 +47,6 @@
         "${username}@kara" = libx.mkHome { hostname = "kara"; desktop = "hyprland"; };
         # Headless machines
         "${username}@hugin" = libx.mkHome { hostname = "hugin"; };
-        "${username}@loki" = libx.mkHome { hostname = "loki"; };
         "${username}@thor" = libx.mkHome { hostname = "thor"; };
         "ubuntu@dev" = libx.mkHome { hostname = "dev"; user = "ubuntu"; };
       };
@@ -59,7 +58,6 @@
         kara = libx.mkHost { hostname = "kara"; desktop = "hyprland"; };
         # Headless machines
         hugin = libx.mkHost { hostname = "hugin"; pkgsInput = nixpkgs; };
-        loki = libx.mkHost { hostname = "loki"; pkgsInput = nixpkgs; };
         thor = libx.mkHost { hostname = "thor"; pkgsInput = nixpkgs; };
       };
 
