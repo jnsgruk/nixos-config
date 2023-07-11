@@ -1,6 +1,10 @@
 { inputs, outputs, ... }:
 let
+  inherit (inputs.nixpkgs) lib;
+
   colours = (import ./colours.nix).colours;
+
+  libx = (import ./lib.nix { inherit lib; });
 
   pkgs = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
@@ -9,6 +13,8 @@ let
   };
 in
 {
+  inherit (libx) hexToRgb;
+
   # Note that there are still places not covered by colour choices here such as:
   #  - bat
   #  - tmux
