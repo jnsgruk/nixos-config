@@ -34,7 +34,7 @@ in
 
     syncthing = {
       enable = true;
-      guiAddress = "100.67.109.40:8384";
+      guiAddress = "thor.tailnet-d5da.ts.net:8384";
       configDir = "${dataDir}/syncthing";
       user = "jon";
       group = "users";

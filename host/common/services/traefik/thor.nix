@@ -84,9 +84,9 @@ in
             files = mkLB "http://localhost:8081";
             dash = mkLB "http://localhost:8082";
 
-            "freyja.sync" = mkLB "http://100.78.135.96:8384";
-            "kara.sync" = mkLB "http://100.93.165.28:8384";
-            "thor.sync" = mkLB "http://100.67.109.40:8384";
+            "freyja.sync" = mkLB "http://freyja.tailnet-d5da.ts.net:8384";
+            "kara.sync" = mkLB "http://kara.tailnet-d5da.ts.net:8384";
+            "thor.sync" = mkLB "http://thor.tailnet-d5da.ts.net:8384";
 
             prowlarr = mkLB "http://localhost:9696";
             radarr = mkLB "http://localhost:7878";
