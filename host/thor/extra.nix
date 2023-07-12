@@ -41,6 +41,9 @@
     };
   };
 
-  systemd.services.duplicati.serviceConfig.Group = lib.mkForce "users";
+  systemd.services.duplicati.serviceConfig = {
+    Group = lib.mkForce "users";
+    User = lib.mkForce "jon";
+  };
 }
 
