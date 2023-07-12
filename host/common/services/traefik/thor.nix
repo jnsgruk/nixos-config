@@ -1,15 +1,13 @@
-{ ... }:
+{ config, ... }:
 let
-  internalDomain = "thor.tailnet-d5da.ts.net";
+  internalDomain = "tailnet-d5da.ts.net";
   externalDomain = "jnsgr.uk";
-
-  dataDir = "/data/apps";
 
   mkLB = address: { loadBalancer = { servers = [{ url = "${address}"; }]; }; };
 
   mkTsRouter = { name, middlewares ? [ ] }: {
     inherit middlewares;
-    rule = "Host(`${internalDomain}`) && Path(`/${name}`) || PathPrefix(`/${name}`)";
+    rule = "Host(`thor.${internalDomain}`) && Path(`/${name}`) || PathPrefix(`/${name}`)";
     service = name;
     entryPoints = [ "websecure" ];
     tls.certresolver = "tailscale";
@@ -26,19 +24,20 @@ in
 {
   # Set an environment variable that points Traefik to the location of a file
   # that holds a DigitalOcean API key.
-  systemd.services.traefik.environment.DO_AUTH_TOKEN_FILE = "${dataDir}/traefik/token";
+  systemd.services.traefik.environment = {
+    DO_AUTH_TOKEN_FILE = "${config.services.traefik.dataDir}/token";
+  };
 
   services = {
     # Enable traefik to talk to the tailscale daemon for certs
     tailscale.permitCertUid = "traefik";
 
     traefik = {
-      dataDir = "${dataDir}/traefik";
       staticConfigOptions = {
         certificatesResolvers = {
           letsencrypt.acme = {
             email = "admin@sgrs.uk";
-            storage = "${dataDir}/traefik/acme.json";
+            storage = "${config.services.traefik.dataDir}/acme.json";
             dnsChallenge.provider = "digitalocean";
           };
           tailscale.tailscale = { };
@@ -84,9 +83,9 @@ in
             files = mkLB "http://localhost:8081";
             dash = mkLB "http://localhost:8082";
 
-            "freyja.sync" = mkLB "http://freyja.tailnet-d5da.ts.net:8384";
-            "kara.sync" = mkLB "http://kara.tailnet-d5da.ts.net:8384";
-            "thor.sync" = mkLB "http://thor.tailnet-d5da.ts.net:8384";
+            "freyja.sync" = mkLB "http://freyja.${internalDomain}:8384";
+            "kara.sync" = mkLB "http://kara.${internalDomain}:8384";
+            "thor.sync" = mkLB "http://thor.${internalDomain}:8384";
 
             prowlarr = mkLB "http://localhost:9696";
             radarr = mkLB "http://localhost:7878";
