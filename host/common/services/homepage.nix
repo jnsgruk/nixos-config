@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }: {
+{ pkgs, ... }: {
   networking.firewall = {
     allowedTCPPorts = [ 8082 ];
   };

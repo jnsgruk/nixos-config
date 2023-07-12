@@ -1,4 +1,4 @@
-{ pkgs, lib, hostname, ... }: {
+{ pkgs, ... }: {
   services = {
     prowlarr = {
       enable = true;
