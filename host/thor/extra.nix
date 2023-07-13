@@ -17,7 +17,7 @@
     cron = {
       enable = true;
       systemCronJobs = [
-        "@daily    root    /data/apps/backup.sh >> /data/apps/backup.log"
+        "@daily    root    /data/apps/backup.sh > /data/apps/backup.log"
       ];
     };
 
