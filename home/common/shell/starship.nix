@@ -11,6 +11,7 @@
           "$git_branch"
           "$git_state"
           "$git_status"
+          "$nix_shell"
           "$fill"
           "$python"
           "$golang"
@@ -74,6 +75,12 @@
         kubernetes = {
           disabled = false;
           format = "[$symbol$context](cyan bold) ";
+        };
+
+        nix_shell = {
+          disabled = false;
+          symbol = "❄️ ";
+          format = "via [$symbol\($name\)]($style)";
         };
       };
     };
