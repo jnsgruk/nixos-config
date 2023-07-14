@@ -5,7 +5,7 @@ on:
     branches:
       - main
   schedule:
-    - cron: '37 13 * * *'
+    - cron: "37 13 * * *"
   workflow_dispatch:
 
 jobs:
@@ -14,5 +14,12 @@ jobs:
     steps:
       - name: Checkout flake
         uses: actions/checkout@v3
+
+      - name: Install nix
+        uses: DeterminateSystems/nix-installer-action@v4
+
+      - name: Setup magic-nix-cache
+        uses: DeterminateSystems/magic-nix-cache-action@main
+
       - name: Check flake inputs
         uses: DeterminateSystems/flake-checker-action@v5
