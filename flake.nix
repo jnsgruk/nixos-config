@@ -5,6 +5,9 @@
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nix-formatter-pack.url = "github:Gerschtli/nix-formatter-pack";
+    nix-formatter-pack.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
 
@@ -30,6 +33,7 @@
     { self
     , nixpkgs
     , nixpkgs-unstable
+    , nix-formatter-pack
     , ...
     } @ inputs:
     let
@@ -78,21 +82,27 @@
       );
 
       formatter = libx.forAllSystems (system:
-        let pkgs = nixpkgs-unstable.legacyPackages.${system};
-        in pkgs.nixpkgs-fmt
+        nix-formatter-pack.lib.mkFormatter {
+          pkgs = nixpkgs-unstable.legacyPackages.${system};
+          config.tools = {
+            deadnix.enable = true;
+            nixpkgs-fmt.enable = true;
+            statix.enable = true;
+          };
+        }
       );
-    };
 
-  nixConfig = {
-    substituters = [
-      "https://cache.nixos.org"
-      "https://hyprland.cachix.org"
-      "https://jnsgruk.cachix.org"
-    ];
-    trusted-public-keys = [
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "jnsgruk.cachix.org-1:Kf9JahXxCf0ElU+Uz7xKvQEQHfUtg2Z45N2NeTxuxV8="
-    ];
-  };
+      nixConfig = {
+        substituters = [
+          "https://cache.nixos.org"
+          "https://hyprland.cachix.org"
+          "https://jnsgruk.cachix.org"
+        ];
+        trusted-public-keys = [
+          "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+          "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+          "jnsgruk.cachix.org-1:Kf9JahXxCf0ElU+Uz7xKvQEQHfUtg2Z45N2NeTxuxV8="
+        ];
+      };
+    };
 }
