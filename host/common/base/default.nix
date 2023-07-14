@@ -8,7 +8,7 @@ let
   # Break these packages out so they can be imported elsewhere as a common set
   # of baseline packages. Useful for installations that are home-manager-only
   # on other OSs, rather than NixOS.
-  basePackages = (import ./packages.nix { inherit pkgs; }).basePackages;
+  inherit ((import ./packages.nix { inherit pkgs; })) basePackages;
 in
 {
   imports = [

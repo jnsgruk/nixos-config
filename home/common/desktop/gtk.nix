@@ -3,9 +3,7 @@
 , ...
 }: {
   home.pointerCursor = {
-    package = theme.cursorTheme.package;
-    name = "${theme.cursorTheme.name}";
-    size = theme.cursorTheme.size;
+    inherit (theme.cursorTheme) package size name;
     gtk.enable = true;
     x11.enable = true;
   };
@@ -14,8 +12,8 @@
     enable = true;
 
     font = {
+      inherit (theme.fonts.default) package;
       name = "${theme.fonts.default.name}, ${theme.fonts.default.size}";
-      package = theme.fonts.default.package;
     };
 
     gtk2 = {
@@ -35,8 +33,7 @@
     };
 
     iconTheme = {
-      name = theme.iconTheme.name;
-      package = theme.iconTheme.package;
+      inherit (theme.iconTheme) name package;
     };
 
     theme = theme.gtkTheme;

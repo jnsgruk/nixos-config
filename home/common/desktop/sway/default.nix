@@ -28,9 +28,7 @@
       };
 
       config = {
-        menu = menu;
-        terminal = terminal;
-        modifier = modifier;
+        inherit menu terminal modifier;
         bars = [ ];
         gaps = { inner = 8; };
 
@@ -50,7 +48,7 @@
           border = 0;
           hideEdgeBorders = "none";
           titlebar = false;
-          commands = (import ./config/window-rules.nix { }).commands;
+          inherit ((import ./config/window-rules.nix { })) commands;
         };
 
         floating = {
@@ -68,7 +66,7 @@
         keybindings = (import ./config/keybindings.nix { inherit terminal menu modifier pkgs; }).main;
         modes.resize = (import ./config/keybindings.nix { inherit terminal menu modifier pkgs; }).resize;
         workspaceOutputAssign = (import ./config/displays.nix { }).${hostname}.workspace-assignments;
-        assigns = (import ./config/window-rules.nix { }).assigns;
+        inherit ((import ./config/window-rules.nix { })) assigns;
       };
     };
 

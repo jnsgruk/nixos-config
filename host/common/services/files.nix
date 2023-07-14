@@ -16,7 +16,7 @@
       };
     };
     phpfpm.pools.nginx-pool = {
-      user = config.services.nginx.user;
+      inherit (config.services.nginx) user;
       settings = {
         pm = "dynamic";
         "listen.owner" = config.services.nginx.user;

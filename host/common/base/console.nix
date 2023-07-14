@@ -3,8 +3,7 @@
 , ...
 }:
 let
-  colours = theme.colours;
-  hexToRgb = theme.hexToRgb;
+  inherit (theme) colours hexToRgb;
 in
 {
   console = {
@@ -18,7 +17,7 @@ in
     hwRender = true;
     fonts = [{
       name = "${theme.fonts.monospace.name}";
-      package = theme.fonts.monospace.package;
+      inherit (theme.fonts.monospace) package;
     }];
     extraConfig = ''
       font-size=14

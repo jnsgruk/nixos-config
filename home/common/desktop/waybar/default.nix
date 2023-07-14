@@ -31,9 +31,8 @@ let
     on-click = "activate";
   };
 
-  toRasi = (import ../rofi/lib.nix { inherit lib; }).toRasi;
-
-  rofi-power = (import ../rofi/powermenu { inherit config lib desktop pkgs theme; }).rofi-power;
+  inherit ((import ../rofi/lib.nix { inherit lib; })) toRasi;
+  inherit ((import ../rofi/powermenu { inherit config lib desktop pkgs theme; })) rofi-power;
 in
 {
   programs.waybar = {

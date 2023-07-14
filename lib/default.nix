@@ -5,7 +5,5 @@ let
 in
 {
   inherit theme;
-  mkHome = helpers.mkHome;
-  mkHost = helpers.mkHost;
-  forAllSystems = helpers.forAllSystems;
+  inherit (helpers) mkHome mkHost forAllSystems;
 }

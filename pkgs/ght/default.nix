@@ -23,7 +23,7 @@ let
   yarnLock = ./yarn.lock;
 
   # Read the package version from the 'package.json' in the repo
-  version = (builtins.fromJSON (builtins.readFile packageJSON)).version;
+  inherit ((builtins.fromJSON (builtins.readFile packageJSON))) version;
 
   # Grab the node_modules required to build/run the ght tool
   yarnDeps = pkgs.mkYarnModules {

@@ -12,7 +12,7 @@ let
   '';
 in
 {
-  imports = [ (import ./tiling-common.nix { inherit lib pkgs; runner = (lib.getExe hypr-run); }) ];
+  imports = [ (import ./tiling-common.nix { inherit lib pkgs; runner = lib.getExe hypr-run; }) ];
 
   programs = {
     hyprland = {

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  basePackages = (import ../../../../host/common/base/packages.nix { inherit pkgs; }).basePackages;
+  inherit ((import ../../../../host/common/base/packages.nix { inherit pkgs; })) basePackages;
 in
 {
   imports = [

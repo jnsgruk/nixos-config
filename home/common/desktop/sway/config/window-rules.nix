@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   assigns = {
     "1" = [
       { class = "[Ff]irefox"; }

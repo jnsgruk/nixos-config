@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   time.timeZone = "Europe/London";
 
   console.keyMap = "uk";

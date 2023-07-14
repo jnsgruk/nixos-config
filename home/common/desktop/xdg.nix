@@ -1,6 +1,6 @@
 { theme, ... }:
 let
-  associations = (import ./file-associations.nix).associations;
+  inherit ((import ./file-associations.nix)) associations;
 in
 {
   xdg = {

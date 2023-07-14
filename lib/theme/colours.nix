@@ -1,41 +1,22 @@
 rec {
   colours = rec {
-    accent = darkBlue;
+    inherit (catppuccin-macchiato) pink red yellow green;
+    inherit (catppuccin-macchiato) subtext0 subtext1 text;
+    inherit (catppuccin-macchiato) overlay0 overlay1 overlay2;
+    inherit (catppuccin-macchiato) surface0 surface1 surface2;
 
+    accent = darkBlue;
     black = catppuccin-macchiato.crust;
     white = catppuccin-macchiato.rosewater;
-
-    pink = catppuccin-macchiato.pink;
     lightPink = catppuccin-macchiato.flamingo;
-
-    red = catppuccin-macchiato.red;
     lightRed = catppuccin-macchiato.maroon;
-
     orange = catppuccin-macchiato.peach;
-    yellow = catppuccin-macchiato.yellow;
-
-    green = catppuccin-macchiato.green;
     cyan = catppuccin-macchiato.teal;
-
     blue = catppuccin-macchiato.sapphire;
     darkBlue = catppuccin-macchiato.blue;
     lightBlue = catppuccin-macchiato.sky;
-
     purple = catppuccin-macchiato.mauve;
     lightPurple = catppuccin-macchiato.lavender;
-
-    subtext0 = catppuccin-macchiato.subtext0;
-    subtext1 = catppuccin-macchiato.subtext1;
-    text = catppuccin-macchiato.text;
-
-    overlay0 = catppuccin-macchiato.overlay0;
-    overlay1 = catppuccin-macchiato.overlay1;
-    overlay2 = catppuccin-macchiato.overlay2;
-
-    surface0 = catppuccin-macchiato.surface0;
-    surface1 = catppuccin-macchiato.surface1;
-    surface2 = catppuccin-macchiato.surface2;
-
     bg = catppuccin-macchiato.base;
     bgDark = catppuccin-macchiato.mantle;
   };

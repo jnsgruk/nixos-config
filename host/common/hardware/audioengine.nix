@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   environment.etc = {
     "wireplumber/main.lua.d/51-disable-suspension.lua".text = ''
       table.insert (alsa_monitor.rules, {

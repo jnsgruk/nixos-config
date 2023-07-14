@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
 
   home.file.".config/git/allowed_signers".text = ''
     jon@sgrs.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB9bIEMgZVBCDxBWQ4m4hQP6ZZp0P3TfzjzcgUOdbYDLAAAABHNzaDo= YK5C

@@ -1,10 +1,8 @@
 { inputs, outputs, ... }:
 let
   inherit (inputs.nixpkgs) lib;
-
-  colours = (import ./colours.nix).colours;
-
-  libx = (import ./lib.nix { inherit lib; });
+  inherit ((import ./colours.nix)) colours;
+  libx = import ./lib.nix { inherit lib; };
 
   pkgs = import inputs.nixpkgs-unstable {
     system = "x86_64-linux";
@@ -34,7 +32,7 @@ in
 
   qtTheme = {
     name = "Catppuccin-Macchiato-Blue";
-    package = (pkgs.catppuccin-kvantum.override { variant = "Macchiato"; accent = "Blue"; });
+    package = pkgs.catppuccin-kvantum.override { variant = "Macchiato"; accent = "Blue"; };
   };
 
   iconTheme = rec {
@@ -61,7 +59,7 @@ in
     };
     monospace = {
       name = "MesloLGSDZ Nerd Font Mono";
-      package = (pkgs.nerdfonts.override { fonts = [ "Meslo" ]; });
+      package = pkgs.nerdfonts.override { fonts = [ "Meslo" ]; };
     };
     emoji = {
       name = "Joypixels";

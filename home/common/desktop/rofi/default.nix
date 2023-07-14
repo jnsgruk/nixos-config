@@ -1,9 +1,9 @@
 { config, desktop, pkgs, lib, theme, ... }:
 let
-  powermenu = (import ./powermenu { inherit config pkgs lib desktop theme; });
-  rofiTheme = (import ./theme.nix { inherit theme pkgs config; }).theme;
+  inherit ((import ./lib.nix { inherit lib; })) toRasi;
 
-  toRasi = (import ./lib.nix { inherit lib; }).toRasi;
+  powermenu = import ./powermenu { inherit config pkgs lib desktop theme; };
+  rofiTheme = (import ./theme.nix { inherit theme pkgs config; }).theme;
 in
 {
   programs.rofi = {

@@ -2,7 +2,7 @@
 let
   inherit (lib) isBool isInt;
   inherit (builtins) toString isList isString concatStringsSep concatMap removeAttrs isAttrs;
-  filterAttrs = lib.attrsets.filterAttrs;
+  inherit (lib.attrsets) filterAttrs;
 
   # Copied from https://github.com/nix-community/home-manager/blob/master/modules/programs/rofi.nix
   mkValueString = value:

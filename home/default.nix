@@ -15,9 +15,8 @@
   ++ lib.optional (builtins.pathExists (./. + "/common/users/${username}")) ./common/users/${username};
 
   home = {
-    username = username;
+    inherit username stateVersion;
     homeDirectory = "/home/${username}";
-    stateVersion = stateVersion;
     activation.report-changes = config.lib.dag.entryAnywhere ''
       ${pkgs.nvd}/bin/nvd diff $oldGenPath $newGenPath
     '';

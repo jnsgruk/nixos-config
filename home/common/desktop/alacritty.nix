@@ -1,6 +1,6 @@
 { theme, ... }:
 let
-  colours = theme.colours;
+  inherit (theme) colours;
 in
 {
   programs.alacritty = {

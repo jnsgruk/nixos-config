@@ -70,7 +70,7 @@
   };
 
   system = {
-    stateVersion = stateVersion;
+    inherit stateVersion;
     activationScripts.diff = {
       supportsDryActivation = true;
       text = ''

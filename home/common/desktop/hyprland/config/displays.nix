@@ -1,4 +1,4 @@
-{ ... }: {
+_: {
   kara =
     {
       workspace-assignments = ''
