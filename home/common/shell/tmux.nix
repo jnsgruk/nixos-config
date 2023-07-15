@@ -22,7 +22,11 @@
 
       plugins = with pkgs; [{
         plugin = tmuxPlugins.catppuccin;
-        extraConfig = "set -g @catppuccin_flavour 'macchiato'";
+        extraConfig = ''
+          set -g @catppuccin_flavour 'macchiato'
+          set -g @catppuccin_host 'on'
+          set -g @catppuccin_window_tabs_enabled 'on'
+        '';
       }];
     };
   };
