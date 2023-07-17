@@ -4,6 +4,9 @@ on:
 jobs:
   cachix:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        package: ["ght" ]
     steps:
       - name: Checkout flake
         uses: actions/checkout@v3
@@ -21,5 +24,5 @@ jobs:
           # If you chose API tokens for write access OR if you have a private cache
           authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
-      - name: Build packages
-        run: nix build .#ght
+      - name: Build ${{ matrix.package }}
+        run: nix build .#${{ matrix.package }}
