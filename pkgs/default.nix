@@ -3,5 +3,4 @@
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   ght = pkgs.callPackage ./ght { };
-  homepage = pkgs.callPackage ./homepage { };
 }
