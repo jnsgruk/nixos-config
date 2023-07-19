@@ -3,6 +3,7 @@
   services = {
     nginx = {
       enable = true;
+      group = "users";
       defaultHTTPListenPort = 8081;
       virtualHosts."_" = {
         root = "/data/apps/files";
@@ -17,6 +18,7 @@
     };
     phpfpm.pools.nginx-pool = {
       inherit (config.services.nginx) user;
+      group = "users";
       settings = {
         pm = "dynamic";
         "listen.owner" = config.services.nginx.user;
