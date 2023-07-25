@@ -1,16 +1,11 @@
-{ hostname, inputs, lib, pkgs, theme, ... }:
+{ hostname, lib, pkgs, theme, ... }:
 let
-  appearance = builtins.readFile ./config/appearance.conf;
   keybinds = builtins.readFile ./config/keybinds.conf;
-  machineInputs = builtins.readFile ./config/inputs.conf;
-  machineOutputs = (import ./config/displays.nix { }).${hostname}.outputs;
-  windowRules = builtins.readFile ./config/window-rules.conf;
-  workspaceAssignments = (import ./config/displays.nix { }).${hostname}.workspace-assignments;
+  outputs = (import ./config/displays.nix { }).${hostname};
+  windowRules = import ./config/window-rules.nix { };
 in
 {
   imports = [
-    inputs.hyprland.homeManagerModules.default
-
     ../rofi
     ../waybar
 
@@ -25,20 +20,63 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = pkgs.hyprland-hidpi;
-    recommendedEnvironment = true;
+    systemdIntegration = true;
 
     xwayland = {
       enable = true;
       hidpi = true;
     };
 
+    settings = {
+      inherit (outputs) monitor workspace;
+      inherit (windowRules) windowrulev2;
+
+      "$mod" = "SUPER";
+
+      general = {
+        gaps_in = 4;
+        gaps_out = 8;
+        border_size = 0;
+      };
+
+      dwindle = {
+        preserve_split = true;
+        force_split = 2;
+      };
+
+      gestures = {
+        workspace_swipe = true;
+        workspace_swipe_forever = true;
+        workspace_swipe_invert = false;
+      };
+
+      input = {
+        kb_layout = "gb";
+        follow_mouse = 2;
+        repeat_rate = 50;
+        repeat_delay = 300;
+      };
+
+      decoration = {
+        rounding = 8;
+        drop_shadow = true;
+        shadow_ignore_window = true;
+        shadow_offset = "0 5";
+        shadow_range = 50;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(00000099)";
+      };
+
+      animation = [
+        "border, 1, 2, default"
+        "fade, 1, 4, default"
+        "windows, 1, 3, default, popin 80%"
+        "workspaces, 1, 2, default, slide"
+      ];
+    };
+
     extraConfig = ''
-      ${appearance}
       ${keybinds}
-      ${machineInputs}
-      ${machineOutputs}
-      ${windowRules}
-      ${workspaceAssignments}
     '';
   };
 
@@ -55,7 +93,7 @@ in
 
   systemd.user.services.swaybg = {
     Unit.Description = "swaybg";
-    Install.WantedBy = [ "graphical-session.target" ];
+    Install.WantedBy = [ "hyprland-session.target" ];
     Service = {
       Type = "simple";
       ExecStart = "${lib.getExe pkgs.swaybg} -m fill -i ${theme.wallpaper}";
