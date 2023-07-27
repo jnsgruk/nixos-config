@@ -46,6 +46,7 @@ in
     settings = [{
       exclusive = true;
       position = "top";
+      layer = "top";
       height = 18;
       passthrough = false;
       gtk-layer-shell = true;
