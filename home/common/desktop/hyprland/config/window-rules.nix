@@ -12,6 +12,10 @@ _: {
     "pin, title:^(Picture-in-Picture)$"
 
     "float, class:^(1Password)$"
+    "stayfocused,title:^(Quick Access — 1Password)$"
+    "dimaround,title:^(Quick Access — 1Password)$"
+    "noanim,title:^(Quick Access — 1Password)$"
+
     "float, class:^(org.gnome.*)$"
     "float, class:^(pavucontrol)$"
     "float, class:(blueberry\.py)"
