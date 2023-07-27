@@ -3,19 +3,19 @@
 , ...
 }:
 let
-  name = "ght";
+  pname = "ght";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
-    repo = name;
+    repo = pname;
     # When bumping the version, a new 'yarn.lock' will need to be generated.
     # To do this:
     # - Clone the source code, cd into the directory
     # - Run 'nix shell nixpkgs#yarn nixpkgs#yarn2nix'
     # - Run 'yarn install'
     # - Copy the new 'yarn.lock' into this directory, overwriting the old
-    rev = "fa6b097133e6323cb8fe1d90056403062fd49181";
-    sha256 = "sha256-Vi060OUiWg/22bYZWlGpsdwSLSR2f70GkfXLLtoLgwM=";
+    rev = "8a145f8db921405f84ce6658a5a49039d80c1d40";
+    sha256 = "sha256-4qimfjiQHaa3CC2LlZkRM+ht9oLRCNE4jGSe6xFcxTs=";
   };
 
   packageJSON = "${src}/package.json";
@@ -28,11 +28,11 @@ let
   # Grab the node_modules required to build/run the ght tool
   yarnDeps = pkgs.mkYarnModules {
     inherit version packageJSON yarnLock;
-    pname = name;
+    pname = "ght-yarn-deps";
   };
 in
 pkgs.mkYarnPackage {
-  inherit src name yarnLock packageJSON;
+  inherit src pname version yarnLock packageJSON;
 
   nativeBuildInputs = with pkgs; [ makeWrapper ];
 

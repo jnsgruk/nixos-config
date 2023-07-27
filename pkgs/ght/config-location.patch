@@ -1,38 +1,40 @@
-diff --git a/src/automations/SSO.ts b/src/automations/SSO.ts
-index dcea2a7..b0c2718 100644
---- a/src/automations/SSO.ts
-+++ b/src/automations/SSO.ts
-@@ -8,7 +8,8 @@ import { CookieJar } from "tough-cookie";
- import Enquirer = require("enquirer");
+diff --git a/src/auth/UbuntuSSO.ts b/src/auth/UbuntuSSO.ts
+index 4501b42..c1166fe 100644
+--- a/src/auth/UbuntuSSO.ts
++++ b/src/auth/UbuntuSSO.ts
+@@ -9,7 +9,8 @@ import Enquirer = require("enquirer");
  import Puppeteer from "puppeteer";
  import { Ora } from "ora";
--import { existsSync, readFileSync, unlinkSync, writeFileSync } from "fs";
-+import { existsSync, mkdirSync, readFileSync, unlinkSync, writeFileSync } from "fs";
+ import { CookieJar } from "tough-cookie";
+-import { existsSync, writeFileSync } from "fs";
++import { existsSync, writeFileSync, mkdirSync } from "fs";
 +import { dirname } from "path";
  
- export type SSOCookies = {
-     sessionId: string;
-@@ -66,6 +67,10 @@ export default class SSO {
-         }
+ export default class UbuntuSSO extends Authentication {
+     private httpsAgent;
+@@ -66,6 +67,10 @@ export default class UbuntuSSO extends Authentication {
      }
+ 
      private saveUserSettings() {
-+        const confDir = dirname(CONFIG_PATH);
++        const confDir = dirname(this.config.userSettingsPath);
 +        if (!existsSync(confDir)) {
 +            mkdirSync(confDir, { recursive: true });
 +        }
-         writeFileSync(CONFIG_PATH, JSON.stringify(this.jar));
+         writeFileSync(this.config.userSettingsPath, JSON.stringify(this.jar));
      }
  
-diff --git a/src/common/constants.ts b/src/common/constants.ts
-index 9ad0b30..12162fd 100644
---- a/src/common/constants.ts
-+++ b/src/common/constants.ts
-@@ -1,7 +1,7 @@
- import { homedir } from "os";
- import { join } from "path";
+diff --git a/src/config/Config.ts b/src/config/Config.ts
+index 86971b9..c421390 100644
+--- a/src/config/Config.ts
++++ b/src/config/Config.ts
+@@ -86,8 +86,8 @@ class Config {
+         return join(
+             homedir(),
+             this.isCanonical()
+-                ? ".canonical-greenhouse.json"
+-                : ".ght-greenhouse.json"
++                ? ".config/ght/.canonical-greenhouse.json"
++                : ".config/ght/.ght-greenhouse.json"
+         );
+     }
  
--export const CONFIG_PATH = join(homedir(), ".canonical-greenhouse.json");
-+export const CONFIG_PATH = join(homedir(), ".config/ght/.canonical-greenhouse.json");
- export const MAIN_URL = "https://canonical.greenhouse.io/";
- export const SSO_DOMAIN = "login.ubuntu.com";
- export const SSO_URL = "https://login.ubuntu.com";
