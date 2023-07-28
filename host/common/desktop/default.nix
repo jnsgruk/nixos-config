@@ -35,7 +35,7 @@
   };
 
   fonts = {
-    fonts = with pkgs; [
+    packages = with pkgs; [
       liberation_ttf
       ubuntu_font_family
 
@@ -46,7 +46,7 @@
     ];
 
     # Use fonts specified by user rather than default ones
-    enableDefaultFonts = false;
+    enableDefaultPackages = false;
 
     fontconfig = {
       enable = true;
