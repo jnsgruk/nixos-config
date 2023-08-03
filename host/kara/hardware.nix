@@ -16,6 +16,8 @@
     ../common/hardware/bluetooth.nix
 
     ../common/services/fwupd.nix
+
+    ../common/services/flypi.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";

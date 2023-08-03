@@ -27,6 +27,8 @@
     crafts.inputs.nixpkgs.follows = "nixpkgs-unstable";
     embr.url = "github:jnsgruk/firecracker-ubuntu";
     embr.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
+    flypi.url = "path:/home/jon/code/flypi-flake";
   };
 
   outputs =
