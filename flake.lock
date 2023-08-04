@@ -86,8 +86,8 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1691100507,
-        "narHash": "sha256-IH98i+ItEsHR0mJDSwWFDYWGLKXdrCphQcpJy67YPrM=",
+        "lastModified": 1691167687,
+        "narHash": "sha256-xOFwvH3N0JWzV1sLuhGjxR+WV7OY85nN+F8mI1sfIq0=",
         "path": "/home/jon/code/flypi-flake",
         "type": "path"
       },
