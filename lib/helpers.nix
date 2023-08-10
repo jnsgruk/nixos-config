@@ -14,7 +14,10 @@
     specialArgs = {
       inherit inputs outputs stateVersion theme username hostname desktop;
     };
-    modules = [ ../host ];
+    modules = [
+      inputs.agenix.nixosModules.default
+      ../host
+    ];
   };
 
   forAllSystems = inputs.nixpkgs.lib.genAttrs [

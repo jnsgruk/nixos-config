@@ -22,10 +22,16 @@ let
   };
 in
 {
+  age.secrets.digitalocean = {
+    file = ../../../../secrets/digitalocean.age;
+    owner = "traefik";
+    group = "traefik";
+    mode = "600";
+  };
   # Set an environment variable that points Traefik to the location of a file
   # that holds a DigitalOcean API key.
   systemd.services.traefik.environment = {
-    DO_AUTH_TOKEN_FILE = "${config.services.traefik.dataDir}/token";
+    DO_AUTH_TOKEN_FILE = config.age.secrets.digitalocean.path;
   };
 
   services = {
