@@ -30,6 +30,7 @@
 
       # You can also add overlays exported from other flakes:
       inputs.crafts.overlay
+      inputs.agenix.overlays.default
     ]
     ++ lib.optionals (desktop == "hyprland") [
       inputs.hyprland.overlays.default
