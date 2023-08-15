@@ -19,12 +19,10 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    package = pkgs.hyprland-hidpi;
     systemdIntegration = true;
 
     xwayland = {
       enable = true;
-      hidpi = true;
     };
 
     settings = {
