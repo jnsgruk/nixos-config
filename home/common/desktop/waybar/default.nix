@@ -37,10 +37,9 @@ in
 {
   programs.waybar = {
     enable = true;
-    package = if desktop == "hyprland" then pkgs.waybar-hyprland else pkgs.waybar;
 
     systemd = {
-      enable = true; #if desktop == "sway" then true else false;
+      enable = true;
     };
 
     settings = [{
