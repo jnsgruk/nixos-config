@@ -14,8 +14,8 @@ let
     # - Run 'nix shell nixpkgs#yarn nixpkgs#yarn2nix'
     # - Run 'yarn install'
     # - Copy the new 'yarn.lock' into this directory, overwriting the old
-    rev = "8a145f8db921405f84ce6658a5a49039d80c1d40";
-    sha256 = "sha256-4qimfjiQHaa3CC2LlZkRM+ht9oLRCNE4jGSe6xFcxTs=";
+    rev = "50e45944b34ea1355f6654fc1c1f00c051d29aff";
+    sha256 = "sha256-XkJ3Jh3SyhZJzXmKrbCaLmilL2+W4eu/G1sHNkI3Y8Y=";
   };
 
   packageJSON = "${src}/package.json";
@@ -35,8 +35,6 @@ pkgs.mkYarnPackage {
   inherit src pname version yarnLock packageJSON;
 
   nativeBuildInputs = with pkgs; [ makeWrapper ];
-
-  patches = [ ./config-location.patch ];
 
   postPatch = ''
     substituteInPlace ght \
