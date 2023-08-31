@@ -6,9 +6,9 @@
     {
       "*" = {
         border = mkLiteral "none";
-        padding = 0;
+        padding = mkLiteral "0px";
         font-family = "${theme.fonts.iconFont.name}";
-        font-size = 15;
+        font-size = mkLiteral "15px";
       };
 
       "window#waybar" = {
@@ -16,29 +16,29 @@
       };
 
       "window>box" = {
-        margin = mkLiteral "8 8 0 8";
+        margin = mkLiteral "8px 8px 0px 8px";
         background = mkLiteral "${theme.colours.bg}";
         opacity = mkLiteral "0.8";
-        border-radius = 8;
+        border-radius = mkLiteral "8px";
       };
 
       ".modules-right" = {
-        margin-right = 10;
-        padding = mkLiteral "5 10";
+        margin-right = mkLiteral "10px";
+        padding = mkLiteral "5px 10px";
       };
 
       ".modules-center" = {
-        margin = 0;
-        padding = mkLiteral "5 10";
+        margin = mkLiteral "0px";
+        padding = mkLiteral "5px 10px";
       };
 
       ".modules-left" = {
-        margin-left = 10;
-        padding = mkLiteral "5 0";
+        margin-left = mkLiteral "10px";
+        padding = mkLiteral "5px 0px";
       };
 
       "#workspaces button" = {
-        padding = mkLiteral "0 10";
+        padding = mkLiteral "0px 10px";
         background-color = mkLiteral "transparent";
         font-weight = mkLiteral "lighter";
         color = mkLiteral "${theme.colours.text}";
@@ -68,7 +68,7 @@
       #custom-power,
       #custom-menu,
       #idle_inhibitor" = {
-        padding = mkLiteral "0 10";
+        padding = mkLiteral "0px 10px";
         color = mkLiteral "${theme.colours.text}";
       };
 
