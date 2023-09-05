@@ -50,12 +50,12 @@ in
       passthrough = false;
       gtk-layer-shell = true;
 
-      modules-left = [ (if desktop == "sway" then "sway/workspaces" else "wlr/workspaces") ];
+      modules-left = [ (if desktop == "sway" then "sway/workspaces" else "hyprland/workspaces") ];
       modules-center = [ "clock" "idle_inhibitor" ];
       modules-right = modules;
 
       "sway/workspaces" = workspaceConfig;
-      "wlr/workspaces" = workspaceConfig;
+      "hyprland/workspaces" = workspaceConfig;
 
       "network" = {
         format-wifi = "{essid} ";
