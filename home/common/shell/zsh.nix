@@ -38,8 +38,8 @@
       '';
 
       shellAliases = {
-        ls = "exa -gl --git --color=automatic";
-        tree = "exa --tree";
+        ls = "eza -gl --git --color=automatic";
+        tree = "eza --tree";
         cat = "bat";
 
         ip = "ip --color";
