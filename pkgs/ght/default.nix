@@ -14,8 +14,8 @@ let
     # - Run 'nix shell nixpkgs#yarn nixpkgs#yarn2nix'
     # - Run 'yarn install'
     # - Copy the new 'yarn.lock' into this directory, overwriting the old
-    rev = "50e45944b34ea1355f6654fc1c1f00c051d29aff";
-    sha256 = "sha256-XkJ3Jh3SyhZJzXmKrbCaLmilL2+W4eu/G1sHNkI3Y8Y=";
+    rev = "bbb7b4bd4a7144d5440bbcfd95bed7b3ac01b602";
+    sha256 = "sha256-5xdrlnTEsRzQZ9SaeUUHVDQiW/zEqSOD/C/3tfRX900=";
   };
 
   packageJSON = "${src}/package.json";
