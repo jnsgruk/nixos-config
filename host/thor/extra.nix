@@ -4,7 +4,6 @@
     ../common/services/homepage.nix
     ../common/services/servarr.nix
     ../common/services/traefik
-    ../common/virt
   ];
 
   # Firewall port for NFS
