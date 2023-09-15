@@ -9,8 +9,6 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     (import ./disks.nix { })
-
-    ../common/services/fwupd.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
