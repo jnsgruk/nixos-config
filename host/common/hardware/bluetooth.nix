@@ -1,7 +1,7 @@
 { pkgs, ... }: {
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.bluezFull;
+    package = pkgs.bluez;
     settings = {
       General = {
         Experimental = true;
