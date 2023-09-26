@@ -15,14 +15,6 @@
     };
 
     duplicati.enable = true;
-
-    syncthing = {
-      enable = true;
-      guiAddress = "thor.tailnet-d5da.ts.net:8384";
-      configDir = "/data/apps/syncthing";
-      user = "jon";
-      group = "users";
-    };
   };
 
   systemd.services.duplicati.serviceConfig = {
