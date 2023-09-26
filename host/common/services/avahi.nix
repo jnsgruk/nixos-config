@@ -1,7 +1,8 @@
-{ desktop, ... }: {
+{ desktop, hostname, ... }: {
   services = {
     avahi = {
       enable = true;
+      openFirewall = true;
       nssmdns = true;
       publish = {
         enable = true;
