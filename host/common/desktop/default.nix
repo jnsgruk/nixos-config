@@ -3,6 +3,7 @@
     (./. + "/${desktop}.nix")
     ../hardware/ledger.nix
     ../hardware/yubikey.nix
+    ../services/networkmanager.nix
     ../services/pipewire.nix
     ../virt
   ];
