@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ... }: {
+{ config, pkgs, ... }: {
   imports = [
     ../common/services/files.nix
     ../common/services/homepage.nix
