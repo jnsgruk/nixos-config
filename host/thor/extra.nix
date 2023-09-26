@@ -1,10 +1,12 @@
-{ lib, config, ... }: {
+{ lib, config, pkgs, ... }: {
   imports = [
     ../common/services/files.nix
     ../common/services/homepage.nix
     ../common/services/servarr.nix
     ../common/services/traefik
   ];
+
+  environment.systemPackages = with pkgs; [ icloudpd ];
 
   age.secrets = {
     borgbase-ssh = {

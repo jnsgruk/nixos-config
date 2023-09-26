@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: ["ght" ]
+        package: ["ght", "icloudpd" ]
     steps:
       - name: Checkout flake
         uses: actions/checkout@v4
