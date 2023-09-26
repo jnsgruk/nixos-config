@@ -4,6 +4,7 @@
 }:
 let
   pname = "ght";
+  version = "1.5.5";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
@@ -14,16 +15,13 @@ let
     # - Run 'nix shell nixpkgs#yarn nixpkgs#yarn2nix'
     # - Run 'yarn install'
     # - Copy the new 'yarn.lock' into this directory, overwriting the old
-    rev = "bbb7b4bd4a7144d5440bbcfd95bed7b3ac01b602";
-    sha256 = "sha256-5xdrlnTEsRzQZ9SaeUUHVDQiW/zEqSOD/C/3tfRX900=";
+    rev = "v${version}";
+    sha256 = "sha256-Vc+HzbQeEXO0aD0d8I5Tbxe9qcoAVQWjgU96fLgHXVE=";
   };
 
   packageJSON = "${src}/package.json";
   # TODO: Try to drop this "forked" yarn.lock and generate it somehow?
   yarnLock = ./yarn.lock;
-
-  # Read the package version from the 'package.json' in the repo
-  inherit ((builtins.fromJSON (builtins.readFile packageJSON))) version;
 
   # Grab the node_modules required to build/run the ght tool
   yarnDeps = pkgs.mkYarnModules {
