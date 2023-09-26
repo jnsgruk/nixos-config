@@ -8,6 +8,11 @@ in
   imports = [ "${inputs.nixpkgs-unstable}/${prowlarrModule}" ];
 
   services = {
+    jellyfin = {
+      enable = true;
+      package = pkgs.unstable.jellyfin;
+      group = "users";
+    };
     prowlarr = {
       enable = true;
       package = pkgs.unstable.prowlarr;
