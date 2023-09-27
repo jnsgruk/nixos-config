@@ -18,8 +18,9 @@ pkgs.python3Packages.buildPythonApplication {
   };
 
   postPatch = ''
-    substituteInPlace pyproject.toml --replace "wheel>=0.40.0,<0.41" "wheel"
-    substituteInPlace pyproject.toml --replace "pytz>=2022.7.1,<2023" "pytz"
+    substituteInPlace pyproject.toml \
+      --replace "wheel>=0.40.0,<0.41" "wheel" \
+      --replace "pytz>=2022.7.1,<2023" "pytz"
   '';
 
   buildInputs = with pkgs; [ git ];
