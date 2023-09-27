@@ -41,7 +41,7 @@
         "/var/lib/sonarr"
         "/var/lib/prowlarr"
         "/var/lib/jellyfin"
-        "/var/lib/sanzbd"
+        "/var/lib/sabnzbd"
       ];
       exclude = [
         "/data/apps/files/_files/cache"
