@@ -4,7 +4,7 @@
 }:
 let
   pname = "ght";
-  version = "1.5.5";
+  version = "1.5.6";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
@@ -16,7 +16,7 @@ let
     # - Run 'yarn install'
     # - Copy the new 'yarn.lock' into this directory, overwriting the old
     rev = "v${version}";
-    sha256 = "sha256-Vc+HzbQeEXO0aD0d8I5Tbxe9qcoAVQWjgU96fLgHXVE=";
+    sha256 = "sha256-6WiHVXxwShQKwkBvlkDNgGt1Kp3qK5s9fulpXsNJsnU=";
   };
 
   packageJSON = "${src}/package.json";
