@@ -16,4 +16,10 @@ in
       };
     };
   };
+
+  networking = {
+    firewall = {
+      trustedInterfaces = [ "lxdbr0" ];
+    };
+  };
 }
