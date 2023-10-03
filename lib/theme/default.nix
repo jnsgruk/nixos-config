@@ -19,7 +19,7 @@ in
   #  - vim
   inherit colours;
 
-  wallpaper = ./wallpapers/space-clouds.png;
+  wallpaper = ./wallpapers/jokulsarlon.jpg;
 
   gtkTheme = {
     name = "Catppuccin-Macchiato-Standard-Blue-Dark";
