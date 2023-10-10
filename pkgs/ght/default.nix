@@ -34,6 +34,8 @@ pkgs.mkYarnPackage {
 
   nativeBuildInputs = with pkgs; [ makeWrapper ];
 
+  patches = [ ./ght-graders-loc.patch ];
+
   postPatch = ''
     substituteInPlace ght \
         --replace "./index.js" "$out/opt/ght/index.js" \
