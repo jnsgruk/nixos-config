@@ -19,11 +19,7 @@ in
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemdIntegration = true;
-
-    xwayland = {
-      enable = true;
-    };
+    xwayland.enable = true;
 
     settings = {
       inherit (outputs) monitor workspace;
