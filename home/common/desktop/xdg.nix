@@ -20,15 +20,6 @@ in
         categories = [ "Network" "Application" ];
       };
 
-      signal-desktop = {
-        name = "Signal";
-        exec = "signal-desktop --ozone-platform-hint=auto --enable-features=UseOzonePlatform --no-sandbox";
-        terminal = false;
-        icon = "signal-desktop";
-        type = "Application";
-        categories = [ "Network" "Application" ];
-      };
-
       # Override the desktop file for Nautilus to use GTK_THEME.
       # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
       "org.gnome.Nautilus" = {
