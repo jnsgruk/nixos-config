@@ -17,6 +17,7 @@
     htop
     jq
     killall
+    ntfs3g
     pciutils
     ripgrep
     rsync
