@@ -36,6 +36,8 @@
         "**/.venv"
         "**/venv"
         "**/target"
+        "/home/jon/downloads"
+        "/home/jon/data/downloads"
       ];
       repo = "z2sqv4mw@z2sqv4mw.repo.borgbase.com:repo";
       encryption = {
