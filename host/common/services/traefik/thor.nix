@@ -23,7 +23,7 @@ let
 in
 {
   age.secrets.digitalocean = {
-    file = ../../../../secrets/digitalocean.age;
+    file = ../../../../secrets/thor-digitalocean.age;
     owner = "traefik";
     group = "traefik";
     mode = "600";

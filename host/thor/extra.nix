@@ -10,13 +10,13 @@
 
   age.secrets = {
     borgbase-ssh = {
-      file = ../../secrets/borgbase-ssh.age;
+      file = ../../secrets/thor-borgbase-ssh.age;
       owner = "root";
       group = "root";
       mode = "400";
     };
     borgbase-passphrase = {
-      file = ../../secrets/borgbase-passphrase.age;
+      file = ../../secrets/thor-borgbase-passphrase.age;
       owner = "root";
       group = "root";
       mode = "400";
