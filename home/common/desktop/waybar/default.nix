@@ -17,20 +17,6 @@ let
       "custom/power"
     ];
 
-  workspaceConfig = {
-    format = "{icon}";
-    format-icons = {
-      "1" = "";
-      "2" = "";
-      "3" = "";
-      "4" = "";
-      "5" = "";
-      "6" = "";
-      "7" = "";
-    };
-    on-click = "activate";
-  };
-
   inherit ((import ../rofi/lib.nix { inherit lib; })) toRasi;
   inherit ((import ../rofi/powermenu { inherit config lib desktop pkgs theme; })) rofi-power;
 in
@@ -50,12 +36,23 @@ in
       passthrough = false;
       gtk-layer-shell = true;
 
-      modules-left = [ (if desktop == "sway" then "sway/workspaces" else "hyprland/workspaces") ];
+      modules-left = [ "hyprland/workspaces" ];
       modules-center = [ "clock" "idle_inhibitor" ];
       modules-right = modules;
 
-      "sway/workspaces" = workspaceConfig;
-      "hyprland/workspaces" = workspaceConfig;
+      "hyprland/workspaces" = {
+        format = "{icon}";
+        format-icons = {
+          "1" = "";
+          "2" = "";
+          "3" = "";
+          "4" = "";
+          "5" = "";
+          "6" = "";
+          "7" = "";
+        };
+        on-click = "activate";
+      };
 
       "network" = {
         format-wifi = "{essid} ";

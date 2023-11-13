@@ -49,11 +49,7 @@ run_cmd() {
 		elif [[ $1 == '--suspend' ]]; then
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			if [[ "$desktop" == "hyprland" ]]; then
-				hyprctl dispatch exit
-			elif [[ "$desktop" == "sway" ]]; then
-				swaymsg exit
-			fi
+			hyprctl dispatch exit
 		fi
 	else
 		exit 0

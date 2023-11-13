@@ -58,17 +58,12 @@
     ];
     timeouts = [
       { timeout = 300; command = "${lib.getExe pkgs.swaylock-effects} -f"; }
-    ]
-    ++ (lib.optional (desktop == "sway") {
-      timeout = 305;
-      command = ''${pkgs.sway}/bin/swaymsg "output * dpms off"'';
-      resumeCommand = ''${pkgs.sway}/bin/swaymsg "output * dpms on"'';
-    })
-    ++ (lib.optional (desktop == "hyprland") {
-      timeout = 305;
-      command = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms off'';
-      resumeCommand = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms on'';
-    });
+      {
+        timeout = 305;
+        command = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms off'';
+        resumeCommand = ''${pkgs.hyprland}/bin/hyprctl dispatch dpms on'';
+      }
+    ];
   };
 
   # This theme to "sway-session.target" which breaks under Hyprland

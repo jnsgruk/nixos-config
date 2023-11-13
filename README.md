@@ -24,11 +24,11 @@ The machines configured thus far are:
 
 The following is a list of the key elements of my setup, with links to their config:
 
-| Type  | Details                                                |
-| :---: | :----------------------------------------------------- |
-| Shell | [zsh], [starship], [nvim], [tmux], [neofetch]          |
-|  WM   | [hyprland] [sway], [waybar], [swaylock], [mako], [gtk] |
-| Apps  | [vscode], [zathura], [alacritty]                       |
+| Type  | Details                                         |
+| :---: | :---------------------------------------------- |
+| Shell | [zsh], [starship], [nvim], [tmux], [neofetch]   |
+|  WM   | [hyprland], [waybar], [swaylock], [mako], [gtk] |
+| Apps  | [vscode], [zathura], [alacritty]                |
 
 ## Screenshots
 
@@ -53,14 +53,13 @@ The following is a list of the key elements of my setup, with links to their con
 [alacritty]: ./home/common/desktop/alacritty.nix
 [gtk]: ./home/common/desktop/gtk.nix
 [hyprland]: ./home/common/desktop/hyprland/default.nix
-[mako]: ./home/common/desktop/sway/services.nix
+[mako]: ./home/common/desktop/mako.nix
 [neofetch]: ./home/common/shell/neofetch.nix
 [nvim]: ./home/common/shell/vim.nix
 [starship]: ./home/common/shell/starship.nix
-[sway]: ./home/common/desktop/sway/default.nix
-[swaylock]: ./home/common/desktop/sway/swaylock.nix
+[swaylock]: ./home/common/desktop/swaylock.nix
 [tmux]: ./home/common/shell/tmux.nix
 [vscode]: ./home/common/desktop/vscode.nix
 [zathura]: ./home/common/desktop/zathura.nix
-[waybar]: ./home/common/desktop/sway/waybar/default.nix
+[waybar]: ./home/common/desktop/waybar/default.nix
 [zsh]: ./home/common/shell/zsh.nix
