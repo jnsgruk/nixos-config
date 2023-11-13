@@ -12,6 +12,7 @@ in
       enable = true;
       package = pkgs.unstable.jellyfin;
       group = "users";
+      openFirewall = true;
     };
     prowlarr = {
       enable = true;
