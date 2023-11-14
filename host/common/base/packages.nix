@@ -21,6 +21,7 @@
     pciutils
     ripgrep
     rsync
+    tpm2-tss
     traceroute
     tree
     unzip
