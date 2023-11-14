@@ -20,6 +20,9 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    lanzaboote.url = "github:nix-community/lanzaboote";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     vscode-server.url = "github:nix-community/nixos-vscode-server";
     vscode-server.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
