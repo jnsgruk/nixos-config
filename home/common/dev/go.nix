@@ -7,5 +7,6 @@
     gofumpt
     golangci-lint
     gopls
+    goreleaser
   ];
 }
