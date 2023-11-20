@@ -18,16 +18,6 @@
         vendorHash = "sha256-6Au597l0Jl2ZMGOprUwtXwMLHv50r+G+4os0ECJip6A=";
       });
     };
-
-    lxd-unwrapped = prev.callPackage "${prev.path}/pkgs/tools/admin/lxd" {
-      buildGoModule = args: prev.buildGoModule (args // rec {
-        version = "5.19";
-        src = prev.fetchurl {
-          url = "https://github.com/canonical/lxd/releases/download/lxd-${version}/lxd-${version}.tar.gz";
-          hash = "sha256-Ttw3Hox+GfoI8dE2KpZ2HUTblOPFBUs63IBRI18lAiM=";
-        };
-      });
-    };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
