@@ -4,7 +4,7 @@
 }:
 let
   pname = "ght";
-  version = "1.5.6";
+  version = "1.6.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
@@ -13,14 +13,15 @@ let
     # To do this:
     # - Clone the source code, cd into the directory
     # - Run 'nix shell nixpkgs#yarn nixpkgs#yarn2nix'
+    # - Delete the old lock file which is in the new (incompatible) format
     # - Run 'yarn install'
     # - Copy the new 'yarn.lock' into this directory, overwriting the old
-    rev = "v${version}";
-    sha256 = "sha256-6WiHVXxwShQKwkBvlkDNgGt1Kp3qK5s9fulpXsNJsnU=";
+    rev = "5464a5884283d933baf876fd4d812ccde912dd16";
+    sha256 = "sha256-gzbdHk9D54zMPDYIEB19+KcCHUpqGqC8wQS1IQmfEDg=";
   };
 
   packageJSON = "${src}/package.json";
-  # TODO: Try to drop this "forked" yarn.lock and generate it somehow?
+  # # TODO: Try to drop this "forked" yarn.lock and generate it somehow?
   yarnLock = ./yarn.lock;
 
   # Grab the node_modules required to build/run the ght tool
@@ -30,7 +31,7 @@ let
   };
 in
 pkgs.mkYarnPackage {
-  inherit src pname version yarnLock packageJSON;
+  inherit src pname version yarnLock;
 
   nativeBuildInputs = with pkgs; [ makeWrapper ];
 
