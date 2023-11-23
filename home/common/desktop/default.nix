@@ -29,6 +29,7 @@
     pavucontrol
     rambox
     signal-desktop
+    todoist-electron
     xdg-utils
     xorg.xlsclients
   ];
