@@ -55,6 +55,8 @@
         gp = "git push";
         gst = "git status -sb";
 
+        htop = "btm -b";
+
         tf = "terraform";
         tfi = "terraform init";
         tfp = "terraform plan";

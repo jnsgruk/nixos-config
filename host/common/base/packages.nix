@@ -12,9 +12,6 @@
     fd
     file
     git
-    gotop
-    helix
-    htop
     jq
     killall
     ntfs3g
