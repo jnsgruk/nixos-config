@@ -1,7 +1,7 @@
 { inputs, outputs, stateVersion, theme, username, ... }: {
   # Helper function for generating home-manager configs
   mkHome = { hostname, user ? username, desktop ? null }: inputs.home-manager.lib.homeManagerConfiguration {
-    pkgs = inputs.nixpkgs-unstable.legacyPackages.x86_64-linux;
+    pkgs = inputs.unstable.legacyPackages.x86_64-linux;
     extraSpecialArgs = {
       inherit inputs outputs stateVersion theme hostname desktop;
       username = user;
@@ -10,7 +10,7 @@
   };
 
   # Helper function for generating host configs
-  mkHost = { hostname, desktop ? null, pkgsInput ? inputs.nixpkgs-unstable }: pkgsInput.lib.nixosSystem {
+  mkHost = { hostname, desktop ? null, pkgsInput ? inputs.unstable }: pkgsInput.lib.nixosSystem {
     specialArgs = {
       inherit inputs outputs stateVersion theme username hostname desktop;
     };

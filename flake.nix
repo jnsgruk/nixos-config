@@ -1,15 +1,15 @@
 {
   description = "jnsgruk's nixos configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    agenix.inputs.nixpkgs.follows = "unstable";
 
     nix-formatter-pack.url = "github:Gerschtli/nix-formatter-pack";
-    nix-formatter-pack.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    nix-formatter-pack.inputs.nixpkgs.follows = "unstable";
 
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland-contrib.url = "github:hyprwm/contrib";
@@ -18,33 +18,33 @@
     sf-pro-fonts-src.flake = false;
 
     disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    disko.inputs.nixpkgs.follows = "unstable";
 
     lanzaboote.url = "github:nix-community/lanzaboote";
-    lanzaboote.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    lanzaboote.inputs.nixpkgs.follows = "unstable";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
-    vscode-server.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    vscode-server.inputs.nixpkgs.follows = "unstable";
 
     home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    home-manager.inputs.nixpkgs.follows = "unstable";
 
     crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/jon/crafts-flake";
-    crafts.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    crafts.inputs.nixpkgs.follows = "unstable";
     embr.url = "github:jnsgruk/firecracker-ubuntu";
-    embr.inputs.nixpkgs.follows = "nixpkgs-unstable";
+    embr.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs =
     { self
     , nixpkgs
-    , nixpkgs-unstable
+    , unstable
     , nix-formatter-pack
     , ...
     } @ inputs:
     let
       inherit (self) outputs;
-      stateVersion = "23.05";
+      stateVersion = "23.11";
       username = "jon";
 
       libx = import ./lib { inherit inputs outputs stateVersion username; };
@@ -73,7 +73,7 @@
 
       # Custom packages; acessible via 'nix build', 'nix shell', etc
       packages = libx.forAllSystems (system:
-        let pkgs = nixpkgs-unstable.legacyPackages.${system};
+        let pkgs = unstable.legacyPackages.${system};
         in import ./pkgs { inherit pkgs; }
       );
 
@@ -83,13 +83,13 @@
       # Devshell for bootstrapping
       # Accessible via 'nix develop' or 'nix-shell' (legacy)
       devShells = libx.forAllSystems (system:
-        let pkgs = nixpkgs-unstable.legacyPackages.${system};
+        let pkgs = unstable.legacyPackages.${system};
         in import ./shell.nix { inherit pkgs; }
       );
 
       formatter = libx.forAllSystems (system:
         nix-formatter-pack.lib.mkFormatter {
-          pkgs = nixpkgs-unstable.legacyPackages.${system};
+          pkgs = unstable.legacyPackages.${system};
           config.tools = {
             deadnix.enable = true;
             nixpkgs-fmt.enable = true;

@@ -4,7 +4,7 @@ let
   inherit ((import ./colours.nix)) colours;
   libx = import ./lib.nix { inherit lib; };
 
-  pkgs = import inputs.nixpkgs-unstable {
+  pkgs = import inputs.unstable {
     system = "x86_64-linux";
     overlays = [ outputs.overlays.fonts ];
     config = { allowUnfree = true; joypixels.acceptLicense = true; };

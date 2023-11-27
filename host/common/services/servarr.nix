@@ -5,7 +5,7 @@ in
 {
   # Always use the prowlarr module from nixos-unstable
   disabledModules = [ "${inputs.nixpkgs}/${prowlarrModule}" ];
-  imports = [ "${inputs.nixpkgs-unstable}/${prowlarrModule}" ];
+  imports = [ "${inputs.unstable}/${prowlarrModule}" ];
 
   services = {
     jellyfin = {

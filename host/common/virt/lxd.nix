@@ -5,7 +5,7 @@ in
 {
   # Always use the lxd module from nixos-unstable
   disabledModules = [ "${inputs.nixpkgs}/${lxdModule}" ];
-  imports = [ "${inputs.nixpkgs-unstable}/${lxdModule}" ];
+  imports = [ "${inputs.unstable}/${lxdModule}" ];
   virtualisation = {
     lxd = {
       enable = true;
