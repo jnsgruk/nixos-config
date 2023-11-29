@@ -18,22 +18,6 @@
         vendorHash = "sha256-Q6dlb6+mBRx8ZveFvFIXgAGHerzExi9HaSuJKVt1Ogc=";
       });
     };
-
-    # Overlay until https://github.com/NixOS/nixpkgs/pull/268557 lands.
-    multipass = prev.multipass.overrideAttrs (oldAttrs: rec {
-      version = "1.12.2";
-      src = prev.fetchFromGitHub {
-        owner = "canonical";
-        repo = "multipass";
-        rev = "refs/tags/v${version}";
-        hash = "sha256-1k0jbYMwfYuHmM/Cm76sbo3+mN6WypALMQBwlZ+9d+c=";
-        fetchSubmodules = true;
-        leaveDotGit = true;
-        postFetch = ''
-          rm -rf $out/.git
-        '';
-      };
-    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
