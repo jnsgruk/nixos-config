@@ -9,13 +9,13 @@
 
     traefik-3 = prev.callPackage "${prev.path}/pkgs/servers/traefik" {
       buildGoModule = args: prev.buildGoModule (args // rec {
-        version = "3.0.0-beta3";
+        version = "3.0.0-beta5";
         src = prev.fetchzip {
           url = "https://github.com/traefik/traefik/releases/download/v${version}/traefik-v${version}.src.tar.gz";
-          sha256 = "sha256-1YAZs1eMAhea+Mb8NlGe8PQnrJa6ltxdY6ZTx74YP6I=";
+          sha256 = "sha256-fEwwGF9r1ZdSDJoGDz3OD9ZOaiQfq2fupgO858flEeI=";
           stripRoot = false;
         };
-        vendorHash = "sha256-6Au597l0Jl2ZMGOprUwtXwMLHv50r+G+4os0ECJip6A=";
+        vendorHash = "sha256-Q6dlb6+mBRx8ZveFvFIXgAGHerzExi9HaSuJKVt1Ogc=";
       });
     };
 
