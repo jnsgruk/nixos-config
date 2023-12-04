@@ -2,7 +2,6 @@
 let
   inherit ((import ./lib.nix { inherit lib; })) toRasi;
 
-  powermenu = import ./powermenu { inherit config pkgs lib desktop theme; };
   rofiTheme = (import ./theme.nix { inherit theme pkgs config; }).theme;
 in
 {
@@ -28,13 +27,6 @@ in
       display-emoji = "   Emoji ";
       display-calc = "   Calc ";
       sidebar-mode = true;
-    };
-  };
-
-  home = {
-    packages = [ powermenu.rofi-power ];
-    file = {
-      ".config/rofi/powermenu.rasi".text = toRasi powermenu.theme;
     };
   };
 }

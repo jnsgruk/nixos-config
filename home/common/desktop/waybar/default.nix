@@ -3,22 +3,34 @@ let
   # If this is a laptop, then include network/battery controls
   modules =
     if hostname == "freyja" then [
-      "tray"
       "network"
       "battery"
       "pulseaudio"
       "pulseaudio#source"
-      "custom/power"
+      "bluetooth"
+      "group/group-power"
     ]
     else [
-      "tray"
       "pulseaudio"
       "pulseaudio#source"
-      "custom/power"
+      "bluetooth"
+      "group/group-power"
     ];
 
+  bluetoothToggle = pkgs.writeShellApplication {
+    name = "bluetooth-toggle";
+    runtimeInputs = with pkgs; [ gnugrep bluez ];
+    text = ''
+      if [[ "$(bluetoothctl show | grep -Po "Powered: \K(.+)$")" =~ no ]]; then
+        bluetoothctl power on
+        bluetoothctl discoverable on
+      else
+        bluetoothctl power off
+      fi
+    '';
+  };
+
   inherit ((import ../rofi/lib.nix { inherit lib; })) toRasi;
-  inherit ((import ../rofi/powermenu { inherit config lib desktop pkgs theme; })) rofi-power;
 in
 {
   programs.waybar = {
@@ -86,9 +98,42 @@ in
         format-icons = [ "" "" "" "" "" ];
       };
 
-      "tray" = {
-        icon-size = 15;
-        spacing = 10;
+      "group/group-power" = {
+        orientation = "inherit";
+        drawer = {
+          transition-duration = 500;
+          transition-left-to-right = false;
+        };
+        modules = [
+          "custom/power"
+          "custom/quit"
+          "custom/lock"
+          "custom/reboot"
+        ];
+      };
+
+      "custom/quit" = {
+        format = "󰗼";
+        on-click = "${pkgs.hyprland}/bin/hyprctl dispatch exit";
+        tooltip = false;
+      };
+
+      "custom/lock" = {
+        format = "󰍁";
+        on-click = "${pkgs.swaylock-effects}/bin/swaylock -f";
+        tooltip = false;
+      };
+
+      "custom/reboot" = {
+        format = "󰜉";
+        on-click = "${pkgs.systemd}/bin/systemctl reboot";
+        tooltip = false;
+      };
+
+      "custom/power" = {
+        format = "";
+        on-click = "${pkgs.systemd}/bin/systemctl poweroff";
+        tooltip = false;
       };
 
       "clock" = { format = "{:%d %b %H:%M}"; };
@@ -121,9 +166,13 @@ in
         tooltip-format = "{source_volume}% / {desc}";
       };
 
-      "custom/power" = {
-        format = "";
-        on-click = "${lib.getExe rofi-power} ${desktop}";
+      "bluetooth" = {
+        format-on = "";
+        format-connected = "{device_alias} ";
+        format-off = "";
+        format-disabled = "";
+        on-click-right = "${pkgs.blueberry}/bin/blueberry";
+        on-click = "${bluetoothToggle}/bin/bluetooth-toggle";
       };
     }];
 
@@ -134,5 +183,6 @@ in
   };
 
   # This is a hack to ensure that hyprctl ends up in the PATH for the waybar service on hyprland
-  systemd.user.services.waybar.Service.Environment = lib.mkForce "PATH=${lib.makeBinPath [pkgs."${desktop}"]}";
+  systemd.user.services.waybar.Service.Environment = lib.mkForce
+    "PATH=${lib.makeBinPath [pkgs."${desktop}"]}";
 }

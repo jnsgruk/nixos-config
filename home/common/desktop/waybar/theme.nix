@@ -59,25 +59,26 @@
       #battery,
       #cpu,
       #memory,
-      #temperature,
       #network,
       #pulseaudio,
-      #custom-media,
-      #tray,
-      #mode,
+      #group-group-power,
+      #bluetooth,
       #custom-power,
-      #custom-menu,
+      #custom-quit,
+      #custom-lock,
+      #custom-reboot,
       #idle_inhibitor" = {
         padding = mkLiteral "0px 10px";
         color = mkLiteral "${theme.colours.text}";
       };
 
-      "#mode" = {
-        font-weight = mkLiteral "bold";
-      };
-
       "#custom-power" = {
         color = mkLiteral "${theme.colours.accent}";
+        background-color = mkLiteral "transparent";
+      };
+
+      "#custom-quit, #custom-lock, #custom-reboot" = {
+        color = mkLiteral "${theme.colours.red}";
         background-color = mkLiteral "transparent";
       };
 
@@ -100,6 +101,10 @@
 
       "#temperature.critical" = {
         color = mkLiteral "${theme.colours.red}";
+      };
+
+      "#bluetooth.off" = {
+        color = mkLiteral "${theme.colours.orange}";
       };
     };
 }
