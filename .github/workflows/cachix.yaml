@@ -18,7 +18,7 @@ jobs:
         uses: DeterminateSystems/magic-nix-cache-action@main
 
       - name: Setup cachix
-        uses: cachix/cachix-action@v12
+        uses: cachix/cachix-action@v13
         with:
           name: jnsgruk
           # If you chose API tokens for write access OR if you have a private cache
