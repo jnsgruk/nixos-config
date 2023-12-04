@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+_: {
   virtualisation.multipass = {
     enable = true;
   };

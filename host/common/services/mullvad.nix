@@ -1,3 +1,3 @@
-{ pkgs, ... }: {
+_: {
   services.mullvad-vpn.enable = true;
 }

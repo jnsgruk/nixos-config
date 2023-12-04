@@ -1,4 +1,4 @@
-{ lib, pkgs, desktop, theme, ... }: {
+{ lib, pkgs, theme, ... }: {
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;
