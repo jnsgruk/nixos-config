@@ -1,5 +1,6 @@
 { hostname, lib, pkgs, theme, ... }:
 let
+  inherit (theme) colours fonts;
   keybinds = builtins.readFile ./config/keybinds.conf;
   outputs = (import ./config/displays.nix { }).${hostname};
   windowRules = import ./config/window-rules.nix { };
@@ -67,6 +68,21 @@ in
         "windows, 1, 3, default, popin 80%"
         "workspaces, 1, 2, default, slide"
       ];
+
+      misc = {
+        background_color = "rgb(${__substring 1 7 colours.surface1})";
+        disable_hyprland_logo = true;
+        disable_splash_rendering = true;
+        animate_manual_resizes = true;
+      };
+
+      group = {
+        groupbar = {
+          font_family = "${fonts.default.name}";
+          font_size = 12;
+          gradients = true;
+        };
+      };
     };
 
     extraConfig = ''
