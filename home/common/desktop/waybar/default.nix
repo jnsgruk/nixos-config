@@ -5,13 +5,13 @@ let
     if hostname == "freyja" then [
       "network"
       "battery"
-      "pulseaudio"
+      "wireplumber"
       "pulseaudio#source"
       "bluetooth"
       "group/group-power"
     ]
     else [
-      "pulseaudio"
+      "wireplumber"
       "pulseaudio#source"
       "bluetooth"
       "group/group-power"
@@ -138,31 +138,19 @@ in
 
       "clock" = { format = "{:%d %b %H:%M}"; };
 
-      "pulseaudio" = {
+      "wireplumber" = {
         format = "{volume}% {icon}";
-        format-bluetooth = "{volume}% {icon} {format_source}";
-        format-bluetooth-muted = " {icon} {format_source}";
         format-muted = "";
-        format-icons = {
-          headphone = "";
-          hands-free = "";
-          headset = "";
-          phone = "";
-          portable = "";
-          car = "";
-          default = [ "" "" "" ];
-        };
-        on-click = "${pkgs.avizo}/bin/volumectl toggle-mute";
-        on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
-        tooltip-format = "{volume}% / {desc}";
+        on-click = "${lib.getExe pkgs.pavucontrol}";
+        format-icons = [ "" "" "" ];
+        tooltip-format = "{volume}% / {node_name}";
       };
 
       "pulseaudio#source" = {
         format = "{format_source}";
         format-source = "";
         format-source-muted = "";
-        on-click = "${pkgs.avizo}/bin/volumectl -m toggle-mute";
-        on-click-right = "${pkgs.pavucontrol}/bin/pavucontrol";
+        on-click = "${lib.getExe pkgs.pavucontrol}";
         tooltip-format = "{source_volume}% / {desc}";
       };
 
@@ -171,8 +159,8 @@ in
         format-connected = "{device_alias} ";
         format-off = "";
         format-disabled = "";
-        on-click-right = "${pkgs.blueberry}/bin/blueberry";
-        on-click = "${bluetoothToggle}/bin/bluetooth-toggle";
+        on-click-right = "${lib.getExe' pkgs.blueberry "blueberry"}";
+        on-click = "${lib.getExe bluetoothToggle}";
       };
     }];
 

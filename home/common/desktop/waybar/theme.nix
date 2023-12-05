@@ -55,19 +55,20 @@
         background-color = mkLiteral "transparent";
       };
 
-      "#clock,
-      #battery,
+      "#battery,
+      #bluetooth,
+      #clock,
       #cpu,
+      #custom-lock,
+      #custom-power,
+      #custom-quit,
+      #custom-reboot,
+      #group-group-power,
+      #idle_inhibitor,
       #memory,
       #network,
       #pulseaudio,
-      #group-group-power,
-      #bluetooth,
-      #custom-power,
-      #custom-quit,
-      #custom-lock,
-      #custom-reboot,
-      #idle_inhibitor" = {
+      #wireplumber" = {
         padding = mkLiteral "0px 10px";
         color = mkLiteral "${theme.colours.text}";
       };
@@ -104,6 +105,14 @@
       };
 
       "#bluetooth.off" = {
+        color = mkLiteral "${theme.colours.orange}";
+      };
+
+      "#wireplumber.muted" = {
+        color = mkLiteral "${theme.colours.orange}";
+      };
+
+      "#pulseaudio.source-muted" = {
         color = mkLiteral "${theme.colours.orange}";
       };
     };
