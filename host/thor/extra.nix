@@ -2,6 +2,7 @@
   imports = [
     ../common/services/files.nix
     ../common/services/homepage.nix
+    ../common/services/libations.nix
     ../common/services/servarr.nix
     ../common/services/traefik
   ];

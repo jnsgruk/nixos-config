@@ -354,6 +354,26 @@
         "type": "github"
       }
     },
+    "libations": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1702056399,
+        "narHash": "sha256-ZO6VrdAGWw4JfjdFJGl951YEoBCBQmvQhKV9UvWRtfM=",
+        "owner": "jnsgruk",
+        "repo": "libations",
+        "rev": "6a0a0ac869d419bbbb52d5949b8ee4b20a6bdd5f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "jnsgruk",
+        "repo": "libations",
+        "type": "github"
+      }
+    },
     "nix-formatter-pack": {
       "inputs": {
         "nixpkgs": [
@@ -639,6 +659,7 @@
         "hyprland": "hyprland",
         "hyprland-contrib": "hyprland-contrib",
         "lanzaboote": "lanzaboote",
+        "libations": "libations",
         "nix-formatter-pack": "nix-formatter-pack_3",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",

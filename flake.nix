@@ -33,6 +33,8 @@
     crafts.inputs.nixpkgs.follows = "unstable";
     embr.url = "github:jnsgruk/firecracker-ubuntu";
     embr.inputs.nixpkgs.follows = "unstable";
+    libations.url = "github:jnsgruk/libations";
+    libations.inputs.nixpkgs.follows = "unstable";
   };
 
   outputs =
