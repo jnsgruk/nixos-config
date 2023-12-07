@@ -56,49 +56,6 @@ _: {
           gpgSign = true;
         };
       };
-
-      ignores = [
-        "*.fdb_latexmk"
-        "*.fls"
-        "*.aux"
-        "*.glo"
-        "*.idx"
-        "*.log"
-        "*.toc"
-        "*.ist"
-        "*.acn"
-        "*.acr"
-        "*.alg"
-        "*.bbl"
-        "*.blg"
-        "*.dvi"
-        "*.glg"
-        "*.gls"
-        "*.ilg"
-        "*.ind"
-        "*.lof"
-        "*.lot"
-        "*.maf"
-        "*.mtc"
-        "*.mtc1"
-        "*.out"
-        "*.synctex.gz"
-        "*.module.js"
-        "*.routing.js"
-        "*.component.js"
-        "*.service.js"
-        "*.map"
-        ".DS_Store"
-        ".vscode/"
-        "node_modules/"
-        "dist/"
-        "bin/"
-        ".tox/"
-        ".mypy*/"
-        "venv/"
-        ".venv/"
-        "__pycache__/"
-      ];
     };
   };
 }
