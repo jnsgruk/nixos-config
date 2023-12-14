@@ -5,7 +5,7 @@ let
   # `/root/.ssh` or this will fail.
   recipes = builtins.fetchGit {
     url = "git@github.com:jnsgruk/libations-recipes";
-    rev = "9bd7e4ebe23f9421c3ccec5db20b4bdae2344ace";
+    rev = "74096c18056bc7ec6bd1cc7b8f3e28503eaddb64";
   };
 
   libations = pkgs.buildGoModule {
