@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, ... }:
 let
   # Fetch the libations recipes from a private repository. Note that there must be a
   # valid SSH key either in the agent of the user executing the `nix` command, or in

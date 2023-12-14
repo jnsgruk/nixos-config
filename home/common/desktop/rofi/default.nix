@@ -1,4 +1,4 @@
-{ config, pkgs, lib, theme, ... }:
+{ config, pkgs, theme, ... }:
 let
 
   rofiTheme = (import ./theme.nix { inherit theme pkgs config; }).theme;
