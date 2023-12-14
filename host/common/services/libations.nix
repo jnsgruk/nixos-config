@@ -10,12 +10,12 @@ let
 
   libations = pkgs.buildGoModule {
     pname = "libations";
-    version = "unstable-2023-12-08";
+    version = "unstable-2023-12-14";
     src = pkgs.fetchFromGitHub {
       owner = "jnsgruk";
       repo = "libations";
-      rev = "c1d968fdd87e6214ac5c9d50019749d5c05aa939";
-      hash = "sha256-Eu0LLQZ4ZB2fdedmpFjlRbJIzoA7ow1LGQtVdoyP2xM=";
+      rev = "66486505a94cca79eddccc55682b68651008af42";
+      hash = "sha256-Wz34y9068O6EYWQvC3kNz5EfGeJnQjFi/uMv9vfdZk4=";
     };
     vendorHash = "sha256-Ep3nBl9WZm7skk1cmMS9KI019ZSRSxofbLs2Nrj6HM8=";
     nativeBuildInputs = with pkgs; [ hugo ];
