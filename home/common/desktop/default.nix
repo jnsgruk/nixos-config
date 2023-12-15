@@ -14,7 +14,6 @@
   programs = {
     firefox.enable = true;
     mpv.enable = true;
-    feh.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -22,8 +21,8 @@
     desktop-file-utils
     ght
     google-chrome
-    imlib2Full
     libnotify
+    loupe
     obsidian
     pamixer
     pavucontrol

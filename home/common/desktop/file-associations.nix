@@ -1,6 +1,7 @@
 let
   browser = [ "google-chrome.desktop" ];
   archiveManager = [ "org.gnome.FileRoller.desktop" ];
+  imageViewer = [ "org.gnome.Loupe.desktop" ];
 in
 {
   # XDG MIME types
@@ -21,7 +22,7 @@ in
 
     "audio/*" = [ "mpv.desktop" ];
     "video/*" = [ "mpv.dekstop" ];
-    "image/*" = [ "feh.desktop" ];
+    "image/*" = [ "org.gnome.Loupe.desktop" ];
 
     "application/json" = browser;
 
@@ -50,5 +51,29 @@ in
     "application/gzip" = archiveManager;
     "application/bzip2" = archiveManager;
     "application/vnd.rar" = archiveManager;
+
+    # Images
+    "image/jpeg" = imageViewer;
+    "image/png" = imageViewer;
+    "image/gif" = imageViewer;
+    "image/webp" = imageViewer;
+    "image/tiff" = imageViewer;
+    "image/x-tga" = imageViewer;
+    "image/vnd-ms.dds" = imageViewer;
+    "image/x-dds" = imageViewer;
+    "image/bmp" = imageViewer;
+    "image/vnd.microsoft.icon" = imageViewer;
+    "image/vnd.radiance" = imageViewer;
+    "image/x-exr" = imageViewer;
+    "image/x-portable-bitmap" = imageViewer;
+    "image/x-portable-graymap" = imageViewer;
+    "image/x-portable-pixmap" = imageViewer;
+    "image/x-portable-anymap" = imageViewer;
+    "image/x-qoi" = imageViewer;
+    "image/svg+xml" = imageViewer;
+    "image/svg+xml-compressed" = imageViewer;
+    "image/avif" = imageViewer;
+    "image/heic" = imageViewer;
+    "image/jxl" = imageViewer;
   };
 }

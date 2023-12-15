@@ -60,6 +60,44 @@ in
           "application/vnd.rar"
         ];
       };
+      # Override the desktop file for Loupe to use GTK_THEME.
+      # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
+      "org.gnome.Loupe.desktop" = {
+        name = "Loupe";
+        exec = "env GTK_THEME=${theme.gtkTheme.name} loupe %U";
+        terminal = false;
+        icon = "org.gnome.Loupe";
+        type = "Application";
+        categories = [ "GNOME" "GTK" "Graphics" "2DGraphics" "RasterGraphics" "Viewer" ];
+        startupNotify = true;
+        settings = {
+          DBusActivatable = "true";
+        };
+        mimeType = [
+          "image/jpeg"
+          "image/png"
+          "image/gif"
+          "image/webp"
+          "image/tiff"
+          "image/x-tga"
+          "image/vnd-ms.dds"
+          "image/x-dds"
+          "image/bmp"
+          "image/vnd.microsoft.icon"
+          "image/vnd.radiance"
+          "image/x-exr"
+          "image/x-portable-bitmap"
+          "image/x-portable-graymap"
+          "image/x-portable-pixmap"
+          "image/x-portable-anymap"
+          "image/x-qoi"
+          "image/svg+xml"
+          "image/svg+xml-compressed"
+          "image/avif"
+          "image/heic"
+          "image/jxl"
+        ];
+      };
     };
   };
 }
