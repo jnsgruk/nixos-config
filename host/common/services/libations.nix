@@ -14,8 +14,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "jnsgruk";
       repo = "libations";
-      rev = "77c21d65eccbc8a9d7443a361631f84d851cb73d";
-      hash = "sha256-lF/wrtkU8vLFpfavHXKqKNUxbp9vpr8euv5C5XWkz/w=";
+      rev = "694058b921efe9227018cec46bbd51c808dbc81b";
+      hash = "sha256-sjh/99vxszaFDwltzU5ReF2Oqdzx0Qx0KC+lMgu15lk=";
     };
     vendorHash = "sha256-Ep3nBl9WZm7skk1cmMS9KI019ZSRSxofbLs2Nrj6HM8=";
     nativeBuildInputs = with pkgs; [ hugo ];
