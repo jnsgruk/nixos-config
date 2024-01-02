@@ -4,7 +4,7 @@
 }:
 let
   pname = "icloudpd";
-  version = "1.16.0";
+  version = "1.17.2";
 in
 pkgs.python3Packages.buildPythonApplication {
   inherit pname version;
@@ -14,13 +14,14 @@ pkgs.python3Packages.buildPythonApplication {
     owner = "icloud-photos-downloader";
     repo = "icloud_photos_downloader";
     rev = "v${version}";
-    hash = "sha256-G92NPS0rZ+IqCIOZkhT0KyhkoOuUreBxX21d/0hNiGw=";
+    hash = "sha256-S7jbe9MoW9y76sfiNe8o1Rf9FXXxKzBJm156T0Mnn1M=";
   };
 
   postPatch = ''
     substituteInPlace pyproject.toml \
-      --replace "wheel>=0.40.0,<0.41" "wheel" \
-      --replace "pytz>=2022.7.1,<2023" "pytz"
+      --replace "wheel==0.42.0" "wheel" \
+      --replace "pytz>=2022.7.1,<2023" "pytz" \
+      --replace "setuptools==69.0.2" "setuptools"
   '';
 
   buildInputs = with pkgs; [ git ];
