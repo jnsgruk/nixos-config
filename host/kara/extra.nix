@@ -42,6 +42,9 @@
         "**/target"
         "/home/jon/downloads"
         "/home/jon/data/downloads"
+        "/home/jon/data/temp"
+        "/home/jon/go"
+        "/home/jon/sdk"
       ];
       repo = "z2sqv4mw@z2sqv4mw.repo.borgbase.com:repo";
       encryption = {
@@ -50,7 +53,7 @@
       };
       environment.BORG_RSH = "ssh -i ${config.age.secrets."borgbase-ssh".path}";
       compression = "auto,lzma";
-      startAt = "hourly";
+      startAt = "daily";
     };
   };
 }

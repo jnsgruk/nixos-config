@@ -14,6 +14,7 @@
     git
     jq
     killall
+    nfs-utils
     ntfs3g
     pciutils
     ripgrep
