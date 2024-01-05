@@ -1,12 +1,4 @@
-{ inputs, pkgs, ... }:
-let
-  prowlarrModule = "nixos/modules/services/misc/prowlarr.nix";
-in
-{
-  # Always use the prowlarr module from nixos-unstable
-  disabledModules = [ "${inputs.nixpkgs}/${prowlarrModule}" ];
-  imports = [ "${inputs.unstable}/${prowlarrModule}" ];
-
+{ pkgs, ... }: {
   services = {
     jellyfin = {
       enable = true;
