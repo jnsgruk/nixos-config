@@ -12,4 +12,5 @@ in
   "thor-borgbase-ssh.age".publicKeys = users ++ [ thor ];
   "thor-borgbase-passphrase.age".publicKeys = users ++ [ thor ];
   "thor-libations-tskey.age".publicKeys = users ++ [ thor ];
+  "thor-libations-recipes.age".publicKeys = users ++ [ thor ];
 }

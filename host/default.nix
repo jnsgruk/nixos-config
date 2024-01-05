@@ -22,6 +22,7 @@
       # neovim-nightly-overlay.overlays.default
       inputs.embr.overlay
       inputs.agenix.overlays.default
+      inputs.libations.overlays.default
 
       # Or just specify overlays directly here, for example:
       # (_: _: { embr = inputs.embr.packages."${pkgs.system}".embr; })
