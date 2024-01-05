@@ -404,11 +404,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1704444814,
-        "narHash": "sha256-hQBHW0kMAJkVEnKtdffFDV7I8CcIQdpMgWT+hxsdmbw=",
+        "lastModified": 1704448575,
+        "narHash": "sha256-nnBBGQpZgMuWcazoUNvg5EjWnuuvthPyIpN0OgMElbo=",
         "owner": "jnsgruk",
         "repo": "libations",
-        "rev": "0a21b58e8a2401e970432965e77d30e0d73ef8a0",
+        "rev": "650fc790452a38b28d44f7f9040d424b6b4f9484",
         "type": "github"
       },
       "original": {
