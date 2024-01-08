@@ -1,11 +1,4 @@
-{ inputs, pkgs, ... }:
-let
-  lxdModule = "nixos/modules/virtualisation/lxd.nix";
-in
-{
-  # Always use the lxd module from nixos-unstable
-  disabledModules = [ "${inputs.nixpkgs}/${lxdModule}" ];
-  imports = [ "${inputs.unstable}/${lxdModule}" ];
+{ inputs, pkgs, ... }: {
   virtualisation = {
     lxd = {
       enable = true;
