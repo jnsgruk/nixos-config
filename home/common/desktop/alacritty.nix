@@ -17,11 +17,7 @@ in
         };
       };
 
-      decorations = "none";
-      dynamic_title = true;
-      gtk_theme_variant = "dark";
       live_config_reload = true;
-
       scrolling.history = 100000;
 
       font = {
@@ -58,10 +54,6 @@ in
           focused_match = {
             foreground = "${colours.bg}";
             background = "${colours.green}";
-          };
-          footer_bar = {
-            foreground = "${colours.bg}";
-            background = "${colours.subtext0}";
           };
         };
 
