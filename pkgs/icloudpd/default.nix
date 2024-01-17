@@ -42,8 +42,16 @@ pkgs.python3Packages.buildPythonApplication {
     wheel
   ];
 
-  # TODO: Try to make the tests pass and remove this.
-  doCheck = false;
+  nativeCheckInputs = with pkgs.python3Packages; [
+    freezegun
+    mock
+    pytestCheckHook
+    vcrpy
+  ];
+
+  disabledTestPaths = [
+    "tests/test_autodelete_photos.py"
+  ];
 
   meta = {
     description = "A command-line tool to download photos from iCloud";
