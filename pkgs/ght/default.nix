@@ -2,40 +2,26 @@
 , pkgs
 , ...
 }:
-let
+
+pkgs.buildNpmPackage rec {
   pname = "ght";
   version = "1.6.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
     repo = pname;
-    # When bumping the version, a new 'yarn.lock' will need to be generated.
-    # To do this:
-    # - Clone the source code, cd into the directory
-    # - Run 'nix shell nixpkgs#yarn nixpkgs#yarn2nix'
-    # - Delete the old lock file which is in the new (incompatible) format
-    # - Run 'yarn install'
-    # - Copy the new 'yarn.lock' into this directory, overwriting the old
     rev = "5464a5884283d933baf876fd4d812ccde912dd16";
     sha256 = "sha256-gzbdHk9D54zMPDYIEB19+KcCHUpqGqC8wQS1IQmfEDg=";
   };
 
-  packageJSON = "${src}/package.json";
-  # # TODO: Try to drop this "forked" yarn.lock and generate it somehow?
-  yarnLock = ./yarn.lock;
-
-  # Grab the node_modules required to build/run the ght tool
-  yarnDeps = pkgs.mkYarnModules {
-    inherit version packageJSON yarnLock;
-    pname = "ght-yarn-deps";
+  npmDeps = pkgs.fetchNpmDeps {
+    inherit src;
+    hash = "sha256-yC+hs5vdIgzpDMLY5aguOUJKqieQ1qFlAP7uPmJEIgc=";
   };
-in
-pkgs.mkYarnPackage {
-  inherit src pname version yarnLock;
 
-  nativeBuildInputs = with pkgs; [ makeWrapper ];
-
-  patches = [ ./ght-graders-loc.patch ];
+  patches = [
+    ./ght-graders-loc.patch
+  ];
 
   postPatch = ''
     substituteInPlace ght \
@@ -43,22 +29,15 @@ pkgs.mkYarnPackage {
         --replace "./package.json" "$out/opt/ght/package.json"
   '';
 
-  configurePhase = ''
-    ln -s $node_modules node_modules
-  '';
-
-  buildPhase = ''
-    export HOME=$(mktemp -d)
-    yarn --offline build
-  '';
+  env.PUPPETEER_SKIP_DOWNLOAD = true;
 
   installPhase = ''
     mkdir -p $out/bin $out/opt
     
     # Copy the built tool & node_modules into the output
     cp -r dist $out/opt/ght
-    ln -sf ${yarnDeps}/node_modules $out/opt/ght/node_modules
-    
+    cp -r node_modules $out/opt/ght/node_modules
+
     # Copy the 'binary' into place
     cp ght $out/bin/ght
 
@@ -67,11 +46,9 @@ pkgs.mkYarnPackage {
         --set PUPPETEER_EXECUTABLE_PATH ${pkgs.chromium.outPath}/bin/chromium
   '';
 
-  distPhase = "true";
-
-  meta = with lib; {
+  meta = {
     description = "Perform actions in Greenhouse from you terminal.";
-    maintainers = [ jnsgruk ];
+    maintainers = with lib.maintainers; [ jnsgruk ];
   };
 }
 
