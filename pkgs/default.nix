@@ -2,6 +2,6 @@
 # Build them using 'nix build .#example' or (legacy) 'nix-build -A example'
 
 { pkgs ? (import ../nixpkgs.nix) { } }: {
-  icloudpd = pkgs.callPackage ./icloudpd.nix { };
+  icloudpd = pkgs.callPackage ./icloudpd { };
   ght = pkgs.callPackage ./ght { };
 }
