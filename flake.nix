@@ -12,7 +12,9 @@
     nix-formatter-pack.inputs.nixpkgs.follows = "unstable";
 
     hyprland.url = "github:hyprwm/Hyprland";
+    hyprland.inputs.nixpkgs.follows = "unstable";
     hyprland-contrib.url = "github:hyprwm/contrib";
+    hyprland-contrib.inputs.nixpkgs.follows = "unstable";
 
     sf-pro-fonts-src.url = "github:jnsgruk/sf-pro-fonts";
     sf-pro-fonts-src.flake = false;
