@@ -24,6 +24,11 @@
     };
   };
 
+  networking.firewall = {
+    allowedTCPPorts = [ 111 2049 4000 4001 4002 20048 ];
+    allowedUDPPorts = [ 111 2049 4000 4001 4002 20048 ];
+  };
+
   services = {
     # In order to mount the backup to restore files, perform the following:
     #
@@ -57,6 +62,15 @@
       environment.BORG_RSH = "ssh -i ${config.age.secrets."borgbase-ssh".path}";
       compression = "auto,lzma";
       startAt = "daily";
+    };
+
+    nfs = {
+      server = {
+        enable = true;
+        exports = ''
+          /data  100.64.0.0/10 (rw,fsid=0,no_subtree_check)
+        '';
+      };
     };
   };
 }
