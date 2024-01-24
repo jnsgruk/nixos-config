@@ -1,6 +1,5 @@
 { desktop, lib, ... }: {
   imports = [
-    ./embr.nix
     ./docker.nix
     ./lxd.nix
     ./multipass.nix

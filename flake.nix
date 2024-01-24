@@ -30,8 +30,6 @@
 
     crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/jon/crafts-flake";
     crafts.inputs.nixpkgs.follows = "unstable";
-    embr.url = "github:jnsgruk/firecracker-ubuntu";
-    embr.inputs.nixpkgs.follows = "unstable";
     libations.url = "github:jnsgruk/libations";
     libations.inputs.nixpkgs.follows = "unstable";
   };
