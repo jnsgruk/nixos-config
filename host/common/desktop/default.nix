@@ -6,7 +6,6 @@ in
   imports = [
     (./. + "/${desktop}.nix")
     ../hardware/yubikey.nix
-    ../services/networkmanager.nix
     ../services/pipewire.nix
     ../virt
   ];
