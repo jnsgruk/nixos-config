@@ -12,7 +12,6 @@
     gopls
 
     # Nix tooling
-    cachix
     deadnix
     nixfmt
     nixpkgs-fmt

@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        package: ["ght", "icloudpd" ]
+        package: ["ght", "icloudpd"]
     steps:
       - name: Checkout flake
         uses: actions/checkout@v4
@@ -16,13 +16,6 @@ jobs:
 
       - name: Setup magic-nix-cache
         uses: DeterminateSystems/magic-nix-cache-action@main
-
-      - name: Setup cachix
-        uses: cachix/cachix-action@v14
-        with:
-          name: jnsgruk
-          # If you chose API tokens for write access OR if you have a private cache
-          authToken: "${{ secrets.CACHIX_AUTH_TOKEN }}"
 
       - name: Build ${{ matrix.package }}
         run: nix build .#${{ matrix.package }}
