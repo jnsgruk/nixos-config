@@ -28,17 +28,4 @@
       config.allowUnfree = true;
     };
   };
-
-  fonts = _final: prev: {
-    sf-pro-fonts = prev.stdenvNoCC.mkDerivation rec {
-      pname = "sf-pro-fonts";
-      version = "dev";
-      src = inputs.sf-pro-fonts-src;
-      dontConfigure = true;
-      installPhase = ''
-        mkdir -p $out/share/fonts/opentype
-        cp -R $src/*.otf $out/share/fonts/opentype/
-      '';
-    };
-  };
 }

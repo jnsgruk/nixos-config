@@ -49,13 +49,13 @@ in
 
   fonts = {
     default = {
-      name = "SF Pro Display";
-      package = pkgs.sf-pro-fonts;
+      name = "Inter";
+      package = pkgs.inter;
       size = "11";
     };
     iconFont = {
-      name = "Liga SFMono Nerd Font";
-      package = pkgs.sf-pro-fonts;
+      name = "Inter";
+      package = pkgs.inter;
     };
     monospace = {
       name = "MesloLGSDZ Nerd Font Mono";
