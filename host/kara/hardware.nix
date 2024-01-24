@@ -14,8 +14,6 @@
 
     ../common/hardware/audioengine.nix
     ../common/hardware/bluetooth.nix
-
-    ../common/services/fwupd.nix
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
