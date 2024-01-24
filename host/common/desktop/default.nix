@@ -30,11 +30,6 @@ in
       enable = true;
       polkitPolicyOwners = [ "jon" ];
     };
-
-    dconf.enable = true;
-
-    # Archive manager
-    file-roller.enable = true;
   };
 
   fonts = {
