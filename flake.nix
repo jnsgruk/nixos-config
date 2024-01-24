@@ -8,9 +8,6 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "unstable";
 
-    nix-formatter-pack.url = "github:Gerschtli/nix-formatter-pack";
-    nix-formatter-pack.inputs.nixpkgs.follows = "unstable";
-
     hyprland.url = "github:hyprwm/Hyprland";
     hyprland.inputs.nixpkgs.follows = "unstable";
     hyprland-contrib.url = "github:hyprwm/contrib";
@@ -38,7 +35,6 @@
     { self
     , nixpkgs
     , unstable
-    , nix-formatter-pack
     , ...
     } @ inputs:
     let
@@ -86,16 +82,7 @@
         in import ./shell.nix { inherit pkgs; }
       );
 
-      formatter = libx.forAllSystems (system:
-        nix-formatter-pack.lib.mkFormatter {
-          pkgs = unstable.legacyPackages.${system};
-          config.tools = {
-            deadnix.enable = true;
-            nixpkgs-fmt.enable = true;
-            statix.enable = true;
-          };
-        }
-      );
+      formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt);
 
       nixConfig = {
         substituters = [

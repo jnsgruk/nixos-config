@@ -427,28 +427,6 @@
         "type": "github"
       }
     },
-    "nix-formatter-pack_2": {
-      "inputs": {
-        "nixpkgs": [
-          "unstable"
-        ],
-        "nmd": "nmd_3",
-        "nmt": "nmt_3"
-      },
-      "locked": {
-        "lastModified": 1705252799,
-        "narHash": "sha256-HgSTREh7VoXjGgNDwKQUYcYo13rPkltW7IitHrTPA5c=",
-        "owner": "Gerschtli",
-        "repo": "nix-formatter-pack",
-        "rev": "2de39dedd79aab14c01b9e2934842051a160ffa5",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Gerschtli",
-        "repo": "nix-formatter-pack",
-        "type": "github"
-      }
-    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1705312285,
@@ -529,22 +507,6 @@
         "type": "gitlab"
       }
     },
-    "nmd_3": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1666190571,
-        "narHash": "sha256-Z1hc7M9X6L+H83o9vOprijpzhTfOBjd0KmUTnpHAVjA=",
-        "owner": "rycee",
-        "repo": "nmd",
-        "rev": "b75d312b4f33bd3294cd8ae5c2ca8c6da2afc169",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "rycee",
-        "repo": "nmd",
-        "type": "gitlab"
-      }
-    },
     "nmt": {
       "flake": false,
       "locked": {
@@ -562,22 +524,6 @@
       }
     },
     "nmt_2": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1648075362,
-        "narHash": "sha256-u36WgzoA84dMVsGXzml4wZ5ckGgfnvS0ryzo/3zn/Pc=",
-        "owner": "rycee",
-        "repo": "nmt",
-        "rev": "d83601002c99b78c89ea80e5e6ba21addcfe12ae",
-        "type": "gitlab"
-      },
-      "original": {
-        "owner": "rycee",
-        "repo": "nmt",
-        "type": "gitlab"
-      }
-    },
-    "nmt_3": {
       "flake": false,
       "locked": {
         "lastModified": 1648075362,
@@ -634,7 +580,6 @@
         "hyprland-contrib": "hyprland-contrib",
         "lanzaboote": "lanzaboote",
         "libations": "libations",
-        "nix-formatter-pack": "nix-formatter-pack_2",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
         "unstable": "unstable",
