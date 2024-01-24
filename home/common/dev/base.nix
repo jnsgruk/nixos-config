@@ -14,6 +14,7 @@
     # Nix tooling
     cachix
     deadnix
+    nixfmt
     nixpkgs-fmt
     nurl
     rnix-lsp
