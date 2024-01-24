@@ -1,4 +1,8 @@
-{ pkgs, theme, ... }: {
+{ pkgs, ... }:
+let
+  theme = import ../../../lib/theme { inherit pkgs; };
+in
+{
   qt = {
     enable = true;
     platformTheme = "gtk";

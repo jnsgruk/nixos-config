@@ -1,4 +1,8 @@
-{ desktop, pkgs, theme, ... }: {
+{ desktop, pkgs, ... }:
+let
+  theme = import ../../../lib/theme { inherit pkgs; };
+in
+{
   imports = [
     (./. + "/${desktop}.nix")
     ../hardware/ledger.nix

@@ -1,5 +1,6 @@
-{ theme, ... }:
+{ pkgs, ... }:
 let
+  theme = import ../../../lib/theme { inherit pkgs; };
   inherit ((import ./file-associations.nix)) associations;
 in
 {

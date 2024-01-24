@@ -1,4 +1,8 @@
-{ theme, ... }: {
+{ pkgs, ... }:
+let
+  theme = import ../../../lib/theme { inherit pkgs; };
+in
+{
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;

@@ -1,4 +1,8 @@
-{ lib, pkgs, theme, ... }: {
+{ lib, pkgs, ... }:
+let
+  theme = import ../../../lib/theme { inherit pkgs; };
+in
+{
   programs.swaylock = {
     enable = true;
     package = pkgs.swaylock-effects;

@@ -1,14 +1,7 @@
-{ inputs, outputs, ... }:
+{ pkgs, ... }:
 let
-  inherit (inputs.nixpkgs) lib;
   inherit ((import ./colours.nix)) colours;
-  libx = import ./lib.nix { inherit lib; };
-
-  pkgs = import inputs.unstable {
-    system = "x86_64-linux";
-    overlays = [ outputs.overlays.fonts ];
-    config = { allowUnfree = true; joypixels.acceptLicense = true; };
-  };
+  libx = import ./lib.nix { inherit (pkgs) lib; };
 in
 {
   inherit (libx) hexToRgb;

@@ -1,9 +1,7 @@
 { inputs, outputs, stateVersion, username, ... }:
 let
-  theme = import ./theme { inherit outputs inputs; };
-  helpers = import ./helpers.nix { inherit inputs outputs stateVersion theme username; };
+  helpers = import ./helpers.nix { inherit inputs outputs stateVersion username; };
 in
 {
-  inherit theme;
   inherit (helpers) mkHome mkHost forAllSystems;
 }

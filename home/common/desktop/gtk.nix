@@ -1,7 +1,11 @@
-{ theme
+{ pkgs
 , config
 , ...
-}: {
+}:
+let
+  theme = import ../../../lib/theme { inherit pkgs; };
+in
+{
   home.pointerCursor = {
     inherit (theme.cursorTheme) package size name;
     gtk.enable = true;

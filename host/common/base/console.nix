@@ -1,8 +1,6 @@
-{ pkgs
-, theme
-, ...
-}:
+{ pkgs, ... }:
 let
+  theme = import ../../../lib/theme { inherit pkgs; };
   inherit (theme) colours hexToRgb;
 in
 {
