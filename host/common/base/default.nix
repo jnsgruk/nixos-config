@@ -3,14 +3,7 @@
 , lib
 , username
 , ...
-}:
-let
-  # Break these packages out so they can be imported elsewhere as a common set
-  # of baseline packages. Useful for installations that are home-manager-only
-  # on other OSs, rather than NixOS.
-  inherit ((import ./packages.nix { inherit pkgs; })) basePackages;
-in
-{
+}: {
   imports = [
     ./boot.nix
     ./console.nix
@@ -28,7 +21,7 @@ in
     useDHCP = lib.mkDefault true;
   };
 
-  environment.systemPackages = basePackages;
+  environment.systemPackages = (import ./packages.nix { inherit pkgs; }) basePackages;
 
   programs = {
     zsh.enable = true;
