@@ -7,6 +7,7 @@
   imports = [
     ./boot.nix
     ./console.nix
+    ./hardware.nix
     ./locale.nix
 
     ../services/avahi.nix

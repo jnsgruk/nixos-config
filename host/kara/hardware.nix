@@ -20,11 +20,6 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  hardware = {
-    enableAllFirmware = true;
-    amdgpu.loadInInitrd = true;
-  };
-
   swapDevices = [{
     device = "/.swap/swapfile";
     size = 2048;

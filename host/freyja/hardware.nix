@@ -9,11 +9,6 @@
 
   nixpkgs.hostPlatform = "x86_64-linux";
 
-  hardware = {
-    enableAllFirmware = true;
-    amdgpu.loadInInitrd = true;
-  };
-
   # TODO: Replace with Disko config
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/99db9e90-c813-4469-a6a7-bae6b8f49955";
