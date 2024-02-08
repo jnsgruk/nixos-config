@@ -1,16 +1,15 @@
 { pkgs, ... }:
 let
   theme = import ../../../lib/theme { inherit pkgs; };
-  inherit (theme) batTheme;
 in
 {
   programs = {
     bat = {
       enable = true;
       themes = {
-        "${batTheme.name}" = batTheme.theme;
+        "${theme.apps.bat.name}" = theme.apps.bat.theme;
       };
-      config = { theme = batTheme.name; };
+      config = { theme = theme.apps.bat.name; };
     };
   };
 }

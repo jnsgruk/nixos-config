@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
   theme = import ../../../lib/theme { inherit pkgs; };
-  inherit (theme) tmuxTheme;
 in
 {
   programs = {
@@ -25,7 +24,7 @@ in
         set-option -ga terminal-overrides ",alacritty:Tc"
       '';
 
-      plugins = with pkgs; [ tmuxTheme ];
+      plugins = with pkgs; [ theme.apps.tmux ];
     };
   };
 }

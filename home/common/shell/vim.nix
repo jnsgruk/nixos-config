@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
   theme = import ../../../lib/theme { inherit pkgs; };
-  inherit (theme) vimTheme;
 in
 {
   programs.neovim = {
@@ -58,7 +57,7 @@ in
     '';
 
     plugins = with pkgs.vimPlugins; [
-      vimTheme
+      theme.apps.vim
       nvim-web-devicons
       telescope-nvim
       vim-nix
