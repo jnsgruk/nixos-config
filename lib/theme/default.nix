@@ -5,9 +5,6 @@ let
 in
 {
   inherit (libx) hexToRgb;
-
-  # Note that there are still places not covered by colour choices here such as:
-  #  - tmux
   inherit colours;
 
   wallpaper = ./wallpapers/jokulsarlon.jpg;
@@ -60,6 +57,15 @@ in
           term_colors = true,
       }
       vim.api.nvim_command 'colorscheme catppuccin'
+    '';
+  };
+
+  tmuxTheme = {
+    plugin = pkgs.tmuxPlugins.catppuccin;
+    extraConfig = ''
+      set -g @catppuccin_flavour 'macchiato'
+      set -g @catppuccin_host 'on'
+      set -g @catppuccin_window_tabs_enabled 'on'
     '';
   };
 
