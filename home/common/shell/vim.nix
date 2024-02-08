@@ -1,4 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  theme = import ../../../lib/theme { inherit pkgs; };
+  inherit (theme) vimTheme;
+in
+{
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
@@ -53,6 +58,7 @@
     '';
 
     plugins = with pkgs.vimPlugins; [
+      vimTheme
       nvim-web-devicons
       telescope-nvim
       vim-nix
@@ -76,17 +82,6 @@
         type = "viml";
         config = ''
           let g:lightline = {'colorscheme': 'catppuccin'}
-        '';
-      }
-      {
-        plugin = catppuccin-nvim;
-        type = "lua";
-        config = ''
-          require('catppuccin').setup {
-              flavour = 'macchiato',
-              term_colors = true,
-          }
-          vim.api.nvim_command 'colorscheme catppuccin'
         '';
       }
     ];

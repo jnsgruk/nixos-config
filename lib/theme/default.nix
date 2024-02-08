@@ -8,7 +8,6 @@ in
 
   # Note that there are still places not covered by colour choices here such as:
   #  - tmux
-  #  - vim
   inherit colours;
 
   wallpaper = ./wallpapers/jokulsarlon.jpg;
@@ -50,6 +49,18 @@ in
       };
       file = "Catppuccin-macchiato.tmTheme";
     };
+  };
+
+  vimTheme = {
+    plugin = pkgs.vimPlugins.catppuccin-nvim;
+    type = "lua";
+    config = ''
+      require('catppuccin').setup {
+          flavour = 'macchiato',
+          term_colors = true,
+      }
+      vim.api.nvim_command 'colorscheme catppuccin'
+    '';
   };
 
   fonts = {
