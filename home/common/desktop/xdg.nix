@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   theme = import ../../../lib/theme { inherit pkgs; };
   inherit ((import ./file-associations.nix)) associations;
@@ -12,6 +12,17 @@ in
     };
 
     desktopEntries = {
+      # This is obviously brittle, but works around some difficulties in the (current)
+      # distribution model of the Cider beta, where they drop binaries onto itch.io.
+      cider = {
+        name = "Cider";
+        exec = "${lib.getExe pkgs.appimage-run} -- /home/jon/data/apps/Cider.AppImage";
+        terminal = false;
+        icon = "cider";
+        type = "Application";
+        categories = [ "Audio" "Application" ];
+      };
+
       rambox = {
         name = "Rambox";
         exec = "rambox --ozone-platform-hint=auto --enable-features=UseOzonePlatform";
