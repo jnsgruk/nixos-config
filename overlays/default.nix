@@ -7,18 +7,6 @@
     # ...
     # });
 
-    traefik-3 = prev.callPackage "${prev.path}/pkgs/servers/traefik" {
-      buildGoModule = args: prev.buildGoModule (args // rec {
-        version = "3.0.0-beta5";
-        src = prev.fetchzip {
-          url = "https://github.com/traefik/traefik/releases/download/v${version}/traefik-v${version}.src.tar.gz";
-          sha256 = "sha256-fEwwGF9r1ZdSDJoGDz3OD9ZOaiQfq2fupgO858flEeI=";
-          stripRoot = false;
-        };
-        vendorHash = "sha256-Q6dlb6+mBRx8ZveFvFIXgAGHerzExi9HaSuJKVt1Ogc=";
-      });
-    };
-
     # https://github.com/NixOS/nixpkgs/pull/282595
     # https://github.com/NixOS/nixpkgs/pull/285883
     # https://github.com/NixOS/nixpkgs/issues/282749
@@ -45,10 +33,32 @@
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
-  unstable-packages = final: _prev: {
+  unstable-packages = final: _prev: rec {
     unstable = import inputs.unstable {
       inherit (final) system;
       config.allowUnfree = true;
+    };
+
+    traefik-3 = unstable.callPackage "${unstable.path}/pkgs/servers/traefik" {
+      buildGoModule = args: unstable.buildGo122Module (args // rec {
+        version = "3.0.0-rc1";
+        src = unstable.fetchzip {
+          url = "https://github.com/traefik/traefik/releases/download/v${version}/traefik-v${version}.src.tar.gz";
+          sha256 = "sha256-IQOABrwA+39WFnjmWkzl7PFwsXZrQIv8lBu+yZWSlvg=";
+          stripRoot = false;
+        };
+        vendorHash = "sha256-CfS3AWNz69U1J9yDwxXu2jlpvit/JdKPqn9fqo3o6W8=";
+
+        preBuild = ''
+          GOOS= GOARCH= CGO_ENABLED=0 go generate
+
+          CODENAME=$(grep -Po "CODENAME := \K.+$" Makefile)
+
+          buildFlagsArray+=("-ldflags= -s -w \
+            -X github.com/traefik/traefik/v${unstable.lib.versions.major version}/pkg/version.Version=${version} \
+            -X github.com/traefik/traefik/v${unstable.lib.versions.major version}/pkg/version.Codename=$CODENAME")
+        '';
+      });
     };
   };
 }
