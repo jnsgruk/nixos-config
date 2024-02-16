@@ -5,18 +5,18 @@
 
 pkgs.buildNpmPackage rec {
   pname = "ght";
-  version = "1.6.0";
+  version = "1.7.1";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
     repo = pname;
-    rev = "5464a5884283d933baf876fd4d812ccde912dd16";
-    sha256 = "sha256-gzbdHk9D54zMPDYIEB19+KcCHUpqGqC8wQS1IQmfEDg=";
+    rev = "v${version}";
+    sha256 = "sha256-txDrmiSy3o/xcwIcb0dBLaVauRqE50nA7TsREP9pPck=";
   };
 
   npmDeps = pkgs.fetchNpmDeps {
     inherit src;
-    hash = "sha256-yC+hs5vdIgzpDMLY5aguOUJKqieQ1qFlAP7uPmJEIgc=";
+    hash = "sha256-r2qygzMn7W3wyAI8d0VFZ0GCpsjRRjsO+o3qCAZBulw=";
   };
 
   patches = [

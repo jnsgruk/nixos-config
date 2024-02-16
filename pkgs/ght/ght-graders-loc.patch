@@ -1,13 +1,13 @@
 diff --git a/src/controllers/AssignGradersController.ts b/src/controllers/AssignGradersController.ts
-index 2c7b0cc..e931d70 100644
+index 422d5b9..ab3fd67 100644
 --- a/src/controllers/AssignGradersController.ts
 +++ b/src/controllers/AssignGradersController.ts
-@@ -97,8 +97,7 @@ export class AssignGradersController extends BaseController {
+@@ -92,8 +92,7 @@ export class AssignGradersController extends BaseController {
          });
  
          const gradersConfigPath = join(
 -            process.env["SNAP_REAL_HOME"] || homedir(),
--            "ght-graders.yml"
+-            "ght-graders.yml",
 +            homedir(), ".config/ght/ght-graders.yml"
          );
          const gradersConfig = loadConfigFile<GradersConfig>(gradersConfigPath);
