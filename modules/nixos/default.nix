@@ -1,0 +1,3 @@
+{
+  scrutiny = import ./scrutiny.nix;
+}

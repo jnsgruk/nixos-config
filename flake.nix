@@ -75,6 +75,9 @@
       # Custom overlays
       overlays = import ./overlays { inherit inputs; };
 
+      # Custom NixOS / Home Manager modules
+      nixosModules = import ./modules/nixos;
+
       # Devshell for bootstrapping
       # Accessible via 'nix develop' or 'nix-shell' (legacy)
       devShells = libx.forAllSystems (system:

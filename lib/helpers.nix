@@ -16,6 +16,7 @@
       inputs.agenix.nixosModules.default
       inputs.lanzaboote.nixosModules.lanzaboote
       inputs.libations.nixosModules.libations
+      outputs.nixosModules.scrutiny
       ../host
     ];
   };
