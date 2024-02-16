@@ -86,5 +86,16 @@
       );
 
       formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt);
+
+      checks = libx.forAllSystems (system:
+        let
+          checkArgs = {
+            inherit self;
+            pkgs = nixpkgs.legacyPackages.${system};
+          };
+        in
+        {
+          scrutiny = import ./modules/nixos/tests/scrutiny.nix checkArgs;
+        });
     };
 }
