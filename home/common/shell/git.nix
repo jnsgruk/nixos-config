@@ -28,6 +28,9 @@
       };
 
       extraConfig = {
+        branch = {
+          sort = "-committerdate";
+        };
         push = {
           default = "matching";
         };
