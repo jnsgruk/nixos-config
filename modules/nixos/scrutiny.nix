@@ -78,7 +78,7 @@ in
 
         endpoint = lib.mkOption {
           type = lib.types.str;
-          default = "http://localhost:${builtins.toString cfg.port}/${cfg.basepath}";
+          default = "http://${cfg.host}:${builtins.toString cfg.port}/${cfg.basepath}";
           description = lib.mdDoc "Scrutiny app API endpoint for sending metrics to.";
         };
 
