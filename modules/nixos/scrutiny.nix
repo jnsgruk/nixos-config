@@ -11,7 +11,7 @@ let
         listen:
           port: ${builtins.toString cfg.port}
           host: "${cfg.host}"
-          basepath: "/${cfg.basepath}"
+          basepath: "${if cfg.basepath != "" then "/" + cfg.basepath else ""}"
 
         database:
             location: "/var/lib/scrutiny/scrutiny.db"
