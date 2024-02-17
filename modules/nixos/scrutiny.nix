@@ -101,7 +101,7 @@ in
     };
 
     networking.firewall = lib.mkIf cfg.openFirewall {
-      allowedTCPPorts = [ 8080 ];
+      allowedTCPPorts = [ cfg.port ];
     };
 
     services.smartd = {
