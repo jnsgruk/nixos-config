@@ -56,5 +56,6 @@ pkgs.buildGoModule rec {
     homepage = "https://github.com/AnalogJ/scrutiny";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ jnsgruk ];
+    mainProgram = "scrutiny-web";
   };
 }
