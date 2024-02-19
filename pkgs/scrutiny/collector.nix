@@ -10,6 +10,7 @@ pkgs.buildGoModule rec {
   inherit version vendorHash;
   pname = "${name}-collector";
   src = repo;
+  subPackages = "collector/cmd/collector-metrics/collector-metrics.go";
 
   buildInputs = with pkgs; [
     makeWrapper
@@ -17,20 +18,16 @@ pkgs.buildGoModule rec {
 
   CGO_ENABLED = 0;
 
-  buildPhase = ''
-    runHook preBuild
-    go build \
-      -o scrutiny-collector-metrics \
-      -ldflags="-extldflags=-static" \
-      -tags "static netgo" \
-      ./collector/cmd/collector-metrics
-    runHook postBuild
-  '';
+  ldflags = [ "-extldflags=-static" ];
+
+  tags = [
+    "netgo"
+    "static"
+  ];
 
   installPhase = ''
     mkdir -p $out/bin
-    cp scrutiny-collector-metrics $out/bin/scrutiny-collector-metrics
-    
+    cp $GOPATH/bin/collector-metrics $out/bin/scrutiny-collector-metrics
     wrapProgram $out/bin/scrutiny-collector-metrics \
       --prefix PATH : ${lib.makeBinPath [ pkgs.smartmontools ]}
   '';

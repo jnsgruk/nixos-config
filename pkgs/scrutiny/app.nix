@@ -32,22 +32,20 @@ pkgs.buildGoModule rec {
   inherit version vendorHash;
   pname = "${name}-webapp-backend";
   src = repo;
+  subPackages = "webapp/backend/cmd/scrutiny";
 
   CGO_ENABLED = 0;
 
-  buildPhase = ''
-    runHook preBuild
-    go build \
-      -o scrutiny-web \
-      -ldflags="-extldflags=-static" \
-      -tags "static netgo" \
-      ./webapp/backend/cmd/scrutiny
-    runHook postBuild
-  '';
+  ldflags = [ "-extldflags=-static" ];
+
+  tags = [
+    "netgo"
+    "static"
+  ];
 
   installPhase = ''
     mkdir -p $out/bin $out/share/scrutiny
-    cp scrutiny-web $out/bin/scrutiny-web
+    cp $GOPATH/bin/scrutiny $out/bin/scrutiny
     cp -r ${frontend}/* $out/share/scrutiny
   '';
 
@@ -56,6 +54,6 @@ pkgs.buildGoModule rec {
     homepage = "https://github.com/AnalogJ/scrutiny";
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ jnsgruk ];
-    mainProgram = "scrutiny-web";
+    mainProgram = "scrutiny";
   };
 }
