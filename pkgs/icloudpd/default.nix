@@ -13,7 +13,7 @@ pkgs.python3Packages.buildPythonApplication {
   src = pkgs.fetchFromGitHub {
     owner = "icloud-photos-downloader";
     repo = "icloud_photos_downloader";
-    rev = "v${version}";
+    rev = "refs/tags/v${version}";
     hash = "sha256-GS6GqlZfj5kfjKLImkOTDAgQDGJQHl74uTqbZHVpbac=";
   };
 
