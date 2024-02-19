@@ -2,16 +2,19 @@
 , pkgs
 , ...
 }:
-
-pkgs.buildNpmPackage rec {
-  pname = "ght";
+let
+  name = "ght";
   version = "1.7.1";
+in
+pkgs.buildNpmPackage rec {
+  inherit version;
+  pname = name;
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
-    repo = pname;
-    rev = "v${version}";
-    sha256 = "sha256-txDrmiSy3o/xcwIcb0dBLaVauRqE50nA7TsREP9pPck=";
+    repo = name;
+    rev = "refs/tags/v${version}";
+    hash = "sha256-txDrmiSy3o/xcwIcb0dBLaVauRqE50nA7TsREP9pPck=";
   };
 
   npmDeps = pkgs.fetchNpmDeps {
@@ -25,8 +28,8 @@ pkgs.buildNpmPackage rec {
 
   postPatch = ''
     substituteInPlace ght \
-        --replace "./index.js" "$out/opt/ght/index.js" \
-        --replace "./package.json" "$out/opt/ght/package.json"
+        --replace-fail "./index.js" "$out/opt/ght/index.js" \
+        --replace-fail "./package.json" "$out/opt/ght/package.json"
   '';
 
   env.PUPPETEER_SKIP_DOWNLOAD = true;
@@ -49,6 +52,7 @@ pkgs.buildNpmPackage rec {
   meta = {
     description = "Perform actions in Greenhouse from you terminal.";
     maintainers = with lib.maintainers; [ jnsgruk ];
+    mainProgram = "ght";
   };
 }
 
