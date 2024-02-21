@@ -1,43 +1,8 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.services.scrutiny;
-  collectorCfg = config.services.scrutiny.collector;
-
-  # Helper function for inserting null values in place of empty strings in conf file.
-  optionalStr = e: if e != "" then e else null;
-
-  # Function for constructing a Scrutiny config file from a given Nix configuration.
-  mkScrutinyCfg = cfg: pkgs.writeTextFile {
-    name = "scrutiny.yaml";
-    text = builtins.toJSON {
-      version = 1;
-      web = {
-        listen = {
-          inherit (cfg) host port;
-          basepath = if cfg.basepath != "" then "/" + cfg.basepath else "";
-        };
-
-        database = {
-          location = "/var/lib/scrutiny/scrutiny.db";
-        };
-
-        src = {
-          frontend.path = "${pkgs.scrutiny}/share/scrutiny";
-        };
-
-        influxdb = {
-          inherit (cfg.influxdb) scheme host port;
-          tls.insecure_skip_verify = cfg.influxdb.tlsSkipVerify;
-          token = optionalStr cfg.influxdb.token;
-          org = optionalStr cfg.influxdb.org;
-          bucket = optionalStr cfg.influxdb.bucket;
-        };
-      };
-      log = {
-        level = cfg.logLevel;
-      };
-    };
-  };
+  # Define the settings format used for this program
+  settingsFormat = pkgs.formats.yaml { };
 in
 {
   options = {
@@ -46,131 +11,160 @@ in
 
       package = lib.mkPackageOptionMD pkgs "scrutiny" { };
 
-      port = lib.mkOption {
-        type = lib.types.port;
-        default = 8080;
-        description = lib.mdDoc "Port for web application to listen on.";
-      };
-
-      host = lib.mkOption {
-        type = lib.types.str;
-        default = "0.0.0.0";
-        description = lib.mdDoc "Interface address for web application to bind to.";
-      };
-
-      basepath = lib.mkOption {
-        type = lib.types.str;
-        default = "";
-        description = lib.mdDoc ''
-          If Scrutiny will be behind a path prefixed reverse proxy, you can override this 
-          value to serve Scrutiny on a subpath.
-
-          Do not include the leading '/'.
-        '';
-      };
-
-      influxdb = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = true;
-          description = lib.mdDoc ''
-            Enables InfluxDB on the host system using the `services.influxdb2` NixOS module
-            with default options.
-
-            If you already have InfluxDB configured, or wish to connect to an external InfluxDB
-            instance, disable this option.
-          '';
-        };
-
-        scheme = lib.mkOption {
-          type = lib.types.str;
-          default = "http";
-          description = lib.mdDoc "URL scheme to use when connecting to InfluxDB.";
-        };
-
-        host = lib.mkOption {
-          type = lib.types.str;
-          default = "0.0.0.0";
-          description = lib.mdDoc "IP or hostname of the InfluxDB instance.";
-        };
-
-        port = lib.mkOption {
-          type = lib.types.port;
-          default = 8086;
-          description = lib.mdDoc "The port of the InfluxDB instance.";
-        };
-
-        tlsSkipVerify = lib.mkOption {
-          type = lib.types.bool;
-          default = false;
-          description = lib.mdDoc "Skip TLS verification when connecting to InfluxDB.";
-        };
-
-        token = lib.mkOption {
-          type = lib.types.str;
-          default = "";
-          description = lib.mdDoc "Authentication token for connecting to InfluxDB.";
-        };
-
-        org = lib.mkOption {
-          type = lib.types.str;
-          default = "";
-          description = lib.mdDoc "InfluxDB organisation under which to store data.";
-        };
-
-        bucket = lib.mkOption {
-          type = lib.types.str;
-          default = "";
-          description = lib.mdDoc "InfluxDB bucket in which to store data.";
-        };
-      };
-
       openFirewall = lib.mkOption {
         type = lib.types.bool;
         default = false;
         description = "Open the default ports in the firewall for Scrutiny.";
       };
 
-      logLevel = lib.mkOption {
-        type = lib.types.enum [ "INFO" "DEBUG" ];
-        default = "INFO";
-        description = lib.mdDoc "Log level for Scrutiny.";
+      influxdb.enable = lib.mkOption {
+        type = lib.types.bool;
+        default = true;
+        description = lib.mdDoc ''
+          Enables InfluxDB on the host system using the `services.influxdb2` NixOS module
+          with default options.
+
+          If you already have InfluxDB configured, or wish to connect to an external InfluxDB
+          instance, disable this option.
+        '';
+      };
+
+      settings = lib.mkOption {
+        description = lib.mdDoc ''
+          Scrutiny settings to be rendered into the configuration file.
+
+          See https://github.com/AnalogJ/scrutiny/blob/master/example.scrutiny.yaml.
+        '';
+        default = { };
+        type = lib.types.submodule {
+          freeformType = settingsFormat.type;
+
+          options.web.listen.port = lib.mkOption {
+            type = lib.types.port;
+            default = 8080;
+            description = lib.mdDoc "Port for web application to listen on.";
+          };
+
+          options.web.listen.host = lib.mkOption {
+            type = lib.types.str;
+            default = "0.0.0.0";
+            description = lib.mdDoc "Interface address for web application to bind to.";
+          };
+
+          options.web.listen.basepath = lib.mkOption {
+            type = lib.types.str;
+            default = "";
+            example = "/scrutiny";
+            description = lib.mdDoc ''
+              If Scrutiny will be behind a path prefixed reverse proxy, you can override this
+              value to serve Scrutiny on a subpath.
+            '';
+          };
+
+          options.log.level = lib.mkOption {
+            type = lib.types.enum [ "INFO" "DEBUG" ];
+            default = "INFO";
+            description = lib.mdDoc "Log level for Scrutiny.";
+          };
+
+          options.web.influxdb.scheme = lib.mkOption {
+            type = lib.types.str;
+            default = "http";
+            description = lib.mdDoc "URL scheme to use when connecting to InfluxDB.";
+          };
+
+          options.web.influxdb.host = lib.mkOption {
+            type = lib.types.str;
+            default = "0.0.0.0";
+            description = lib.mdDoc "IP or hostname of the InfluxDB instance.";
+          };
+
+          options.web.influxdb.port = lib.mkOption {
+            type = lib.types.port;
+            default = 8086;
+            description = lib.mdDoc "The port of the InfluxDB instance.";
+          };
+
+          options.web.influxdb.tls.insecure_skip_verify = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = lib.mdDoc "Skip TLS verification when connecting to InfluxDB.";
+          };
+
+          options.web.influxdb.token = lib.mkOption {
+            type = lib.types.nullOr lib.types.str;
+            default = null;
+            description = lib.mdDoc "Authentication token for connecting to InfluxDB.";
+          };
+
+          options.web.influxdb.org = lib.mkOption {
+            type = lib.types.nullOr lib.types.str;
+            default = null;
+            description = lib.mdDoc "InfluxDB organisation under which to store data.";
+          };
+
+          options.web.influxdb.bucket = lib.mkOption {
+            type = lib.types.nullOr lib.types.str;
+            default = null;
+            description = lib.mdDoc "InfluxDB bucket in which to store data.";
+          };
+        };
       };
 
       collector = {
-        enable = lib.mkOption {
-          type = lib.types.bool;
-          default = cfg.enable;
-          description = lib.mdDoc "Enables the scrutiny collector.";
-        };
+        enable = lib.mkEnableOption "Enables the scrutiny metrics collector.";
 
         package = lib.mkPackageOptionMD pkgs "scrutiny-collector" { };
 
-        endpoint = lib.mkOption {
+        schedule = lib.mkOption {
           type = lib.types.str;
-          default = "http://${cfg.host}:${builtins.toString cfg.port}/${cfg.basepath}";
-          description = lib.mdDoc "Scrutiny app API endpoint for sending metrics to.";
+          default = "*:0/15";
+          description = lib.mdDoc ''
+            How often to run the collector in systemd calendar format.
+          '';
         };
 
-        interval = lib.mkOption {
-          type = lib.types.int;
-          default = 15;
-          description = lib.mdDoc "Interval (in minutes) on which to collect information about disks.";
+        settings = lib.mkOption {
+          description = lib.mdDoc ''
+            Collector settings to be rendered into the collector configuration file.
+
+            See https://github.com/AnalogJ/scrutiny/blob/master/example.collector.yaml.
+          '';
+          default = { };
+          type = lib.types.submodule {
+            freeformType = settingsFormat.type;
+
+            options.host.id = lib.mkOption {
+              type = lib.types.nullOr lib.types.str;
+              default = null;
+              description = lib.mdDoc "Host ID for identifying/labelling groups of disks";
+            };
+
+            options.api.endpoint = lib.mkOption {
+              type = lib.types.str;
+              default = "http://localhost:8080";
+              description = lib.mdDoc "Scrutiny app API endpoint for sending metrics to.";
+            };
+
+            options.log.level = lib.mkOption {
+              type = lib.types.enum [ "INFO" "DEBUG" ];
+              default = "INFO";
+              description = lib.mdDoc "Log level for Scrutiny collector.";
+            };
+          };
         };
       };
     };
   };
 
-  config = {
-    services.influxdb2 = lib.mkIf cfg.influxdb.enable {
-      inherit (cfg) enable;
-    };
+  config = lib.mkIf (cfg.enable || cfg.collector.enable) {
+    services.influxdb2.enable = cfg.influxdb.enable;
 
     networking.firewall = lib.mkIf cfg.openFirewall {
-      allowedTCPPorts = [ cfg.port ];
+      allowedTCPPorts = [ cfg.settings.web.listen.port ];
     };
 
-    services.smartd = lib.mkIf collectorCfg.enable {
+    services.smartd = lib.mkIf cfg.collector.enable {
       enable = true;
       extraOptions = [
         "-A /var/log/smartd/"
@@ -184,36 +178,43 @@ in
           description = "Hard Drive S.M.A.R.T Monitoring, Historical Trends & Real World Failure Thresholds";
           wantedBy = [ "multi-user.target" ];
           after = [ "network.target" ];
+          environment = {
+            SCRUTINY_VERSION = "1";
+            SCRUTINY_WEB_DATABASE_LOCATION = "/var/lib/scrutiny/scrutiny.db";
+            SCRUTINY_WEB_SRC_FRONTEND_PATH = "${cfg.package}/share/scrutiny";
+          };
           serviceConfig = {
             DynamicUser = true;
-            ExecStart = "${lib.getExe cfg.package} start --config ${mkScrutinyCfg cfg}";
+            ExecStart = "${lib.getExe cfg.package} start --config ${settingsFormat.generate "scrutiny.yaml" cfg.settings}";
             Restart = "always";
             StateDirectory = "scrutiny";
             StateDirectoryMode = "0750";
           };
         };
 
-        scrutiny-collector = lib.mkIf collectorCfg.enable {
+        scrutiny-collector = lib.mkIf cfg.collector.enable {
           description = "Scrutiny Collector Service";
           environment = {
-            COLLECTOR_API_ENDPOINT = "${collectorCfg.endpoint}";
+            COLLECTOR_VERSION = "1";
           };
           serviceConfig = {
             Type = "oneshot";
-            ExecStart = "${lib.getExe cfg.collector.package} run";
+            ExecStart = "${lib.getExe cfg.collector.package} run --config ${settingsFormat.generate "scrutiny-collector.yaml" cfg.collector.settings}";
           };
         };
       };
 
-      timers = lib.mkIf collectorCfg.enable {
+      timers = lib.mkIf cfg.collector.enable {
         scrutiny-collector = {
           timerConfig = {
-            OnBootSec = "1m";
-            OnUnitActiveSec = "${builtins.toString collectorCfg.interval}m";
+            OnCalendar = cfg.collector.schedule;
+            Persistent = true;
             Unit = "scrutiny-collector.service";
           };
         };
       };
     };
   };
+
+  meta.maintainers = [ lib.maintainers.jnsgruk ];
 }
