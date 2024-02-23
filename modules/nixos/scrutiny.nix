@@ -3,6 +3,10 @@ let
   cfg = config.services.scrutiny;
   # Define the settings format used for this program
   settingsFormat = pkgs.formats.yaml { };
+
+  msg = "using the Scrutiny module from github:jnsgruk/nixos-config is deprecated. "
+    + "please use `services.scrutiny.enable' and `services.scrutiny.collector.enable "
+    + "from nixpkgs instead.";
 in
 {
   options = {
@@ -158,6 +162,8 @@ in
   };
 
   config = lib.mkIf (cfg.enable || cfg.collector.enable) {
+    warnings = [ msg ];
+
     services.influxdb2.enable = cfg.influxdb.enable;
 
     networking.firewall = lib.mkIf cfg.openFirewall {
@@ -196,6 +202,7 @@ in
           description = "Scrutiny Collector Service";
           environment = {
             COLLECTOR_VERSION = "1";
+            COLLECTOR_API_ENDPOINT = cfg.collector.settings.api.endpoint;
           };
           serviceConfig = {
             Type = "oneshot";

@@ -1,4 +1,5 @@
-(import ./lib.nix)
+import (./lib.nix)
+
 {
   name = "scrutiny";
   nodes = {
@@ -6,9 +7,9 @@
       imports = [ self.nixosModules.scrutiny ];
       nixpkgs.overlays = [ self.outputs.overlays.additions ];
 
-      services.scrutiny = {
-        enable = true;
-        collector.enable = true;
+      services = {
+        scrutiny.enable = true;
+        scrutiny.collector.enable = true;
       };
 
       environment.systemPackages =
@@ -21,6 +22,7 @@
             from selenium.webdriver.common.by import By
             from selenium.webdriver.firefox.options import Options
             from selenium.webdriver.support.ui import WebDriverWait
+            from selenium.webdriver.support import expected_conditions as EC
 
             options = Options()
             options.add_argument("--headless")
@@ -30,10 +32,13 @@
             driver.implicitly_wait(10)
             driver.get("http://localhost:8080/web/dashboard")
 
-            wait = WebDriverWait(driver, 60)
+            wait = WebDriverWait(driver, 10).until(
+              EC.text_to_be_present_in_element(
+                (By.TAG_NAME, "body"), "Drive health at a glance")
+            )
 
-            assert len(driver.find_elements(By.CLASS_NAME, "mat-button-wrapper")) > 0
-            assert len(driver.find_elements(By.CLASS_NAME, "top-bar")) > 0
+            body_text = driver.find_element(By.TAG_NAME, "body").text
+            assert "Temperature history for each device" in body_text
 
             driver.close()
           '';
@@ -44,22 +49,22 @@
   # This is the test code that will check if our service is running correctly:
   testScript = ''
     start_all()
-    
+
     # Wait for InfluxDB to be available
     machine.wait_for_unit("influxdb2")
     machine.wait_for_open_port(8086)
-    
+
     # Wait for Scrutiny to be available
     machine.wait_for_unit("scrutiny")
     machine.wait_for_open_port(8080)
-    
+
     # Ensure the API responds as we expect
     output = machine.succeed("curl localhost:8080/api/health")
     assert output == '{"success":true}'
 
     # Start the collector service to send some metrics
     collect = machine.succeed("systemctl start scrutiny-collector.service")
-    
+
     # Ensure the application is actually rendered by the Javascript
     machine.succeed("PYTHONUNBUFFERED=1 selenium-script")
   '';

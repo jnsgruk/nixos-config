@@ -3,13 +3,20 @@
 , ...
 }:
 let
-  common = import ./common.nix { inherit pkgs; };
-  inherit (common) name version repo vendorHash;
+  pname = "scrutiny";
+  version = "0.7.2";
 
-  frontend = pkgs.buildNpmPackage rec {
+  src = pkgs.fetchFromGitHub {
+    owner = "AnalogJ";
+    repo = "scrutiny";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-UYKi+WTsasUaE6irzMAHr66k7wXyec8FXc8AWjEk0qs=";
+  };
+
+  frontend = pkgs.buildNpmPackage {
     inherit version;
-    pname = "${name}-webapp-frontend";
-    src = "${repo}/webapp/frontend";
+    pname = "${pname}-webapp";
+    src = "${src}/webapp/frontend";
 
     npmDepsHash = "sha256-M8P41LPg7oJ/C9abDuNM5Mn+OO0zK56CKi2BwLxv8oQ=";
 
@@ -29,23 +36,20 @@ let
   };
 in
 pkgs.buildGoModule rec {
-  inherit version vendorHash;
-  pname = "${name}-webapp-backend";
-  src = repo;
+  inherit pname src version;
+
   subPackages = "webapp/backend/cmd/scrutiny";
+
+  vendorHash = "sha256-SiQw6pq0Fyy8Ia39S/Vgp9Mlfog2drtVn43g+GXiQuI=";
 
   CGO_ENABLED = 0;
 
   ldflags = [ "-extldflags=-static" ];
 
-  tags = [
-    "netgo"
-    "static"
-  ];
+  tags = [ "static" ];
 
-  installPhase = ''
-    mkdir -p $out/bin $out/share/scrutiny
-    cp $GOPATH/bin/scrutiny $out/bin/scrutiny
+  postInstall = ''
+    mkdir -p $out/share/scrutiny
     cp -r ${frontend}/* $out/share/scrutiny
   '';
 
@@ -55,5 +59,6 @@ pkgs.buildGoModule rec {
     license = lib.licenses.mit;
     maintainers = with lib.maintainers; [ jnsgruk ];
     mainProgram = "scrutiny";
+    platforms = lib.platforms.linux;
   };
 }
