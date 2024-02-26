@@ -225,7 +225,6 @@ in
         + "bookmarks, services, widgets, and other configuration using the options provided.";
     in
     lib.mkIf cfg.enable {
-
       warnings =
         if managedConfig then [ ] else [ msg ];
 
