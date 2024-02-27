@@ -13,6 +13,7 @@
 
     # Nix tooling
     deadnix
+    nix-init
     nixfmt
     nixpkgs-fmt
     nurl
