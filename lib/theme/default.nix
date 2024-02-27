@@ -7,7 +7,7 @@ in
   inherit (libx) hexToRgb;
   inherit colours;
 
-  wallpaper = ./wallpapers/jokulsarlon.jpg;
+  wallpaper = ./wallpapers/jokulsarlon.png;
 
   gtkTheme = {
     name = "Catppuccin-Macchiato-Standard-Blue-Dark";
