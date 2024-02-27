@@ -13,9 +13,9 @@ in
 
     ../mako.nix
     ../swappy.nix
-    ../swaylock.nix
     ../wl-common.nix
 
+    ./hyprlock.nix
     ./packages.nix
   ];
 

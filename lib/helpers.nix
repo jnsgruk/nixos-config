@@ -6,7 +6,11 @@
       inherit inputs outputs stateVersion hostname desktop;
       username = user;
     };
-    modules = [ ../home ];
+    modules = [
+      inputs.hypridle.homeManagerModules.default
+      inputs.hyprlock.homeManagerModules.default
+      ../home
+    ];
   };
 
   # Helper function for generating host configs

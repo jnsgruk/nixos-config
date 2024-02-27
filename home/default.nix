@@ -36,8 +36,10 @@
       inputs.agenix.overlays.default
     ]
     ++ lib.optionals (desktop == "hyprland") [
+      inputs.hypridle.overlays.default
       inputs.hyprland.overlays.default
       inputs.hyprland-contrib.overlays.default
+      inputs.hyprlock.overlays.default
     ];
 
     config = {

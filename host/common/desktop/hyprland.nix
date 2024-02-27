@@ -60,8 +60,6 @@ in
   security = {
     pam = {
       services = {
-        # allow wayland lockers to unlock the screen
-        swaylock.text = "auth include login";
         # unlock gnome keyring automatically with greetd
         greetd.enableGnomeKeyring = true;
       };

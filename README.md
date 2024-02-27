@@ -27,7 +27,7 @@ The following is a list of the key elements of my setup, with links to their con
 | Type  | Details                                         |
 | :---: | :---------------------------------------------- |
 | Shell | [zsh], [starship], [nvim], [tmux], [neofetch]   |
-|  WM   | [hyprland], [waybar], [swaylock], [mako], [gtk] |
+|  WM   | [hyprland], [waybar], [hyprlock], [mako], [gtk] |
 | Apps  | [vscode], [zathura], [alacritty]                |
 
 ## Screenshots
@@ -57,7 +57,7 @@ The following is a list of the key elements of my setup, with links to their con
 [neofetch]: ./home/common/shell/neofetch.nix
 [nvim]: ./home/common/shell/vim.nix
 [starship]: ./home/common/shell/starship.nix
-[swaylock]: ./home/common/desktop/swaylock.nix
+[hyprlock]: ./home/common/desktop/hyprland/hyprlock.nix
 [tmux]: ./home/common/shell/tmux.nix
 [vscode]: ./home/common/desktop/vscode.nix
 [zathura]: ./home/common/desktop/zathura.nix

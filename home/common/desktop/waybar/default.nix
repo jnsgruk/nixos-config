@@ -121,7 +121,7 @@ in
 
       "custom/lock" = {
         format = "󰍁";
-        on-click = "${pkgs.swaylock-effects}/bin/swaylock -f";
+        on-click = "${lib.getExe pkgs.hyprlock}";
         tooltip = false;
       };
 
