@@ -1,10 +1,13 @@
-{ disks ? [ "/dev/nvme0n1" "/dev/nvme1n1" ], ... }:
+{ lib, disks ? [ "/dev/nvme0n1" "/dev/nvme1n1" ], ... }:
 let
   cryptroot = "cryptroot";
   defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
 in
 {
   boot.initrd.luks.devices.${cryptroot} = {
+    # TODO: Remove this "device" attr if/when machine is reinstalled.
+    # This is a workaround for the legacy -> gpt tables disko format.
+    device = lib.mkForce "/dev/disk/by-uuid/69f73515-2d29-446c-a6e4-ab9deea44712";
     allowDiscards = true;
     preLVM = true;
   };
@@ -15,6 +18,10 @@ in
     '';
   };
 
+  # TODO: Remove this if/when machine is reinstalled.
+  # This is a workaround for the legacy -> gpt tables disko format.
+  fileSystems."/boot".device = lib.mkForce "/dev/disk/by-partlabel/ESP";
+
   disko.devices = {
     disk = {
       # 1TB root/boot drive. Configured with:
@@ -24,29 +31,28 @@ in
         device = builtins.elemAt disks 0;
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "ESP";
+          type = "gpt";
+          partitions = {
+            ESP = {
               start = "0%";
               end = "512MiB";
-              bootable = true;
-              fs-type = "fat32";
+              type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
               };
-            }
-            {
-              name = "luks";
+            };
+            luks = {
               start = "512MiB";
               end = "100%";
               content = {
                 type = "luks";
                 name = "${cryptroot}";
-                extraOpenArgs = [ "--allow-discards" ];
+
+                settings = {
+                  allowDiscards = true;
+                };
 
                 content = {
                   type = "btrfs";
@@ -80,8 +86,8 @@ in
                   };
                 };
               };
-            }
-          ];
+            };
+          };
         };
       };
 
@@ -90,36 +96,39 @@ in
         device = builtins.elemAt disks 1;
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [{
-            name = "data";
-            start = "0%";
-            end = "100%";
-            content = {
-              type = "luks";
-              name = "data";
-              extraOpenArgs = [ "--allow-discards" ];
-              # Make sure there is no trailing newline in keyfile if used for interactive unlock.
-              # Use `echo -n "password" > /tmp/secret.key`
-              keyFile = "/tmp/data.keyfile";
-
-              # Don't try to unlock this drive early in the boot.
-              initrdUnlock = false;
-
+          type = "gpt";
+          partitions = {
+            data = {
+              start = "0%";
+              end = "100%";
               content = {
-                type = "btrfs";
-                # Override existing partition
-                extraArgs = [ "-f" ];
-                subvolumes = {
-                  "@data" = {
-                    mountpoint = "/home/jon/data";
-                    mountOptions = defaultBtrfsOpts;
+                type = "luks";
+                name = "data";
+
+                settings = {
+                  # Make sure there is no trailing newline in keyfile if used for interactive unlock.
+                  # Use `echo -n "password" > /tmp/secret.key`
+                  keyFile = "/tmp/data.keyfile";
+                  allowDiscards = true;
+                };
+
+                # Don't try to unlock this drive early in the boot.
+                initrdUnlock = false;
+
+                content = {
+                  type = "btrfs";
+                  # Override existing partition
+                  extraArgs = [ "-f" ];
+                  subvolumes = {
+                    "@data" = {
+                      mountpoint = "/home/jon/data";
+                      mountOptions = defaultBtrfsOpts;
+                    };
                   };
                 };
               };
             };
-          }];
+          };
         };
       };
     };

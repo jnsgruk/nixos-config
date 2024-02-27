@@ -1,4 +1,4 @@
-_:
+{ lib, ... }:
 let
   defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
 in
@@ -7,6 +7,18 @@ in
     "crypttab".text = ''
       data  /dev/disk/by-partlabel/data  /etc/data.keyfile
     '';
+  };
+
+  # TODO: Remove this if/when machine is reinstalled.
+  # This is a workaround for the legacy -> gpt tables disko format.
+  fileSystems = {
+    "/".device = lib.mkForce "/dev/disk/by-partlabel/root";
+    "/boot".device = lib.mkForce "/dev/disk/by-partlabel/ESP";
+    "/.snapshots".device = lib.mkForce "/dev/disk/by-partlabel/root";
+    "/.swap".device = lib.mkForce "/dev/disk/by-partlabel/root";
+    "/home".device = lib.mkForce "/dev/disk/by-partlabel/root";
+    "/nix".device = lib.mkForce "/dev/disk/by-partlabel/root";
+    "/var".device = lib.mkForce "/dev/disk/by-partlabel/root";
   };
 
   disko.devices = {
@@ -18,26 +30,21 @@ in
         device = "/dev/nvme0n1";
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "ESP";
+          type = "gpt";
+          partitions = {
+            ESP = {
               start = "0%";
               end = "512MiB";
-              bootable = true;
-              fs-type = "fat32";
+              type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
               };
-            }
-            {
-              name = "root";
+            };
+            root = {
               start = "512MiB";
               end = "100%";
-              part-type = "primary";
               content = {
                 type = "btrfs";
                 # Override existing partition
@@ -69,8 +76,8 @@ in
                   };
                 };
               };
-            }
-          ];
+            };
+          };
         };
       };
 
@@ -79,36 +86,39 @@ in
         device = "/dev/sda";
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [{
-            name = "data";
-            start = "0%";
-            end = "100%";
-            content = {
-              type = "luks";
-              name = "data";
-              extraOpenArgs = [ "--allow-discards" ];
-              # Make sure there is no trailing newline in keyfile if used for interactive unlock.
-              # Use `echo -n "password" > /tmp/secret.key`
-              keyFile = "/tmp/data.keyfile";
-
-              # Don't try to unlock this drive early in the boot.
-              initrdUnlock = false;
-
+          type = "gpt";
+          partitions = {
+            data = {
+              start = "0%";
+              end = "100%";
               content = {
-                type = "btrfs";
-                # Override existing partition
-                extraArgs = [ "-f" ];
-                subvolumes = {
-                  "@data" = {
-                    mountpoint = "/data";
-                    mountOptions = defaultBtrfsOpts;
+                type = "luks";
+                name = "data";
+
+                settings = {
+                  # Make sure there is no trailing newline in keyfile if used for interactive unlock.
+                  #  Use `echo -n "password" > /tmp/secret.key`
+                  keyFile = "/tmp/data.keyfile";
+                  allowDiscards = true;
+                };
+
+                # Don't try to unlock this drive early in the boot.
+                initrdUnlock = false;
+
+                content = {
+                  type = "btrfs";
+                  # Override existing partition
+                  extraArgs = [ "-f" ];
+                  subvolumes = {
+                    "@data" = {
+                      mountpoint = "/data";
+                      mountOptions = defaultBtrfsOpts;
+                    };
                   };
                 };
               };
             };
-          }];
+          };
         };
       };
     };

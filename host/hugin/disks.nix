@@ -1,37 +1,39 @@
-{ disks ? [ "/dev/sda" ], ... }: {
+{ lib, disks ? [ "/dev/sda" ], ... }: {
+  # TODO: Remove this if/when machine is reinstalled.
+  # This is a workaround for the legacy -> gpt tables disko format.
+  fileSystems = {
+    "/".device = lib.mkForce "/dev/disk/by-partlabel/root";
+    "/boot".device = lib.mkForce "/dev/disk/by-partlabel/ESP";
+  };
+
   disko.devices = {
     disk = {
       sda = {
         device = builtins.elemAt disks 0;
         type = "disk";
         content = {
-          type = "table";
-          format = "gpt";
-          partitions = [
-            {
-              name = "ESP";
+          type = "gpt";
+          partitions = {
+            ESP = {
               start = "0%";
               end = "512MiB";
-              bootable = true;
-              fs-type = "fat32";
+              type = "EF00";
               content = {
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
               };
-            }
-            {
-              name = "root";
+            };
+            root = {
               start = "512MiB";
               end = "100%";
-              part-type = "primary";
               content = {
                 type = "filesystem";
                 format = "ext4";
                 mountpoint = "/";
               };
-            }
-          ];
+            };
+          };
         };
       };
     };
