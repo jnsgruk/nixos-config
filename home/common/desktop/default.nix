@@ -17,6 +17,7 @@
   };
 
   home.packages = with pkgs; [
+    audacity
     catppuccin-gtk
     desktop-file-utils
     ght
