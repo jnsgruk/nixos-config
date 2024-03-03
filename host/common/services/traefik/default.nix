@@ -4,6 +4,6 @@
 
   services.traefik = {
     enable = true;
-    package = pkgs.traefik-3;
+    package = pkgs.unstable.traefik;
   };
 }
