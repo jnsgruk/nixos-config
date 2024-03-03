@@ -7,7 +7,7 @@
 
   services.homepage-dashboard = {
     enable = true;
-    package = pkgs.unstable.homepage-dashboard;
+    package = pkgs.homepage-dashboard-patched;
     openFirewall = true;
   };
 }

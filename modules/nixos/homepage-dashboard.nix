@@ -77,11 +77,6 @@ in
             ];
           }
           {
-            Social = [
-              { Reddit = [{ abbr = "RE"; href = "https://reddit.com/"; }]; }
-            ];
-          }
-          {
             Entertainment = [
               { YouTube = [{ abbr = "YT"; href = "https://youtube.com/"; }]; }
             ];
@@ -115,16 +110,6 @@ in
                 "My Second Service" = {
                   href = "http://localhost/";
                   description = "Homepage is the best";
-                };
-              }
-            ];
-          }
-          {
-            "My Third Group" = [
-              {
-                "My Third Service" = {
-                  href = "http://localhost/";
-                  description = "Homepage is 😎";
                 };
               }
             ];
@@ -180,16 +165,7 @@ in
       };
 
       settings = lib.mkOption {
-        type = lib.types.submodule {
-          freeformType = settingsFormat.type;
-
-          options.logpath = lib.mkOption {
-            type = lib.types.str;
-            default = "/var/log/homepage-dashboard/homepage.log";
-            description = lib.mdDoc "Log file path";
-          };
-        };
-
+        inherit (settingsFormat) type;
         description = lib.mdDoc ''
           Homepage settings.
 
@@ -214,7 +190,7 @@ in
         cfg.docker == { } &&
         cfg.kubernetes == { } &&
         cfg.services == [ ] &&
-        cfg.settings == { logpath = "/var/log/homepage-dashboard/homepage.log"; } &&
+        cfg.settings == { } &&
         cfg.widgets == [ ]
       );
 
@@ -225,8 +201,7 @@ in
         + "bookmarks, services, widgets, and other configuration using the options provided.";
     in
     lib.mkIf cfg.enable {
-      warnings =
-        if managedConfig then [ ] else [ msg ];
+      warnings = lib.optional (!managedConfig) msg;
 
       environment.etc = lib.mkIf managedConfig {
         "homepage-dashboard/custom.css".text = cfg.customCSS;
@@ -247,7 +222,7 @@ in
 
         environment = {
           HOMEPAGE_CONFIG_DIR = configDir;
-          PORT = "${toString cfg.listenPort}";
+          PORT = toString cfg.listenPort;
         };
 
         serviceConfig = {
@@ -255,8 +230,7 @@ in
           DynamicUser = true;
           EnvironmentFile = lib.mkIf (cfg.environmentFile != null) cfg.environmentFile;
           StateDirectory = lib.mkIf (!managedConfig) "homepage-dashboard";
-          LogsDirectory = lib.mkIf managedConfig "homepage-dashboard";
-          ExecStart = "${lib.getExe cfg.package}";
+          ExecStart = lib.getExe cfg.package;
           Restart = "on-failure";
         };
       };

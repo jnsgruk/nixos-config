@@ -33,11 +33,20 @@
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
-  unstable-packages = final: _prev: rec {
+  unstable-packages = final: prev: rec {
     unstable = import inputs.unstable {
       inherit (final) system;
       config.allowUnfree = true;
     };
+
+    homepage-dashboard-patched = prev.homepage-dashboard.overrideAttrs (oldAttrs: rec {
+      patches = [
+        (prev.fetchpatch {
+          url = "https://raw.githubusercontent.com/jnsgruk/nixpkgs/11ddbae1c3463f317a1b35c4bd45b8e59e614602/pkgs/servers/homepage-dashboard/no-log-file.patch";
+          sha256 = "sha256-MHTStCtbmljc5zTgFmZ0GbD94xbfYLO2j4Ut67ubpqs=";
+        })
+      ];
+    });
 
     traefik-3 = unstable.callPackage "${unstable.path}/pkgs/servers/traefik" {
       buildGoModule = args: unstable.buildGo122Module (args // rec {
