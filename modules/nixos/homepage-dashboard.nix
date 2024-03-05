@@ -223,6 +223,7 @@ in
         environment = {
           HOMEPAGE_CONFIG_DIR = configDir;
           PORT = toString cfg.listenPort;
+          LOG_TARGETS = lib.mkIf managedConfig "stdout";
         };
 
         serviceConfig = {

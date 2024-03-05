@@ -33,19 +33,19 @@
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.unstable'
-  unstable-packages = final: prev: rec {
+  unstable-packages = final: _prev: rec {
     unstable = import inputs.unstable {
       inherit (final) system;
       config.allowUnfree = true;
 
       overlays = [
         (
-          final: prev: {
+          _final: prev: {
             homepage-dashboard = prev.homepage-dashboard.overrideAttrs (_: rec {
               patches = [
                 (prev.fetchpatch {
-                  url = "https://raw.githubusercontent.com/jnsgruk/nixpkgs/11ddbae1c3463f317a1b35c4bd45b8e59e614602/pkgs/servers/homepage-dashboard/no-log-file.patch";
-                  sha256 = "sha256-MHTStCtbmljc5zTgFmZ0GbD94xbfYLO2j4Ut67ubpqs=";
+                  url = "https://github.com/gethomepage/homepage/commit/3be28a2c8b68f2404e4083e7f32eebbccdc4d293.patch";
+                  hash = "sha256-5fUOXiHBZ4gdPeOHe1NIaBLaHJTDImsRjSwtueQOEXY=";
                 })
               ];
             });
