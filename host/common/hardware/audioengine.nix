@@ -1,6 +1,6 @@
-_: {
-  environment.etc = {
-    "wireplumber/main.lua.d/51-disable-suspension.lua".text = ''
+{ pkgs, lib, ... }: {
+  services.pipewire.wireplumber.configPackages = [
+    (pkgs.writeTextDir "share/wireplumber/main.lua.d/51-disable-suspension.lua" ''
       table.insert (alsa_monitor.rules, {
         matches = {
           {
@@ -11,6 +11,6 @@ _: {
           ["session.suspend-timeout-seconds"] = 0,
         },
       })
-    '';
-  };
+    '')
+  ];
 }
