@@ -23,15 +23,6 @@ in
         categories = [ "Audio" "Application" ];
       };
 
-      rambox = {
-        name = "Rambox";
-        exec = "rambox --ozone-platform-hint=auto --enable-features=UseOzonePlatform";
-        terminal = false;
-        icon = "rambox";
-        type = "Application";
-        categories = [ "Network" "Application" ];
-      };
-
       # Override the desktop file for Nautilus to use GTK_THEME.
       # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
       "org.gnome.Nautilus" = {
