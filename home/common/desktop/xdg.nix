@@ -16,7 +16,7 @@ in
       # distribution model of the Cider beta, where they drop binaries onto itch.io.
       cider = {
         name = "Cider";
-        exec = "${lib.getExe pkgs.appimage-run} -- /home/jon/data/apps/Cider.AppImage";
+        exec = "${pkgs.appimage-run}/bin/appimage-run -- /home/jon/data/apps/Cider.AppImage";
         terminal = false;
         icon = "cider";
         type = "Application";
