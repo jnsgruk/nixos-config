@@ -15,7 +15,6 @@ in
     "/".device = lib.mkForce "/dev/disk/by-partlabel/root";
     "/boot".device = lib.mkForce "/dev/disk/by-partlabel/ESP";
     "/.snapshots".device = lib.mkForce "/dev/disk/by-partlabel/root";
-    "/.swap".device = lib.mkForce "/dev/disk/by-partlabel/root";
     "/home".device = lib.mkForce "/dev/disk/by-partlabel/root";
     "/nix".device = lib.mkForce "/dev/disk/by-partlabel/root";
     "/var".device = lib.mkForce "/dev/disk/by-partlabel/root";
@@ -69,10 +68,6 @@ in
                   "@snapshots" = {
                     mountpoint = "/.snapshots";
                     mountOptions = defaultBtrfsOpts;
-                  };
-                  "@swap" = {
-                    mountpoint = "/.swap";
-                    mountOptions = [ "defaults" "x-mount.mkdir" "ssd" "noatime" "nodiratime" ];
                   };
                 };
               };

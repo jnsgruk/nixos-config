@@ -79,10 +79,6 @@ in
                       mountpoint = "/.snapshots";
                       mountOptions = defaultBtrfsOpts;
                     };
-                    "@swap" = {
-                      mountpoint = "/.swap";
-                      mountOptions = [ "defaults" "x-mount.mkdir" "ssd" "noatime" "nodiratime" ];
-                    };
                   };
                 };
               };

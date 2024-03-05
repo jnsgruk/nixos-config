@@ -47,7 +47,6 @@ mount "${root_part}" /mnt
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
 btrfs subvolume create /mnt/@snapshots
-btrfs subvolume create /mnt/@swap
 btrfs subvolume create /mnt/@var
 # Remount with btrfs options
 umount -R /mnt
@@ -56,7 +55,6 @@ mount -t btrfs -o subvol=@,"${btrfs_opts}" "${root_part}" /mnt
 mount -t btrfs -o subvol=@home,"${btrfs_opts}" "${root_part}" /mnt/home
 mount -t btrfs -o subvol=@var,"${btrfs_opts}" "${root_part}" /mnt/var
 mount -t btrfs -o subvol=@snapshots,"${btrfs_opts}" "${root_part}" /mnt/.snapshots
-mount -t btrfs -o subvol=@swap,defaults,x-mount.mkdir "${root_part}" /mnt/.swap
 
 boot_part="${DISK}p1"
 # Format the boot partition

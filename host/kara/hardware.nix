@@ -17,9 +17,4 @@
   ];
 
   nixpkgs.hostPlatform = "x86_64-linux";
-
-  swapDevices = [{
-    device = "/.swap/swapfile";
-    size = 2048;
-  }];
 }

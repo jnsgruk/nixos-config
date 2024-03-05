@@ -36,21 +36,9 @@
       options = [ "subvol=@snapshots" ];
     };
 
-    "/.swap" = {
-      device = "/dev/disk/by-uuid/99db9e90-c813-4469-a6a7-bae6b8f49955";
-      fsType = "btrfs";
-      options = [ "subvol=@swap" ];
-    };
-
     "/boot" = {
       device = "/dev/disk/by-uuid/21B1-1362";
       fsType = "vfat";
     };
   };
-
-  swapDevices = [{
-    device = "/.swap/swapfile";
-    size = 2048;
-  }];
-
 }

@@ -13,7 +13,6 @@
     ../services/avahi.nix
     ../services/firewall.nix
     ../services/openssh.nix
-    ../services/swapfile.nix
     ../services/tailscale.nix
   ];
 
