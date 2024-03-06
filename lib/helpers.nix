@@ -1,9 +1,9 @@
-{ inputs, outputs, stateVersion, username, ... }: {
+{ self, inputs, outputs, stateVersion, username, ... }: {
   # Helper function for generating home-manager configs
   mkHome = { hostname, user ? username, desktop ? null }: inputs.home-manager.lib.homeManagerConfiguration {
     pkgs = inputs.unstable.legacyPackages.x86_64-linux;
     extraSpecialArgs = {
-      inherit inputs outputs stateVersion hostname desktop;
+      inherit self inputs outputs stateVersion hostname desktop;
       username = user;
     };
     modules = [
@@ -15,7 +15,7 @@
 
   # Helper function for generating host configs
   mkHost = { hostname, desktop ? null, pkgsInput ? inputs.unstable }: pkgsInput.lib.nixosSystem {
-    specialArgs = { inherit inputs outputs stateVersion username hostname desktop; };
+    specialArgs = { inherit self inputs outputs stateVersion username hostname desktop; };
     modules = [
       inputs.agenix.nixosModules.default
       inputs.lanzaboote.nixosModules.lanzaboote

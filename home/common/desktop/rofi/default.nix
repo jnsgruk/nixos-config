@@ -1,6 +1,6 @@
-{ config, pkgs, ... }:
+{ config, pkgs, self, ... }:
 let
-  theme = import ../../../../lib/theme { inherit pkgs; };
+  theme = import "${self}/lib/theme" { inherit pkgs; };
   rofiTheme = (import ./theme.nix { inherit theme pkgs config; }).theme;
 in
 {

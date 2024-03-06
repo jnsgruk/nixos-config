@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, self, ... }:
 let
   internalDomain = "tailnet-d5da.ts.net";
   externalDomain = "jnsgr.uk";
@@ -23,7 +23,7 @@ let
 in
 {
   age.secrets.digitalocean = {
-    file = ../../../../secrets/thor-digitalocean.age;
+    file = "${self}/secrets/thor-digitalocean.age";
     owner = "traefik";
     group = "traefik";
     mode = "600";

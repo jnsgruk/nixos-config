@@ -1,17 +1,17 @@
-{ config, ... }: {
+{ config, self, ... }: {
   imports = [
     ../common/services/mullvad.nix
   ];
 
   age.secrets = {
     borgbase-ssh = {
-      file = ../../secrets/kara-borgbase-ssh.age;
+      file = "${self}/secrets/kara-borgbase-ssh.age";
       owner = "root";
       group = "root";
       mode = "400";
     };
     borgbase-passphrase = {
-      file = ../../secrets/kara-borgbase-passphrase.age;
+      file = "${self}/secrets/kara-borgbase-passphrase.age";
       owner = "root";
       group = "root";
       mode = "400";

@@ -1,7 +1,7 @@
-{ config, ... }: {
+{ config, self, ... }: {
   age.secrets = {
     dashboard-env = {
-      file = ../../../../secrets/thor-dashboard-env.age;
+      file = "${self}/secrets/thor-dashboard-env.age";
       owner = "root";
       group = "users";
       mode = "400";

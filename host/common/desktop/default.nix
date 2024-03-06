@@ -1,6 +1,6 @@
-{ desktop, pkgs, ... }:
+{ desktop, pkgs, self, ... }:
 let
-  theme = import ../../../lib/theme { inherit pkgs; };
+  theme = import "${self}/lib/theme" { inherit pkgs; };
 in
 {
   imports = [

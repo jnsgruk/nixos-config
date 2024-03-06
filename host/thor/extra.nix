@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, self, ... }: {
   imports = [
     ../common/services/files.nix
     ../common/services/libations.nix
@@ -11,13 +11,13 @@
 
   age.secrets = {
     borgbase-ssh = {
-      file = ../../secrets/thor-borgbase-ssh.age;
+      file = "${self}/secrets/thor-borgbase-ssh.age";
       owner = "root";
       group = "root";
       mode = "400";
     };
     borgbase-passphrase = {
-      file = ../../secrets/thor-borgbase-passphrase.age;
+      file = "${self}/secrets/thor-borgbase-passphrase.age";
       owner = "root";
       group = "root";
       mode = "400";

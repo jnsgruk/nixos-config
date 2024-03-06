@@ -1,6 +1,6 @@
-{ hostname, lib, pkgs, ... }:
+{ self, hostname, lib, pkgs, ... }:
 let
-  theme = import ../../../../lib/theme { inherit pkgs; };
+  theme = import "${self}/lib/theme" { inherit pkgs; };
   inherit (theme) colours fonts;
   keybinds = builtins.readFile ./config/keybinds.conf;
   outputs = (import ./config/displays.nix { }).${hostname};

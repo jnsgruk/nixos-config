@@ -1,14 +1,14 @@
-{ config, ... }: {
+{ config, self, ... }: {
   age.secrets = {
     libations-auth-key = {
-      file = ../../../secrets/thor-libations-tskey.age;
+      file = "${self}/secrets/thor-libations-tskey.age";
       owner = "root";
       group = "root";
       mode = "400";
     };
 
     libations-recipes = {
-      file = ../../../secrets/thor-libations-recipes.age;
+      file = "${self}/secrets/thor-libations-recipes.age";
       owner = "root";
       group = "root";
       mode = "444";

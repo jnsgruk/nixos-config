@@ -46,7 +46,7 @@
       stateVersion = "23.11";
       username = "jon";
 
-      libx = import ./lib { inherit inputs outputs stateVersion username; };
+      libx = import ./lib { inherit self inputs outputs stateVersion username; };
     in
     {
       # nix build .#homeConfigurations."jon@freyja".activationPackage
