@@ -41,15 +41,6 @@
       overlays = [
         (
           _final: prev: {
-            homepage-dashboard = prev.homepage-dashboard.overrideAttrs (_: rec {
-              patches = [
-                (prev.fetchpatch {
-                  url = "https://github.com/gethomepage/homepage/commit/3be28a2c8b68f2404e4083e7f32eebbccdc4d293.patch";
-                  hash = "sha256-5fUOXiHBZ4gdPeOHe1NIaBLaHJTDImsRjSwtueQOEXY=";
-                })
-              ];
-            });
-
             traefik = prev.callPackage "${prev.path}/pkgs/servers/traefik" {
               buildGoModule = args: prev.buildGo122Module (args // rec {
                 version = "3.0.0-rc1";

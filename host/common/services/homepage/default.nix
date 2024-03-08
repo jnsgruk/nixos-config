@@ -1,8 +1,7 @@
-{ hostname, lib, pkgs, outputs, ... }:
+{ hostname, lib, pkgs, inputs, ... }:
 {
-  # Remove once https://github.com/NixOS/nixpkgs/pull/291554 is merged.
   disabledModules = [ "services/misc/homepage-dashboard.nix" ];
-  imports = [ outputs.nixosModules.homepage-dashboard ]
+  imports = [ "${inputs.unstable}/nixos/modules/services/misc/homepage-dashboard.nix" ]
     ++ lib.optional (builtins.pathExists (./. + "/${hostname}.nix")) ./${hostname}.nix;
 
   services.homepage-dashboard = {

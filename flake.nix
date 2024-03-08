@@ -79,9 +79,6 @@
       # Custom overlays
       overlays = import ./overlays { inherit inputs; };
 
-      # Custom NixOS / Home Manager modules
-      nixosModules = import ./modules/nixos;
-
       # Devshell for bootstrapping
       # Accessible via 'nix develop' or 'nix-shell' (legacy)
       devShells = libx.forAllSystems (system:
@@ -90,16 +87,5 @@
       );
 
       formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt);
-
-      checks = libx.forAllSystems (system:
-        let
-          checkArgs = {
-            inherit self;
-            pkgs = nixpkgs.legacyPackages.${system};
-          };
-        in
-        {
-          scrutiny = import ./modules/nixos/tests/scrutiny.nix checkArgs;
-        });
     };
 }
