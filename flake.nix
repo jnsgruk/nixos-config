@@ -9,13 +9,7 @@
     agenix.inputs.nixpkgs.follows = "unstable";
 
     hypridle.url = "github:hyprwm/hypridle";
-    hypridle.inputs.nixpkgs.follows = "unstable";
-    hyprland.url = "github:hyprwm/Hyprland";
-    hyprland.inputs.nixpkgs.follows = "unstable";
-    hyprland-contrib.url = "github:hyprwm/contrib";
-    hyprland-contrib.inputs.nixpkgs.follows = "unstable";
     hyprlock.url = "github:hyprwm/hyprlock";
-    hyprlock.inputs.nixpkgs.follows = "unstable";
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "unstable";
@@ -30,7 +24,7 @@
     home-manager.inputs.nixpkgs.follows = "unstable";
 
     crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/jon/crafts-flake";
-    crafts.inputs.nixpkgs.follows = "unstable";
+    crafts.inputs.unstable.follows = "unstable";
     libations.url = "github:jnsgruk/libations";
     libations.inputs.nixpkgs.follows = "unstable";
   };
