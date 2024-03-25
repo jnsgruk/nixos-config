@@ -17,7 +17,6 @@
     nixfmt
     nixpkgs-fmt
     nurl
-    rnix-lsp
     statix
 
     # Python tooling
