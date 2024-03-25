@@ -4,7 +4,7 @@
 }:
 let
   name = "ght";
-  version = "1.7.1";
+  version = "1.8.0";
 in
 pkgs.buildNpmPackage rec {
   inherit version;
@@ -14,7 +14,7 @@ pkgs.buildNpmPackage rec {
     owner = "canonical";
     repo = name;
     rev = "refs/tags/v${version}";
-    hash = "sha256-txDrmiSy3o/xcwIcb0dBLaVauRqE50nA7TsREP9pPck=";
+    hash = "sha256-3shS1Cq0Qn+93di2Wu1J/z+N5/TPyfCQeo2MrQ094/U=";
   };
 
   npmDeps = pkgs.fetchNpmDeps {
