@@ -7,7 +7,7 @@
     ./fzf.nix
     ./git.nix
     ./helix.nix
-    ./neofetch.nix
+    ./fastfetch.nix
     ./starship.nix
     ./tmux.nix
     ./vim.nix

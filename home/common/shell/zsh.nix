@@ -56,6 +56,7 @@
         gst = "git status -sb";
 
         htop = "btm -b";
+        neofetch = "fastfetch";
 
         tf = "terraform";
         tfi = "terraform init";
