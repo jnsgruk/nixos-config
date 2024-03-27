@@ -18,6 +18,7 @@
 
   home.packages = with pkgs; [
     audacity
+    bambu-studio
     catppuccin-gtk
     desktop-file-utils
     ght
