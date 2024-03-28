@@ -4,7 +4,7 @@
       table.insert (alsa_monitor.rules, {
         matches = {
           {
-            { "node.name", "matches", "*Audioengine*" },
+            { "node.nick", "matches", "Audioengine 2+" },
           },
         },
         apply_properties = {
