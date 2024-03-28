@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, hostname ? "", ... }:
 let
   inherit ((import ./colours.nix)) colours;
   libx = import ./lib.nix { inherit (pkgs) lib; };
@@ -7,7 +7,7 @@ in
   inherit (libx) hexToRgb;
   inherit colours;
 
-  wallpaper = ./wallpapers/jokulsarlon.png;
+  wallpaper = if hostname == "kara" then ./wallpapers/mountains.png else ./wallpapers/jokulsarlon.png;
 
   gtkTheme = {
     name = "Catppuccin-Macchiato-Standard-Blue-Dark";
