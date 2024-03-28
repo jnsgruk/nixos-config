@@ -46,6 +46,7 @@ in
       position = "top";
       layer = "top";
       height = 18;
+      width = if hostname == "kara" then 2560 else null;
       passthrough = false;
       gtk-layer-shell = true;
 

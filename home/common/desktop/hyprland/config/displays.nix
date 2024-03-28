@@ -1,21 +1,10 @@
 _: {
-  kara =
-    {
-      workspace = [
-        "1, monitor: DP-2"
-        "2, monitor: DP-2"
-        "3, monitor: DP-1"
-        "4, monitor: DP-1"
-        "5, monitor: DP-2"
-        "6, monitor: DP-2"
-        "7, monitor: DP-2"
-      ];
-
-      monitor = [
-        "DP-2, preferred, 3840x0, 1"
-        "DP-1, preferred, 0x0, 1"
-      ];
-    };
+  kara = {
+    workspace = [ ];
+    monitor = [
+      "DP-1, 7680x2160, auto, 1"
+    ];
+  };
 
   freyja = {
     workspace = [ ];
