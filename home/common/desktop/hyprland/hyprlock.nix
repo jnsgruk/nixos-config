@@ -1,6 +1,6 @@
-{ self, lib, pkgs, ... }:
+{ self, lib, pkgs, hostname, ... }:
 let
-  theme = import "${self}/lib/theme" { inherit pkgs; };
+  theme = import "${self}/lib/theme" { inherit pkgs hostname; };
   inherit (theme) hexToRgb colours;
 in
 {
