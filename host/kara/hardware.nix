@@ -12,7 +12,6 @@
     inputs.nixos-hardware.nixosModules.common-pc
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
-    ../common/hardware/audioengine.nix
     ../common/hardware/bluetooth.nix
   ];
 
