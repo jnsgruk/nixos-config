@@ -39,7 +39,7 @@
             lxc --project $CRAFT list -fcsv -cn | xargs lxc --project $CRAFT delete -f >/dev/null
           done
         }
-        
+
         export EDITOR=vim
       '';
 

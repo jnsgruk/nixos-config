@@ -33,44 +33,77 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , unstable
-    , ...
-    } @ inputs:
+    {
+      self,
+      nixpkgs,
+      unstable,
+      ...
+    }@inputs:
     let
       inherit (self) outputs;
       stateVersion = "23.11";
       username = "jon";
 
-      libx = import ./lib { inherit self inputs outputs stateVersion username; };
+      libx = import ./lib {
+        inherit
+          self
+          inputs
+          outputs
+          stateVersion
+          username
+          ;
+      };
     in
     {
       # nix build .#homeConfigurations."jon@freyja".activationPackage
       homeConfigurations = {
         # Desktop machines
-        "${username}@freyja" = libx.mkHome { hostname = "freyja"; desktop = "hyprland"; };
-        "${username}@kara" = libx.mkHome { hostname = "kara"; desktop = "hyprland"; };
+        "${username}@freyja" = libx.mkHome {
+          hostname = "freyja";
+          desktop = "hyprland";
+        };
+        "${username}@kara" = libx.mkHome {
+          hostname = "kara";
+          desktop = "hyprland";
+        };
         # Headless machines
         "${username}@hugin" = libx.mkHome { hostname = "hugin"; };
         "${username}@thor" = libx.mkHome { hostname = "thor"; };
-        "ubuntu@dev" = libx.mkHome { hostname = "dev"; user = "ubuntu"; };
+        "ubuntu@dev" = libx.mkHome {
+          hostname = "dev";
+          user = "ubuntu";
+        };
       };
 
       # nix build .#nixosConfigurations.freyja.config.system.build.toplevel
       nixosConfigurations = {
         # Desktop machines
-        freyja = libx.mkHost { hostname = "freyja"; desktop = "hyprland"; };
-        kara = libx.mkHost { hostname = "kara"; desktop = "hyprland"; };
+        freyja = libx.mkHost {
+          hostname = "freyja";
+          desktop = "hyprland";
+        };
+        kara = libx.mkHost {
+          hostname = "kara";
+          desktop = "hyprland";
+        };
         # Headless machines
-        hugin = libx.mkHost { hostname = "hugin"; pkgsInput = nixpkgs; };
-        thor = libx.mkHost { hostname = "thor"; pkgsInput = nixpkgs; };
+        hugin = libx.mkHost {
+          hostname = "hugin";
+          pkgsInput = nixpkgs;
+        };
+        thor = libx.mkHost {
+          hostname = "thor";
+          pkgsInput = nixpkgs;
+        };
       };
 
       # Custom packages; acessible via 'nix build', 'nix shell', etc
-      packages = libx.forAllSystems (system:
-        let pkgs = unstable.legacyPackages.${system};
-        in import ./pkgs { inherit pkgs; }
+      packages = libx.forAllSystems (
+        system:
+        let
+          pkgs = unstable.legacyPackages.${system};
+        in
+        import ./pkgs { inherit pkgs; }
       );
 
       # Custom overlays
@@ -78,9 +111,12 @@
 
       # Devshell for bootstrapping
       # Accessible via 'nix develop' or 'nix-shell' (legacy)
-      devShells = libx.forAllSystems (system:
-        let pkgs = unstable.legacyPackages.${system};
-        in import ./shell.nix { inherit pkgs; }
+      devShells = libx.forAllSystems (
+        system:
+        let
+          pkgs = unstable.legacyPackages.${system};
+        in
+        import ./shell.nix { inherit pkgs; }
       );
 
       formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt);

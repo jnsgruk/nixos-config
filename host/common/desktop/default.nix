@@ -1,4 +1,9 @@
-{ desktop, pkgs, self, ... }:
+{
+  desktop,
+  pkgs,
+  self,
+  ...
+}:
 let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
@@ -49,8 +54,14 @@ in
     fontconfig = {
       enable = true;
       defaultFonts = {
-        serif = [ "${theme.fonts.default.name}" "${theme.fonts.emoji.name}" ];
-        sansSerif = [ "${theme.fonts.default.name}" "${theme.fonts.emoji.name}" ];
+        serif = [
+          "${theme.fonts.default.name}"
+          "${theme.fonts.emoji.name}"
+        ];
+        sansSerif = [
+          "${theme.fonts.default.name}"
+          "${theme.fonts.emoji.name}"
+        ];
         monospace = [ "${theme.fonts.monospace.name}" ];
         emoji = [ "${theme.fonts.emoji.name}" ];
       };

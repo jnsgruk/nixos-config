@@ -1,4 +1,10 @@
-{ config, lib, theme, ... }: {
+{
+  config,
+  lib,
+  theme,
+  ...
+}:
+{
   theme =
     let
       inherit (config.lib.formats.rasi) mkLiteral;
@@ -83,7 +89,7 @@
         background-color = mkLiteral "transparent";
       };
 
-      /*-----Indicators----*/
+      # -----Indicators----
       "#idle_inhibitor.activated" = {
         color = mkLiteral "${theme.colours.accent}";
       };

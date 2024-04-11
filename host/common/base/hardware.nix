@@ -1,3 +1,1 @@
-_: {
-  hardware.enableRedistributableFirmware = true;
-}
+_: { hardware.enableRedistributableFirmware = true; }

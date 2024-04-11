@@ -1,7 +1,4 @@
-{ lib
-, pkgs
-, ...
-}:
+{ lib, pkgs, ... }:
 let
   name = "ght";
   version = "1.8.0";
@@ -22,9 +19,7 @@ pkgs.buildNpmPackage rec {
     hash = "sha256-r2qygzMn7W3wyAI8d0VFZ0GCpsjRRjsO+o3qCAZBulw=";
   };
 
-  patches = [
-    ./ght-graders-loc.patch
-  ];
+  patches = [ ./ght-graders-loc.patch ];
 
   postPatch = ''
     substituteInPlace ght \
@@ -36,7 +31,7 @@ pkgs.buildNpmPackage rec {
 
   installPhase = ''
     mkdir -p $out/bin $out/opt
-    
+
     # Copy the built tool & node_modules into the output
     cp -r dist $out/opt/ght
     cp -r node_modules $out/opt/ght/node_modules
@@ -55,4 +50,3 @@ pkgs.buildNpmPackage rec {
     mainProgram = "ght";
   };
 }
-

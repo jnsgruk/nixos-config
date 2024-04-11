@@ -1,4 +1,10 @@
-{ self, lib, pkgs, hostname, ... }:
+{
+  self,
+  lib,
+  pkgs,
+  hostname,
+  ...
+}:
 let
   theme = import "${self}/lib/theme" { inherit pkgs hostname; };
   inherit (theme) hexToRgb colours;
@@ -12,19 +18,23 @@ in
       hide_cursor = true;
     };
 
-    backgrounds = [{
-      path = "${theme.wallpaper}";
-      blur_passes = 2;
-      blur_size = 6;
-    }];
+    backgrounds = [
+      {
+        path = "${theme.wallpaper}";
+        blur_passes = 2;
+        blur_size = 6;
+      }
+    ];
 
-    input-fields = [{
-      size.width = 250;
-      outer_color = "rgb(${hexToRgb colours.black})";
-      inner_color = "rgb(${hexToRgb colours.bgDark})";
-      font_color = "rgb(${hexToRgb colours.purple})";
-      placeholder_text = "";
-    }];
+    input-fields = [
+      {
+        size.width = 250;
+        outer_color = "rgb(${hexToRgb colours.black})";
+        inner_color = "rgb(${hexToRgb colours.bgDark})";
+        font_color = "rgb(${hexToRgb colours.purple})";
+        placeholder_text = "";
+      }
+    ];
 
     labels = [
       {

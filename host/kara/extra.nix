@@ -1,7 +1,6 @@
-{ config, self, ... }: {
-  imports = [
-    ../common/services/mullvad.nix
-  ];
+{ config, self, ... }:
+{
+  imports = [ ../common/services/mullvad.nix ];
 
   age.secrets = {
     borgbase-ssh = {
@@ -29,9 +28,7 @@
     #
     #    borg-job-borgbase umount backup
     borgbackup.jobs."borgbase" = {
-      paths = [
-        "/home/jon/data"
-      ];
+      paths = [ "/home/jon/data" ];
       exclude = [
         "**/node_modules"
         "**/build"

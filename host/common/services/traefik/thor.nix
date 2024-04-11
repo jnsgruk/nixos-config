@@ -3,23 +3,37 @@ let
   internalDomain = "tailnet-d5da.ts.net";
   externalDomain = "jnsgr.uk";
 
-  mkLB = address: { loadBalancer = { servers = [{ url = "${address}"; }]; }; };
-
-  mkTsRouter = { name, middlewares ? [ ] }: {
-    inherit middlewares;
-    rule = "Host(`thor.${internalDomain}`) && Path(`/${name}`) || PathPrefix(`/${name}`)";
-    service = name;
-    entryPoints = [ "websecure" ];
-    tls.certresolver = "tailscale";
+  mkLB = address: {
+    loadBalancer = {
+      servers = [ { url = "${address}"; } ];
+    };
   };
 
-  mkExtRouter = { subdomain, middlewares ? [ ] }: {
-    inherit middlewares;
-    rule = "Host(`${subdomain}.${externalDomain}`)";
-    service = subdomain;
-    entryPoints = [ "websecure" ];
-    tls.certresolver = "letsencrypt";
-  };
+  mkTsRouter =
+    {
+      name,
+      middlewares ? [ ],
+    }:
+    {
+      inherit middlewares;
+      rule = "Host(`thor.${internalDomain}`) && Path(`/${name}`) || PathPrefix(`/${name}`)";
+      service = name;
+      entryPoints = [ "websecure" ];
+      tls.certresolver = "tailscale";
+    };
+
+  mkExtRouter =
+    {
+      subdomain,
+      middlewares ? [ ],
+    }:
+    {
+      inherit middlewares;
+      rule = "Host(`${subdomain}.${externalDomain}`)";
+      service = subdomain;
+      entryPoints = [ "websecure" ];
+      tls.certresolver = "letsencrypt";
+    };
 in
 {
   age.secrets.digitalocean = {

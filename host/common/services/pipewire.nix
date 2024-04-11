@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -22,7 +23,5 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [
-    pavucontrol
-  ];
+  environment.systemPackages = with pkgs; [ pavucontrol ];
 }

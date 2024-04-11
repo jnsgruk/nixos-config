@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   boot = {
     # Secure boot configuration
     bootspec.enable = true;
@@ -29,5 +30,3 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 }
-
-

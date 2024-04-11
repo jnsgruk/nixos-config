@@ -1,4 +1,5 @@
-{ config, self, ... }: {
+{ config, self, ... }:
+{
   age.secrets = {
     libations-auth-key = {
       file = "${self}/secrets/thor-libations-tskey.age";
@@ -21,4 +22,3 @@
     tailscaleKeyFile = config.age.secrets.libations-auth-key.path;
   };
 }
-

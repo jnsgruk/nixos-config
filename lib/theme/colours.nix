@@ -1,6 +1,11 @@
 rec {
   colours = rec {
-    inherit (catppuccin-macchiato) pink red yellow green;
+    inherit (catppuccin-macchiato)
+      pink
+      red
+      yellow
+      green
+      ;
     inherit (catppuccin-macchiato) subtext0 subtext1 text;
     inherit (catppuccin-macchiato) overlay0 overlay1 overlay2;
     inherit (catppuccin-macchiato) surface0 surface1 surface2;

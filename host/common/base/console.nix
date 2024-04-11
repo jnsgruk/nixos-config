@@ -6,17 +6,22 @@ in
 {
   console = {
     earlySetup = true;
-    packages = with pkgs; [ terminus_font powerline-fonts ];
+    packages = with pkgs; [
+      terminus_font
+      powerline-fonts
+    ];
     font = "ter-powerline-v32n";
   };
 
   services.kmscon = {
     enable = true;
     hwRender = true;
-    fonts = [{
-      name = "${theme.fonts.monospace.name}";
-      inherit (theme.fonts.monospace) package;
-    }];
+    fonts = [
+      {
+        name = "${theme.fonts.monospace.name}";
+        inherit (theme.fonts.monospace) package;
+      }
+    ];
     extraConfig = ''
       font-size=14
 

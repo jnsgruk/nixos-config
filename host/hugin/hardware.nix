@@ -1,7 +1,5 @@
-{ inputs
-, lib
-, ...
-}: {
+{ inputs, lib, ... }:
+{
   imports = [
     inputs.disko.nixosModules.disko
     inputs.nixos-hardware.nixosModules.common-cpu-intel

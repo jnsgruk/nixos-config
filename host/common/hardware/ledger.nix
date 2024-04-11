@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # Enable the udev rules for Ledger devices
   hardware.ledger.enable = true;
 

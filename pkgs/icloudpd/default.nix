@@ -1,7 +1,4 @@
-{ pkgs
-, lib
-, ...
-}:
+{ pkgs, lib, ... }:
 let
   pname = "icloudpd";
   version = "1.17.4";
@@ -17,9 +14,7 @@ pkgs.python3Packages.buildPythonApplication {
     hash = "sha256-xsUayewn6c+TFqQnvDWe+1y4o76Quq8sK1WkSFFgPkc=";
   };
 
-  patches = [
-    ./deps.patch
-  ];
+  patches = [ ./deps.patch ];
 
   buildInputs = with pkgs; [ git ];
 
@@ -49,9 +44,7 @@ pkgs.python3Packages.buildPythonApplication {
     vcrpy
   ];
 
-  disabledTestPaths = [
-    "tests/test_autodelete_photos.py"
-  ];
+  disabledTestPaths = [ "tests/test_autodelete_photos.py" ];
 
   meta = {
     description = "A command-line tool to download photos from iCloud";

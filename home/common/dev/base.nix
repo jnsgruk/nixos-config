@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     # Container tooling
     dive
@@ -23,10 +24,12 @@
 
     # Python tooling
     ruff
-    (pkgs.python3.withPackages (p: with p; [
-      tox
-      virtualenv
-    ]))
+    (pkgs.python3.withPackages (
+      p: with p; [
+        tox
+        virtualenv
+      ]
+    ))
 
     # Shell tooling
     shellcheck

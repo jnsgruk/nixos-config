@@ -1,4 +1,10 @@
-{ self, hostname, lib, pkgs, ... }:
+{
+  self,
+  hostname,
+  lib,
+  pkgs,
+  ...
+}:
 let
   theme = import "${self}/lib/theme" { inherit pkgs hostname; };
   inherit (theme) colours fonts;
@@ -88,7 +94,6 @@ in
       xwayland = {
         force_zero_scaling = true;
       };
-
     };
 
     extraConfig = ''

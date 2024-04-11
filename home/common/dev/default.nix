@@ -1,4 +1,5 @@
-{ desktop, lib, ... }: {
+{ desktop, lib, ... }:
+{
   imports = [
     ./charm-tools.nix
     ./base.nix

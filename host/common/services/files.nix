@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
   # Set up for https://www.files.gallery
   services = {
     nginx = {

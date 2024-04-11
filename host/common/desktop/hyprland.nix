@@ -33,7 +33,10 @@ in
     dbus = {
       enable = true;
       # Make the gnome keyring work properly
-      packages = [ pkgs.gnome3.gnome-keyring pkgs.gcr ];
+      packages = [
+        pkgs.gnome3.gnome-keyring
+        pkgs.gcr
+      ];
     };
 
     gnome = {
@@ -47,7 +50,7 @@ in
       settings = {
         default_session = {
           command = ''
-            ${lib.makeBinPath [pkgs.greetd.tuigreet]}/tuigreet -r --asterisks --time \
+            ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
               --cmd ${lib.getExe hypr-run}
           '';
         };

@@ -1,6 +1,12 @@
 { lib, ... }:
 let
-  defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
+  defaultBtrfsOpts = [
+    "defaults"
+    "compress=zstd:1"
+    "ssd"
+    "noatime"
+    "nodiratime"
+  ];
 in
 {
   environment.etc = {

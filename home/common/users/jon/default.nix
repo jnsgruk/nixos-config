@@ -1,8 +1,13 @@
-{ inputs, lib, hostname, ... }: {
+{
+  inputs,
+  lib,
+  hostname,
+  ...
+}:
+{
   imports = [
     inputs.vscode-server.nixosModules.home
-  ]
-  ++ lib.optional (builtins.pathExists (./. + "/${hostname}.nix")) ./${hostname}.nix;
+  ] ++ lib.optional (builtins.pathExists (./. + "/${hostname}.nix")) ./${hostname}.nix;
 
   services = {
     # Following install, you may need to run:

@@ -19,7 +19,10 @@ in
         terminal = false;
         icon = "cider";
         type = "Application";
-        categories = [ "Audio" "Application" ];
+        categories = [
+          "Audio"
+          "Application"
+        ];
       };
 
       # Mumble's keyboard shortcuts don't work under Wayland, so override the
@@ -32,7 +35,11 @@ in
         type = "Application";
         startupNotify = true;
         mimeType = [ "x-scheme-handler/mumble" ];
-        categories = [ "Network" "Chat" "Qt" ];
+        categories = [
+          "Network"
+          "Chat"
+          "Qt"
+        ];
       };
 
       # Override the desktop file for Nautilus to use GTK_THEME.
@@ -43,7 +50,12 @@ in
         terminal = false;
         icon = "org.gnome.Nautilus";
         type = "Application";
-        categories = [ "GNOME" "Utility" "Core" "FileManager" ];
+        categories = [
+          "GNOME"
+          "Utility"
+          "Core"
+          "FileManager"
+        ];
         startupNotify = true;
         settings = {
           DBusActivatable = "true";
@@ -83,7 +95,14 @@ in
         terminal = false;
         icon = "org.gnome.Loupe";
         type = "Application";
-        categories = [ "GNOME" "GTK" "Graphics" "2DGraphics" "RasterGraphics" "Viewer" ];
+        categories = [
+          "GNOME"
+          "GTK"
+          "Graphics"
+          "2DGraphics"
+          "RasterGraphics"
+          "Viewer"
+        ];
         startupNotify = true;
         settings = {
           DBusActivatable = "true";
@@ -116,5 +135,3 @@ in
     };
   };
 }
-
-

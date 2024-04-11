@@ -8,7 +8,10 @@ let
       "thor"
     ];
     tcpPorts = [ 22000 ];
-    udpPorts = [ 22000 21027 ];
+    udpPorts = [
+      22000
+      21027
+    ];
   };
 in
 {

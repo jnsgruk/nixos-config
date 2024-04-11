@@ -1,4 +1,5 @@
-{ desktop, ... }: {
+{ desktop, ... }:
+{
   services = {
     avahi = {
       enable = true;

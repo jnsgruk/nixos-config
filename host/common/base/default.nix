@@ -1,9 +1,11 @@
-{ hostname
-, pkgs
-, lib
-, username
-, ...
-}: {
+{
+  hostname,
+  pkgs,
+  lib,
+  username,
+  ...
+}:
+{
   imports = [
     ./boot.nix
     ./console.nix
@@ -40,7 +42,5 @@
   };
 
   # Create dirs for home-manager
-  systemd.tmpfiles.rules = [
-    "d /nix/var/nix/profiles/per-user/${username} 0755 ${username} root"
-  ];
+  systemd.tmpfiles.rules = [ "d /nix/var/nix/profiles/per-user/${username} 0755 ${username} root" ];
 }

@@ -1,5 +1,4 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [
-    quickemu
-  ];
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ quickemu ];
 }

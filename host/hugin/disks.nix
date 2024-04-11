@@ -1,4 +1,9 @@
-{ lib, disks ? [ "/dev/sda" ], ... }: {
+{
+  lib,
+  disks ? [ "/dev/sda" ],
+  ...
+}:
+{
   # TODO: Remove this if/when machine is reinstalled.
   # This is a workaround for the legacy -> gpt tables disko format.
   fileSystems = {

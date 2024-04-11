@@ -1,4 +1,8 @@
-{ pkgs, hostname ? "", ... }:
+{
+  pkgs,
+  hostname ? "",
+  ...
+}:
 let
   inherit ((import ./colours.nix)) colours;
   libx = import ./lib.nix { inherit (pkgs) lib; };
@@ -16,7 +20,10 @@ in
 
   qtTheme = {
     name = "Catppuccin-Macchiato-Blue";
-    package = pkgs.catppuccin-kvantum.override { variant = "Macchiato"; accent = "Blue"; };
+    package = pkgs.catppuccin-kvantum.override {
+      variant = "Macchiato";
+      accent = "Blue";
+    };
   };
 
   iconTheme = rec {

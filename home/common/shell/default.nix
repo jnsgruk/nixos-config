@@ -1,7 +1,4 @@
-{ pkgs
-, self
-, ...
-}:
+{ pkgs, self, ... }:
 let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in

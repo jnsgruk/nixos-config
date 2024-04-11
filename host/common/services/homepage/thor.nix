@@ -1,4 +1,5 @@
-{ config, self, ... }: {
+{ config, self, ... }:
+{
   age.secrets = {
     dashboard-env = {
       file = "${self}/secrets/thor-dashboard-env.age";
@@ -10,40 +11,50 @@
 
   services.homepage-dashboard = {
     environmentFile = config.age.secrets.dashboard-env.path;
-    bookmarks = [{
-      dev = [
-        {
-          github = [{
-            abbr = "GH";
-            href = "https://github.com/";
-            icon = "github-light.png";
-          }];
-        }
-        {
-          "homepage docs" = [{
-            abbr = "HD";
-            href = "https://gethomepage.dev";
-            icon = "homepage.png";
-          }];
-        }
-      ];
-      machines = [
-        {
-          tower = [{
-            abbr = "TR";
-            href = "https://dash.crgrd.uk";
-            icon = "homarr.png";
-          }];
-        }
-        {
-          gbox = [{
-            abbr = "GB";
-            href = "https://dash.gbox.crgrd.uk";
-            icon = "homepage.png";
-          }];
-        }
-      ];
-    }];
+    bookmarks = [
+      {
+        dev = [
+          {
+            github = [
+              {
+                abbr = "GH";
+                href = "https://github.com/";
+                icon = "github-light.png";
+              }
+            ];
+          }
+          {
+            "homepage docs" = [
+              {
+                abbr = "HD";
+                href = "https://gethomepage.dev";
+                icon = "homepage.png";
+              }
+            ];
+          }
+        ];
+        machines = [
+          {
+            tower = [
+              {
+                abbr = "TR";
+                href = "https://dash.crgrd.uk";
+                icon = "homarr.png";
+              }
+            ];
+          }
+          {
+            gbox = [
+              {
+                abbr = "GB";
+                href = "https://dash.gbox.crgrd.uk";
+                icon = "homepage.png";
+              }
+            ];
+          }
+        ];
+      }
+    ];
     services = [
       {
         media = [
@@ -199,15 +210,40 @@
       favicon = "https://jnsgr.uk/favicon.ico";
       headerStyle = "clean";
       layout = {
-        media = { style = "row"; columns = 3; };
-        infra = { style = "row"; columns = 4; };
-        machines = { style = "row"; columns = 4; };
+        media = {
+          style = "row";
+          columns = 3;
+        };
+        infra = {
+          style = "row";
+          columns = 4;
+        };
+        machines = {
+          style = "row";
+          columns = 4;
+        };
       };
     };
     widgets = [
-      { search = { provider = "google"; target = "_blank"; }; }
-      { resources = { label = "system"; cpu = true; memory = true; }; }
-      { resources = { label = "storage"; disk = [ "/data" ]; }; }
+      {
+        search = {
+          provider = "google";
+          target = "_blank";
+        };
+      }
+      {
+        resources = {
+          label = "system";
+          cpu = true;
+          memory = true;
+        };
+      }
+      {
+        resources = {
+          label = "storage";
+          disk = [ "/data" ];
+        };
+      }
       {
         openmeteo = {
           label = "Bristol";

@@ -1,7 +1,20 @@
-{ lib, disks ? [ "/dev/nvme0n1" "/dev/nvme1n1" ], ... }:
+{
+  lib,
+  disks ? [
+    "/dev/nvme0n1"
+    "/dev/nvme1n1"
+  ],
+  ...
+}:
 let
   cryptroot = "cryptroot";
-  defaultBtrfsOpts = [ "defaults" "compress=zstd:1" "ssd" "noatime" "nodiratime" ];
+  defaultBtrfsOpts = [
+    "defaults"
+    "compress=zstd:1"
+    "ssd"
+    "noatime"
+    "nodiratime"
+  ];
 in
 {
   boot.initrd.luks.devices.${cryptroot} = {
