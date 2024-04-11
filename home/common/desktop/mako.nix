@@ -1,4 +1,9 @@
-{ pkgs, self, ... }:
+{
+  pkgs,
+  self,
+  hostname,
+  ...
+}:
 let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
@@ -8,7 +13,7 @@ in
       enable = true;
       catppuccin.enable = true;
       actions = true;
-      anchor = "top-right";
+      anchor = if hostname == "kara" then "top-center" else "top-right";
       borderRadius = 8;
       borderSize = 1;
       defaultTimeout = 10000;
