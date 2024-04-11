@@ -31,7 +31,7 @@ let
   };
 
   theme = import "${self}/lib/theme" { inherit pkgs; };
-  inherit ((import ../rofi/lib.nix { inherit lib; })) toRasi;
+  inherit ((import ./lib.nix { inherit lib; })) toRasi;
 in
 {
   programs.waybar = {

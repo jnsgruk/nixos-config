@@ -8,10 +8,10 @@ let
 in
 {
   imports = [
-    ../rofi
     ../waybar
 
     ../mako.nix
+    ../rofi.nix
     ../swappy.nix
     ../wl-common.nix
 

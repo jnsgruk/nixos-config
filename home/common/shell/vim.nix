@@ -1,11 +1,8 @@
-{ pkgs, self, ... }:
-let
-  theme = import "${self}/lib/theme" { inherit pkgs; };
-in
-{
+{ pkgs, ... }: {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-unwrapped;
+    catppuccin.enable = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
@@ -57,7 +54,6 @@ in
     '';
 
     plugins = with pkgs.vimPlugins; [
-      theme.apps.vim
       nvim-web-devicons
       telescope-nvim
       vim-nix

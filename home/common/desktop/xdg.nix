@@ -1,6 +1,5 @@
-{ pkgs, lib, self, ... }:
+{ pkgs, config, ... }:
 let
-  theme = import "${self}/lib/theme" { inherit pkgs; };
   inherit ((import ./file-associations.nix)) associations;
 in
 {
@@ -40,7 +39,7 @@ in
       # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
       "org.gnome.Nautilus" = {
         name = "Files";
-        exec = "env GTK_THEME=${theme.gtkTheme.name} nautilus --new-window";
+        exec = "env GTK_THEME=${config.gtk.theme.name} nautilus --new-window";
         terminal = false;
         icon = "org.gnome.Nautilus";
         type = "Application";
@@ -80,7 +79,7 @@ in
       # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
       "org.gnome.Loupe.desktop" = {
         name = "Loupe";
-        exec = "env GTK_THEME=${theme.gtkTheme.name} loupe %U";
+        exec = "env GTK_THEME=${config.gtk.theme.name} loupe %U";
         terminal = false;
         icon = "org.gnome.Loupe";
         type = "Application";

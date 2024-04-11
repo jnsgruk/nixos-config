@@ -7,16 +7,12 @@ in
   inherit (libx) hexToRgb;
   inherit colours;
 
-  wallpaper = if hostname == "kara" then ./wallpapers/mountains.png else ./wallpapers/jokulsarlon.png;
-
-  gtkTheme = {
-    name = "Catppuccin-Macchiato-Standard-Blue-Dark";
-    package = pkgs.catppuccin-gtk.override {
-      size = "standard";
-      variant = "macchiato";
-      accents = [ "blue" ];
-    };
+  catppuccin = {
+    flavour = "macchiato";
+    accent = "blue";
   };
+
+  wallpaper = if hostname == "kara" then ./wallpapers/mountains.png else ./wallpapers/jokulsarlon.png;
 
   qtTheme = {
     name = "Catppuccin-Macchiato-Blue";
@@ -52,42 +48,6 @@ in
     emoji = {
       name = "Joypixels";
       package = pkgs.joypixels;
-    };
-  };
-
-  apps = {
-    bat = {
-      name = "catppuccin-macchiato";
-      theme = {
-        src = pkgs.fetchFromGitHub {
-          owner = "catppuccin";
-          repo = "bat";
-          rev = "ba4d16880d63e656acced2b7d4e034e4a93f74b1";
-          sha256 = "sha256-6WVKQErGdaqb++oaXnY3i6/GuH2FhTgK0v4TN4Y0Wbw=";
-        };
-        file = "Catppuccin-macchiato.tmTheme";
-      };
-    };
-
-    tmux = {
-      plugin = pkgs.tmuxPlugins.catppuccin;
-      extraConfig = ''
-        set -g @catppuccin_flavour 'macchiato'
-        set -g @catppuccin_host 'on'
-        set -g @catppuccin_window_tabs_enabled 'on'
-      '';
-    };
-
-    vim = {
-      plugin = pkgs.vimPlugins.catppuccin-nvim;
-      type = "lua";
-      config = ''
-        require('catppuccin').setup {
-            flavour = 'macchiato',
-            term_colors = true,
-        }
-        vim.api.nvim_command 'colorscheme catppuccin'
-      '';
     };
   };
 }

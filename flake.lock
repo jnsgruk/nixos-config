@@ -23,6 +23,21 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "locked": {
+        "lastModified": 1712810517,
+        "narHash": "sha256-uevqyUaxrAYuq2TKo7tWm4SjTa2VtWYNWM0OG7lC6Go=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "a7714828f179e25e0d0263e39857660f48de8fc1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "crafts": {
       "inputs": {
         "nixos-2311": "nixos-2311",
@@ -502,6 +517,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "catppuccin": "catppuccin",
         "crafts": "crafts",
         "disko": "disko",
         "home-manager": "home-manager_2",

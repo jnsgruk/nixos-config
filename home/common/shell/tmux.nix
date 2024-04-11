@@ -1,13 +1,10 @@
-{ pkgs, self, ... }:
-let
-  theme = import "${self}/lib/theme" { inherit pkgs; };
-in
-{
+_: {
   programs = {
     tmate.enable = true;
 
     tmux = {
       enable = true;
+      catppuccin.enable = true;
 
       aggressiveResize = true;
       baseIndex = 1;
@@ -22,9 +19,11 @@ in
 
         # Where this shows 'alacritty' - the value should be whatever $TERM is outside tmux
         set-option -ga terminal-overrides ",alacritty:Tc"
-      '';
 
-      plugins = with pkgs; [ theme.apps.tmux ];
+        # Catppuccin options
+        set -g @catppuccin_host 'on'
+        set -g @catppuccin_window_tabs_enabled 'on'
+      '';
     };
   };
 }

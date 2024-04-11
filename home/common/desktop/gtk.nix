@@ -16,6 +16,11 @@ in
   gtk = {
     enable = true;
 
+    catppuccin = {
+      enable = true;
+      inherit (theme.catppuccin) accent;
+    };
+
     font = {
       inherit (theme.fonts.default) package;
       name = "${theme.fonts.default.name}, ${theme.fonts.default.size}";
@@ -40,7 +45,5 @@ in
     iconTheme = {
       inherit (theme.iconTheme) name package;
     };
-
-    theme = theme.gtkTheme;
   };
 }
