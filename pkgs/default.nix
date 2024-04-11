@@ -4,5 +4,5 @@
 { pkgs ? (import ../nixpkgs.nix) { } }: {
   ght = pkgs.callPackage ./ght { };
   icloudpd = pkgs.callPackage ./icloudpd { };
-  nixfmt = pkgs.callPackage ./nixfmt.nix { };
+  nixfmt-plus = pkgs.callPackage ./nixfmt-plus.nix { };
 }

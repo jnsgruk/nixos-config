@@ -3,16 +3,16 @@
 }:
 
 pkgs.writeShellApplication {
-  name = "nixfmt";
+  name = "nixfmt-plus";
   runtimeInputs = with pkgs; [
     deadnix
-    nixpkgs-fmt
+    nixfmt-rfc-style
     statix
   ];
   text = ''
     set -x
     deadnix --edit
     statix fix
-    nixpkgs-fmt .
+    nixfmt .
   '';
 }
