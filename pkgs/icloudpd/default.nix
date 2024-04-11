@@ -4,7 +4,7 @@
 }:
 let
   pname = "icloudpd";
-  version = "1.17.3";
+  version = "1.17.4";
 in
 pkgs.python3Packages.buildPythonApplication {
   inherit pname version;
@@ -14,7 +14,7 @@ pkgs.python3Packages.buildPythonApplication {
     owner = "icloud-photos-downloader";
     repo = "icloud_photos_downloader";
     rev = "refs/tags/v${version}";
-    hash = "sha256-GS6GqlZfj5kfjKLImkOTDAgQDGJQHl74uTqbZHVpbac=";
+    hash = "sha256-xsUayewn6c+TFqQnvDWe+1y4o76Quq8sK1WkSFFgPkc=";
   };
 
   patches = [
