@@ -24,10 +24,10 @@
               prev.buildGo122Module (
                 args
                 // rec {
-                  version = "3.0.0-rc4";
+                  version = "3.0.0-rc5";
                   src = prev.fetchzip {
                     url = "https://github.com/traefik/traefik/releases/download/v${version}/traefik-v${version}.src.tar.gz";
-                    sha256 = "sha256-kl4VmyWMRCjAZneHDYLTJ2/xF0BBO+yM/2gia+6R3sQ=";
+                    sha256 = "sha256-FO/XgymDHy8nUOnT21g6TWxsKj5CcwOm7u5BJ2bRLR4=";
                     stripRoot = false;
                   };
                   vendorHash = "sha256-Lv4TuH0jB8wOupjCNG+y6APxZqho4AgObHuO4nFpjaE=";
