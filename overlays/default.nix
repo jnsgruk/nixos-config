@@ -27,7 +27,7 @@
                   version = "3.0.0-rc5";
                   src = prev.fetchzip {
                     url = "https://github.com/traefik/traefik/releases/download/v${version}/traefik-v${version}.src.tar.gz";
-                    sha256 = "sha256-FO/XgymDHy8nUOnT21g6TWxsKj5CcwOm7u5BJ2bRLR4=";
+                    sha256 = "sha256-IVnZtperYT1uHhkZmREIoMW2YwHv82rxP8Oy4g8ZF7o=";
                     stripRoot = false;
                   };
                   vendorHash = "sha256-Lv4TuH0jB8wOupjCNG+y6APxZqho4AgObHuO4nFpjaE=";
