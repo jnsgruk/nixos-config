@@ -52,6 +52,8 @@
       map('n', '<leader>fb',       ':Telescope buffers<CR>'   )
       map('n', '<leader>fh',       ':Telescope help_tags<CR>' )
       map('n', '<leader>fo',       ':Telescope vim_options<CR>' )
+
+      vim.cmd.colorscheme "catppuccin"
     '';
 
     plugins = with pkgs.vimPlugins; [
