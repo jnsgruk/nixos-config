@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-z13
+    inputs.nixos-hardware.nixosModules.lenovo-thinkpad-z13-gen1
     ../common/hardware/bluetooth.nix
   ];
 
