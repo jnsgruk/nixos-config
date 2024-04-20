@@ -6,7 +6,6 @@
   stateVersion,
   username,
   inputs,
-  pkgs,
   ...
 }:
 {

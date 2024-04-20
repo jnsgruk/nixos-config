@@ -8,7 +8,6 @@
   outputs,
   stateVersion,
   username,
-  pkgs,
   ...
 }:
 {
