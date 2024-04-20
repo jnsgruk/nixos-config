@@ -16,7 +16,7 @@
 
   environment.systemPackages = with pkgs; [
     gphotos-sync
-    icloudpd
+    unstable.icloudpd
   ];
 
   age.secrets = {

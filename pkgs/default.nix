@@ -6,6 +6,5 @@
 }:
 {
   ght = pkgs.callPackage ./ght { };
-  icloudpd = pkgs.callPackage ./icloudpd { };
   nixfmt-plus = pkgs.callPackage ./nixfmt-plus.nix { };
 }
