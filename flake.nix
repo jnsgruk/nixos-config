@@ -10,9 +10,6 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    crafts.url = "github:jnsgruk/crafts-flake"; # url = "path:/home/jon/crafts-flake";
-    crafts.inputs.unstable.follows = "unstable";
-
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "unstable";
 

@@ -45,7 +45,6 @@
       outputs.overlays.unstable-packages
 
       # You can also add overlays exported from other flakes:
-      inputs.crafts.overlay
       inputs.agenix.overlays.default
     ];
 
