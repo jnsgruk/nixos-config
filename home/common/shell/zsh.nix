@@ -87,8 +87,8 @@
         speedtest = "curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -";
 
         cleanup-nix = "sudo nix-collect-garbage -d";
-        rln = "sudo nixos-rebuild switch --flake /home/jon/nixos-config";
-        rlh = "home-manager switch --flake /home/jon/nixos-config";
+        rln = "nh os switch ~/home/jon/nixos-config";
+        rlh = "nh home switch ~/home/jon/nixos-config";
         rlb = "rln;rlh";
       };
     };

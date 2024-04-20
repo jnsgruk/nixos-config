@@ -12,6 +12,7 @@
   ...
 }:
 {
+
   imports =
     [
       (modulesPath + "/installer/scan/not-detected.nix")
@@ -48,11 +49,6 @@
   };
 
   nix = {
-    gc = {
-      automatic = true;
-      options = "--delete-older-than 14d";
-    };
-
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
     registry = lib.mkForce (lib.mapAttrs (_: value: { flake = value; }) inputs);
@@ -75,11 +71,5 @@
 
   system = {
     inherit stateVersion;
-    activationScripts.diff = {
-      supportsDryActivation = true;
-      text = ''
-        ${pkgs.nvd}/bin/nvd --nix-bin-dir=${pkgs.nix}/bin diff /run/current-system "$systemConfig"
-      '';
-    };
   };
 }

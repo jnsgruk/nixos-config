@@ -11,6 +11,7 @@
     ./console.nix
     ./hardware.nix
     ./locale.nix
+    ./nh.nix
     ./zramswap.nix
 
     ../services/avahi.nix
