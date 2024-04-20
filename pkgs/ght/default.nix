@@ -1,15 +1,11 @@
 { lib, pkgs, ... }:
-let
-  name = "ght";
-  version = "1.8.0";
-in
 pkgs.buildNpmPackage rec {
-  inherit version;
-  pname = name;
+  pname = "ght";
+  version = "1.8.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
-    repo = name;
+    repo = "ght";
     rev = "refs/tags/v${version}";
     hash = "sha256-3shS1Cq0Qn+93di2Wu1J/z+N5/TPyfCQeo2MrQ094/U=";
   };
@@ -45,8 +41,10 @@ pkgs.buildNpmPackage rec {
   '';
 
   meta = {
-    description = "Perform actions in Greenhouse from you terminal.";
-    maintainers = with lib.maintainers; [ jnsgruk ];
     mainProgram = "ght";
+    description = "Perform actions in Greenhouse from you terminal";
+    homepage = "https://github.com/canonical/ght";
+    changelog = "https://github.com/canonical/ght/releases/tag/v${version}";
+    maintainers = with lib.maintainers; [ jnsgruk ];
   };
 }
