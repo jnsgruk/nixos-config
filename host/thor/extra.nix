@@ -14,7 +14,10 @@
     ../common/services/traefik
   ];
 
-  environment.systemPackages = with pkgs; [ icloudpd ];
+  environment.systemPackages = with pkgs; [
+    gphotos-sync
+    icloudpd
+  ];
 
   age.secrets = {
     borgbase-ssh = {
