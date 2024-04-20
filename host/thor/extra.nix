@@ -7,6 +7,7 @@
 {
   imports = [
     ../common/services/files.nix
+    ../common/services/home-assistant.nix
     ../common/services/libations.nix
     ../common/services/servarr.nix
     ../common/services/homepage
