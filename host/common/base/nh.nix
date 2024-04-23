@@ -8,7 +8,7 @@
     flake = "/home/jon/nixos-config";
     clean = {
       enable = true;
-      extraArgs = "--keep-since 14d --keep 5";
+      extraArgs = "--keep-since 10d --keep 3";
     };
   };
 }
