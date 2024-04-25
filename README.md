@@ -54,7 +54,7 @@ The following is a list of the key elements of my setup, with links to their con
 [gtk]: ./home/common/desktop/gtk.nix
 [hyprland]: ./home/common/desktop/hyprland/default.nix
 [mako]: ./home/common/desktop/mako.nix
-[neofetch]: ./home/common/shell/neofetch.nix
+[fastfetch]: ./home/common/shell/fastfetch.nix
 [nvim]: ./home/common/shell/vim.nix
 [starship]: ./home/common/shell/starship.nix
 [hyprlock]: ./home/common/desktop/hyprland/hyprlock.nix
