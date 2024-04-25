@@ -23,7 +23,13 @@
     catppuccin-gtk
     desktop-file-utils
     ght
-    google-chrome
+    # Workaround https://github.com/NixOS/nixpkgs/issues/306010
+    (google-chrome.override {
+      commandLineArgs = [
+        "--enable-features=UseOzonePlatform"
+        "--ozone-platform=wayland"
+      ];
+    })
     libnotify
     loupe
     mumble
