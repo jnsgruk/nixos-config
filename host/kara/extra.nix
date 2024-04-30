@@ -50,7 +50,7 @@
       };
       environment.BORG_RSH = "ssh -i ${config.age.secrets."borgbase-ssh".path}";
       compression = "auto,lzma";
-      startAt = "daily";
+      startAt = "*-*-* 12:00:00";
     };
   };
 }
