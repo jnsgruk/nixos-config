@@ -32,6 +32,12 @@
       group = "root";
       mode = "400";
     };
+    backup-env = {
+      file = "${self}/secrets/thor-backup-env.age";
+      owner = "root";
+      group = "root";
+      mode = "400";
+    };
   };
 
   networking.firewall = {
