@@ -36,6 +36,7 @@
           sha256 = "sha256-Dibn8WTFFnyZnoXYUJ+ZmHBKhBRbWil3eMFUebWckQA=";
         };
       })
+      pkgs.touchlinesl
     ];
     config = {
       default_config = { };

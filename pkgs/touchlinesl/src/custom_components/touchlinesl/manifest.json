@@ -1,0 +1,11 @@
+{
+  "domain": "touchlinesl",
+  "version": "0.0.1",
+  "config_flow": true,
+  "name": "Roth Touchline SL",
+  "iot_class": "cloud_push",
+  "documentation": "https://github.com/jnsgruk/touchlinesl-home-assistant",
+  "issue_tracker": "https://github.com/jnsgruk/touchlinesl-home-assistant/issues",
+  "requirements": ["aiohttp"],
+  "codeowners": ["@jnsgruk"]
+}
