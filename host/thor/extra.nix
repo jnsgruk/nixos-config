@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  lib,
   self,
   ...
 }:
@@ -57,6 +58,20 @@
       4002
       20048
     ];
+  };
+
+  systemd = {
+    services.photo-backup = {
+      description = "Photo Backup Service";
+      after = [ "network.target" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = "${lib.getExe pkgs.bashInteractive} /data/photos/backup.sh";
+      };
+      startAt = "*-*-* 21:00:00";
+    };
+
+    timers.photo-backup.timerConfig.Persistent = true;
   };
 
   services = {
