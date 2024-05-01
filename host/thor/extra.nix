@@ -12,12 +12,8 @@
     ../common/services/libations.nix
     ../common/services/servarr.nix
     ../common/services/homepage
+    ../common/services/photo-backup
     ../common/services/traefik
-  ];
-
-  environment.systemPackages = with pkgs; [
-    gphotos-sync
-    unstable.icloudpd
   ];
 
   age.secrets = {
@@ -29,12 +25,6 @@
     };
     borgbase-passphrase = {
       file = "${self}/secrets/thor-borgbase-passphrase.age";
-      owner = "root";
-      group = "root";
-      mode = "400";
-    };
-    backup-env = {
-      file = "${self}/secrets/thor-backup-env.age";
       owner = "root";
       group = "root";
       mode = "400";
@@ -58,20 +48,6 @@
       4002
       20048
     ];
-  };
-
-  systemd = {
-    services.photo-backup = {
-      description = "Photo Backup Service";
-      after = [ "network.target" ];
-      serviceConfig = {
-        Type = "oneshot";
-        ExecStart = "${lib.getExe pkgs.bashInteractive} /data/photos/backup.sh";
-      };
-      startAt = "*-*-* 21:00:00";
-    };
-
-    timers.photo-backup.timerConfig.Persistent = true;
   };
 
   services = {
