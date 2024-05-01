@@ -27,6 +27,7 @@ in
 
     caddy.virtualHosts = {
       "files.${domain}".extraConfig = mkVHost "http://localhost:8081";
+      "ha.${domain}".extraConfig = mkVHost "http://localhost:8123";
       "freyja.sync.${domain}".extraConfig = mkVHost "http://freyja.${tailnet}:8384";
       "kara.sync.${domain}".extraConfig = mkVHost "http://kara.${tailnet}:8384";
       "thor.sync.${domain}".extraConfig = mkVHost "http://thor.${tailnet}:8384";
