@@ -6,7 +6,10 @@
 
       enableCompletion = true;
       autosuggestion.enable = true;
-      syntaxHighlighting.enable = true;
+      syntaxHighlighting = {
+        enable = true;
+        catppuccin.enable = true;
+      };
 
       history = {
         save = 10000;
