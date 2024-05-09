@@ -14,6 +14,7 @@ let
       [
         "network"
         "battery"
+        "custom/vpn"
         "wireplumber"
         "pulseaudio#source"
         "bluetooth"
@@ -39,6 +40,35 @@ let
         bluetoothctl discoverable on
       else
         bluetoothctl power off
+      fi
+    '';
+  };
+
+  mullvadCheck = pkgs.writeShellApplication {
+    name = "mullvad-check";
+    runtimeInputs = with pkgs; [
+      gnugrep
+      mullvad
+      jq
+    ];
+    text = ''
+      connection="$(mullvad status)"
+
+      if [[ "$1" == "status" ]]; then
+        if echo "$connection" | grep -Pqo "^Connected to.+"; then
+          # shellcheck disable=SC2034
+          server="$(echo "$connection" | grep -Po "^Connected to \K([^ ]+)")"
+          ip="$(echo "$connection" | grep -Po "IPv4: \K.+")"
+          echo "{\"text\": \"󰍁\", \"tooltip\": \"Connected to $server ($ip)\", \"class\": \"connected\"}" | jq --unbuffered --compact-output
+        else
+          echo '{"text": "󰍁", "tooltip": "Disconnected", "class": "disconnected"}' | jq --unbuffered --compact-output
+        fi
+      elif [[ "$1" == "toggle" ]]; then
+        if echo "$connection" | grep -Pqo "^Connected to.+"; then
+          mullvad disconnect
+        else
+          mullvad connect
+        fi
       fi
     '';
   };
@@ -121,6 +151,14 @@ in
             ""
             ""
           ];
+        };
+
+        "custom/vpn" = {
+          format = "{}";
+          exec = "${lib.getExe mullvadCheck} status";
+          on-click = "${lib.getExe mullvadCheck} toggle";
+          return-type = "json";
+          interval = 1;
         };
 
         "group/group-power" = {

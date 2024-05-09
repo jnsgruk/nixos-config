@@ -69,6 +69,7 @@
       #custom-power,
       #custom-quit,
       #custom-reboot,
+      #custom-vpn,
       #group-group-power,
       #idle_inhibitor,
       #memory,
@@ -77,6 +78,15 @@
       #wireplumber" = {
         padding = mkLiteral "0px 10px";
         color = mkLiteral "${theme.colours.text}";
+      };
+
+      "#custom-vpn.connected" = {
+        color = mkLiteral "${theme.colours.green}";
+        background-color = mkLiteral "transparent";
+      };
+      "#custom-vpn.disconnected" = {
+        color = mkLiteral "${theme.colours.red}";
+        background-color = mkLiteral "transparent";
       };
 
       "#custom-power" = {
