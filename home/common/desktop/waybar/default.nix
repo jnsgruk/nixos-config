@@ -54,7 +54,7 @@ let
     text = ''
       connection="$(mullvad status)"
 
-      if [[ "$1" == "status" ]]; then
+      check_status() {
         if echo "$connection" | grep -Pqo "^Connected to.+"; then
           # shellcheck disable=SC2034
           server="$(echo "$connection" | grep -Po "^Connected to \K([^ ]+)")"
@@ -63,13 +63,17 @@ let
         else
           echo '{"text": "󰍁", "tooltip": "Disconnected", "class": "disconnected"}' | jq --unbuffered --compact-output
         fi
-      elif [[ "$1" == "toggle" ]]; then
+      }
+
+      if [[ "$1" == "toggle" ]]; then
         if echo "$connection" | grep -Pqo "^Connected to.+"; then
           mullvad disconnect
         else
           mullvad connect
         fi
       fi
+
+      check_status
     '';
   };
 
