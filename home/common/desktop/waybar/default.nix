@@ -59,9 +59,9 @@ let
           # shellcheck disable=SC2034
           server="$(echo "$connection" | grep -Po "^Connected to \K([^ ]+)")"
           ip="$(echo "$connection" | grep -Po "IPv4: \K.+")"
-          echo "{\"text\": \"󰍁\", \"tooltip\": \"Connected to $server ($ip)\", \"class\": \"connected\"}" | jq --unbuffered --compact-output
+          echo "{\"text\": \"󰖂\", \"tooltip\": \"Connected to $server ($ip)\", \"class\": \"connected\"}" | jq --unbuffered --compact-output
         else
-          echo '{"text": "󰍁", "tooltip": "Disconnected", "class": "disconnected"}' | jq --unbuffered --compact-output
+          echo '{"text": "󰖂", "tooltip": "Disconnected", "class": "disconnected"}' | jq --unbuffered --compact-output
         fi
       }
 
