@@ -29,8 +29,6 @@
       };
       modules = [
         inputs.catppuccin.homeManagerModules.catppuccin
-        inputs.hypridle.homeManagerModules.default
-        inputs.hyprlock.homeManagerModules.default
         ../home
       ];
     };

@@ -12,61 +12,74 @@ in
 {
   programs.hyprlock = {
     enable = true;
+    settings = {
+      general = {
+        grace = 5;
+        hide_cursor = true;
+      };
 
-    general = {
-      grace = 5;
-      hide_cursor = true;
+      background = [
+        {
+          path = "${theme.wallpaper}";
+          blur_passes = 2;
+          blur_size = 6;
+        }
+      ];
+
+      input-field = [
+        {
+          size = "250, 60";
+          outer_color = "rgb(${hexToRgb colours.black})";
+          inner_color = "rgb(${hexToRgb colours.bgDark})";
+          font_color = "rgb(${hexToRgb colours.purple})";
+          placeholder_text = "";
+        }
+      ];
+
+      label = [
+        {
+          text = "Hello";
+          color = "rgba(${hexToRgb colours.text}, 1.0)";
+          font_family = theme.fonts.default.name;
+          font_size = 64;
+          text_align = "center";
+          halign = "center";
+          valign = "center";
+          position = "0, 160";
+        }
+        {
+          text = "$TIME";
+          color = "rgba(${hexToRgb colours.subtext1}, 1.0)";
+          font_family = theme.fonts.default.name;
+          font_size = 32;
+          text_align = "center";
+          halign = "center";
+          valign = "center";
+          position = "0, 75";
+        }
+      ];
     };
-
-    backgrounds = [
-      {
-        path = "${theme.wallpaper}";
-        blur_passes = 2;
-        blur_size = 6;
-      }
-    ];
-
-    input-fields = [
-      {
-        size.width = 250;
-        outer_color = "rgb(${hexToRgb colours.black})";
-        inner_color = "rgb(${hexToRgb colours.bgDark})";
-        font_color = "rgb(${hexToRgb colours.purple})";
-        placeholder_text = "";
-      }
-    ];
-
-    labels = [
-      {
-        text = "Hello";
-        color = "rgba(${hexToRgb colours.text}, 1.0)";
-        font_family = theme.fonts.default.name;
-        font_size = 64;
-      }
-      {
-        text = "$TIME";
-        color = "rgba(${hexToRgb colours.subtext1}, 1.0)";
-        font_family = theme.fonts.default.name;
-        font_size = 32;
-        position.y = 160;
-      }
-    ];
   };
 
   services.hypridle = {
     enable = true;
-    lockCmd = "${lib.getExe pkgs.hyprlock}";
-    beforeSleepCmd = "${lib.getExe pkgs.hyprlock}";
-    listeners = [
-      {
-        timeout = 300;
-        onTimeout = "${lib.getExe pkgs.hyprlock}";
-      }
-      {
-        timeout = 305;
-        onTimeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-        onResume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
-      }
-    ];
+    settings = {
+      general = {
+        lock_cmd = "${lib.getExe pkgs.hyprlock}";
+        before_sleep_cmd = "${lib.getExe pkgs.hyprlock}";
+      };
+
+      listener = [
+        {
+          timeout = 300;
+          on-timeout = "${lib.getExe pkgs.hyprlock}";
+        }
+        {
+          timeout = 305;
+          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+      ];
+    };
   };
 }
