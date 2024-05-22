@@ -26,7 +26,7 @@ The following is a list of the key elements of my setup, with links to their con
 
 | Type  | Details                                         |
 | :---: | :---------------------------------------------- |
-| Shell | [zsh], [starship], [nvim], [tmux], [neofetch]   |
+| Shell | [zsh], [starship], [nvim], [tmux], [fastfetch]  |
 |  WM   | [hyprland], [waybar], [hyprlock], [mako], [gtk] |
 | Apps  | [vscode], [zathura], [alacritty]                |
 
