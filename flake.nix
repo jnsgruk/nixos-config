@@ -113,6 +113,6 @@
         import ./shell.nix { inherit pkgs; }
       );
 
-      formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt);
+      formatter = libx.forAllSystems (system: self.packages.${system}.nixfmt-plus);
     };
 }
