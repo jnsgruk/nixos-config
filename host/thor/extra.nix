@@ -1,10 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  self,
-  ...
-}:
+{ config, self, ... }:
 {
   imports = [
     ../common/services/files.nix

@@ -15,7 +15,7 @@
     unstable = import inputs.unstable {
       inherit (final) system;
       config.allowUnfree = true;
-      overlays = [ (_final: prev: { }) ];
+      overlays = [ (_final: _prev: { }) ];
     };
   };
 }
