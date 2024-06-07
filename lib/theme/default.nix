@@ -12,7 +12,7 @@ in
   inherit colours;
 
   catppuccin = {
-    flavour = "macchiato";
+    flavor = "macchiato";
     accent = "blue";
   };
 

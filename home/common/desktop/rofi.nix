@@ -5,7 +5,7 @@
     package = pkgs.rofi-wayland;
     catppuccin = {
       enable = true;
-      flavour = "mocha";
+      flavor = "mocha";
     };
     terminal = "${pkgs.alacritty}/bin/alacritty";
 

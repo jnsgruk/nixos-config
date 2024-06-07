@@ -18,7 +18,7 @@ in
   ];
 
   catppuccin = {
-    inherit (theme.catppuccin) flavour;
+    inherit (theme.catppuccin) flavor;
     inherit (theme.catppuccin) accent;
   };
 
