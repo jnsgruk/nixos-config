@@ -52,10 +52,10 @@ let
     ];
     text = ''
       if [[ "$1" == "toggle" ]]; then
-        if [[ "$(tailscale status --json | jq -r '.Self.Online')" == "true" ]]; then
-          tailscale down
-        else
+        if [[ "$(tailscale status --json | jq -r '.BackendState')" == "Stopped" ]]; then
           tailscale up --operator=jon --ssh --reset
+        else
+          tailscale down
         fi
       elif [[ "$1" == "exit" ]]; then
         if [[ "$(tailscale status --json | jq -r '.ExitNodeStatus.Online')" == "true" ]]; then
