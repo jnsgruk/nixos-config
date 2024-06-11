@@ -80,7 +80,11 @@
         color = mkLiteral "${theme.colours.text}";
       };
 
-      "#custom-vpn.connected" = {
+      "#custom-vpn.tailnet" = {
+        color = mkLiteral "${theme.colours.blue}";
+        background-color = mkLiteral "transparent";
+      };
+      "#custom-vpn.exitNode" = {
         color = mkLiteral "${theme.colours.green}";
         background-color = mkLiteral "transparent";
       };

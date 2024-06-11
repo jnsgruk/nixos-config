@@ -44,36 +44,37 @@ let
     '';
   };
 
-  mullvadCheck = pkgs.writeShellApplication {
-    name = "mullvad-check";
+  tsCheck = pkgs.writeShellApplication {
+    name = "tscheck";
     runtimeInputs = with pkgs; [
-      gnugrep
-      mullvad
+      tailscale
       jq
     ];
     text = ''
-      connection="$(mullvad status)"
-
-      check_status() {
-        if echo "$connection" | grep -Pqo "^Connected to.+"; then
-          # shellcheck disable=SC2034
-          server="$(echo "$connection" | grep -Po "^Connected to \K([^ ]+)")"
-          ip="$(echo "$connection" | grep -Po "IPv4: \K.+")"
-          echo "{\"text\": \"󰖂\", \"tooltip\": \"Connected to $server ($ip)\", \"class\": \"connected\"}" | jq --unbuffered --compact-output
-        else
-          echo '{"text": "󰖂", "tooltip": "Disconnected", "class": "disconnected"}' | jq --unbuffered --compact-output
-        fi
-      }
-
       if [[ "$1" == "toggle" ]]; then
-        if echo "$connection" | grep -Pqo "^Connected to.+"; then
-          mullvad disconnect
+        if [[ "$(tailscale status --json | jq -r '.Self.Online')" == "true" ]]; then
+          tailscale down
         else
-          mullvad connect
+          tailscale up --operator=jon --ssh --reset
+        fi
+      elif [[ "$1" == "exit" ]]; then
+        if [[ "$(tailscale status --json | jq -r '.ExitNodeStatus.Online')" == "true" ]]; then
+          tailscale set --exit-node=
+        else
+          tailscale set --exit-node=gb-lon-wg-001.mullvad.ts.net &>/dev/null
         fi
       fi
 
-      check_status
+      if tailscale status &>/dev/null; then
+        if [[ "$(tailscale status --json | jq -r '.ExitNodeStatus.Online')" == "true" ]]; then
+          ip="$(tailscale status --json | jq -r '.ExitNodeStatus.TailscaleIPs[0]')"
+          echo "{\"text\": \"󰖂\", \"tooltip\": \"Connected to exit node ($ip)\", \"class\": \"exitNode\"}" | jq --unbuffered --compact-output
+        else
+          echo "{\"text\": \"󰖂\", \"tooltip\": \"Connected to tailnet\", \"class\": \"tailnet\"}" | jq --unbuffered --compact-output
+        fi
+      else
+        echo '{"text": "󰖂", "tooltip": "Disconnected", "class": "disconnected"}' | jq --unbuffered --compact-output
+      fi
     '';
   };
 
@@ -159,8 +160,9 @@ in
 
         "custom/vpn" = {
           format = "{}";
-          exec = "${lib.getExe mullvadCheck} status";
-          on-click = "${lib.getExe mullvadCheck} toggle";
+          exec = "${lib.getExe tsCheck} status";
+          on-click = "${lib.getExe tsCheck} toggle";
+          on-click-right = "${lib.getExe tsCheck} exit";
           return-type = "json";
           interval = 1;
         };
