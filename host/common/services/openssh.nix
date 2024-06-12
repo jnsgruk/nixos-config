@@ -1,6 +1,7 @@
 _: {
   services.openssh = {
     enable = true;
+    openFirewall = true;
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
@@ -8,5 +9,4 @@ _: {
   };
 
   programs.ssh.startAgent = true;
-  networking.firewall.allowedTCPPorts = [ 22 ];
 }
