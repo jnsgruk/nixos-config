@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, desktop, ... }:
 {
   hardware.bluetooth = {
     enable = true;
@@ -11,5 +11,5 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [ blueberry ];
+  environment.systemPackages = if (builtins.isString desktop) then [ pkgs.blueberry ] else [ ];
 }
