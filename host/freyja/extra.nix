@@ -1,7 +1,4 @@
 { ... }:
 {
-  imports = [
-    ../common/services/mullvad.nix
-    ../common/services/networkmanager.nix
-  ];
+  imports = [ ../common/services/networkmanager.nix ];
 }

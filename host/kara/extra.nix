@@ -1,7 +1,5 @@
 { config, self, ... }:
 {
-  imports = [ ../common/services/mullvad.nix ];
-
   age.secrets = {
     borgbase-ssh = {
       file = "${self}/secrets/kara-borgbase-ssh.age";
