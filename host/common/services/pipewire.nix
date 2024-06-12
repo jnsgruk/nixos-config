@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, desktop, ... }:
 {
   services.pipewire = {
     enable = true;
@@ -23,5 +23,5 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [ pavucontrol ];
+  environment.systemPackages = if (builtins.isString desktop) then [ pkgs.pavucontrol ] else [ ];
 }
