@@ -2,6 +2,7 @@ let
   browser = [ "google-chrome.desktop" ];
   archiveManager = [ "org.gnome.FileRoller.desktop" ];
   imageViewer = [ "org.gnome.Loupe.desktop" ];
+  videoPlayer = [ "mpv.desktop" ];
 in
 {
   # XDG MIME types
@@ -20,9 +21,9 @@ in
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
 
-    "audio/*" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.dekstop" ];
-    "image/*" = [ "org.gnome.Loupe.desktop" ];
+    "audio/*" = [ videoPlayer ];
+    "video/*" = [ videoPlayer ];
+    "image/*" = [ imageViewer ];
 
     "application/json" = browser;
 

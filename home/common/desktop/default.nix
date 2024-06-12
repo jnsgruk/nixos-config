@@ -26,7 +26,6 @@
     google-chrome
     libnotify
     loupe
-    mumble
     obsidian
     pamixer
     pavucontrol

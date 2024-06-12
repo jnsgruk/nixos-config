@@ -24,23 +24,6 @@ in
           "Application"
         ];
       };
-
-      # Mumble's keyboard shortcuts don't work under Wayland, so override the
-      # QT_QPA_PLATFORM variable on startup.
-      "info.mumble.Mumble" = {
-        name = "Mumble";
-        exec = "env QT_QPA_PLATFORM=xcb ${pkgs.mumble}/bin/mumble %u";
-        terminal = false;
-        icon = "mumble";
-        type = "Application";
-        startupNotify = true;
-        mimeType = [ "x-scheme-handler/mumble" ];
-        categories = [
-          "Network"
-          "Chat"
-          "Qt"
-        ];
-      };
     };
   };
 }
