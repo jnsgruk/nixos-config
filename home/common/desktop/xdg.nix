@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   inherit ((import ./file-associations.nix)) associations;
 in
@@ -39,97 +39,6 @@ in
           "Network"
           "Chat"
           "Qt"
-        ];
-      };
-
-      # Override the desktop file for Nautilus to use GTK_THEME.
-      # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
-      "org.gnome.Nautilus" = {
-        name = "Files";
-        exec = "env GTK_THEME=${config.gtk.theme.name} nautilus --new-window";
-        terminal = false;
-        icon = "org.gnome.Nautilus";
-        type = "Application";
-        categories = [
-          "GNOME"
-          "Utility"
-          "Core"
-          "FileManager"
-        ];
-        startupNotify = true;
-        settings = {
-          DBusActivatable = "true";
-          X-GNOME-UsesNotifications = "true";
-        };
-        mimeType = [
-          "inode/directory"
-          "application/x-7z-compressed"
-          "application/x-7z-compressed-tar"
-          "application/x-bzip"
-          "application/x-bzip-compressed-tar"
-          "application/x-compress"
-          "application/x-compressed-tar"
-          "application/x-cpio"
-          "application/x-gzip"
-          "application/x-lha"
-          "application/x-lzip"
-          "application/x-lzip-compressed-tar"
-          "application/x-lzma"
-          "application/x-lzma-compressed-tar"
-          "application/x-tar"
-          "application/x-tarz"
-          "application/x-xar"
-          "application/x-xz"
-          "application/x-xz-compressed-tar"
-          "application/zip"
-          "application/gzip"
-          "application/bzip2"
-          "application/vnd.rar"
-        ];
-      };
-      # Override the desktop file for Loupe to use GTK_THEME.
-      # Later versions of Nautilus rely on libadwaita, which doesn't respect the GTK config
-      "org.gnome.Loupe.desktop" = {
-        name = "Loupe";
-        exec = "env GTK_THEME=${config.gtk.theme.name} loupe %U";
-        terminal = false;
-        icon = "org.gnome.Loupe";
-        type = "Application";
-        categories = [
-          "GNOME"
-          "GTK"
-          "Graphics"
-          "2DGraphics"
-          "RasterGraphics"
-          "Viewer"
-        ];
-        startupNotify = true;
-        settings = {
-          DBusActivatable = "true";
-        };
-        mimeType = [
-          "image/jpeg"
-          "image/png"
-          "image/gif"
-          "image/webp"
-          "image/tiff"
-          "image/x-tga"
-          "image/vnd-ms.dds"
-          "image/x-dds"
-          "image/bmp"
-          "image/vnd.microsoft.icon"
-          "image/vnd.radiance"
-          "image/x-exr"
-          "image/x-portable-bitmap"
-          "image/x-portable-graymap"
-          "image/x-portable-pixmap"
-          "image/x-portable-anymap"
-          "image/x-qoi"
-          "image/svg+xml"
-          "image/svg+xml-compressed"
-          "image/avif"
-          "image/heic"
-          "image/jxl"
         ];
       };
     };

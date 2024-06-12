@@ -6,6 +6,15 @@
 let
   inherit ((import ./colours.nix)) colours;
   libx = import ./lib.nix { inherit (pkgs) lib; };
+
+  catppuccinGtkSize = "standard";
+  catppuccinGtkFlavor = "macchiato";
+  catppuccinGtkAccent = "blue";
+  catppucinGtkTheme = "Dark";
+
+  flavorUpper = libx.mkUpper catppuccinGtkFlavor;
+  accentUpper = libx.mkUpper catppuccinGtkAccent;
+  sizeUpper = libx.mkUpper catppuccinGtkSize;
 in
 {
   inherit (libx) hexToRgb;
@@ -17,6 +26,10 @@ in
   };
 
   wallpaper = if hostname == "kara" then ./wallpapers/mountains.png else ./wallpapers/jokulsarlon.png;
+
+  gtkTheme = {
+    name = "Catppuccin-${flavorUpper}-${sizeUpper}-${accentUpper}-${catppucinGtkTheme}";
+  };
 
   qtTheme = {
     name = "Catppuccin-Macchiato-Blue";
