@@ -1,7 +1,5 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 {
-  imports = [ "${inputs.unstable}/nixos/modules/programs/nh.nix" ];
-
   programs.nh = {
     enable = true;
     package = pkgs.unstable.nh;
