@@ -9,7 +9,7 @@
     dig
     dua
     duf
-    unstable.eza
+    eza
     fd
     file
     git
