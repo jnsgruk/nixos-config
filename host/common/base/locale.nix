@@ -2,7 +2,7 @@ _: {
   time.timeZone = "Europe/London";
 
   console.keyMap = "uk";
-  services.xserver.layout = "gb";
+  services.xserver.xkb.layout = "gb";
 
   i18n = {
     defaultLocale = "en_GB.utf8";
