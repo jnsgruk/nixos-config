@@ -21,9 +21,9 @@ in
     "x-scheme-handler/https" = browser;
     "x-scheme-handler/unknown" = browser;
 
-    "audio/*" = [ videoPlayer ];
-    "video/*" = [ videoPlayer ];
-    "image/*" = [ imageViewer ];
+    "audio/*" = videoPlayer;
+    "video/*" = videoPlayer;
+    "image/*" = imageViewer;
 
     "application/json" = browser;
 
