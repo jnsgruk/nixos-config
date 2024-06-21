@@ -18,7 +18,7 @@
         "usbhid"
         "xhci_pci"
       ];
-      kernelModules = [ ];
+      kernelModules = [ "amdgpu" ];
     };
 
     kernelModules = [
