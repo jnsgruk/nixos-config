@@ -1,5 +1,23 @@
 PHOTOS_ROOT="/data/photos"
 
+handle_failure() {
+    local name; name="$1"
+
+    echo "Failed to backup photos for $name; See '${PHOTOS_ROOT}/${name}/backup.log'"
+
+    msg="$(mktemp)"
+    echo "Failed to backup photos for $name:" > "$msg"
+    echo "" >> "$msg"
+    cat "${PHOTOS_ROOT}/${name}/backup.log" >> "$msg"
+
+    curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d "{\"chat_id\": \"${TG_CHAT}\", \"text\": \"$(cat "$msg")\"}" \
+     "https://api.telegram.org/${TG_TOKEN}/sendMessage"
+
+    rm "$msg"
+}
+
 backup_gphotos() {
     local name; name="$1"
 
@@ -9,7 +27,7 @@ backup_gphotos() {
         --secret "${PHOTOS_ROOT}/${name}/client_secret.json" \
         "${PHOTOS_ROOT}/${name}" \
         > "${PHOTOS_ROOT}/${name}/backup.log" \
-        || echo "Failed to backup Google Photos for $name. See '${PHOTOS_ROOT}/${name}/backup.log'"
+        || handle_failure "$name"
 }
 
 backup_icloud() {
@@ -25,13 +43,9 @@ backup_icloud() {
         --cookie-directory "${PHOTOS_ROOT}/.icloudpd"\
         --folder-structure "{:%Y/%m-%b}" \
         --username "$user" --password "$pass" \
-        --smtp-username "$SMTP_USERNAME" \
-        --smtp-password "$SMTP_PASSWORD" \
-        --smtp-host "smtp.fastmail.com" \
-        --smtp-port 465 \
         --size original \
         > "${PHOTOS_ROOT}/${name}/backup.log" \
-        || echo "Failed to backup iCloud Photos for $name; See '${PHOTOS_ROOT}/${name}/backup.log'"
+        || handle_failure "$name"
 }
 
 auth_icloud() {
@@ -44,9 +58,13 @@ auth_icloud() {
 }
 
 if [[ "${1:-}" == "auth" ]]; then
+    echo "Authenticating Nina"
     auth_icloud "$NINA_EMAIL" "$NINA_PASSWORD"
+    echo "Authenticating Rich"
     auth_icloud "$RICH_EMAIL" "$RICH_PASSWORD"
+    echo "Authenticating Laura"
     auth_icloud "$LAURA_EMAIL" "$LAURA_PASSWORD"
+    echo "Authenticating Jon"
     auth_icloud "$JON_EMAIL" "$JON_PASSWORD"
 else
     backup_gphotos hattie

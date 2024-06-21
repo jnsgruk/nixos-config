@@ -10,8 +10,10 @@ let
     name = "photo-backup";
     runtimeInputs = with pkgs; [
       bash
+      curl
       gphotos-sync
       unstable.icloudpd
+      urlencode
     ];
     text = builtins.readFile ./photo-backup.sh;
   };
