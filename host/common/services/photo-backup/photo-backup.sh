@@ -10,10 +10,10 @@ handle_failure() {
     echo "" >> "$msg"
     cat "${PHOTOS_ROOT}/${name}/backup.log" >> "$msg"
 
-    curl -X POST \
+    curl -s -X POST \
      -H 'Content-Type: application/json' \
      -d "{\"chat_id\": \"${TG_CHAT}\", \"text\": \"$(cat "$msg")\"}" \
-     "https://api.telegram.org/${TG_TOKEN}/sendMessage"
+     "https://api.telegram.org/${TG_TOKEN}/sendMessage" >/dev/null
 
     rm "$msg"
 }
