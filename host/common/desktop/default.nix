@@ -25,7 +25,7 @@ in
     "vt.global_cursor_default=0"
   ];
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   # Enable location services
   location.provider = "geoclue2";

@@ -1,4 +1,9 @@
-{ pkgs, self, ... }:
+{
+  pkgs,
+  self,
+  hostname,
+  ...
+}:
 let
   theme = import "${self}/lib/theme" { inherit pkgs; };
   inherit (theme) colours hexToRgb;
@@ -15,7 +20,8 @@ in
 
   services.kmscon = {
     enable = true;
-    hwRender = true;
+    # TODO: Remove this condition once 24.11 is released.
+    hwRender = if (hostname == "freyja" || hostname == "kara") then true else false;
     fonts = [
       {
         name = "${theme.fonts.monospace.name}";
