@@ -6,29 +6,21 @@
 let
   inherit ((import ./colours.nix)) colours;
   libx = import ./lib.nix { inherit (pkgs) lib; };
-
-  catppuccinGtkSize = "standard";
-  catppuccinGtkFlavor = "macchiato";
-  catppuccinGtkAccent = "blue";
-  catppucinGtkTheme = "Dark";
-
-  flavorUpper = libx.mkUpper catppuccinGtkFlavor;
-  accentUpper = libx.mkUpper catppuccinGtkAccent;
-  sizeUpper = libx.mkUpper catppuccinGtkSize;
 in
-{
+rec {
   inherit (libx) hexToRgb;
   inherit colours;
 
   catppuccin = {
     flavor = "macchiato";
     accent = "blue";
+    size = "standard";
   };
 
   wallpaper = if hostname == "kara" then ./wallpapers/mountains.png else ./wallpapers/jokulsarlon.png;
 
   gtkTheme = {
-    name = "Catppuccin-${flavorUpper}-${sizeUpper}-${accentUpper}-${catppucinGtkTheme}";
+    name = "catppuccin-${catppuccin.flavor}-${catppuccin.accent}-${catppuccin.size}+normal";
   };
 
   qtTheme = {

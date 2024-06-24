@@ -1,12 +1,6 @@
 { lib, ... }:
 with lib;
 rec {
-
-  # capitalise the first letter in a string,
-  mkUpper =
-    str:
-    (lib.toUpper (builtins.substring 0 1 str)) + (builtins.substring 1 (builtins.stringLength str) str);
-
   # color-related functions
 
   # convert rrggbb hex to #rrggbb
