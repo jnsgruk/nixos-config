@@ -35,6 +35,7 @@
       # You can also add overlays exported from other flakes:
       # neovim-nightly-overlay.overlays.default
       inputs.agenix.overlays.default
+      inputs.hyprland.overlays.default
       inputs.libations.overlays.default
 
       # Or just specify overlays directly here, for example:
