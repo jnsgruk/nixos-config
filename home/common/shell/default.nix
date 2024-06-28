@@ -8,7 +8,6 @@ in
     ./bottom.nix
     ./fzf.nix
     ./git.nix
-    ./helix.nix
     ./fastfetch.nix
     ./starship.nix
     ./tmux.nix
