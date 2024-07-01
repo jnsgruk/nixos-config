@@ -13,6 +13,8 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "unstable";
 
+    flypi.url = "github:jnsgruk/flypi";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "unstable";
 
@@ -65,6 +67,10 @@
         # Headless machines
         "${username}@hugin" = libx.mkHome { hostname = "hugin"; };
         "${username}@thor" = libx.mkHome { hostname = "thor"; };
+        "${username}@volnir" = libx.mkHome {
+          hostname = "volnir";
+          system = "aarch64-linux";
+        };
         "ubuntu@dev" = libx.mkHome {
           hostname = "dev";
           user = "ubuntu";
@@ -89,6 +95,10 @@
         };
         thor = libx.mkHost {
           hostname = "thor";
+          pkgsInput = nixpkgs;
+        };
+        volnir = libx.mkHost {
+          hostname = "volnir";
           pkgsInput = nixpkgs;
         };
       };

@@ -13,9 +13,10 @@
       hostname,
       user ? username,
       desktop ? null,
+      system ? "x86_64-linux",
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.unstable.legacyPackages.x86_64-linux;
+      pkgs = inputs.unstable.legacyPackages.${system};
       extraSpecialArgs = {
         inherit
           self

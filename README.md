@@ -12,13 +12,14 @@ I use [Hyprland](https://hyprland.org/) as my tiling window manager, [Alacritty]
 
 My machines are partitioned with [disko], and most are encrypted using the TPM to unlock the disks automatically on boot (I wrote about this [on my blog](https://jnsgr.uk/2024/04/nixos-secure-boot-tpm-fde/)). I tend toward [btrfs] for my machines - I've been using it for many years without issue. Machines are mostly named after characters or places in [Norse mythology](https://en.wikipedia.org/wiki/Norse_mythology).
 
-| Hostname |         Board         |           CPU           | RAM  |             GPU             |   OS   |  Role   | Desktop  |
-| :------: | :-------------------: | :---------------------: | :--: | :-------------------------: | :----: | :-----: | :------: |
-|  `dev`   |    [Multipass] VM     |            -            |  -   |              -              | Ubuntu | Server  |    -     |
-| `freyja` |    [Thinkpad Z13]     | [AMD Ryzen 7 Pro 6860Z] | 32GB |       AMD Radeon 680M       | NixOS  | Laptop  | Hyprland |
-| `hugin`  |  [Thinkcentre M93p]   |  [Intel Core i5-4690]   | 8GB  |   Intel HD Graphics 4600    | NixOS  | Server  |    -     |
-|  `kara`  | [MSI MPG X670 Carbon] |   [AMD Ryzen 9 7950X]   | 64GB |   [AMD Radeon RX 7900 XT]   | NixOS  | Desktop | Hyprland |
-|  `thor`  |   [Intel NUC6i7KYK]   | [Intel Core i7-6770HQ]  | 16GB | Intel Iris Pro Graphics 580 | NixOS  | Server  |    -     |
+| Hostname |         Board         |           CPU           | RAM  |             GPU             |   OS   |  Role   |   Desktop    |
+| :------: | :-------------------: | :---------------------: | :--: | :-------------------------: | :----: | :-----: | :----------: |
+|  `dev`   |    [Multipass] VM     |            -            |  -   |              -              | Ubuntu | Server  |      -       |
+| `freyja` |    [Thinkpad Z13]     | [AMD Ryzen 7 Pro 6860Z] | 32GB |       AMD Radeon 680M       | NixOS  | Laptop  |   Hyprland   |
+| `hugin`  |  [Thinkcentre M93p]   |  [Intel Core i5-4690]   | 8GB  |   Intel HD Graphics 4600    | NixOS  | Server  |      -       |
+|  `kara`  | [MSI MPG X670 Carbon] |   [AMD Ryzen 9 7950X]   | 64GB |   [AMD Radeon RX 7900 XT]   | NixOS  | Desktop |   Hyprland   |
+|  `thor`  |   [Intel NUC6i7KYK]   | [Intel Core i7-6770HQ]  | 16GB | Intel Iris Pro Graphics 580 | NixOS  | Server  |      -       |
+| `volnir` |   [Raspberry Pi 4]    |  BCM2711 / Cortex A72   | 4GB  |              -              | NixOS  |  Kiosk  | Cage/Firefox |
 
 [btrfs]: https://btrfs.readthedocs.io/en/latest/index.html
 [disko]: https://github.com/nix-community/disko
@@ -32,6 +33,7 @@ My machines are partitioned with [disko], and most are encrypted using the TPM t
 [AMD Ryzen 9 7950X]: https://www.cpubenchmark.net/cpu.php?cpu=AMD+Ryzen+9+7950X&id=5031
 [Intel Core i7-6770HQ]: https://www.cpubenchmark.net/cpu.php?cpu=Intel+Core+i7-6770HQ+%40+2.60GHz&id=2759
 [AMD Radeon RX 7900 XT]: https://www.xfxforce.com/shop/xfx-speedster-merc310-7900xt
+[Raspberry Pi 4]: https://www.raspberrypi.com/products/raspberry-pi-4-model-b/
 
 ## 🚧 Structure
 
