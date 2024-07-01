@@ -1,4 +1,8 @@
-# jnsgruk's [NixOS](https://nixos.org/) & [Home Manager](https://github.com/nix-community/home-manager) Configurations
+<p align="center">
+  <img width="250px" src=".github/images/flake_logo.png" alt="jnsgruk flake logo">
+</p>
+
+<h1 align="center">jnsgruk's <a href="https://nixos.org">NixOS</a> & <a href="https://github.com/nix-community/home-manager">Home Manager</a> Configurations</h1>
 
 This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for configuring my machines. As a general rule, my "server" machines track the latest stable release of NixOS, and my workstations/laptops track `unstable`.
 
@@ -67,8 +71,8 @@ The following is a list of the key elements of my setup, with links to their con
 
 ## 🖼️ Screenshots
 
-![clean](.github/screenshots/hypr_uw_clean.png)
-![dirty](.github/screenshots/hypr_uw_dirty.png)
+![clean](.github/images/hypr_uw_clean.png)
+![dirty](.github/images/hypr_uw_dirty.png)
 
 <!-- Applications / Packages -->
 
