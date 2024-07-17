@@ -27,9 +27,6 @@ in
 
   hardware.graphics.enable = true;
 
-  # Enable location services
-  location.provider = "geoclue2";
-
   programs = {
     _1password-gui = {
       enable = true;
