@@ -36,7 +36,6 @@
       # neovim-nightly-overlay.overlays.default
       inputs.agenix.overlays.default
       inputs.flypi.overlay
-      inputs.hyprland.overlays.default
       inputs.libations.overlays.default
 
       # Or just specify overlays directly here, for example:
