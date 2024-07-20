@@ -15,11 +15,11 @@
       src = prev.fetchFromGitHub {
         owner = "juju";
         repo = "juju";
-        rev = "dfee8e90c86bcfb05ffe187175e3dde7b8dcb599";
-        hash = "sha256-UhBq04T/vjxHth1o8ywnltghUtmvZ3uJd/9ju9Oo0rg=";
+        rev = "e291d1ef951bcd2f871a2a72302c0314f52a2953";
+        hash = "sha256-LnKLRtSya7kK/PZ+l2IESG45FaJwR/IRTlCsUrVXDEE=";
       };
 
-      vendorHash = "sha256-7wEHPICUCGAQYqHcB7Y/n8pojGoPLzNSZAuh7DqR38Y=";
+      vendorHash = "sha256-EkhPY9f3w/E2L1tCoy4XVFqmW9FQpVhofKxK9UgopjM=";
 
       subPackages = [ "cmd/juju" ];
 
