@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./atuin.nix
     ./bat.nix
     ./bottom.nix
     ./fzf.nix
