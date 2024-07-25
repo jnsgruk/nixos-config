@@ -10,16 +10,16 @@
 
     juju4 = prev.buildGo122Module {
       pname = "juju4";
-      version = "4.0-beta";
+      version = "4.0-unstable-2024-07-25";
 
       src = prev.fetchFromGitHub {
         owner = "juju";
         repo = "juju";
-        rev = "e03b3da713296e9e787c118de314e024fa67f612";
-        hash = "sha256-/DonloifB6BZzqPRTZlvwockuwF7NvPyLhIN1jkzc3s=";
+        rev = "32595332427ad5d24e60794dea074a1a03472775";
+        hash = "sha256-tGlVnjAiwOPgZiJ19P3DKnMfvSzGP0e/F4y+/K9Xlc0=";
       };
 
-      vendorHash = "sha256-dagcCpSO0OJaajzsQt46bQQ7oEqDAMQoNUTrjLKiPR4=";
+      vendorHash = "sha256-viXALaiAFLKAYVfmLraL0uncEIJq4a9Tdgo4u5cdsCA=";
 
       subPackages = [ "cmd/juju" ];
 
