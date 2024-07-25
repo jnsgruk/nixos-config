@@ -8,8 +8,8 @@
     # ...
     # });
 
-    juju = prev.buildGo122Module {
-      pname = "juju";
+    juju4 = prev.buildGo122Module {
+      pname = "juju4";
       version = "4.0-beta";
 
       src = prev.fetchFromGitHub {
@@ -31,6 +31,8 @@
         for file in etc/bash_completion.d/*; do
           installShellCompletion --bash "$file"
         done
+
+        mv $out/bin/juju $out/bin/juju4
       '';
     };
   };
