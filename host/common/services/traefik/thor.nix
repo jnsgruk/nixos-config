@@ -9,19 +9,6 @@ let
     };
   };
 
-  mkTsRouter =
-    {
-      name,
-      middlewares ? [ ],
-    }:
-    {
-      inherit middlewares;
-      rule = "Host(`thor.${internalDomain}`) && Path(`/${name}`) || PathPrefix(`/${name}`)";
-      service = name;
-      entryPoints = [ "websecure" ];
-      tls.certresolver = "tailscale";
-    };
-
   mkExtRouter =
     {
       subdomain,
@@ -75,45 +62,22 @@ in
       };
       dynamicConfigOptions = {
         http = {
-          middlewares = {
-            sabnzbd-strip-prefix.stripPrefix.prefixes = [ "/sabnzbd" ];
-          };
-
           routers = {
-            backup = mkExtRouter { subdomain = "backup"; };
             files = mkExtRouter { subdomain = "files"; };
             dash = mkExtRouter { subdomain = "dash"; };
 
             freyja-syncthing = mkExtRouter { subdomain = "freyja.sync"; };
             kara-syncthing = mkExtRouter { subdomain = "kara.sync"; };
             thor-syncthing = mkExtRouter { subdomain = "thor.sync"; };
-
-            jellyfin = mkTsRouter { name = "jellyfin"; };
-            prowlarr = mkTsRouter { name = "prowlarr"; };
-            radarr = mkTsRouter { name = "radarr"; };
-            sonarr = mkTsRouter { name = "sonarr"; };
-
-            sabnzbd = mkTsRouter {
-              name = "sabnzbd";
-              middlewares = [ "sabnzbd-strip-prefix" ];
-            };
           };
 
           services = {
-            backup = mkLB "http://localhost:8200";
             files = mkLB "http://localhost:8081";
             dash = mkLB "http://localhost:8082";
 
             "freyja.sync" = mkLB "http://freyja.${internalDomain}:8384";
             "kara.sync" = mkLB "http://kara.${internalDomain}:8384";
             "thor.sync" = mkLB "http://thor.${internalDomain}:8384";
-
-            jellyfin = mkLB "http://localhost:8096";
-            prowlarr = mkLB "http://localhost:9696";
-            radarr = mkLB "http://localhost:7878";
-            sonarr = mkLB "http://localhost:8989";
-
-            sabnzbd = mkLB "http://localhost:8080";
           };
         };
       };
