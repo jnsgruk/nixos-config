@@ -152,58 +152,6 @@
           }
         ];
       }
-      {
-        machines = [
-          {
-            thor = {
-              description = "thor";
-              icon = "tailscale.png";
-              href = "https://dash.jnsgr.uk";
-              widget = {
-                type = "tailscale";
-                deviceid = "{{HOMEPAGE_VAR_TAILSCALE_THOR_DEVICE_ID}}";
-                key = "{{HOMEPAGE_VAR_TAILSCALE_AUTH_KEY}}";
-              };
-            };
-          }
-          {
-            tower = {
-              description = "tower";
-              icon = "tailscale.png";
-              href = "https://dash.crgrd.uk";
-              widget = {
-                type = "tailscale";
-                deviceid = "{{HOMEPAGE_VAR_TAILSCALE_TOWER_DEVICE_ID}}";
-                key = "{{HOMEPAGE_VAR_TAILSCALE_AUTH_KEY}}";
-              };
-            };
-          }
-          {
-            gbox = {
-              description = "gbox";
-              icon = "tailscale.png";
-              href = "https://dash.gbox.crgrd.uk";
-              widget = {
-                type = "tailscale";
-                deviceid = "{{HOMEPAGE_VAR_TAILSCALE_GBOX_DEVICE_ID}}";
-                key = "{{HOMEPAGE_VAR_TAILSCALE_AUTH_KEY}}";
-              };
-            };
-          }
-          {
-            hugin = {
-              description = "hugin";
-              icon = "tailscale.png";
-              href = "https://dash.jnsgr.uk";
-              widget = {
-                type = "tailscale";
-                deviceid = "{{HOMEPAGE_VAR_TAILSCALE_HUGIN_DEVICE_ID}}";
-                key = "{{HOMEPAGE_VAR_TAILSCALE_AUTH_KEY}}";
-              };
-            };
-          }
-        ];
-      }
     ];
     settings = {
       title = "sgrs dashboard";
