@@ -42,43 +42,19 @@
               enable = true;
               openFirewall = true;
             };
-            traefik = {
+
+            caddy = {
               enable = true;
-              staticConfigOptions = {
-                certificatesResolvers.tailscale.tailscale = { };
-                entryPoints = {
-                  web = {
-                    address = ":80";
-                    http.redirections.entrypoint = {
-                      scheme = "https";
-                      to = "websecure";
-                    };
-                  };
-                  websecure.address = ":443";
-                };
-              };
-              dynamicConfigOptions = {
-                http = {
-                  routers."${name}" = {
-                    rule = "Host(`${name}.tailnet-d5da.ts.net`)";
-                    service = "${name}";
-                    entryPoints = [ "websecure" ];
-                    tls.certresolver = "tailscale";
-                  };
-                  services."${name}" = {
-                    loadBalancer = {
-                      servers = [ { url = "http://localhost:${builtins.elemAt addressParts 1}"; } ];
-                    };
-                  };
-                };
-              };
+              virtualHosts."${name}.tailnet-d5da.ts.net".extraConfig = ''
+                reverse_proxy http://localhost:${builtins.elemAt addressParts 1}
+              '';
             };
 
             tailscale = {
               enable = true;
               openFirewall = true;
               useRoutingFeatures = "both";
-              permitCertUid = "traefik";
+              permitCertUid = "caddy";
             };
 
             resolved.enable = true;
