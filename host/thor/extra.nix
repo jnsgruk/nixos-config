@@ -6,8 +6,8 @@
     ../common/services/libations.nix
     ../common/services/homepage
     ../common/services/photo-backup
+    ../common/services/reverse-proxy
     ../common/services/servarr
-    ../common/services/traefik
   ];
 
   age.secrets = {

@@ -7,8 +7,8 @@
 {
   imports = lib.optional (builtins.pathExists (./. + "/${hostname}.nix")) ./${hostname}.nix;
 
-  services.traefik = {
+  services.caddy = {
     enable = true;
-    package = pkgs.unstable.traefik;
+    package = pkgs.unstable.custom-caddy;
   };
 }
