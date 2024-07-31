@@ -1,7 +1,7 @@
 _: {
   kara = {
     workspace = [ ];
-    monitor = [ "DP-1, 7680x2160, auto, 1" ];
+    monitor = [ "DP-1, 7680x2160@120Hz, auto, 1" ];
   };
 
   freyja = {
