@@ -24,6 +24,7 @@
 
     # Python tooling
     ruff
+    uv
     (pkgs.python3.withPackages (
       p: with p; [
         tox
