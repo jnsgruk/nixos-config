@@ -72,13 +72,4 @@ in
 
     gvfs.enable = true;
   };
-
-  security = {
-    pam = {
-      services = {
-        # unlock gnome keyring automatically with greetd
-        greetd.enableGnomeKeyring = true;
-      };
-    };
-  };
 }
