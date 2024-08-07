@@ -20,7 +20,12 @@ rec {
   wallpaper = if hostname == "kara" then ./wallpapers/mountains.png else ./wallpapers/jokulsarlon.png;
 
   gtkTheme = {
-    name = "catppuccin-${catppuccin.flavor}-${catppuccin.accent}-${catppuccin.size}+normal";
+    name = "catppuccin-macchiato-blue-standard";
+    package = pkgs.catppuccin-gtk.override {
+      size = catppuccin.size;
+      variant = catppuccin.flavor;
+      accents = [ catppuccin.accent ];
+    };
   };
 
   qtTheme = {

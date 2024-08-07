@@ -17,10 +17,7 @@ in
   gtk = {
     enable = true;
 
-    catppuccin = {
-      enable = true;
-      inherit (theme.catppuccin) accent;
-    };
+    theme = theme.gtkTheme;
 
     font = {
       inherit (theme.fonts.default) package;
