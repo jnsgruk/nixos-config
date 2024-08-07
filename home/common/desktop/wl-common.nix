@@ -3,7 +3,7 @@
   services = {
     avizo.enable = true;
 
-    clipman.enable = true;
+    cliphist.enable = true;
 
     wlsunset = {
       enable = true;
