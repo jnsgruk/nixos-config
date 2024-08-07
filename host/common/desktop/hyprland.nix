@@ -30,8 +30,8 @@ in
     variables.NIXOS_OZONE_WL = "1";
 
     systemPackages = with pkgs; [
-      gnome.nautilus
-      gnome.zenity
+      nautilus
+      zenity
       # Enable HEIC image previews in Nautilus
       libheif
       libheif.out
@@ -47,7 +47,7 @@ in
       enable = true;
       # Make the gnome keyring work properly
       packages = [
-        pkgs.gnome3.gnome-keyring
+        pkgs.gnome-keyring
         pkgs.gcr
       ];
     };
