@@ -45,11 +45,7 @@ in
   services = {
     dbus = {
       enable = true;
-      # Make the gnome keyring work properly
-      packages = [
-        pkgs.gnome-keyring
-        pkgs.gcr
-      ];
+      implementation = "broker";
     };
 
     gnome = {
