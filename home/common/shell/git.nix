@@ -6,6 +6,8 @@
     jon@sgrs.uk sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBC8cs1B64XqEswY5pART6yERbjUMB7RdQdT38dgkZT6AAAABHNzaDo= YK5
     jon.seager@canonical.com sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB9bIEMgZVBCDxBWQ4m4hQP6ZZp0P3TfzjzcgUOdbYDLAAAABHNzaDo= YK5C
     jon.seager@canonical.com sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBC8cs1B64XqEswY5pART6yERbjUMB7RdQdT38dgkZT6AAAABHNzaDo= YK5
+    jnsgruk@ubuntu.com sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIB9bIEMgZVBCDxBWQ4m4hQP6ZZp0P3TfzjzcgUOdbYDLAAAABHNzaDo= YK5C
+    jnsgruk@ubuntu.com sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIBC8cs1B64XqEswY5pART6yERbjUMB7RdQdT38dgkZT6AAAABHNzaDo= YK5
   '';
 
   home.packages = with pkgs; [ gh ];
@@ -17,12 +19,18 @@
       userEmail = "jon@sgrs.uk";
       userName = "Jon Seager";
 
-      # When the working directory is under ~/code/canonical then sign-off commits
-      # with Canonical email address.
       includes = [
+        # When the working directory is under ~/code/canonical then sign-off commits
+        # with Canonical email address.
         {
           condition = "gitdir:~/code/canonical/";
           contents.user.email = "jon.seager@canonical.com";
+        }
+        # When the working directory is under ~/code/snapcrafters then sign-off commits
+        # with Ubuntu email address.
+        {
+          condition = "gitdir:~/code/snapcrafters/";
+          contents.user.email = "jnsgruk@ubuntu.com";
         }
       ];
 
