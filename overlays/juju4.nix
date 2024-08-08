@@ -4,16 +4,16 @@ let
 in
 buildGo122Module {
   pname = "juju4";
-  version = "4.0-unstable-2024-07-25";
+  version = "4.0-unstable-2024-08-08";
 
   src = fetchFromGitHub {
     owner = "juju";
     repo = "juju";
-    rev = "32595332427ad5d24e60794dea074a1a03472775";
-    hash = "sha256-tGlVnjAiwOPgZiJ19P3DKnMfvSzGP0e/F4y+/K9Xlc0=";
+    rev = "e4724547ea17482dea30541463973600e172d878";
+    hash = "sha256-HQ7QPR3bfHKog5b7qw6rsWZyrwvfL/KRSzHSi+Lh+14=";
   };
 
-  vendorHash = "sha256-viXALaiAFLKAYVfmLraL0uncEIJq4a9Tdgo4u5cdsCA=";
+  vendorHash = "sha256-zRGxS2QFukI7AKgC8XHon/iH6bzrEsGjFPFf8CLJp4o=";
 
   subPackages = [ "cmd/juju" ];
 
@@ -22,10 +22,6 @@ buildGo122Module {
   doCheck = false;
 
   postInstall = ''
-    for file in etc/bash_completion.d/*; do
-      installShellCompletion --bash "$file"
-    done
-
     mv $out/bin/juju $out/bin/juju4
   '';
 }
