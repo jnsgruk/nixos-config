@@ -11,12 +11,6 @@ let
   libx = import ./lib.nix { inherit pkgs lib addresses; };
 in
 {
-  networking.nat = {
-    enable = true;
-    internalInterfaces = [ "ve-+" ];
-    externalInterface = "eno1";
-  };
-
   containers = {
     jellyfin = libx.mkAppContainer { name = "jellyfin"; };
     prowlarr = libx.mkAppContainer { name = "prowlarr"; };
