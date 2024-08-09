@@ -35,5 +35,8 @@ in
     pinentryPackage = pkgs.pinentry-curses;
   };
 
-  home.packages = with pkgs; [ ];
+  home.packages = with pkgs; [
+    age
+    sops
+  ];
 }
