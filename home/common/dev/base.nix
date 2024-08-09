@@ -1,6 +1,12 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    gnumake
+    gcc
+
+    nodejs
+    nodePackages_latest.prettier
+
     # Container tooling
     dive
     kubectl
