@@ -13,6 +13,7 @@
     inputs.nixos-hardware.nixosModules.common-pc-ssd
 
     ../common/hardware/bluetooth.nix
+    ../common/hardware/yubihsm.nix
   ];
 
   hardware.amdgpu.amdvlk.enable = true;

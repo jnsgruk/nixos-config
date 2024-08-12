@@ -8,6 +8,20 @@
     # ...
     # });
     juju4 = import ./juju4.nix { pkgs = prev; };
+
+    yubihsm-shell = prev.yubihsm-shell.overrideAttrs (oldAttrs: {
+      buildInputs = [
+        prev.libusb1
+        prev.libedit
+        prev.curl
+        prev.openssl
+        prev.pcsclite.dev
+      ];
+      buildPhase = ''
+        NIX_CFLAGS_COMPILE="$(pkg-config --cflags libpcsclite) $NIX_CFLAGS_COMPILE"
+        runHook buildPhase
+      '';
+    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
@@ -22,6 +36,7 @@
           # ...
           # });
           custom-caddy = import ./custom-caddy.nix { pkgs = prev; };
+
         })
       ];
     };
