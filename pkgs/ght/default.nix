@@ -1,14 +1,13 @@
 { lib, pkgs, ... }:
 pkgs.buildNpmPackage rec {
   pname = "ght";
-  version = "1.8.0-unstable-2024-08-06";
+  version = "1.10.0";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
     repo = "ght";
-    # rev = "refs/tags/v${version}";
-    rev = "464f690316cb37562814c0bce44891e6cb854edb";
-    hash = "sha256-FAf1+gOf0YuTmwWmisHHIzmdrB23uqoFxKUCV84ZK1c=";
+    rev = "refs/tags/v${version}";
+    hash = "sha256-MPJ8FcfRcz8mrZjeoMz/9y2qCJUeoTmWpcOVRUjS7xw=";
   };
 
   npmDeps = pkgs.fetchNpmDeps {
