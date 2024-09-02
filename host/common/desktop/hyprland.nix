@@ -15,57 +15,16 @@ let
     systemd-run --user --scope --collect --quiet --unit="hyprland" \
         systemd-cat --identifier="hyprland" ${pkgs.hyprland}/bin/Hyprland $@
 
-    ${pkgs.hyprland}/bin/hyperctl dispatch exit
+    ${pkgs.hyprland}/bin/hyprctl dispatch exit
   '';
 in
 {
+  imports = [ ./tiling-common.nix ];
 
-  programs = {
-    dconf.enable = true;
-    file-roller.enable = true;
-    hyprland.enable = true;
-  };
+  programs.hyprland.enable = true;
 
-  environment = {
-    variables.NIXOS_OZONE_WL = "1";
-
-    systemPackages = with pkgs; [
-      nautilus
-      zenity
-      # Enable HEIC image previews in Nautilus
-      libheif
-      libheif.out
-      polkit_gnome
-    ];
-
-    # Enable HEIC image previews in Nautilus
-    pathsToLink = [ "share/thumbnailers" ];
-  };
-
-  services = {
-    dbus = {
-      enable = true;
-      implementation = "broker";
-    };
-
-    gnome = {
-      gnome-keyring.enable = true;
-      sushi.enable = true;
-    };
-
-    greetd = {
-      enable = true;
-      restart = false;
-      settings = {
-        default_session = {
-          command = ''
-            ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
-              --cmd ${lib.getExe hypr-run}
-          '';
-        };
-      };
-    };
-
-    gvfs.enable = true;
-  };
+  services.greetd.settings.default_session.command = ''
+    ${lib.makeBinPath [ pkgs.greetd.tuigreet ]}/tuigreet -r --asterisks --time \
+      --cmd ${lib.getExe hypr-run}
+  '';
 }

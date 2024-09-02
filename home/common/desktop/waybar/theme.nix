@@ -2,6 +2,7 @@
   config,
   lib,
   theme,
+  desktop,
   ...
 }:
 {
@@ -44,7 +45,7 @@
       };
 
       "#workspaces button" = {
-        padding = mkLiteral "0px 10px";
+        padding = if desktop == "hyprland" then mkLiteral "0px 10px" else mkLiteral "0px";
         background-color = mkLiteral "transparent";
         font-weight = mkLiteral "lighter";
         color = mkLiteral "${theme.colours.text}";

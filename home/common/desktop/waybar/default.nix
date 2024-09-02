@@ -28,6 +28,20 @@ let
         "group/group-power"
       ];
 
+  workspaceConfig = {
+    format = "{icon}";
+    format-icons = {
+      "1" = "";
+      "2" = "";
+      "3" = "󰙀";
+      "4" = "";
+      "5" = "";
+      "6" = "";
+      "7" = "";
+    };
+    on-click = "activate";
+  };
+
   bluetoothToggle = pkgs.writeShellApplication {
     name = "bluetooth-toggle";
     runtimeInputs = with pkgs; [
@@ -99,26 +113,15 @@ in
         passthrough = false;
         gtk-layer-shell = true;
 
-        modules-left = [ "hyprland/workspaces" ];
+        modules-left = [ (if desktop == "hyprland" then "hyprland/workspaces" else "sway/workspaces") ];
         modules-center = [
           "clock"
           "idle_inhibitor"
         ];
         modules-right = modules;
 
-        "hyprland/workspaces" = {
-          format = "{icon}";
-          format-icons = {
-            "1" = "";
-            "2" = "";
-            "3" = "󰙀";
-            "4" = "";
-            "5" = "";
-            "6" = "";
-            "7" = "";
-          };
-          on-click = "activate";
-        };
+        "hyprland/workspaces" = workspaceConfig;
+        "sway/workspaces" = workspaceConfig;
 
         "network" = {
           format-wifi = "{essid} ";
@@ -183,13 +186,21 @@ in
 
         "custom/quit" = {
           format = "󰗼";
-          on-click = "${pkgs.hyprland}/bin/hyprctl dispatch exit";
+          on-click =
+            if desktop == "hyprland" then
+              "${pkgs.hyprland}/bin/hyprctl dispatch exit"
+            else
+              "${pkgs.sway}/bin/swaymsg exit";
           tooltip = false;
         };
 
         "custom/lock" = {
           format = "󰍁";
-          on-click = "${lib.getExe pkgs.hyprlock}";
+          on-click =
+            if desktop == "hyprland" then
+              "${pkgs.hyprlock}/bin/hyprlock"
+            else
+              "${pkgs.swaylock-effects}/bin/swaylock -f";
           tooltip = false;
         };
 
@@ -248,15 +259,16 @@ in
         (import ./theme.nix {
           inherit
             config
-            pkgs
+            desktop
             lib
+            pkgs
             theme
             ;
         }).theme;
   };
 
   # This is a hack to ensure that hyprctl ends up in the PATH for the waybar service on hyprland
-  systemd.user.services.waybar.Service.Environment = lib.mkForce "PATH=${
-    lib.makeBinPath [ pkgs."${desktop}" ]
-  }";
+  systemd.user.services.waybar.Service.Environment = lib.optional (desktop == "hyprland") (
+    lib.mkForce "PATH=${lib.makeBinPath [ pkgs."${desktop}" ]}"
+  );
 }

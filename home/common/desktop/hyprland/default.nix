@@ -101,17 +101,6 @@ in
     '';
   };
 
-  home.sessionVariables = {
-    _JAVA_AWT_WM_NONREPARENTING = "1";
-    CLUTTER_BACKEND = "wayland";
-    GDK_BACKEND = "wayland";
-    MOZ_ENABLE_WAYLAND = "1";
-    QT_QPA_PLATFORM = "wayland";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    SDL_VIDEODRIVER = "wayland";
-    XDG_SESSION_TYPE = "wayland";
-  };
-
   systemd.user.services.swaybg = {
     Unit.Description = "swaybg";
     Install.WantedBy = [ "hyprland-session.target" ];
