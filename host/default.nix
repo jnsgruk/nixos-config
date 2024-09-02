@@ -36,7 +36,6 @@
       # neovim-nightly-overlay.overlays.default
       inputs.agenix.overlays.default
       inputs.flypi.overlay
-      inputs.hyprland.overlays.default
       inputs.libations.overlays.default
 
       # Or just specify overlays directly here, for example:
@@ -67,8 +66,6 @@
         "nix-command"
         "flakes"
       ];
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
       trusted-users = [
         "root"
         "@wheel"
