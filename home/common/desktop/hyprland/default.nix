@@ -14,15 +14,12 @@ let
 in
 {
   imports = [
-    ../waybar
-
-    ../mako.nix
-    ../rofi.nix
-    ../swappy.nix
     ../wl-common.nix
-
     ./hyprlock.nix
-    ./packages.nix
+  ];
+
+  home.packages = with pkgs; [
+    grimblast
   ];
 
   wayland.windowManager.hyprland = {

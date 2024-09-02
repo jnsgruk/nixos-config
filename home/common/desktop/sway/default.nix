@@ -6,15 +6,10 @@
 }:
 {
   imports = [
-    ../waybar
-
-    ../mako.nix
-    ../rofi.nix
-    ../swappy.nix
-    ./swaylock.nix
     ../wl-common.nix
 
     ./packages.nix
+    ./swaylock.nix
   ];
 
   wayland.windowManager.sway =

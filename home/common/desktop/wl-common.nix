@@ -1,5 +1,12 @@
 { pkgs, ... }:
 {
+  imports = [
+    ./waybar
+    ./mako.nix
+    ./rofi.nix
+    ./swappy.nix
+  ];
+
   services = {
     avizo.enable = true;
 
