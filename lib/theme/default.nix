@@ -22,7 +22,7 @@ rec {
   gtkTheme = {
     name = "catppuccin-macchiato-blue-standard";
     package = pkgs.catppuccin-gtk.override {
-      size = catppuccin.size;
+      inherit (catppuccin) size;
       variant = catppuccin.flavor;
       accents = [ catppuccin.accent ];
     };
