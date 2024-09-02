@@ -12,6 +12,8 @@
 
     cliphist.enable = true;
 
+    gnome-keyring.enable = true;
+
     wlsunset = {
       enable = true;
       latitude = "51.51";
