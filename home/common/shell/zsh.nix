@@ -33,7 +33,7 @@
         patch_tox_ruff() {
           for x in $(find .tox -name ruff -type f -print); do
             rm $x;
-            ln -sf $(which ruff) $x; 
+            ln -sf $(which ruff) $x;
           done
         }
 
@@ -41,6 +41,15 @@
           for CRAFT in snapcraft rockcraft charmcraft; do 
             lxc --project $CRAFT list -fcsv -cn | xargs lxc --project $CRAFT delete -f >/dev/null
           done
+        }
+
+        ubuntu() {
+          BASE="''${BASE:-noble}"
+          CONTAINER_NAME="ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)"
+
+          lxc launch -q "ubuntu:''${BASE}" "''${CONTAINER_NAME}"
+          lxc exec "''${CONTAINER_NAME}" -- bash -c "$*"
+          lxc delete -f "''${CONTAINER_NAME}"
         }
 
         export EDITOR=vim
