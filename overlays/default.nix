@@ -8,11 +8,6 @@
     # ...
     # });
     juju4 = import ./juju4.nix { pkgs = prev; };
-
-    # Can be removed once https://github.com/NixOS/nixpkgs/pull/338960 is in unstable.
-    swaylock-effects = prev.swaylock-effects.overrideAttrs (_: {
-      depsBuildBuild = [ prev.pkg-config ];
-    });
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
@@ -27,7 +22,6 @@
           # ...
           # });
           custom-caddy = import ./custom-caddy.nix { pkgs = prev; };
-
         })
       ];
     };
