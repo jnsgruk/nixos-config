@@ -47,9 +47,61 @@
           BASE="''${BASE:-noble}"
           CONTAINER_NAME="ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)"
 
-          lxc launch -q "ubuntu:''${BASE}" "''${CONTAINER_NAME}"
-          lxc exec "''${CONTAINER_NAME}" -- bash -c "$*"
+          # Create the container, but don't start it
+          lxc init -q "ubuntu:''${BASE}" "''${CONTAINER_NAME}"
+
+          # Map host uid -> 1000 in the container, and host gid -> 1000
+          printf "uid $(id -u) 1000\ngid $(id -g) 1000" | lxc config set -q "''${CONTAINER_NAME}" raw.idmap -
+
+          # Mount the $HOME/data directory -> /home/ubuntu/data in the container
+          lxc config device add -q "''${CONTAINER_NAME}" datadir disk source="''${HOME}/data" path=/home/ubuntu/data
+
+          # Start the container, wait for cloud-init to finish
+          lxc start "''${CONTAINER_NAME}"
+
+          # Wait for the ubuntu user
+          while ! lxc exec "''${CONTAINER_NAME}" -- id -u ubuntu &>/dev/null; do sleep 0.5; done
+
+          # If extra args were specified, run them, else drop to a non-root shell
+          if [[ -n "''${1:-}" ]]; then
+            lxc exec "''${CONTAINER_NAME}" -- bash -c "$*"
+          else
+            lxc exec "''${CONTAINER_NAME}" -- sudo -u ubuntu -i bash
+          fi
+
+          # Delete the container when the command exits
           lxc delete -f "''${CONTAINER_NAME}"
+        }
+
+        ubuntu-vm() {
+          BASE="''${BASE:-noble}"
+          VM_NAME="ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)"
+          DISK="''${DISK:-100}"
+          CPU="''${CPU:-16}"
+          MEM="''${MEM:-32}"
+
+          # Create the VM, but don't start it
+          lxc init --vm "ubuntu:''${BASE}" "''${VM_NAME}" \
+            -c limits.cpu="''${CPU}" -c limits.memory="''${MEM}GiB" -d root,size="''${DISK}GiB"
+
+          # Mount the $HOME/data directory -> /home/ubuntu/data in the container
+          lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/data" path=/home/ubuntu/data
+
+          # Start the container, wait for cloud-init to finish
+          lxc start "''${VM_NAME}"
+
+          # Wait for the ubuntu user
+          while ! lxc exec "''${VM_NAME}" -- id -u ubuntu &>/dev/null; do sleep 0.5; done
+
+          # If extra args were specified, run them, else drop to a non-root shell
+          if [[ -n "''${1:-}" ]]; then
+            lxc exec "''${VM_NAME}" -- bash -c "$*"
+          else
+            lxc exec "''${VM_NAME}" -- sudo -u ubuntu -i bash
+          fi
+
+          # Delete the container when the command exits
+          lxc delete -f "''${VM_NAME}"
         }
 
         export EDITOR=vim
