@@ -4,6 +4,7 @@
     ../common/services/files.nix
     ../common/services/home-assistant.nix
     ../common/services/libations.nix
+    ../common/services/nfs
     ../common/services/photo-backup
     ../common/services/reverse-proxy
   ];
@@ -20,33 +21,6 @@
       owner = "root";
       group = "root";
       mode = "400";
-    };
-  };
-
-  networking = {
-    firewall = {
-      allowedTCPPorts = [
-        111
-        2049
-        4000
-        4001
-        4002
-        20048
-      ];
-      allowedUDPPorts = [
-        111
-        2049
-        4000
-        4001
-        4002
-        20048
-      ];
-    };
-
-    nat = {
-      enable = true;
-      internalInterfaces = [ "ve-+" ];
-      externalInterface = "eno1";
     };
   };
 
@@ -75,15 +49,6 @@
       environment.BORG_RSH = "ssh -i ${config.age.secrets."borgbase-ssh".path}";
       compression = "auto,lzma";
       startAt = "daily";
-    };
-
-    nfs = {
-      server = {
-        enable = true;
-        exports = ''
-          /data  100.64.0.0/10 (rw,fsid=0,no_subtree_check)
-        '';
-      };
     };
   };
 }
