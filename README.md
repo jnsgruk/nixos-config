@@ -69,7 +69,7 @@ The following is a list of the key elements of my setup, with links to their con
 |  Shell   | [zsh], [starship], [nvim], [tmux], [fastfetch], [bat], [fzf]      |
 |    WM    | [hyprland], [waybar], [hyprlock], [mako], [gtk], [rofi], [swappy] |
 |   Apps   | [vscode], [zathura], [alacritty]                                  |
-| Services | [homepage-dashboard], [home-assistant]                            |
+| Services | [home-assistant]                                                  |
 
 ## 🖼️ Screenshots
 
@@ -84,7 +84,6 @@ The following is a list of the key elements of my setup, with links to their con
 [fzf]: ./home/common/shell/fzf.nix
 [gtk]: ./home/common/desktop/gtk.nix
 [home-assistant]: ./host/common/services/home-assistant.nix
-[homepage-dashboard]: ./host/common/services/homepage/
 [hyprland]: ./home/common/desktop/hyprland/default.nix
 [hyprlock]: ./home/common/desktop/hyprland/hyprlock.nix
 [mako]: ./home/common/desktop/mako.nix

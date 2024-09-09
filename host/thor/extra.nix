@@ -4,10 +4,8 @@
     ../common/services/files.nix
     ../common/services/home-assistant.nix
     ../common/services/libations.nix
-    ../common/services/homepage
     ../common/services/photo-backup
     ../common/services/reverse-proxy
-    ../common/services/servarr
   ];
 
   age.secrets = {
@@ -63,15 +61,7 @@
     #
     #    borg-job-borgbase umount backup
     borgbackup.jobs."borgbase" = {
-      paths = [
-        "/data"
-        "/var/lib/homepage-dashboard"
-        "/var/lib/nixos-containers/radarr/var/lib/radarr"
-        "/var/lib/nixos-containers/sonarr/var/lib/sonarr"
-        "/var/lib/nixos-containers/prowlarr/var/lib/prowlarr"
-        "/var/lib/nixos-containers/jellyfin/var/lib/jellyfin"
-        "/var/lib/nixos-containers/sabnzbd/var/lib/sabnzbd"
-      ];
+      paths = [ "/data" ];
       exclude = [
         "/data/apps/files/_files/cache"
         "/data/lost+found"

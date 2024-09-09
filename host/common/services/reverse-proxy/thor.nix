@@ -26,7 +26,6 @@ in
     tailscale.permitCertUid = "caddy";
 
     caddy.virtualHosts = {
-      "dash.${domain}".extraConfig = mkVHost "http://localhost:8082";
       "files.${domain}".extraConfig = mkVHost "http://localhost:8081";
       "freyja.sync.${domain}".extraConfig = mkVHost "http://freyja.${tailnet}:8384";
       "kara.sync.${domain}".extraConfig = mkVHost "http://kara.${tailnet}:8384";

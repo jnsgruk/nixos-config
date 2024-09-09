@@ -16,7 +16,5 @@ in
   "thor-libations-recipes.age".publicKeys = users ++ [ thor ];
   "thor-backup-env.age".publicKeys = users ++ [ thor ];
 
-  "thor-dashboard-env.age".publicKeys = users ++ [ thor ];
-
   "volnir-planefinder-config.age".publicKeys = users ++ [ volnir ];
 }
