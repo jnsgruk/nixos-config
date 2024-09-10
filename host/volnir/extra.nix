@@ -47,8 +47,6 @@
 
     dump1090.enable = true;
 
-    kmscon.enable = lib.mkForce false;
-
     planefinder = {
       enable = true;
       openFirewall = true;

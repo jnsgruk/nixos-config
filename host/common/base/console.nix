@@ -1,14 +1,17 @@
 {
   pkgs,
-  self,
-  hostname,
   ...
 }:
-let
-  theme = import "${self}/lib/theme" { inherit pkgs; };
-  inherit (theme) colours hexToRgb;
-in
 {
+  boot = {
+    # Catppuccin theme
+    kernelParams = [
+      "vt.default_red=30,243,166,249,137,245,148,186,88,243,166,249,137,245,148,166"
+      "vt.default_grn=30,139,227,226,180,194,226,194,91,139,227,226,180,194,226,173"
+      "vt.default_blu=46,168,161,175,250,231,213,222,112,168,161,175,250,231,213,200"
+    ];
+  };
+
   console = {
     earlySetup = true;
     packages = with pkgs; [
@@ -16,42 +19,5 @@ in
       powerline-fonts
     ];
     font = "ter-powerline-v32n";
-  };
-
-  services.kmscon = {
-    enable = true;
-    # TODO: Remove this condition once 24.11 is released.
-    hwRender = if (hostname == "freyja" || hostname == "kara") then true else false;
-    fonts = [
-      {
-        name = "${theme.fonts.monospace.name}";
-        inherit (theme.fonts.monospace) package;
-      }
-    ];
-    extraConfig = ''
-      font-size=14
-
-      xkb-layout=gb
-
-      palette=custom
-      palette-black=${hexToRgb colours.surface1}
-      palette-red=${hexToRgb colours.red}
-      palette-green=${hexToRgb colours.green}
-      palette-yellow=${hexToRgb colours.yellow}
-      palette-blue=${hexToRgb colours.darkBlue}
-      palette-magenta=${hexToRgb colours.pink}
-      palette-cyan=${hexToRgb colours.cyan}
-      palette-light-grey=${hexToRgb colours.overlay2}
-      palette-dark-grey=${hexToRgb colours.overlay0}
-      palette-light-red=${hexToRgb colours.red}
-      palette-light-green=${hexToRgb colours.green}
-      palette-light-yellow=${hexToRgb colours.yellow}
-      palette-light-blue=${hexToRgb colours.darkBlue}
-      palette-light-magenta=${hexToRgb colours.pink}
-      palette-light-cyan=${hexToRgb colours.cyan}
-      palette-white=${hexToRgb colours.subtext1}
-      palette-foreground=${hexToRgb colours.text}
-      palette-background=${hexToRgb colours.bg}
-    '';
   };
 }
