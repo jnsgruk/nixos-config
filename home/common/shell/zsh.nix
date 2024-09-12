@@ -112,6 +112,8 @@
         tree = "eza --tree";
         cat = "bat";
 
+        lsusb = "cyme --headings";
+
         ip = "ip --color";
         ipb = "ip --color --brief";
 

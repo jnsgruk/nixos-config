@@ -6,6 +6,7 @@
     bat
     binutils
     curl
+    cyme
     dig
     dua
     duf
