@@ -45,7 +45,8 @@
 
         ubuntu() {
           BASE="''${BASE:-noble}"
-          CONTAINER_NAME="ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)"
+          CONTAINER_NAME="''${CONTAINER_NAME:-ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)}"
+          EPHEMERAL="''${EPHEMERAL:-true}"
 
           # Create the container, but don't start it
           lxc init -q "ubuntu:''${BASE}" "''${CONTAINER_NAME}"
@@ -62,6 +63,9 @@
           # Wait for the ubuntu user
           while ! lxc exec "''${CONTAINER_NAME}" -- id -u ubuntu &>/dev/null; do sleep 0.5; done
 
+          # Fix broken permissions on ubuntu home directory
+          lxc exec "''${CONTAINER_NAME}" -- sudo chown ubuntu:ubuntu /home/ubuntu
+
           # If extra args were specified, run them, else drop to a non-root shell
           if [[ -n "''${1:-}" ]]; then
             lxc exec "''${CONTAINER_NAME}" -- bash -c "$*"
@@ -70,28 +74,34 @@
           fi
 
           # Delete the container when the command exits
-          lxc delete -f "''${CONTAINER_NAME}"
+          if [[ "''${EPHEMERAL}" == "true" ]]; then
+            lxc delete -f "''${CONTAINER_NAME}"
+          fi
         }
 
         ubuntu-vm() {
           BASE="''${BASE:-noble}"
-          VM_NAME="ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)"
+          VM_NAME="''${VM_NAME:-ubuntu-''${BASE}-$(head -c 2 /dev/urandom | xxd -p -c 32)}"
           DISK="''${DISK:-100}"
           CPU="''${CPU:-16}"
           MEM="''${MEM:-32}"
+          EPHEMERAL="''${EPHEMERAL:-true}"
 
           # Create the VM, but don't start it
           lxc init --vm "ubuntu:''${BASE}" "''${VM_NAME}" \
             -c limits.cpu="''${CPU}" -c limits.memory="''${MEM}GiB" -d root,size="''${DISK}GiB"
 
           # Mount the $HOME/data directory -> /home/ubuntu/data in the container
-          lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/data" path=/home/ubuntu/data
+          lxc config device add "''${VM_NAME}" datadir disk source="''${HOME}/data" path=/home/ubuntu/data readonly=false
 
           # Start the container, wait for cloud-init to finish
           lxc start "''${VM_NAME}"
 
           # Wait for the ubuntu user
           while ! lxc exec "''${VM_NAME}" -- id -u ubuntu &>/dev/null; do sleep 0.5; done
+
+          # Fix broken permissions on ubuntu home directory
+          lxc exec "''${VM_NAME}" -- sudo chown ubuntu:ubuntu /home/ubuntu
 
           # If extra args were specified, run them, else drop to a non-root shell
           if [[ -n "''${1:-}" ]]; then
@@ -101,7 +111,15 @@
           fi
 
           # Delete the container when the command exits
-          lxc delete -f "''${VM_NAME}"
+          if [[ "''${EPHEMERAL}" == "true" ]]; then
+            lxc delete -f "''${VM_NAME}"
+          fi
+        }
+
+        ubuntu-dev() {
+          export EPHEMERAL=false
+          export VM_NAME=dev
+          ubuntu-vm
         }
 
         export EDITOR=vim
