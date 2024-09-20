@@ -62,6 +62,7 @@ in
 
   services.swayidle = {
     enable = true;
+    extraArgs = [ "-w" ];
     events = [
       {
         event = "before-sleep";
