@@ -1,18 +1,19 @@
 { lib, pkgs, ... }:
 pkgs.buildNpmPackage rec {
   pname = "ght";
-  version = "1.10.0";
+  version = "1.10.0-unstable-2024-09-20";
 
   src = pkgs.fetchFromGitHub {
     owner = "canonical";
     repo = "ght";
-    rev = "refs/tags/v${version}";
-    hash = "sha256-MPJ8FcfRcz8mrZjeoMz/9y2qCJUeoTmWpcOVRUjS7xw=";
+    # rev = "refs/tags/v${version}";
+    rev = "cf74a615a3eb267d3fce822ae6ea218221d189a7";
+    hash = "sha256-DlqHpYo2msLyghRwSk2OSuV4CVJqKKB9+SAqBa8m2yA=";
   };
 
   npmDeps = pkgs.fetchNpmDeps {
     inherit src;
-    hash = "sha256-SwCcDyfMCbmzW6y2IYaXTwWdcX73jcC7ZL/9+YrB9os=";
+    hash = "sha256-6/Ug6BO0/B/O5ZuwCQzo8z+kjFiO9Ha9s03jCy/uL5Q=";
   };
 
   patches = [ ./ght-graders-loc.patch ];
