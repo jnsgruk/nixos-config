@@ -7,6 +7,8 @@
     nodejs
     nodePackages_latest.prettier
 
+    spread
+
     # Container tooling
     dive
     kubectl
