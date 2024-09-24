@@ -14,10 +14,26 @@ pkgs.buildGoModule {
 
   subPackages = [ "cmd/spread" ];
 
+  nativeBuildInputs = with pkgs; [ makeWrapper ];
+
+  patches = [ ./local-script-path.patch ];
+
   postPatch = ''
+    # Replace direct calls to /bin/bash
     substituteInPlace spread/lxd.go --replace-fail '"/bin/bash", ' '"/usr/bin/env", "bash", '
     substituteInPlace spread/client.go --replace-fail '"/bin/bash", ' '"/usr/bin/env", "bash", '
     substituteInPlace spread/project.go --replace-fail '"/bin/bash", ' '"/usr/bin/env", "bash", '
+  '';
+
+  postInstall = ''
+    wrapProgram $out/bin/spread --prefix PATH ${
+      lib.makeBinPath [
+        pkgs.bash
+        pkgs.coreutils
+        pkgs.gnutar
+        pkgs.gzip
+      ]
+    }
   '';
 
   meta = {

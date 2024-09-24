@@ -7,5 +7,5 @@
 {
   ght = pkgs.callPackage ./ght { };
   nixfmt-plus = pkgs.callPackage ./nixfmt-plus.nix { };
-  spread = pkgs.callPackage ./spread.nix { };
+  spread = pkgs.callPackage ./spread { };
 }
