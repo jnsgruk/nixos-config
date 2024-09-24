@@ -14,6 +14,12 @@ pkgs.buildGoModule {
 
   subPackages = [ "cmd/spread" ];
 
+  postPatch = ''
+    substituteInPlace spread/lxd.go --replace-fail '"/bin/bash", ' '"/usr/bin/env", "bash", '
+    substituteInPlace spread/client.go --replace-fail '"/bin/bash", ' '"/usr/bin/env", "bash", '
+    substituteInPlace spread/project.go --replace-fail '"/bin/bash", ' '"/usr/bin/env", "bash", '
+  '';
+
   meta = {
     mainProgram = "spread";
     description = "Convenient full-system test (task) distribution";
