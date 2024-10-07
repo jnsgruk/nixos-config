@@ -172,7 +172,7 @@
         cleanup-nix = "nh clean all --keep-since 10d --keep 3";
         rln = "nh os switch /home/jon/nixos-config";
         rlh = "nh home switch /home/jon/nixos-config";
-        rlb = "rln;rlh";
+        rlb = "rln && rlh";
       };
     };
   };
