@@ -9,5 +9,7 @@
   services.immich = {
     enable = true;
     package = pkgs.unstable.immich;
+    openFirewall = true;
+    host = "thor.tailnet-d5da.ts.net";
   };
 }
