@@ -12,4 +12,8 @@
     openFirewall = true;
     host = "thor.tailnet-d5da.ts.net";
   };
+
+  systemd.services.immich-server.environment = {
+    IMMICH_HOST = "thor.tailnet-d5da.ts.net";
+  };
 }
