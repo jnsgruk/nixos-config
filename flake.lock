@@ -82,11 +82,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729070567,
-        "narHash": "sha256-r3KMTeBLioUtRPRFjdWbpZqfMmQHr6Dj9vjGaj4OhP8=",
+        "lastModified": 1729099656,
+        "narHash": "sha256-VftVIg7UXTy1bq+tzi1aVYOWl7PQ35IpjW88yMYjjpc=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "c8760cee70cf166ad6bcee0bd9f0bba934a3a651",
+        "rev": "d7d57edb72e54891fa67a6f058a46b2bb405663b",
         "type": "github"
       },
       "original": {
@@ -218,11 +218,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1729027341,
-        "narHash": "sha256-IqWD7bA9iJVifvJlB4vs2KUXVhN+d9lECWdNB4jJ0tE=",
+        "lastModified": 1729165983,
+        "narHash": "sha256-gtcodl79t5ZbbX4TSx4RNyggasEvLdVnc/IM+RyxqJw=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2a4fd1cfd8ed5648583dadef86966a8231024221",
+        "rev": "78a7a070bbcc3b37cc36080c2a3514207d427b3b",
         "type": "github"
       },
       "original": {
@@ -273,6 +273,22 @@
       "original": {
         "owner": "jnsgruk",
         "repo": "libations",
+        "type": "github"
+      }
+    },
+    "master": {
+      "locked": {
+        "lastModified": 1729172079,
+        "narHash": "sha256-1SGPvCft7PjJ7JCueYMTCNQW0snj4xkGoij2FWp/XLw=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "c77ab7deae12f004b1a9acb9ddc266da18877153",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "master",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -376,6 +392,7 @@
         "home-manager": "home-manager_2",
         "lanzaboote": "lanzaboote",
         "libations": "libations",
+        "master": "master",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "unstable": "unstable",
