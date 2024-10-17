@@ -10,7 +10,6 @@
     enable = true;
     package = pkgs.master.immich;
     openFirewall = true;
-    host = "thor.tailnet-d5da.ts.net";
     port = 3001;
   };
 }
