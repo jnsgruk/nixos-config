@@ -10,7 +10,10 @@
   services = {
     avizo.enable = true;
 
-    cliphist.enable = true;
+    cliphist = {
+      enable = true;
+      package = pkgs.master.cliphist;
+    };
 
     gnome-keyring.enable = true;
 

@@ -35,7 +35,7 @@
     obsidian
     pamixer
     pavucontrol
-    rambox
+    master.rambox
     signal-desktop
     todoist-electron
     xdg-utils
