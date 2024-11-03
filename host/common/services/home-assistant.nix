@@ -14,6 +14,7 @@
       "apple_tv"
       "brother"
       "default_config"
+      "esphome"
       "ipp"
       "met"
       "otbr"
