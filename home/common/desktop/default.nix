@@ -34,6 +34,7 @@
     loupe
     obsidian
     pamixer
+    papers
     pavucontrol
     master.rambox
     signal-desktop
