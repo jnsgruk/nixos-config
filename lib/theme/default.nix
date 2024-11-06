@@ -31,8 +31,8 @@ rec {
   qtTheme = {
     name = "Catppuccin-Macchiato-Blue";
     package = pkgs.catppuccin-kvantum.override {
-      variant = "Macchiato";
-      accent = "Blue";
+      variant = catppuccin.flavor;
+      accent = catppuccin.accent;
     };
   };
 
