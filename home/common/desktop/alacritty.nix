@@ -18,7 +18,10 @@ in
         };
       };
 
-      live_config_reload = true;
+      general = {
+        live_config_reload = true;
+      };
+
       scrolling.history = 100000;
 
       font = {
