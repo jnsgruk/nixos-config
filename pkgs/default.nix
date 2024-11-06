@@ -6,5 +6,6 @@
 }:
 {
   ght = pkgs.callPackage ./ght { };
+  juju4 = pkgs.callPackage ./juju4.nix { };
   nixfmt-plus = pkgs.callPackage ./nixfmt-plus.nix { };
 }
