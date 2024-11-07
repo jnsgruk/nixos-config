@@ -1,6 +1,12 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    # Rust tooling
+    cargo
+    rust-analyzer
+    rustfmt
+    rustc
+
     gnumake
     gcc
 
