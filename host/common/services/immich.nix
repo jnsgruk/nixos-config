@@ -1,15 +1,20 @@
 { pkgs, inputs, ... }:
 {
-  # Always use module from master
   disabledModules = [ "services/web-apps/immich.nix" ];
   imports = [
-    "${inputs.master}/nixos/modules/services/web-apps/immich.nix"
+    "${inputs.unstable}/nixos/modules/services/web-apps/immich.nix"
   ];
 
   services.immich = {
     enable = true;
-    package = pkgs.master.immich;
+    package = pkgs.unstable.immich;
     openFirewall = true;
     port = 3001;
+
+    redis = {
+      enable = true;
+      host = "127.0.0.1";
+      port = 6379;
+    };
   };
 }
