@@ -61,7 +61,7 @@
         };
         "${username}@kara" = libx.mkHome {
           hostname = "kara";
-          desktop = "sway";
+          desktop = "hyprland";
         };
         # Headless machines
         "${username}@hugin" = libx.mkHome { hostname = "hugin"; };
@@ -85,7 +85,7 @@
         };
         kara = libx.mkHost {
           hostname = "kara";
-          desktop = "sway";
+          desktop = "hyprland";
         };
         # Headless machines
         hugin = libx.mkHost {
