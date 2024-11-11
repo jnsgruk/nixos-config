@@ -12,7 +12,7 @@ let
       bash
       curl
       gphotos-sync
-      master.icloudpd
+      unstable.icloudpd
       urlencode
     ];
     text = builtins.readFile ./photo-backup.sh;

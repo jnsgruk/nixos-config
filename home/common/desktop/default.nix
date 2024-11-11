@@ -36,7 +36,7 @@
     pamixer
     papers
     pavucontrol
-    master.rambox
+    unstable.rambox
     signal-desktop
     todoist-electron
     xdg-utils
