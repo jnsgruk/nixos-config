@@ -1,33 +1,37 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
-  basePackages = with pkgs; [
-    unstable._1password-cli
-    agenix
-    bat
-    binutils
-    curl
-    cyme
-    dig
-    dua
-    duf
-    eza
-    fd
-    file
-    git
-    jq
-    killall
-    nfs-utils
-    ntfs3g
-    pciutils
-    ripgrep
-    rsync
-    tpm2-tss
-    traceroute
-    tree
-    unzip
-    usbutils
-    vim
-    wget
-    yq-go
-  ];
+  basePackages =
+    with pkgs;
+    [
+      agenix
+      bat
+      binutils
+      curl
+      cyme
+      dig
+      dua
+      duf
+      eza
+      fd
+      file
+      git
+      jq
+      killall
+      ntfs3g
+      openssh
+      pciutils
+      ripgrep
+      rsync
+      tree
+      unzip
+      vim
+      wget
+      yq-go
+    ]
+    ++ lib.optionals pkgs.stdenv.isLinux [
+      nfs-utils
+      tpm2-tss
+      traceroute
+      usbutils
+    ];
 }

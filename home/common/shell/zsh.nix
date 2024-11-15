@@ -1,3 +1,4 @@
+{ pkgs, lib, ... }:
 {
   programs = {
     zsh = {
@@ -162,7 +163,6 @@
         jsrw = "juju status --watch 1s --color --relations";
         jdl = "juju debug-log";
 
-        open = "xdg-open";
         k = "kubectl";
 
         opget = "op item get \"$(op item list --format=json | jq -r '.[].title' | fzf)\"";

@@ -61,6 +61,28 @@
       ];
     };
 
+  mkDarwin =
+    {
+      desktop ? "aqua",
+      hostname,
+      platform ? "aarch64-darwin",
+    }:
+    inputs.nix-darwin.lib.darwinSystem {
+      specialArgs = {
+        inherit
+          self
+          inputs
+          outputs
+          desktop
+          hostname
+          username
+          platform
+          stateVersion
+          ;
+      };
+      modules = [ ../darwin ];
+    };
+
   forAllSystems = inputs.nixpkgs.lib.genAttrs [
     "aarch64-linux"
     "i686-linux"

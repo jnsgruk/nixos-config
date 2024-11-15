@@ -7,10 +7,6 @@ in
     enable = true;
     catppuccin.enable = true;
     settings = {
-      env = {
-        TERM = "alacritty";
-      };
-
       window = {
         padding = {
           x = 20;
@@ -26,7 +22,7 @@ in
 
       font = {
         normal.family = "${theme.fonts.monospace.name}";
-        size = 14;
+        size = if pkgs.stdenv.isLinux then 14 else 18;
       };
     };
   };
