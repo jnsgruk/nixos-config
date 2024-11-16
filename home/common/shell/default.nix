@@ -1,4 +1,8 @@
-{ pkgs, self, ... }:
+{
+  pkgs,
+  self,
+  ...
+}:
 let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
@@ -13,8 +17,8 @@ in
     ./starship.nix
     ./tmux.nix
     ./vim.nix
-    ./xdg.nix
     ./zsh.nix
+    ./xdg.nix
   ];
 
   catppuccin = {

@@ -9,11 +9,13 @@
   },
   "display": {
     "separator": "",
-    "binaryPrefix": "si",
     "size": {
+      "binaryPrefix": "si",
       "ndigits": 0
     },
-    "keyWidth": 4
+    "key": {
+      "width": 4
+    }
   },
   "modules": [
     "break",

@@ -6,8 +6,12 @@
   stateVersion,
   username,
   inputs,
+  pkgs,
   ...
 }:
+let
+  inherit (pkgs.stdenv) isDarwin;
+in
 {
   # Only import desktop configuration if the host is desktop enabled
   # Only import user specific configuration if they have bespoke settings
@@ -28,7 +32,7 @@
 
   home = {
     inherit username stateVersion;
-    homeDirectory = "/home/${username}";
+    homeDirectory = if isDarwin then "/Users/jon" else "/home/${username}";
   };
 
   nixpkgs = {

@@ -292,6 +292,26 @@
         "type": "github"
       }
     },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1731454423,
+        "narHash": "sha256-TtwvgFxUa0wyptLhQbKaixgNW1UXf3+TDqfX3Kp63oM=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "6c71c49e2448e51ad830ed211024e6d0edc50116",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1730919458,
@@ -393,6 +413,7 @@
         "lanzaboote": "lanzaboote",
         "libations": "libations",
         "master": "master",
+        "nix-darwin": "nix-darwin",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "unstable": "unstable",

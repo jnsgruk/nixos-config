@@ -6,6 +6,9 @@
     master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "unstable";
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "unstable";
 
@@ -63,6 +66,10 @@
           hostname = "kara";
           desktop = "hyprland";
         };
+        "${username}@mars" = libx.mkHome {
+          hostname = "mars";
+          system = "aarch64-darwin";
+        };
         # Headless machines
         "${username}@hugin" = libx.mkHome { hostname = "hugin"; };
         "${username}@thor" = libx.mkHome { hostname = "thor"; };
@@ -99,6 +106,14 @@
         volnir = libx.mkHost {
           hostname = "volnir";
           pkgsInput = nixpkgs;
+        };
+      };
+
+      #nix run nix-darwin -- switch --flake ~/nix-config
+      #nix build .#darwinConfigurations.{hostname}.config.system.build.toplevel
+      darwinConfigurations = {
+        mars = libx.mkDarwin {
+          hostname = "mars";
         };
       };
 

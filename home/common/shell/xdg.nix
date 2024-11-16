@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   xdg = {
     enable = true;
@@ -8,7 +13,7 @@
     dataHome = config.home.homeDirectory + "/.local/share";
     stateHome = config.home.homeDirectory + "/.local/state";
 
-    userDirs = {
+    userDirs = lib.mkIf pkgs.stdenv.isLinux {
       enable = true;
       createDirectories = lib.mkDefault true;
 
