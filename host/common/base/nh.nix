@@ -2,7 +2,7 @@
 {
   programs.nh = {
     enable = true;
-    package = pkgs.unstable.nh;
+    package = pkgs.nh;
     flake = "/home/jon/nixos-config";
     clean = {
       enable = true;

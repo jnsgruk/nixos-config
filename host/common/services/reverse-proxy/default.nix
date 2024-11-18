@@ -9,6 +9,6 @@
 
   services.caddy = {
     enable = true;
-    package = pkgs.unstable.custom-caddy;
+    package = pkgs.custom-caddy;
   };
 }

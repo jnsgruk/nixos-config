@@ -1,32 +1,32 @@
 {
   description = "jnsgruk's nixos configuration";
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     agenix.url = "github:ryantm/agenix";
-    agenix.inputs.nixpkgs.follows = "unstable";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
 
     catppuccin.url = "github:catppuccin/nix";
 
     disko.url = "github:nix-community/disko";
-    disko.inputs.nixpkgs.follows = "unstable";
+    disko.inputs.nixpkgs.follows = "nixpkgs";
 
     flypi.url = "github:jnsgruk/flypi";
 
-    home-manager.url = "github:nix-community/home-manager";
-    home-manager.inputs.nixpkgs.follows = "unstable";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     lanzaboote.url = "github:nix-community/lanzaboote";
-    lanzaboote.inputs.nixpkgs.follows = "unstable";
+    lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     libations.url = "github:jnsgruk/libations";
-    libations.inputs.nixpkgs.follows = "unstable";
+    libations.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
-    vscode-server.inputs.nixpkgs.follows = "unstable";
+    vscode-server.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -38,7 +38,7 @@
     }@inputs:
     let
       inherit (self) outputs;
-      stateVersion = "24.05";
+      stateVersion = "24.11";
       username = "jon";
 
       libx = import ./lib {
@@ -89,11 +89,9 @@
         # Headless machines
         thor = libx.mkHost {
           hostname = "thor";
-          pkgsInput = nixpkgs;
         };
         volnir = libx.mkHost {
           hostname = "volnir";
-          pkgsInput = nixpkgs;
         };
       };
 

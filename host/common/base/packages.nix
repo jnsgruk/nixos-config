@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   basePackages = with pkgs; [
-    unstable._1password-cli
+    _1password-cli
     agenix
     bat
     binutils

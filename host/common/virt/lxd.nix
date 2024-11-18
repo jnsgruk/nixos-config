@@ -6,7 +6,7 @@
       zfsSupport = true;
       ui = {
         enable = true;
-        package = pkgs.unstable.lxd-ui;
+        package = pkgs.lxd-ui;
       };
     };
   };

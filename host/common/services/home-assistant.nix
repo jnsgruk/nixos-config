@@ -1,15 +1,9 @@
-{ pkgs, inputs, ... }:
+{ pkgs, ... }:
 {
-  # Always use module from unstable
-  disabledModules = [ "services/home-automation/home-assistant.nix" ];
-  imports = [
-    "${inputs.unstable}/nixos/modules/services/home-automation/home-assistant.nix"
-  ];
-
   services.home-assistant = {
     enable = true;
     openFirewall = true;
-    package = pkgs.unstable.home-assistant;
+    package = pkgs.home-assistant;
     extraComponents = [
       "apple_tv"
       "brother"
@@ -31,7 +25,7 @@
       "webostv"
     ];
     customComponents = [
-      pkgs.unstable.home-assistant-custom-components.solis-sensor
+      pkgs.home-assistant-custom-components.solis-sensor
     ];
     config = {
       default_config = { };

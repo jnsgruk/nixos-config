@@ -12,7 +12,7 @@
 
     cliphist = {
       enable = true;
-      package = pkgs.unstable.cliphist;
+      package = pkgs.cliphist;
     };
 
     gnome-keyring.enable = true;

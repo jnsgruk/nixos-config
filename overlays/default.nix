@@ -7,6 +7,7 @@
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
+    custom-caddy = import ./custom-caddy.nix { pkgs = prev; };
   };
 
   # When applied, the unstable nixpkgs set (declared in the flake inputs) will
@@ -15,6 +16,13 @@
     master = import inputs.master {
       inherit (final) system;
       config.allowUnfree = true;
+      overlays = [
+        (_final: prev: {
+          # example = prev.example.overrideAttrs (oldAttrs: rec {
+          # ...
+          # });
+        })
+      ];
     };
     unstable = import inputs.unstable {
       inherit (final) system;
@@ -24,7 +32,6 @@
           # example = prev.example.overrideAttrs (oldAttrs: rec {
           # ...
           # });
-          custom-caddy = import ./custom-caddy.nix { pkgs = prev; };
         })
       ];
     };

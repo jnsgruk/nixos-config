@@ -3,7 +3,7 @@
   programs.atuin = {
     enable = true;
     enableZshIntegration = true;
-    package = pkgs.unstable.atuin;
+    package = pkgs.atuin;
     flags = [ "--disable-up-arrow" ];
     settings = {
       enter_accept = false;

@@ -18,8 +18,7 @@
   };
 
   home.packages = with pkgs; [
-    audacity
-    # bambu-studio
+    bambu-studio
     catppuccin-gtk
     desktop-file-utils
     ght
@@ -32,15 +31,16 @@
     })
     libnotify
     loupe
-    obsidian
     pamixer
     papers
     pavucontrol
-    unstable.rambox
-    signal-desktop
     todoist-electron
     xdg-utils
     xorg.xlsclients
+
+    unstable.obsidian
+    unstable.rambox
+    unstable.signal-desktop
   ];
 
   fonts.fontconfig.enable = true;

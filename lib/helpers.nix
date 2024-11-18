@@ -16,7 +16,7 @@
       system ? "x86_64-linux",
     }:
     inputs.home-manager.lib.homeManagerConfiguration {
-      pkgs = inputs.unstable.legacyPackages.${system};
+      pkgs = inputs.nixpkgs.legacyPackages.${system};
       extraSpecialArgs = {
         inherit
           self
@@ -39,7 +39,7 @@
     {
       hostname,
       desktop ? null,
-      pkgsInput ? inputs.unstable,
+      pkgsInput ? inputs.nixpkgs,
     }:
     pkgsInput.lib.nixosSystem {
       specialArgs = {

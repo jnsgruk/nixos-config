@@ -26,6 +26,6 @@
     ];
 
     # Use the latest Linux kernel, rather than the default LTS
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
   };
 }
