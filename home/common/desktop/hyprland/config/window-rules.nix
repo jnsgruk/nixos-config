@@ -24,9 +24,9 @@ _: {
     "float, title:(Open|Progress|Save File)"
     "center, title:(Open|Progress|Save File)"
     "pin, title:(Open|Progress|Save File)"
-    "float, class:^(code)$"
-    "center, class:^(code)$"
-    "pin, class:^(code)$"
+    "float, class:^(code)$, initialTitle:^((?!Visual Studio Code).)*$"
+    "center, class:^(code)$, initialTitle:^((?!Visual Studio Code).)*$"
+    "pin, class:^(code)$, initialTitle:^((?!Visual Studio Code).)*$"
 
     # assign windows to workspaces
     # "workspace 1 silent, class:[Ff]irefox"
