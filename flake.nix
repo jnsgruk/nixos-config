@@ -64,7 +64,6 @@
           desktop = "hyprland";
         };
         # Headless machines
-        "${username}@hugin" = libx.mkHome { hostname = "hugin"; };
         "${username}@thor" = libx.mkHome { hostname = "thor"; };
         "${username}@volnir" = libx.mkHome {
           hostname = "volnir";
@@ -88,10 +87,6 @@
           desktop = "hyprland";
         };
         # Headless machines
-        hugin = libx.mkHost {
-          hostname = "hugin";
-          pkgsInput = nixpkgs;
-        };
         thor = libx.mkHost {
           hostname = "thor";
           pkgsInput = nixpkgs;
