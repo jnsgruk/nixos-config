@@ -223,7 +223,7 @@ in
         "wireplumber" = {
           format = "{volume}% {icon}";
           format-muted = "";
-          on-click = "${lib.getExe pkgs.pavucontrol}";
+          on-click = "${lib.getExe pkgs.pwvucontrol}";
           format-icons = [
             ""
             ""
@@ -236,7 +236,7 @@ in
           format = "{format_source}";
           format-source = "";
           format-source-muted = "";
-          on-click = "${lib.getExe pkgs.pavucontrol}";
+          on-click = "${lib.getExe pkgs.pwvucontrol}";
           tooltip-format = "{source_volume}% / {desc}";
         };
 

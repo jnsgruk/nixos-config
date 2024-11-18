@@ -33,7 +33,7 @@
     loupe
     pamixer
     papers
-    pavucontrol
+    pwvucontrol
     todoist-electron
     xdg-utils
     xorg.xlsclients

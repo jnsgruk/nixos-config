@@ -17,7 +17,7 @@ _: {
     "noanim,title:^(Quick Access — 1Password)$"
 
     "float, class:^(org.gnome.*)$"
-    "float, class:^(pavucontrol)$"
+    "float, class:^(pavucontrol|com.saivert.pwvucontrol)$"
     "float, class:(blueberry\.py)"
 
     # make pop-up file dialogs floating, centred, and pinned

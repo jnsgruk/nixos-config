@@ -14,5 +14,5 @@
     wireplumber.enable = true;
   };
 
-  environment.systemPackages = if (builtins.isString desktop) then [ pkgs.pavucontrol ] else [ ];
+  environment.systemPackages = if (builtins.isString desktop) then [ pkgs.pwvucontrol ] else [ ];
 }
