@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    ijq
+
     # Rust tooling
     cargo
     rust-analyzer
