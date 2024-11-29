@@ -34,6 +34,7 @@
     pamixer
     papers
     pwvucontrol
+    thunderbird-latest
     todoist-electron
     xdg-utils
     xorg.xlsclients
