@@ -27,7 +27,7 @@ in
 
     "application/json" = browser;
 
-    "application/pdf" = imageViewer;
+    "application/pdf" = [ "org.gnome.Papers.desktop" ];
 
     # Archives / compressed files
     "application/x-7z-compressed" = archiveManager;
