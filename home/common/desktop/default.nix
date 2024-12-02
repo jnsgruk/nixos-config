@@ -9,7 +9,6 @@
     ./gtk.nix
     ./qt.nix
     ./xdg.nix
-    ./zathura.nix
   ];
 
   programs = {

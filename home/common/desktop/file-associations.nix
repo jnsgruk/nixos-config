@@ -27,7 +27,7 @@ in
 
     "application/json" = browser;
 
-    "application/pdf" = [ "org.pwmt.zathura.desktop.desktop" ];
+    "application/pdf" = imageViewer;
 
     # Archives / compressed files
     "application/x-7z-compressed" = archiveManager;
