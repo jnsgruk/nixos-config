@@ -16,10 +16,7 @@ in
   imports = [
     ../wl-common.nix
     ./hyprlock.nix
-  ];
-
-  home.packages = with pkgs; [
-    grimblast
+    ./hyprshot.nix
   ];
 
   wayland.windowManager.hyprland = {

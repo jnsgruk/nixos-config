@@ -9,6 +9,7 @@
     ../wl-common.nix
 
     ./packages.nix
+    ./swappy.nix
     ./swaylock.nix
   ];
 

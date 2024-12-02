@@ -16,6 +16,7 @@ let
 in
 {
   home.packages = with pkgs; [
+    grim
     slurp
     sway-clip
     sway-screenshot

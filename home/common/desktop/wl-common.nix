@@ -4,7 +4,6 @@
     ./waybar
     ./mako.nix
     ./rofi.nix
-    ./swappy.nix
   ];
 
   services = {
@@ -37,7 +36,6 @@
   };
 
   home.packages = with pkgs; [
-    grim
     libva-utils
     playerctl
     wf-recorder
