@@ -30,13 +30,11 @@
     })
     libnotify
     loupe
-    pamixer
     papers
     pwvucontrol
     thunderbird-latest
     todoist-electron
     xdg-utils
-    xorg.xlsclients
 
     unstable.obsidian
     unstable.rambox

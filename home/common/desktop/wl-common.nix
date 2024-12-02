@@ -36,12 +36,9 @@
   };
 
   home.packages = with pkgs; [
-    libva-utils
     playerctl
-    wf-recorder
     wl-clipboard
     wdisplays
-    wmctrl
   ];
 
   home.sessionVariables = {
