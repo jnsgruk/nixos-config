@@ -21,13 +21,14 @@
     catppuccin-gtk
     desktop-file-utils
     ght
-    (google-chrome.override {
-      commandLineArgs = [
-        # Workaround for log spam on video calls: https://issues.chromium.org/issues/331796411
-        "--disable-gpu-memory-buffer-video-frames"
-        "--ozone-platform-hint=auto"
-      ];
-    })
+    google-chrome
+    # (google-chrome.override {
+    #   commandLineArgs = [
+    #     "--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE"
+    #     "--ignore-gpu-blocklist"
+    #     "--enable-zero-copy"
+    #   ];
+    # })
     libnotify
     loupe
     papers
