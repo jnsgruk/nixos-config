@@ -46,6 +46,28 @@ backup_icloud() {
         --size original \
         > "${PHOTOS_ROOT}/${name}/backup.log" \
         || handle_failure "$name"
+    
+    icloudpd \
+        --log-level info \
+        --directory "${PHOTOS_ROOT}/${name}" \
+        --cookie-directory "${PHOTOS_ROOT}/.icloudpd"\
+        --folder-structure "{:%Y/%m-%b}" \
+        --username "$user" --password "$pass" \
+        --size original \
+        --album "Hidden" \
+        > "${PHOTOS_ROOT}/${name}/backup.log" \
+        || handle_failure "$name"
+    
+    icloudpd \
+        --log-level info \
+        --directory "${PHOTOS_ROOT}/${name}" \
+        --cookie-directory "${PHOTOS_ROOT}/.icloudpd"\
+        --folder-structure "{:%Y/%m-%b}" \
+        --username "$user" --password "$pass" \
+        --size original \
+        --album "Recently Deleted" \
+        > "${PHOTOS_ROOT}/${name}/backup.log" \
+        || handle_failure "$name"
 }
 
 auth_icloud() {
