@@ -55,7 +55,7 @@ backup_icloud() {
         --username "$user" --password "$pass" \
         --size original \
         --album "Hidden" \
-        > "${PHOTOS_ROOT}/${name}/backup.log" \
+        >> "${PHOTOS_ROOT}/${name}/backup.log" \
         || handle_failure "$name"
     
     icloudpd \
@@ -66,7 +66,7 @@ backup_icloud() {
         --username "$user" --password "$pass" \
         --size original \
         --album "Recently Deleted" \
-        > "${PHOTOS_ROOT}/${name}/backup.log" \
+        >> "${PHOTOS_ROOT}/${name}/backup.log" \
         || handle_failure "$name"
 }
 
