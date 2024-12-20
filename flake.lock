@@ -293,6 +293,26 @@
         "type": "github"
       }
     },
+    "nix-system-graphics": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729864290,
+        "narHash": "sha256-BBMfemVn4J0HKZ5DFFJf7pfgc9AJijbA7rliSzWFb8s=",
+        "owner": "soupglasses",
+        "repo": "nix-system-graphics",
+        "rev": "5a8d749e977090c7f8c5b920b13262174b2d7b55",
+        "type": "github"
+      },
+      "original": {
+        "owner": "soupglasses",
+        "repo": "nix-system-graphics",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1733861262,
@@ -394,8 +414,10 @@
         "lanzaboote": "lanzaboote",
         "libations": "libations",
         "master": "master",
+        "nix-system-graphics": "nix-system-graphics",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
+        "system-manager": "system-manager",
         "unstable": "unstable",
         "vscode-server": "vscode-server"
       }
@@ -418,6 +440,26 @@
       "original": {
         "owner": "oxalica",
         "repo": "rust-overlay",
+        "type": "github"
+      }
+    },
+    "system-manager": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1734512348,
+        "narHash": "sha256-dD6mweafdd/t+7m1YMiNK2zB52ZMJhsxauCb4Dcd8wQ=",
+        "owner": "numtide",
+        "repo": "system-manager",
+        "rev": "c9e35e9b7d698533a32c7e34dfdb906e1e0b7d0a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "system-manager",
         "type": "github"
       }
     },

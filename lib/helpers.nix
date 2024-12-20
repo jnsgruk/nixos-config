@@ -61,6 +61,23 @@
       ];
     };
 
+  mkSystemManager =
+    {
+      system ? "x86_64-linux",
+    }:
+    inputs.system-manager.lib.makeSystemConfig {
+      modules = [
+        inputs.nix-system-graphics.systemModules.default
+        ({
+          config = {
+            nixpkgs.hostPlatform = system;
+            system-manager.allowAnyDistro = true;
+            system-graphics.enable = true;
+          };
+        })
+      ];
+    };
+
   forAllSystems = inputs.nixpkgs.lib.genAttrs [
     "aarch64-linux"
     "i686-linux"

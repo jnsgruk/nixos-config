@@ -15,7 +15,7 @@ My machines are partitioned with [disko], and most are encrypted using the TPM t
 | Hostname |         Board         |           CPU           | RAM  |             GPU             |   OS   |  Role   |   Desktop    |
 | :------: | :-------------------: | :---------------------: | :--: | :-------------------------: | :----: | :-----: | :----------: |
 |  `dev`   |    [Multipass] VM     |            -            |  -   |              -              | Ubuntu | Server  |      -       |
-| `freyja` |    [Thinkpad Z13]     | [AMD Ryzen 7 Pro 6860Z] | 32GB |       AMD Radeon 680M       | NixOS  | Laptop  |   Hyprland   |
+| `freyja` |    [Thinkpad Z13]     | [AMD Ryzen 7 Pro 6860Z] | 32GB |       AMD Radeon 680M       | Ubuntu | Laptop  |   Hyprland   |
 |  `kara`  | [MSI MPG X670 Carbon] |   [AMD Ryzen 9 7950X]   | 64GB |   [AMD Radeon RX 7900 XT]   | NixOS  | Desktop |   Hyprland   |
 |  `thor`  |   [Intel NUC6i7KYK]   | [Intel Core i7-6770HQ]  | 16GB | Intel Iris Pro Graphics 580 | NixOS  | Server  |      -       |
 | `volnir` |   [Raspberry Pi 4]    |  BCM2711 / Cortex A72   | 4GB  |              -              | NixOS  |  Kiosk  | Cage/Firefox |

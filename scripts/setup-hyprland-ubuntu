@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# This script is used to make some configuration changes to Ubuntu
+# when running Hyprland using home-manager, system-manager and nix-system-graphics.
+
+# First, create a script that can execute Hyprland in the right context
+cat <<-EOF | sudo tee /usr/local/bin/hypr-run
+#!/home/jon/.nix-profile/bin/zsh
+export GTK_THEME="catppuccin-macchiato-blue-standard"
+source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+systemd-run --user --scope --collect --quiet --unit="Hyprland" systemd-cat --identifier="hyprland" /home/jon/.nix-profile/bin/Hyprland $@
+EOF
+
+# Ensure the script is executable
+sudo chmod 755 /usr/local/bin/hypr-run
+
+# Next add a desktop configuration so that Hyprland comes up in the GDM session menu
+cat <<-EOF | sudo tee /usr/share/wayland-sessions/hyprland.desktop
+[Desktop Entry]
+Name=Hyprland
+Comment=Hyprland Tiling Window Manager
+Exec=/usr/local/bin/hypr-run
+Type=application
+EOF
+
+# Prevent errors occurring when launching Chromium/Electron apps.
+echo "kernel.apparmor_restrict_unprivileged_userns=0" | sudo tee /etc/sysctl.d/60-apparmor-namespace.conf

@@ -1,4 +1,9 @@
-_: {
+{ self, ... }:
+{
+  imports = [
+    "${self}/home/common/dev/charm-tools.nix"
+  ];
+
   services.syncthing = {
     enable = true;
     extraOptions = [

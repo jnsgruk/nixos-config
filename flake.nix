@@ -6,6 +6,12 @@
     master.url = "github:nixos/nixpkgs/master";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
+    system-manager.url = "github:numtide/system-manager";
+    system-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-system-graphics.url = "github:soupglasses/nix-system-graphics";
+    nix-system-graphics.inputs.nixpkgs.follows = "nixpkgs";
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -78,10 +84,6 @@
       # nix build .#nixosConfigurations.freyja.config.system.build.toplevel
       nixosConfigurations = {
         # Desktop machines
-        freyja = libx.mkHost {
-          hostname = "freyja";
-          desktop = "hyprland";
-        };
         kara = libx.mkHost {
           hostname = "kara";
           desktop = "hyprland";
@@ -93,6 +95,11 @@
         volnir = libx.mkHost {
           hostname = "volnir";
         };
+      };
+
+      # system-manager configurations
+      systemConfigs = {
+        freyja = libx.mkSystemManager { };
       };
 
       # Custom packages; acessible via 'nix build', 'nix shell', etc
