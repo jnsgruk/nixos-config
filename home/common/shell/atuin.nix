@@ -11,6 +11,9 @@
       dotfiles = {
         enabled = false;
       };
+      sync = {
+        records = true;
+      };
     };
   };
 }
