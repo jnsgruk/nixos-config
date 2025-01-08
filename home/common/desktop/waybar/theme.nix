@@ -76,10 +76,11 @@
       #memory,
       #network,
       #pulseaudio,
-      #wireplumber" = {
-        padding = mkLiteral "0px 10px";
-        color = mkLiteral "${theme.colours.text}";
-      };
+      #wireplumber" =
+        {
+          padding = mkLiteral "0px 10px";
+          color = mkLiteral "${theme.colours.text}";
+        };
 
       "#custom-vpn.tailnet" = {
         color = mkLiteral "${theme.colours.blue}";

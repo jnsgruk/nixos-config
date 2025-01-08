@@ -3,7 +3,7 @@ _: {
   #
   #    mkdir backup
   #    sudo borg-job-borgbase mount ike67cye@ike67cye.repo.borgbase.com:repo ./backup
-  # 
+  #
   # Then copy out the files you need using normal Linux commands. Once complete, unmount
   # with:
   #
