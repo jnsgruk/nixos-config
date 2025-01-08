@@ -7,13 +7,15 @@ in
     ./atuin.nix
     ./bat.nix
     ./bottom.nix
+    ./fastfetch.nix
     ./fzf.nix
     ./git.nix
-    ./fastfetch.nix
+    ./helix.nix
     ./starship.nix
     ./tmux.nix
     ./vim.nix
     ./xdg.nix
+    ./zellij.nix
     ./zsh.nix
   ];
 
