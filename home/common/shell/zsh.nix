@@ -122,7 +122,7 @@
           ubuntu-vm
         }
 
-        export EDITOR=vim
+        export EDITOR=hx
       '';
 
       shellAliases = {

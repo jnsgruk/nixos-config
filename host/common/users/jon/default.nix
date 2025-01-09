@@ -31,6 +31,6 @@ in
 
   # This is a workaround for not seemingly being able to set $EDITOR in home-manager
   environment.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "hx";
   };
 }
