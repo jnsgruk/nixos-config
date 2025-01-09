@@ -3,7 +3,7 @@
   services.home-assistant = {
     enable = true;
     openFirewall = true;
-    package = pkgs.home-assistant;
+    package = pkgs.unstable.home-assistant;
     extraComponents = [
       "apple_tv"
       "brother"
@@ -25,7 +25,7 @@
       "webostv"
     ];
     customComponents = [
-      pkgs.home-assistant-custom-components.solis-sensor
+      pkgs.unstable.home-assistant-custom-components.solis-sensor
     ];
     config = {
       default_config = { };
