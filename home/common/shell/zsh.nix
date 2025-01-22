@@ -1,4 +1,6 @@
 {
+  catppuccin.zsh-syntax-highlighting.enable = true;
+
   programs = {
     zsh = {
       enable = true;
@@ -8,7 +10,6 @@
       autosuggestion.enable = true;
       syntaxHighlighting = {
         enable = true;
-        catppuccin.enable = true;
       };
 
       history = {

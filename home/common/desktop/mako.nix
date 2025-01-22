@@ -8,10 +8,11 @@ let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
 {
+  catppuccin.mako.enable = true;
+
   services = {
     mako = {
       enable = true;
-      catppuccin.enable = true;
       actions = true;
       anchor = if hostname == "kara" then "top-center" else "top-right";
       borderRadius = 8;

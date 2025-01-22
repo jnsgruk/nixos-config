@@ -1,10 +1,11 @@
 _: {
+  catppuccin.tmux.enable = true;
+
   programs = {
     tmate.enable = true;
 
     tmux = {
       enable = true;
-      catppuccin.enable = true;
 
       aggressiveResize = true;
       baseIndex = 1;

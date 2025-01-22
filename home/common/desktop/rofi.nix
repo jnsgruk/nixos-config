@@ -1,12 +1,13 @@
 { pkgs, ... }:
 {
+  catppuccin.rofi = {
+    enable = true;
+    flavor = "mocha";
+  };
+
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    catppuccin = {
-      enable = true;
-      flavor = "mocha";
-    };
     terminal = "${pkgs.alacritty}/bin/alacritty";
 
     extraConfig = {

@@ -3,9 +3,10 @@ let
   theme = import "${self}/lib/theme" { inherit pkgs; };
 in
 {
+  catppuccin.alacritty.enable = true;
+
   programs.alacritty = {
     enable = true;
-    catppuccin.enable = true;
     settings = {
       env = {
         TERM = "alacritty";
