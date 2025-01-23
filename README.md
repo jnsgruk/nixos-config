@@ -6,7 +6,7 @@
 
 This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for configuring my machines. As a general rule, my "server" machines track the latest stable release of NixOS, and my workstations/laptops track `unstable`.
 
-I use [Hyprland](https://hyprland.org/) as my tiling window manager, [Alacritty](https://alacritty.org/) as my terminal emulator, and I move between [Neovim](https://neovim.io/) and [Visual Studio Code](https://code.visualstudio.com/) for editing. All of my apps/system components are themed with the excellent [Catppuccin](https://catppuccin.com/) theme where possible. I also rely on [1Password](https://1password.com/), [Obsidian](https://obsidian.md/) and [Todoist](https://todoist.com/) in my daily work. At work, we use Google Workspace, so I use [Google Chrome](https://www.google.com/intl/en_uk/chrome/) for work browsing and [Firefox](https://www.mozilla.org/en-GB/firefox/new/) for home browsing. I use (and **love**) [Tailscale](https://tailscale.com/) to network my computers, phones and tablets.
+I use [Hyprland](https://hyprland.org/) as my tiling window manager, [Ghostty](https://ghostty.org/) as my terminal emulator, and I move between [Helix](https://helix-editor.com/) and [Visual Studio Code](https://code.visualstudio.com/) for editing. All of my apps/system components are themed with the excellent [Catppuccin](https://catppuccin.com/) theme where possible. I also rely on [1Password](https://1password.com/), [Obsidian](https://obsidian.md/) and [Todoist](https://todoist.com/) in my daily work. At work, we use Google Workspace, so I use [Google Chrome](https://www.google.com/intl/en_uk/chrome/) for work browsing and [Firefox](https://www.mozilla.org/en-GB/firefox/new/) for home browsing. I use (and **love**) [Tailscale](https://tailscale.com/) to network my computers, phones and tablets.
 
 ## 🖥️ Machines
 
@@ -63,12 +63,12 @@ used across multiple machines.
 
 The following is a list of the key elements of my setup, with links to their config:
 
-|   Type   | Details                                                           |
-| :------: | :---------------------------------------------------------------- |
-|  Shell   | [fish], [starship], [nvim], [tmux], [fastfetch], [bat], [fzf]     |
-|    WM    | [hyprland], [waybar], [hyprlock], [mako], [gtk], [rofi], [swappy] |
-|   Apps   | [vscode], [zathura], [alacritty]                                  |
-| Services | [home-assistant]                                                  |
+|   Type   | Details                                                          |
+| :------: | :--------------------------------------------------------------- |
+|  Shell   | [fish], [starship], [helix], [zellij], [fastfetch], [bat], [fzf] |
+|    WM    | [hyprland], [waybar], [hyprlock], [mako], [gtk], [rofi]          |
+|   Apps   | [vscode], [ghostty]                                              |
+| Services | [home-assistant]                                                 |
 
 ## 🖼️ Screenshots
 
@@ -77,21 +77,19 @@ The following is a list of the key elements of my setup, with links to their con
 
 <!-- Applications / Packages -->
 
-[alacritty]: ./home/common/desktop/alacritty.nix
 [bat]: ./home/common/shell/bat.nix
 [fastfetch]: ./home/common/shell/fastfetch.nix
+[fish]: ./home/common/shell/fish.nix
 [fzf]: ./home/common/shell/fzf.nix
+[ghostty]: ./home/common/desktop/ghostty.nix
 [gtk]: ./home/common/desktop/gtk.nix
+[helix]: ./home/common/shell/helix.nix
 [home-assistant]: ./host/common/services/home-assistant.nix
 [hyprland]: ./home/common/desktop/hyprland/default.nix
 [hyprlock]: ./home/common/desktop/hyprland/hyprlock.nix
 [mako]: ./home/common/desktop/mako.nix
-[nvim]: ./home/common/shell/vim.nix
 [rofi]: ./home/common/desktop/rofi.nix
 [starship]: ./home/common/shell/starship.nix
-[swappy]: ./home/common/desktop/swappy.nix
-[tmux]: ./home/common/shell/tmux.nix
 [vscode]: ./home/common/dev/desktop.nix
 [waybar]: ./home/common/desktop/waybar/default.nix
-[zathura]: ./home/common/desktop/zathura.nix
-[fish]: ./home/common/shell/fish.nix
+[zellij]: ./home/common/shell/zellij.nix

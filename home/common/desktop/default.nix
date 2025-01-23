@@ -5,7 +5,7 @@
 
     ../dev
 
-    ./alacritty.nix
+    ./ghostty.nix
     ./gtk.nix
     ./qt.nix
     ./xdg.nix

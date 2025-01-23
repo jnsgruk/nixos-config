@@ -12,8 +12,6 @@ in
     ./git.nix
     ./helix.nix
     ./starship.nix
-    ./tmux.nix
-    ./vim.nix
     ./xdg.nix
     ./zellij.nix
     ./fish.nix

@@ -18,7 +18,5 @@ _: {
       "--preview 'bat -n --color=always {}'"
       "--bind 'ctrl-/:change-preview-window(down|hidden|)'"
     ];
-
-    tmux.enableShellIntegration = true;
   };
 }

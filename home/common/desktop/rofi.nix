@@ -8,7 +8,7 @@
   programs.rofi = {
     enable = true;
     package = pkgs.rofi-wayland;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    terminal = "${pkgs.ghostty}/bin/ghostty";
 
     extraConfig = {
       modi = "drun";

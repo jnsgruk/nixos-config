@@ -56,12 +56,12 @@
 
         python = {
           format = "[$virtualenv]($style) ";
-          style= "bright-black";
+          style = "bright-black";
         };
 
         nix_shell = {
           format = "[$name]($style)";
-          style= "bright-black";
+          style = "bright-black";
         };
       };
     };

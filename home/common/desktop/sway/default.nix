@@ -17,7 +17,7 @@
     let
       theme = import "${self}/lib/theme" { inherit pkgs hostname; };
       modifier = "Mod4";
-      terminal = "alacritty";
+      terminal = "ghostty";
       menu = "rofi -show drun";
     in
     {
