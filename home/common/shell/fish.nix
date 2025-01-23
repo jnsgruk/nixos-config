@@ -6,6 +6,7 @@
       enable = true;
 
       shellInit = ''
+        set fish_greeting ""
         set -gx EDITOR hx
         set -gx SUDO_EDITOR hx
       '';
