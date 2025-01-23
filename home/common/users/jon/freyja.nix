@@ -26,9 +26,9 @@ in
     ]);
 
   # Work around default Ubuntu config in /etc/X11/Xsession.d/90gpg-agent.
-  programs.zsh.envExtra = ''
-    SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
-  '';
+  # programs.zsh.envExtra = ''
+  #  SSH_AUTH_SOCK=$XDG_RUNTIME_DIR/ssh-agent
+  # '';
 
   services = {
     ssh-agent.enable = true;

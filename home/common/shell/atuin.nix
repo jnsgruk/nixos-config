@@ -2,7 +2,7 @@
 {
   programs.atuin = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
     package = pkgs.atuin;
     flags = [ "--disable-up-arrow" ];
     settings = {

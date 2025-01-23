@@ -28,7 +28,7 @@
   environment.systemPackages = (import ./packages.nix { inherit pkgs; }).basePackages;
 
   programs = {
-    zsh.enable = true;
+    fish.enable = true;
     _1password.enable = true;
   };
 

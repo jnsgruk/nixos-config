@@ -65,7 +65,7 @@ The following is a list of the key elements of my setup, with links to their con
 
 |   Type   | Details                                                           |
 | :------: | :---------------------------------------------------------------- |
-|  Shell   | [zsh], [starship], [nvim], [tmux], [fastfetch], [bat], [fzf]      |
+|  Shell   | [fish], [starship], [nvim], [tmux], [fastfetch], [bat], [fzf]     |
 |    WM    | [hyprland], [waybar], [hyprlock], [mako], [gtk], [rofi], [swappy] |
 |   Apps   | [vscode], [zathura], [alacritty]                                  |
 | Services | [home-assistant]                                                  |
@@ -94,4 +94,4 @@ The following is a list of the key elements of my setup, with links to their con
 [vscode]: ./home/common/dev/desktop.nix
 [waybar]: ./home/common/desktop/waybar/default.nix
 [zathura]: ./home/common/desktop/zathura.nix
-[zsh]: ./home/common/shell/zsh.nix
+[fish]: ./home/common/shell/fish.nix

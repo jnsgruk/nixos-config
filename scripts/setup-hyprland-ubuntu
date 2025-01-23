@@ -5,7 +5,7 @@
 
 # First, create a script that can execute Hyprland in the right context
 cat <<-EOF | sudo tee /usr/local/bin/hypr-run
-#!/home/jon/.nix-profile/bin/zsh
+#!/home/jon/.nix-profile/bin/fish
 export GTK_THEME="catppuccin-macchiato-blue-standard"
 source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 systemd-run --user --scope --collect --quiet --unit="Hyprland" systemd-cat --identifier="hyprland" /home/jon/.nix-profile/bin/Hyprland $@

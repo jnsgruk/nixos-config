@@ -3,7 +3,7 @@ _: {
 
   programs.fzf = {
     enable = true;
-    enableZshIntegration = true;
+    enableFishIntegration = true;
 
     changeDirWidgetOptions = [ "--preview 'tree -C {} | head -200'" ];
 

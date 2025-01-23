@@ -16,7 +16,7 @@ in
     ./vim.nix
     ./xdg.nix
     ./zellij.nix
-    ./zsh.nix
+    ./fish.nix
   ];
 
   catppuccin = {
