@@ -3,7 +3,7 @@
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs { pkgs = final; };
 
-  modifications = final: prev: {
+  modifications = _final: prev: {
     # example = prev.example.overrideAttrs (oldAttrs: rec {
     # ...
     # });
@@ -17,7 +17,7 @@
       inherit (final) system;
       config.allowUnfree = true;
       overlays = [
-        (_final: prev: {
+        (_final: _prev: {
           # example = prev.example.overrideAttrs (oldAttrs: rec {
           # ...
           # });
@@ -28,7 +28,7 @@
       inherit (final) system;
       config.allowUnfree = true;
       overlays = [
-        (_final: prev: {
+        (_final: _prev: {
           # example = prev.example.overrideAttrs (oldAttrs: rec {
           # ...
           # });

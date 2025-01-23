@@ -38,7 +38,6 @@
   outputs =
     {
       self,
-      nixpkgs,
       unstable,
       ...
     }@inputs:

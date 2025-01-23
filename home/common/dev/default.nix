@@ -1,7 +1,6 @@
 {
   desktop,
   lib,
-  hostname,
   ...
 }:
 {

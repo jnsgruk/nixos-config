@@ -68,13 +68,13 @@
     inputs.system-manager.lib.makeSystemConfig {
       modules = [
         inputs.nix-system-graphics.systemModules.default
-        ({
+        {
           config = {
             nixpkgs.hostPlatform = system;
             system-manager.allowAnyDistro = true;
             system-graphics.enable = true;
           };
-        })
+        }
       ];
     };
 
