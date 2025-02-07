@@ -18,8 +18,5 @@ jobs:
       - name: Install nix
         uses: DeterminateSystems/nix-installer-action@v16
 
-      - name: Setup magic-nix-cache
-        uses: DeterminateSystems/magic-nix-cache-action@main
-
       - name: Check flake inputs
         uses: DeterminateSystems/flake-checker-action@v9
