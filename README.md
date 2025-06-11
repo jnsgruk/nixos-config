@@ -4,6 +4,12 @@
 
 <h1 align="center">jnsgruk's <a href="https://nixos.org">NixOS</a> & <a href="https://github.com/nix-community/home-manager">Home Manager</a> Configurations</h1>
 
+> [!WARNING]  
+> This repository is not currently actively maintained. I've stepped into a role
+> leading the development of Ubuntu at work, and am therefore spending most of my
+> time on Ubuntu. I'll leave this repository here, as some of the patterns may still
+> be useful, but beware that there may be more modern ways of acheiving the outcomes!
+
 This repository contains a [Nix Flake](https://nixos.wiki/wiki/Flakes) for configuring my machines. As a general rule, my "server" machines track the latest stable release of NixOS, and my workstations/laptops track `unstable`.
 
 I use [Hyprland](https://hyprland.org/) as my tiling window manager, [Ghostty](https://ghostty.org/) as my terminal emulator, and I move between [Helix](https://helix-editor.com/) and [Visual Studio Code](https://code.visualstudio.com/) for editing. All of my apps/system components are themed with the excellent [Catppuccin](https://catppuccin.com/) theme where possible. I also rely on [1Password](https://1password.com/), [Obsidian](https://obsidian.md/) and [Todoist](https://todoist.com/) in my daily work. At work, we use Google Workspace, so I use [Google Chrome](https://www.google.com/intl/en_uk/chrome/) for work browsing and [Firefox](https://www.mozilla.org/en-GB/firefox/new/) for home browsing. I use (and **love**) [Tailscale](https://tailscale.com/) to network my computers, phones and tablets.
